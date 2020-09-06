@@ -1,0 +1,12 @@
+"Instruction" = "请输入许可证和邮箱。";
+"LicenseKeyTitle" = "许可证";
+"EmailTitle" = "邮箱";
+"Button.Cancel" = "取消";
+"Button.BuyNow" = "前往购买";
+"Button.Activating" = "正在激活..";
+"Button.Activate" = "激活";
+
+"FailureReason.NetworkError" = "请检查你的网络并重试。";
+"FailureReason.Invalid" = "无法验证你的许可证，请确认许可证和邮箱填写正确。";
+"FailureReason.Refunded" = "此许可证已经因为退款而失效了。";
+"FailureReason.ReachedLimit" = "此许可证已经达到了激活上限，请在反激活后再尝试激活。";

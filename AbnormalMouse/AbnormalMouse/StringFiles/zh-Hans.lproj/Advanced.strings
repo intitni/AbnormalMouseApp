@@ -1,0 +1,4 @@
+"View.Title" = "高级";
+
+"View.ListenToKeyboardEvent" = "监听键盘事件（重开 app 时生效）";
+"View.ListenToKeyboardEventIntroduction" = "默认情况下，让你可以将组合键设置为触发键，这个 app 会监听键盘事件。但是让一个 app 监听键盘事件是一件有风险的事情（尽管我们什么都没做）。如果你只用鼠标按键作为触发键，你可以将它关闭。你可以使用像是 ReiKey 这样的工具来判断这个 app 是否还在监听键盘事件。";

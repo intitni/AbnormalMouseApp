@@ -1,0 +1,13 @@
+"View.Title" = "滚动和划动";
+"View.Introduction" = "这个功能能够将鼠标移动转变为四向滚动。不仅如此，你还能通过鼠标的左右移动触发划动手势，就像你能在 Safari 或者邮件中通过触控版划动返回、删除邮件那样。";
+"View.ActivationKeyCombinationTitle" = "按住触发键生效";
+"View.ScrollSpeedSliderTitle" = "滚动速度";
+"View.SwipeSpeedSliderTitle" = "划动速度";
+"View.ScrollSpeedSliderIntroduction" = "通过调整滚动速度，你可以改变鼠标位移转变为滚动时的比例。我们建议使用一个较大的比例，这样你只需要轻轻移动鼠标就能实现远距离的滚动。";
+"View.SwipeSliderIntroduction" = "划动速度控制的是鼠标位移转变为划动手势时的比例，与滚动速度不同，更小的比例能获得更好的体验。";
+"View.Tips.Usage" = "你需要按住触发键，同时移动鼠标以实现滚动。";
+"View.Tips.ActivatorChoice" = "我们建议你使用多余的鼠标按键作为触发键以实现类似于触控板的那种拖拽滚动的体验。";
+"View.Tips.PageDown" = "双击可以向下滚动半页。";
+"View.Tips.ScrollBar" = "如果你没有连接任何的触控板或妙控鼠标，你可以在系统设置中将滚动条隐藏。";
+"View.InertiaEffectCheckboxTitle" = "模拟滚动惯性";
+"View.InertiaEffectIntroduction" = "我们建议你开启这个功能，关闭之后某些 app 会没有滚动惯性效果。";

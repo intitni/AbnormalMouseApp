@@ -1,0 +1,12 @@
+"IsEnabled" = "Abnormal Mouse is functioning..";
+"IsDisabled" = "Abnormal Mouse is disabled..";
+"ShowPreferences" = "Show preferences";
+"Quit" = "Quit";
+
+"PurchaseStatus.Fetching" = "Fetching activation status..";
+"PurchaseStatus.Ended" = "Trial has ended.";
+"PurchaseStatus.Trial" = "Trial ends in %d days.";
+"PurchaseStatus.Activated" = "License is valid.";
+"PurchaseStatus.CantVerify" = "Failed to verify license.";
+"PurchaseStatus.Refunded" = "License is refunded.";
+"PurchaseStatus.Invalid" = "License is invalid.";

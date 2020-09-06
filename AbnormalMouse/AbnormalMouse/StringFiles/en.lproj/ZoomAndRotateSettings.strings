@@ -1,0 +1,29 @@
+"ZoomAndRotateView.Title" = "Zoom and Rotate";
+"ZoomAndRotateView.Introduction" = "This feature converts mouse movement into zoom and rotate gestures.";
+"ZoomAndRotateView.ActivationKeyCombinationTitle" = "Active when holding";
+"ZoomAndRotateView.zoomSpeedSliderTitle" = "Zoom speed";
+"ZoomAndRotateView.rotateSpeedSliderTitle" = "Rotate speed";
+"SmartZoomView.Title" = "Smart Zoom";
+"SmartZoomView.introduction" = "With trackpad, you can zoom in with double-tap. Now you can do the same with a key combination.";
+"SmartZoomView.ActivationKeyCombinationTitle" = "Trigger when";
+"SmartZoomView.DoubleTapToActivate" = "Double tap key combination to smart zoom";
+
+"ZoomAndRotateView.ZoomDirectionTitle" = "Zoom gesture direction";
+"ZoomAndRotateView.ZoomDirectionNone" = "Never zoom";
+"ZoomAndRotateView.ZoomDirectionLeft" = "Left to zoom-in";
+"ZoomAndRotateView.ZoomDirectionRight" = "Right to zoom-in";
+"ZoomAndRotateView.ZoomDirectionUp" = "Up to zoom-in";
+"ZoomAndRotateView.ZoomDirectionDown" = "Down to zoom-in";
+
+"ZoomAndRotateView.RotateDirectionTitle" = "Rotate gesture direction";
+"ZoomAndRotateView.RotateDirectionNone" = "Never Rotate";
+"ZoomAndRotateView.RotateDirectionLeft" = "Left to rotate clockwise";
+"ZoomAndRotateView.RotateDirectionRight" = "Right to rotate clockwise";
+"ZoomAndRotateView.RotateDirectionUp" = "Up to rotate clockwise";
+"ZoomAndRotateView.RotateDirectionDown" = "Down to rotate clockwise";
+
+"ZoomAndRotateView.Tips.Usage" = "Hold activator then move your mouse to zoom or rotate.";
+"ZoomAndRotateView.Tips.Recover" = "Sometimes, zoom and rotate will stop working. It's a known os issue that can't be fixed on our side. If you encounter this issue, pleas try the following steps to recover: \n① Re-enable these gestures from system preferences trackpad pane.\n② If you are using any other app that is using these gestures as triggers, turn them off, then reboot.\n③ Reboot fixes everything.";
+
+"SmartZoomView.Tips.UsageA" = "Double tap activator for \"zoom and rotate\" to trigger smart zoom.";
+"SmartZoomView.Tips.UsageB" = "Tap activator to trigger smart zoom.";

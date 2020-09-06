@@ -1,0 +1,18 @@
+"TabTitle.MoveToScroll" = "Scroll and Swipe";
+
+"TabTitle.TapAndClick" = "Tap and Click";
+
+"TabTitle.ZoomAndRotate" = "Zoom and Rotate";
+
+"TabTitle.Advanced" = "Advanced";
+
+"TabTitle.General" = "General";
+
+"Status.NotEnabled" = "Abnormal Mouse is not enabled.";
+
+"Status.EnableButtonTitle" = "Enable";
+
+"ExpireAlert.Title" = "Trial Has Ended.";
+"ExpireAlert.Content" = "Thanks for trying out Abnormal Mouse. To continue to use the app, you can activate it with an activation key.";
+"ExpireAlert.Activate" = "Activate";
+"ExpireAlert.BuyNow" = "Buy Now";

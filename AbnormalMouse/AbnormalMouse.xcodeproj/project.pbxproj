@@ -1,0 +1,1487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		136E6D812502A7DA00F540B3 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E6D802502A7DA00F540B3 /* License.swift */; };
+		136E6D8625033AB000F540B3 /* CGEventOverride in Frameworks */ = {isa = PBXBuildFile; productRef = 136E6D8525033AB000F540B3 /* CGEventOverride */; };
+		138361632487E70500E76F41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361622487E70500E76F41 /* AppDelegate.swift */; };
+		138361652487E70500E76F41 /* MoveToScrollSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361642487E70500E76F41 /* MoveToScrollSettingsView.swift */; };
+		138361672487E70700E76F41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 138361662487E70700E76F41 /* Assets.xcassets */; };
+		1383616A2487E70700E76F41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 138361692487E70700E76F41 /* Preview Assets.xcassets */; };
+		138361792487E70700E76F41 /* MoveToScrollDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361782487E70700E76F41 /* MoveToScrollDomainTests.swift */; };
+		138361842487E75800E76F41 /* MoveToScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361832487E75800E76F41 /* MoveToScrollController.swift */; };
+		138361862487E76B00E76F41 /* EmulateEventPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361852487E76B00E76F41 /* EmulateEventPoster.swift */; };
+		13864A08248E947300704C21 /* GeneralDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13864A07248E947300704C21 /* GeneralDomain.swift */; };
+		13864A0A248E947900704C21 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13864A09248E947900704C21 /* GeneralView.swift */; };
+		13A948202504D21500B8990F /* LicenseWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 13A9481F2504D21500B8990F /* LicenseWrapper */; };
+		13BB14D324AB9299007C5A81 /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13BB14D524AB9299007C5A81 /* General.strings */; };
+		13C51ABD249BA43B007881A5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABB249BA2F3007881A5 /* Style.swift */; };
+		13C51ABF249E5813007881A5 /* MoveMouseDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */; };
+		526678DE369BE036D03DF016 /* Pods_AbnormalMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */; };
+		842B147F24A9C3C20063CDE0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 842B148124A9C3C20063CDE0 /* InfoPlist.strings */; };
+		842B14BA24A9CC350063CDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B14B924A9CC350063CDE0 /* AppDelegate.swift */; };
+		842B14C124A9CC360063CDE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842B14C024A9CC360063CDE0 /* Preview Assets.xcassets */; };
+		842B14CA24A9CC650063CDE0 /* AbnormalMouseLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		842B14CC24A9CCA30063CDE0 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842B14CB24A9CCA30063CDE0 /* ServiceManagement.framework */; };
+		842B14CE24A9CF320063CDE0 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B14CD24A9CF320063CDE0 /* LaunchAtLogin.swift */; };
+		842B14CF24A9CFA80063CDE0 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B14CD24A9CF320063CDE0 /* LaunchAtLogin.swift */; };
+		84399B142488988900970CFF /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84399B132488988800970CFF /* UserDefault.swift */; };
+		84399B16248898C300970CFF /* Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84399B15248898C300970CFF /* Persisted.swift */; };
+		84399B182488CBB000970CFF /* ZoomAndRotateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84399B172488CBB000970CFF /* ZoomAndRotateController.swift */; };
+		84399B1F2488CCE700970CFF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84399B1E2488CCE700970CFF /* MainView.swift */; };
+		84399B212488CCF100970CFF /* NeedAccessabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84399B202488CCF100970CFF /* NeedAccessabilityView.swift */; };
+		84426AF224B01C1E006CF972 /* TipsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84426AF124B01C1E006CF972 /* TipsViewBuilder.swift */; };
+		845A29EF24D11F9D0086477D /* TapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A29EE24D11F9D0086477D /* TapGestureRecognizer.swift */; };
+		845A29F124D11FB30086477D /* TapHoldGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A29F024D11FB30086477D /* TapHoldGestureRecognizer.swift */; };
+		845A29F324D152900086477D /* MouseMovementGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A29F224D152900086477D /* MouseMovementGestureRecognizer.swift */; };
+		8462A5E624B56B9E00380FAF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8462A5E524B56B9E00380FAF /* KeychainAccess */; };
+		8462A5E824B56BBC00380FAF /* KeychainValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462A5E724B56BBC00380FAF /* KeychainValue.swift */; };
+		8463B80C24C975C7008D7988 /* EventThrottler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463B80B24C975C7008D7988 /* EventThrottler.swift */; };
+		846403B524AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846403B424AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift */; };
+		84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84680E2F24D2C6D800DFFBE1 /* AdvancedDomain.swift */; };
+		84680E3224D2C6E100DFFBE1 /* AdvancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */; };
+		846CA1B924A9DBD00084F753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846CA1B824A9DBD00084F753 /* Main.storyboard */; };
+		848F0BBC24D509EC00F9F5CD /* MainDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F0BBB24D509EC00F9F5CD /* MainDomain.swift */; };
+		8493D7F524C7CCE000BD2A17 /* Advanced.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8493D7F724C7CCE000BD2A17 /* Advanced.strings */; };
+		849F4F8324BD9DEC00EF6512 /* MoveApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F4F8224BD9DEC00EF6512 /* MoveApplication.swift */; };
+		849F4F8624BD9F3600EF6512 /* MoveApplication.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849F4F8824BD9F3600EF6512 /* MoveApplication.strings */; };
+		84A022CA24BC533200ED8FA4 /* Activation.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84A022CC24BC533200ED8FA4 /* Activation.strings */; };
+		84A37D922499C70E00FB4D98 /* StatusBarMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84A37D942499C70E00FB4D98 /* StatusBarMenu.strings */; };
+		84A574AD248F60C400BC2380 /* EventSequeceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A574AC248F60C400BC2380 /* EventSequeceController.swift */; };
+		84A574AF248F6AC500BC2380 /* OverrideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A574AE248F6AC500BC2380 /* OverrideController.swift */; };
+		84AA16572491D39B00D2C34E /* ZoomAndRotateDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA16562491D39B00D2C34E /* ZoomAndRotateDomain.swift */; };
+		84AA165B2492046E00D2C34E /* Shared.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84AA165D2492046E00D2C34E /* Shared.strings */; };
+		84AA16612492079100D2C34E /* ScrollSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84AA16632492079100D2C34E /* ScrollSettings.strings */; };
+		84AA166D2492293B00D2C34E /* ZoomAndRotateSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84AA166F2492293B00D2C34E /* ZoomAndRotateSettings.strings */; };
+		84AEF73624D3CA7900DFF5D3 /* Effect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AEF73524D3CA7900DFF5D3 /* Effect+Extensions.swift */; };
+		84B8C1E924D262D600BF3378 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8C1E824D262D600BF3378 /* GestureRecognizer.swift */; };
+		84C8EAE72489D25A00C53CFD /* ZoomAndRotateSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAE62489D25A00C53CFD /* ZoomAndRotateSettingsView.swift */; };
+		84C8EAE92489F41000C53CFD /* SettingsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAE82489F41000C53CFD /* SettingsPageView.swift */; };
+		84C8EAEE248A2C6800C53CFD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 84C8EAED248A2C6800C53CFD /* ComposableArchitecture */; };
+		84C8EAF0248A2C7800C53CFD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAEF248A2C7800C53CFD /* App.swift */; };
+		84C8EAFB248B72B500C53CFD /* KeyboardCode+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAFA248B72B500C53CFD /* KeyboardCode+Name.swift */; };
+		84C8EAFD248B72BC00C53CFD /* MouseCode+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAFC248B72BC00C53CFD /* MouseCode+Name.swift */; };
+		84C8EB02248B770D00C53CFD /* KeyboardEventChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EB01248B770D00C53CFD /* KeyboardEventChecker.swift */; };
+		84D22503248E41D40069BC36 /* KeyCombination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D22502248E41D40069BC36 /* KeyCombination.swift */; };
+		84D83A9724B6B61A0015E30C /* ActivationDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83A9624B6B61A0015E30C /* ActivationDomain.swift */; };
+		84D83A9924B6B6220015E30C /* ActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83A9824B6B6220015E30C /* ActivationView.swift */; };
+		84D83A9D24B705900015E30C /* Combine+WaitAtLeast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83A9C24B705900015E30C /* Combine+WaitAtLeast.swift */; };
+		84D83AA024B706820015E30C /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 84D83A9F24B706820015E30C /* CombineExt */; };
+		84E49413248DE4400074540F /* MoveToScrollDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49412248DE4400074540F /* MoveToScrollDomain.swift */; };
+		84E4941A248DE4BA0074540F /* NeedAccessabilityDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49419248DE4BA0074540F /* NeedAccessabilityDomain.swift */; };
+		84E49426248E283A0074540F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E49428248E283A0074540F /* Main.storyboard */; };
+		84E49429248E28450074540F /* MainView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E4942B248E28450074540F /* MainView.strings */; };
+		84E49432248E2A770074540F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49430248E2A770074540F /* Strings.swift */; };
+		84E49433248E2A770074540F /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49431248E2A770074540F /* Assets.swift */; };
+		84E49439248E2BF80074540F /* NeedAccessability.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E4943B248E2BF80074540F /* NeedAccessability.strings */; };
+		84FAB1EB24C13253001265FD /* SCA+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1EA24C13253001265FD /* SCA+Extentions.swift */; };
+		84FAB1F224C53547001265FD /* Readonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1F124C53547001265FD /* Readonly.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		138361752487E70700E76F41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 138361572487E70500E76F41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1383615E2487E70500E76F41;
+			remoteInfo = AbnormalMouse;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		842B149A24A9CBE50063CDE0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				842B14CA24A9CC650063CDE0 /* AbnormalMouseLauncher.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		136E6D802502A7DA00F540B3 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		1383615F2487E70500E76F41 /* AbnormalMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbnormalMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		138361622487E70500E76F41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		138361642487E70500E76F41 /* MoveToScrollSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToScrollSettingsView.swift; sourceTree = "<group>"; };
+		138361662487E70700E76F41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		138361692487E70700E76F41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1383616E2487E70700E76F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1383616F2487E70700E76F41 /* AbnormalMouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AbnormalMouse.entitlements; sourceTree = "<group>"; };
+		138361742487E70700E76F41 /* AbnormalMouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AbnormalMouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		138361782487E70700E76F41 /* MoveToScrollDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToScrollDomainTests.swift; sourceTree = "<group>"; };
+		1383617A2487E70700E76F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		138361832487E75800E76F41 /* MoveToScrollController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToScrollController.swift; sourceTree = "<group>"; };
+		138361852487E76B00E76F41 /* EmulateEventPoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmulateEventPoster.swift; sourceTree = "<group>"; };
+		13864A07248E947300704C21 /* GeneralDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDomain.swift; sourceTree = "<group>"; };
+		13864A09248E947900704C21 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
+		13BB14D424AB9299007C5A81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/General.strings; sourceTree = "<group>"; };
+		13BB14D624AB929E007C5A81 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/General.strings"; sourceTree = "<group>"; };
+		13C51ABB249BA2F3007881A5 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveMouseDirection.swift; sourceTree = "<group>"; };
+		13EE2C6E2504C9B100BE46BC /* LicenseWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LicenseWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbnormalMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E99A3A881BF298122F310CD /* Pods-AbnormalMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.release.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.release.xcconfig"; sourceTree = "<group>"; };
+		6B229038B0F13F1DAD33760D /* Pods-AbnormalMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.debug.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.debug.xcconfig"; sourceTree = "<group>"; };
+		842B148024A9C3C20063CDE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		842B148224A9C3C40063CDE0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbnormalMouseLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		842B14B924A9CC350063CDE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		842B14C024A9CC360063CDE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		842B14C524A9CC360063CDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842B14C624A9CC360063CDE0 /* AbnormalMouseLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AbnormalMouseLauncher.entitlements; sourceTree = "<group>"; };
+		842B14CB24A9CCA30063CDE0 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		842B14CD24A9CF320063CDE0 /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
+		84399B0F248894D400970CFF /* CGEventInception.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CGEventInception.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84399B132488988800970CFF /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		84399B15248898C300970CFF /* Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persisted.swift; sourceTree = "<group>"; };
+		84399B172488CBB000970CFF /* ZoomAndRotateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndRotateController.swift; sourceTree = "<group>"; };
+		84399B1E2488CCE700970CFF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		84399B202488CCF100970CFF /* NeedAccessabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedAccessabilityView.swift; sourceTree = "<group>"; };
+		84426AF124B01C1E006CF972 /* TipsViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewBuilder.swift; sourceTree = "<group>"; };
+		845A29EE24D11F9D0086477D /* TapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGestureRecognizer.swift; sourceTree = "<group>"; };
+		845A29F024D11FB30086477D /* TapHoldGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapHoldGestureRecognizer.swift; sourceTree = "<group>"; };
+		845A29F224D152900086477D /* MouseMovementGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseMovementGestureRecognizer.swift; sourceTree = "<group>"; };
+		8462A5E724B56BBC00380FAF /* KeychainValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainValue.swift; sourceTree = "<group>"; };
+		8462A5EF24B6A97200380FAF /* CocoaFob.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaFob.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8463B80B24C975C7008D7988 /* EventThrottler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventThrottler.swift; sourceTree = "<group>"; };
+		846403B424AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndScrollDomainTests.swift; sourceTree = "<group>"; };
+		84680E2F24D2C6D800DFFBE1 /* AdvancedDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedDomain.swift; sourceTree = "<group>"; };
+		84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedView.swift; sourceTree = "<group>"; };
+		846CA1B824A9DBD00084F753 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		846DA82D24AC5F4100039E60 /* CGEventExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CGEventExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		848F0BBB24D509EC00F9F5CD /* MainDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDomain.swift; sourceTree = "<group>"; };
+		8493D7F624C7CCE000BD2A17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Advanced.strings; sourceTree = "<group>"; };
+		8493D7F824C7CE1C00BD2A17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Advanced.strings"; sourceTree = "<group>"; };
+		849F4F8224BD9DEC00EF6512 /* MoveApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveApplication.swift; sourceTree = "<group>"; };
+		849F4F8724BD9F3600EF6512 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MoveApplication.strings; sourceTree = "<group>"; };
+		849F4F8924BD9F3700EF6512 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MoveApplication.strings"; sourceTree = "<group>"; };
+		84A022CB24BC533200ED8FA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Activation.strings; sourceTree = "<group>"; };
+		84A022CD24BC533400ED8FA4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Activation.strings"; sourceTree = "<group>"; };
+		84A37D932499C70E00FB4D98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StatusBarMenu.strings; sourceTree = "<group>"; };
+		84A37D952499C70F00FB4D98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StatusBarMenu.strings"; sourceTree = "<group>"; };
+		84A574AC248F60C400BC2380 /* EventSequeceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSequeceController.swift; sourceTree = "<group>"; };
+		84A574AE248F6AC500BC2380 /* OverrideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideController.swift; sourceTree = "<group>"; };
+		84AA16562491D39B00D2C34E /* ZoomAndRotateDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndRotateDomain.swift; sourceTree = "<group>"; };
+		84AA165C2492046E00D2C34E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Shared.strings; sourceTree = "<group>"; };
+		84AA165E2492048700D2C34E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Shared.strings"; sourceTree = "<group>"; };
+		84AA16622492079100D2C34E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ScrollSettings.strings; sourceTree = "<group>"; };
+		84AA16642492079200D2C34E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ScrollSettings.strings"; sourceTree = "<group>"; };
+		84AA166E2492293B00D2C34E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ZoomAndRotateSettings.strings; sourceTree = "<group>"; };
+		84AA16702492293E00D2C34E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ZoomAndRotateSettings.strings"; sourceTree = "<group>"; };
+		84AEF73524D3CA7900DFF5D3 /* Effect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effect+Extensions.swift"; sourceTree = "<group>"; };
+		84B8C1E824D262D600BF3378 /* GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
+		84C8EAE62489D25A00C53CFD /* ZoomAndRotateSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndRotateSettingsView.swift; sourceTree = "<group>"; };
+		84C8EAE82489F41000C53CFD /* SettingsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageView.swift; sourceTree = "<group>"; };
+		84C8EAEF248A2C7800C53CFD /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		84C8EAFA248B72B500C53CFD /* KeyboardCode+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardCode+Name.swift"; sourceTree = "<group>"; };
+		84C8EAFC248B72BC00C53CFD /* MouseCode+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MouseCode+Name.swift"; sourceTree = "<group>"; };
+		84C8EB01248B770D00C53CFD /* KeyboardEventChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEventChecker.swift; sourceTree = "<group>"; };
+		84C8EB03248B787700C53CFD /* CGEventOverride.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CGEventOverride.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D22502248E41D40069BC36 /* KeyCombination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombination.swift; sourceTree = "<group>"; };
+		84D83A9624B6B61A0015E30C /* ActivationDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationDomain.swift; sourceTree = "<group>"; };
+		84D83A9824B6B6220015E30C /* ActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationView.swift; sourceTree = "<group>"; };
+		84D83A9C24B705900015E30C /* Combine+WaitAtLeast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+WaitAtLeast.swift"; sourceTree = "<group>"; };
+		84E49412248DE4400074540F /* MoveToScrollDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToScrollDomain.swift; sourceTree = "<group>"; };
+		84E49419248DE4BA0074540F /* NeedAccessabilityDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedAccessabilityDomain.swift; sourceTree = "<group>"; };
+		84E49427248E283A0074540F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		84E4942A248E28450074540F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainView.strings"; sourceTree = "<group>"; };
+		84E4942C248E284D0074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainView.strings; sourceTree = "<group>"; };
+		84E49430248E2A770074540F /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		84E49431248E2A770074540F /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		84E49434248E2BC50074540F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84E49436248E2BCE0074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		84E4943A248E2BF80074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NeedAccessability.strings; sourceTree = "<group>"; };
+		84E4943C248E2BFA0074540F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NeedAccessability.strings"; sourceTree = "<group>"; };
+		84FAB1EA24C13253001265FD /* SCA+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCA+Extentions.swift"; sourceTree = "<group>"; };
+		84FAB1F124C53547001265FD /* Readonly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readonly.swift; sourceTree = "<group>"; };
+		CA16F656E4CCD8FBCF39FB43 /* Pods-AbnormalMouse.preview.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.preview.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.preview.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1383615C2487E70500E76F41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84D83AA024B706820015E30C /* CombineExt in Frameworks */,
+				84C8EAEE248A2C6800C53CFD /* ComposableArchitecture in Frameworks */,
+				136E6D8625033AB000F540B3 /* CGEventOverride in Frameworks */,
+				13A948202504D21500B8990F /* LicenseWrapper in Frameworks */,
+				842B14CC24A9CCA30063CDE0 /* ServiceManagement.framework in Frameworks */,
+				8462A5E624B56B9E00380FAF /* KeychainAccess in Frameworks */,
+				526678DE369BE036D03DF016 /* Pods_AbnormalMouse.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		138361712487E70700E76F41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842B14B424A9CC350063CDE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		138361562487E70500E76F41 = {
+			isa = PBXGroup;
+			children = (
+				138361612487E70500E76F41 /* AbnormalMouse */,
+				138361772487E70700E76F41 /* AbnormalMouseTests */,
+				842B14B824A9CC350063CDE0 /* AbnormalMouseLauncher */,
+				138361602487E70500E76F41 /* Products */,
+				84399B0E248894D400970CFF /* Frameworks */,
+				E8D6F0628305FAF6F43A7940 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		138361602487E70500E76F41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1383615F2487E70500E76F41 /* AbnormalMouse.app */,
+				138361742487E70700E76F41 /* AbnormalMouseTests.xctest */,
+				842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		138361612487E70500E76F41 /* AbnormalMouse */ = {
+			isa = PBXGroup;
+			children = (
+				138361622487E70500E76F41 /* AppDelegate.swift */,
+				84C8EAEF248A2C7800C53CFD /* App.swift */,
+				84399B15248898C300970CFF /* Persisted.swift */,
+				13C51ABB249BA2F3007881A5 /* Style.swift */,
+				84E4942F248E2A770074540F /* Generated */,
+				84C8EAF9248B729700C53CFD /* KeyDescription */,
+				84399B1D2488CCCE00970CFF /* Features */,
+				84C8EB00248B72E300C53CFD /* OverrideController */,
+				84D22501248E41C10069BC36 /* Library */,
+				84E4943D248E2C180074540F /* StringFiles */,
+				138361662487E70700E76F41 /* Assets.xcassets */,
+				84E49428248E283A0074540F /* Main.storyboard */,
+				1383616E2487E70700E76F41 /* Info.plist */,
+				842B148124A9C3C20063CDE0 /* InfoPlist.strings */,
+				1383616F2487E70700E76F41 /* AbnormalMouse.entitlements */,
+				138361682487E70700E76F41 /* Preview Content */,
+			);
+			path = AbnormalMouse;
+			sourceTree = "<group>";
+		};
+		138361682487E70700E76F41 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				138361692487E70700E76F41 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		138361772487E70700E76F41 /* AbnormalMouseTests */ = {
+			isa = PBXGroup;
+			children = (
+				1383617A2487E70700E76F41 /* Info.plist */,
+				138361782487E70700E76F41 /* MoveToScrollDomainTests.swift */,
+				846403B424AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift */,
+			);
+			path = AbnormalMouseTests;
+			sourceTree = "<group>";
+		};
+		13864A06248E945800704C21 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				13864A07248E947300704C21 /* GeneralDomain.swift */,
+				13864A09248E947900704C21 /* GeneralView.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		842B14B824A9CC350063CDE0 /* AbnormalMouseLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				846CA1B824A9DBD00084F753 /* Main.storyboard */,
+				842B14CD24A9CF320063CDE0 /* LaunchAtLogin.swift */,
+				842B14B924A9CC350063CDE0 /* AppDelegate.swift */,
+				842B14C524A9CC360063CDE0 /* Info.plist */,
+				842B14C624A9CC360063CDE0 /* AbnormalMouseLauncher.entitlements */,
+				842B14BF24A9CC360063CDE0 /* Preview Content */,
+			);
+			path = AbnormalMouseLauncher;
+			sourceTree = "<group>";
+		};
+		842B14BF24A9CC360063CDE0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				842B14C024A9CC360063CDE0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		84399B0E248894D400970CFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13EE2C6E2504C9B100BE46BC /* LicenseWrapper.framework */,
+				8462A5EF24B6A97200380FAF /* CocoaFob.framework */,
+				846DA82D24AC5F4100039E60 /* CGEventExtension.framework */,
+				842B14CB24A9CCA30063CDE0 /* ServiceManagement.framework */,
+				84C8EB03248B787700C53CFD /* CGEventOverride.framework */,
+				84399B0F248894D400970CFF /* CGEventInception.framework */,
+				35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84399B1D2488CCCE00970CFF /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				84C8EAE82489F41000C53CFD /* SettingsPageView.swift */,
+				84C8EB01248B770D00C53CFD /* KeyboardEventChecker.swift */,
+				84AEF73724D3CAA500DFF5D3 /* Main */,
+				84E49411248DE4260074540F /* Scroll */,
+				84E49417248DE49C0074540F /* ZoomAndRotate */,
+				84E49418248DE4AA0074540F /* NeedAccessability */,
+				84680E2E24D2C6BD00DFFBE1 /* Advanced */,
+				13864A06248E945800704C21 /* General */,
+				84D83A9524B6B5EA0015E30C /* Activation */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		845A29ED24D11F850086477D /* GestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				845A29EE24D11F9D0086477D /* TapGestureRecognizer.swift */,
+				845A29F024D11FB30086477D /* TapHoldGestureRecognizer.swift */,
+				845A29F224D152900086477D /* MouseMovementGestureRecognizer.swift */,
+				84B8C1E824D262D600BF3378 /* GestureRecognizer.swift */,
+			);
+			path = GestureRecognizer;
+			sourceTree = "<group>";
+		};
+		84680E2E24D2C6BD00DFFBE1 /* Advanced */ = {
+			isa = PBXGroup;
+			children = (
+				84680E2F24D2C6D800DFFBE1 /* AdvancedDomain.swift */,
+				84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */,
+			);
+			path = Advanced;
+			sourceTree = "<group>";
+		};
+		84AEF73124D3C9E100DFF5D3 /* Persistency */ = {
+			isa = PBXGroup;
+			children = (
+				84399B132488988800970CFF /* UserDefault.swift */,
+				8462A5E724B56BBC00380FAF /* KeychainValue.swift */,
+				84FAB1F124C53547001265FD /* Readonly.swift */,
+			);
+			path = Persistency;
+			sourceTree = "<group>";
+		};
+		84AEF73224D3C9F600DFF5D3 /* CombineExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				84D83A9C24B705900015E30C /* Combine+WaitAtLeast.swift */,
+			);
+			path = CombineExtensions;
+			sourceTree = "<group>";
+		};
+		84AEF73324D3C9FF00DFF5D3 /* ComposableArchitectureExtension */ = {
+			isa = PBXGroup;
+			children = (
+				84FAB1EA24C13253001265FD /* SCA+Extentions.swift */,
+				84AEF73524D3CA7900DFF5D3 /* Effect+Extensions.swift */,
+			);
+			path = ComposableArchitectureExtension;
+			sourceTree = "<group>";
+		};
+		84AEF73424D3CA1100DFF5D3 /* MoveApplication */ = {
+			isa = PBXGroup;
+			children = (
+				849F4F8224BD9DEC00EF6512 /* MoveApplication.swift */,
+				849F4F8824BD9F3600EF6512 /* MoveApplication.strings */,
+			);
+			path = MoveApplication;
+			sourceTree = "<group>";
+		};
+		84AEF73724D3CAA500DFF5D3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				848F0BBB24D509EC00F9F5CD /* MainDomain.swift */,
+				84399B1E2488CCE700970CFF /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		84C8EAF9248B729700C53CFD /* KeyDescription */ = {
+			isa = PBXGroup;
+			children = (
+				84C8EAFA248B72B500C53CFD /* KeyboardCode+Name.swift */,
+				84C8EAFC248B72BC00C53CFD /* MouseCode+Name.swift */,
+			);
+			path = KeyDescription;
+			sourceTree = "<group>";
+		};
+		84C8EB00248B72E300C53CFD /* OverrideController */ = {
+			isa = PBXGroup;
+			children = (
+				138361832487E75800E76F41 /* MoveToScrollController.swift */,
+				84399B172488CBB000970CFF /* ZoomAndRotateController.swift */,
+				138361852487E76B00E76F41 /* EmulateEventPoster.swift */,
+				84A574AC248F60C400BC2380 /* EventSequeceController.swift */,
+				84A574AE248F6AC500BC2380 /* OverrideController.swift */,
+			);
+			path = OverrideController;
+			sourceTree = "<group>";
+		};
+		84D22501248E41C10069BC36 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				845A29ED24D11F850086477D /* GestureRecognizer */,
+				84AEF73124D3C9E100DFF5D3 /* Persistency */,
+				84AEF73224D3C9F600DFF5D3 /* CombineExtensions */,
+				84AEF73424D3CA1100DFF5D3 /* MoveApplication */,
+				84AEF73324D3C9FF00DFF5D3 /* ComposableArchitectureExtension */,
+				84D22502248E41D40069BC36 /* KeyCombination.swift */,
+				13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */,
+				84426AF124B01C1E006CF972 /* TipsViewBuilder.swift */,
+				8463B80B24C975C7008D7988 /* EventThrottler.swift */,
+				136E6D802502A7DA00F540B3 /* License.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		84D83A9524B6B5EA0015E30C /* Activation */ = {
+			isa = PBXGroup;
+			children = (
+				84D83A9624B6B61A0015E30C /* ActivationDomain.swift */,
+				84D83A9824B6B6220015E30C /* ActivationView.swift */,
+			);
+			path = Activation;
+			sourceTree = "<group>";
+		};
+		84E49411248DE4260074540F /* Scroll */ = {
+			isa = PBXGroup;
+			children = (
+				84E49412248DE4400074540F /* MoveToScrollDomain.swift */,
+				138361642487E70500E76F41 /* MoveToScrollSettingsView.swift */,
+			);
+			path = Scroll;
+			sourceTree = "<group>";
+		};
+		84E49417248DE49C0074540F /* ZoomAndRotate */ = {
+			isa = PBXGroup;
+			children = (
+				84AA16562491D39B00D2C34E /* ZoomAndRotateDomain.swift */,
+				84C8EAE62489D25A00C53CFD /* ZoomAndRotateSettingsView.swift */,
+			);
+			path = ZoomAndRotate;
+			sourceTree = "<group>";
+		};
+		84E49418248DE4AA0074540F /* NeedAccessability */ = {
+			isa = PBXGroup;
+			children = (
+				84E49419248DE4BA0074540F /* NeedAccessabilityDomain.swift */,
+				84399B202488CCF100970CFF /* NeedAccessabilityView.swift */,
+			);
+			path = NeedAccessability;
+			sourceTree = "<group>";
+		};
+		84E4942F248E2A770074540F /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				84E49430248E2A770074540F /* Strings.swift */,
+				84E49431248E2A770074540F /* Assets.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		84E4943D248E2C180074540F /* StringFiles */ = {
+			isa = PBXGroup;
+			children = (
+				84E4942B248E28450074540F /* MainView.strings */,
+				84E4943B248E2BF80074540F /* NeedAccessability.strings */,
+				84AA165D2492046E00D2C34E /* Shared.strings */,
+				84AA16632492079100D2C34E /* ScrollSettings.strings */,
+				84AA166F2492293B00D2C34E /* ZoomAndRotateSettings.strings */,
+				84A37D942499C70E00FB4D98 /* StatusBarMenu.strings */,
+				13BB14D524AB9299007C5A81 /* General.strings */,
+				84A022CC24BC533200ED8FA4 /* Activation.strings */,
+				8493D7F724C7CCE000BD2A17 /* Advanced.strings */,
+			);
+			path = StringFiles;
+			sourceTree = "<group>";
+		};
+		E8D6F0628305FAF6F43A7940 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B229038B0F13F1DAD33760D /* Pods-AbnormalMouse.debug.xcconfig */,
+				4E99A3A881BF298122F310CD /* Pods-AbnormalMouse.release.xcconfig */,
+				CA16F656E4CCD8FBCF39FB43 /* Pods-AbnormalMouse.preview.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1383615E2487E70500E76F41 /* AbnormalMouse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1383617D2487E70700E76F41 /* Build configuration list for PBXNativeTarget "AbnormalMouse" */;
+			buildPhases = (
+				8447845B62469B04C9FA7CFE /* [CP] Check Pods Manifest.lock */,
+				84E4942E248E2A020074540F /* SwiftGen */,
+				1383615B2487E70500E76F41 /* Sources */,
+				1383615C2487E70500E76F41 /* Frameworks */,
+				1383615D2487E70500E76F41 /* Resources */,
+				842B149A24A9CBE50063CDE0 /* CopyFiles */,
+				37BD8F770BB7D53E90EA314C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AbnormalMouse;
+			packageProductDependencies = (
+				84C8EAED248A2C6800C53CFD /* ComposableArchitecture */,
+				8462A5E524B56B9E00380FAF /* KeychainAccess */,
+				84D83A9F24B706820015E30C /* CombineExt */,
+				136E6D8525033AB000F540B3 /* CGEventOverride */,
+				13A9481F2504D21500B8990F /* LicenseWrapper */,
+			);
+			productName = AbnormalMouse;
+			productReference = 1383615F2487E70500E76F41 /* AbnormalMouse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		138361732487E70700E76F41 /* AbnormalMouseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 138361802487E70700E76F41 /* Build configuration list for PBXNativeTarget "AbnormalMouseTests" */;
+			buildPhases = (
+				138361702487E70700E76F41 /* Sources */,
+				138361712487E70700E76F41 /* Frameworks */,
+				138361722487E70700E76F41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				138361762487E70700E76F41 /* PBXTargetDependency */,
+			);
+			name = AbnormalMouseTests;
+			productName = AbnormalMouseTests;
+			productReference = 138361742487E70700E76F41 /* AbnormalMouseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		842B14B624A9CC350063CDE0 /* AbnormalMouseLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842B14C724A9CC360063CDE0 /* Build configuration list for PBXNativeTarget "AbnormalMouseLauncher" */;
+			buildPhases = (
+				842B14B324A9CC350063CDE0 /* Sources */,
+				842B14B424A9CC350063CDE0 /* Frameworks */,
+				842B14B524A9CC350063CDE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AbnormalMouseLauncher;
+			productName = AbnormalMouseLauncher;
+			productReference = 842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		138361572487E70500E76F41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = Intii.com;
+				TargetAttributes = {
+					1383615E2487E70500E76F41 = {
+						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
+					};
+					138361732487E70700E76F41 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 1383615E2487E70500E76F41;
+					};
+					842B14B624A9CC350063CDE0 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 1383615A2487E70500E76F41 /* Build configuration list for PBXProject "AbnormalMouse" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hans",
+				Base,
+			);
+			mainGroup = 138361562487E70500E76F41;
+			packageReferences = (
+				84C8EAEC248A2C6800C53CFD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				8462A5E424B56B9E00380FAF /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				84D83A9E24B706820015E30C /* XCRemoteSwiftPackageReference "CombineExt" */,
+				136E6D8425033AB000F540B3 /* XCRemoteSwiftPackageReference "CGEventOverride" */,
+			);
+			productRefGroup = 138361602487E70500E76F41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1383615E2487E70500E76F41 /* AbnormalMouse */,
+				138361732487E70700E76F41 /* AbnormalMouseTests */,
+				842B14B624A9CC350063CDE0 /* AbnormalMouseLauncher */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1383615D2487E70500E76F41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84E49439248E2BF80074540F /* NeedAccessability.strings in Resources */,
+				84E49429248E28450074540F /* MainView.strings in Resources */,
+				1383616A2487E70700E76F41 /* Preview Assets.xcassets in Resources */,
+				138361672487E70700E76F41 /* Assets.xcassets in Resources */,
+				84A022CA24BC533200ED8FA4 /* Activation.strings in Resources */,
+				84A37D922499C70E00FB4D98 /* StatusBarMenu.strings in Resources */,
+				84E49426248E283A0074540F /* Main.storyboard in Resources */,
+				84AA166D2492293B00D2C34E /* ZoomAndRotateSettings.strings in Resources */,
+				849F4F8624BD9F3600EF6512 /* MoveApplication.strings in Resources */,
+				84AA165B2492046E00D2C34E /* Shared.strings in Resources */,
+				84AA16612492079100D2C34E /* ScrollSettings.strings in Resources */,
+				13BB14D324AB9299007C5A81 /* General.strings in Resources */,
+				8493D7F524C7CCE000BD2A17 /* Advanced.strings in Resources */,
+				842B147F24A9C3C20063CDE0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		138361722487E70700E76F41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842B14B524A9CC350063CDE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842B14C124A9CC360063CDE0 /* Preview Assets.xcassets in Resources */,
+				846CA1B924A9DBD00084F753 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37BD8F770BB7D53E90EA314C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8447845B62469B04C9FA7CFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AbnormalMouse-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84E4942E248E2A020074540F /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1383615B2487E70500E76F41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				138361842487E75800E76F41 /* MoveToScrollController.swift in Sources */,
+				84C8EAE92489F41000C53CFD /* SettingsPageView.swift in Sources */,
+				84E49433248E2A770074540F /* Assets.swift in Sources */,
+				84399B142488988900970CFF /* UserDefault.swift in Sources */,
+				84D83A9724B6B61A0015E30C /* ActivationDomain.swift in Sources */,
+				84C8EAF0248A2C7800C53CFD /* App.swift in Sources */,
+				845A29EF24D11F9D0086477D /* TapGestureRecognizer.swift in Sources */,
+				848F0BBC24D509EC00F9F5CD /* MainDomain.swift in Sources */,
+				84E49413248DE4400074540F /* MoveToScrollDomain.swift in Sources */,
+				84C8EAFB248B72B500C53CFD /* KeyboardCode+Name.swift in Sources */,
+				136E6D812502A7DA00F540B3 /* License.swift in Sources */,
+				13C51ABF249E5813007881A5 /* MoveMouseDirection.swift in Sources */,
+				13864A08248E947300704C21 /* GeneralDomain.swift in Sources */,
+				8462A5E824B56BBC00380FAF /* KeychainValue.swift in Sources */,
+				84399B1F2488CCE700970CFF /* MainView.swift in Sources */,
+				84399B182488CBB000970CFF /* ZoomAndRotateController.swift in Sources */,
+				8463B80C24C975C7008D7988 /* EventThrottler.swift in Sources */,
+				845A29F124D11FB30086477D /* TapHoldGestureRecognizer.swift in Sources */,
+				138361652487E70500E76F41 /* MoveToScrollSettingsView.swift in Sources */,
+				84B8C1E924D262D600BF3378 /* GestureRecognizer.swift in Sources */,
+				138361632487E70500E76F41 /* AppDelegate.swift in Sources */,
+				84D83A9924B6B6220015E30C /* ActivationView.swift in Sources */,
+				849F4F8324BD9DEC00EF6512 /* MoveApplication.swift in Sources */,
+				84426AF224B01C1E006CF972 /* TipsViewBuilder.swift in Sources */,
+				13864A0A248E947900704C21 /* GeneralView.swift in Sources */,
+				842B14CF24A9CFA80063CDE0 /* LaunchAtLogin.swift in Sources */,
+				84C8EB02248B770D00C53CFD /* KeyboardEventChecker.swift in Sources */,
+				84A574AF248F6AC500BC2380 /* OverrideController.swift in Sources */,
+				138361862487E76B00E76F41 /* EmulateEventPoster.swift in Sources */,
+				84AEF73624D3CA7900DFF5D3 /* Effect+Extensions.swift in Sources */,
+				84FAB1EB24C13253001265FD /* SCA+Extentions.swift in Sources */,
+				84D22503248E41D40069BC36 /* KeyCombination.swift in Sources */,
+				84A574AD248F60C400BC2380 /* EventSequeceController.swift in Sources */,
+				84399B212488CCF100970CFF /* NeedAccessabilityView.swift in Sources */,
+				84C8EAE72489D25A00C53CFD /* ZoomAndRotateSettingsView.swift in Sources */,
+				13C51ABD249BA43B007881A5 /* Style.swift in Sources */,
+				84AA16572491D39B00D2C34E /* ZoomAndRotateDomain.swift in Sources */,
+				84E4941A248DE4BA0074540F /* NeedAccessabilityDomain.swift in Sources */,
+				845A29F324D152900086477D /* MouseMovementGestureRecognizer.swift in Sources */,
+				84399B16248898C300970CFF /* Persisted.swift in Sources */,
+				84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */,
+				84680E3224D2C6E100DFFBE1 /* AdvancedView.swift in Sources */,
+				84C8EAFD248B72BC00C53CFD /* MouseCode+Name.swift in Sources */,
+				84FAB1F224C53547001265FD /* Readonly.swift in Sources */,
+				84E49432248E2A770074540F /* Strings.swift in Sources */,
+				84D83A9D24B705900015E30C /* Combine+WaitAtLeast.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		138361702487E70700E76F41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				138361792487E70700E76F41 /* MoveToScrollDomainTests.swift in Sources */,
+				846403B524AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842B14B324A9CC350063CDE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842B14BA24A9CC350063CDE0 /* AppDelegate.swift in Sources */,
+				842B14CE24A9CF320063CDE0 /* LaunchAtLogin.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		138361762487E70700E76F41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1383615E2487E70500E76F41 /* AbnormalMouse */;
+			targetProxy = 138361752487E70700E76F41 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		13BB14D524AB9299007C5A81 /* General.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13BB14D424AB9299007C5A81 /* en */,
+				13BB14D624AB929E007C5A81 /* zh-Hans */,
+			);
+			name = General.strings;
+			sourceTree = "<group>";
+		};
+		842B148124A9C3C20063CDE0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				842B148024A9C3C20063CDE0 /* en */,
+				842B148224A9C3C40063CDE0 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8493D7F724C7CCE000BD2A17 /* Advanced.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8493D7F624C7CCE000BD2A17 /* en */,
+				8493D7F824C7CE1C00BD2A17 /* zh-Hans */,
+			);
+			name = Advanced.strings;
+			sourceTree = "<group>";
+		};
+		849F4F8824BD9F3600EF6512 /* MoveApplication.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				849F4F8724BD9F3600EF6512 /* en */,
+				849F4F8924BD9F3700EF6512 /* zh-Hans */,
+			);
+			name = MoveApplication.strings;
+			sourceTree = "<group>";
+		};
+		84A022CC24BC533200ED8FA4 /* Activation.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84A022CB24BC533200ED8FA4 /* en */,
+				84A022CD24BC533400ED8FA4 /* zh-Hans */,
+			);
+			name = Activation.strings;
+			sourceTree = "<group>";
+		};
+		84A37D942499C70E00FB4D98 /* StatusBarMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84A37D932499C70E00FB4D98 /* en */,
+				84A37D952499C70F00FB4D98 /* zh-Hans */,
+			);
+			name = StatusBarMenu.strings;
+			sourceTree = "<group>";
+		};
+		84AA165D2492046E00D2C34E /* Shared.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84AA165C2492046E00D2C34E /* en */,
+				84AA165E2492048700D2C34E /* zh-Hans */,
+			);
+			name = Shared.strings;
+			sourceTree = "<group>";
+		};
+		84AA16632492079100D2C34E /* ScrollSettings.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84AA16622492079100D2C34E /* en */,
+				84AA16642492079200D2C34E /* zh-Hans */,
+			);
+			name = ScrollSettings.strings;
+			sourceTree = "<group>";
+		};
+		84AA166F2492293B00D2C34E /* ZoomAndRotateSettings.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84AA166E2492293B00D2C34E /* en */,
+				84AA16702492293E00D2C34E /* zh-Hans */,
+			);
+			name = ZoomAndRotateSettings.strings;
+			sourceTree = "<group>";
+		};
+		84E49428248E283A0074540F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E49427248E283A0074540F /* zh-Hans */,
+				84E49434248E2BC50074540F /* Base */,
+				84E49436248E2BCE0074540F /* en */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		84E4942B248E28450074540F /* MainView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E4942A248E28450074540F /* zh-Hans */,
+				84E4942C248E284D0074540F /* en */,
+			);
+			name = MainView.strings;
+			sourceTree = "<group>";
+		};
+		84E4943B248E2BF80074540F /* NeedAccessability.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84E4943A248E2BF80074540F /* en */,
+				84E4943C248E2BFA0074540F /* zh-Hans */,
+			);
+			name = NeedAccessability.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1383617B2487E70700E76F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1383617C2487E70700E76F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		1383617E2487E70700E76F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B229038B0F13F1DAD33760D /* Pods-AbnormalMouse.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AbnormalMouse/AbnormalMouse.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 11;
+				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = AbnormalMouse/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2020.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1383617F2487E70700E76F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E99A3A881BF298122F310CD /* Pods-AbnormalMouse.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AbnormalMouse/AbnormalMouse.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 11;
+				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = AbnormalMouse/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2020.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Direct com.intii.AbnormalMouse macos";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		138361812487E70700E76F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				INFOPLIST_FILE = AbnormalMouseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AbnormalMouse.app/Contents/MacOS/AbnormalMouse";
+			};
+			name = Debug;
+		};
+		138361822487E70700E76F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				INFOPLIST_FILE = AbnormalMouseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AbnormalMouse.app/Contents/MacOS/AbnormalMouse";
+			};
+			name = Release;
+		};
+		842B14C824A9CC360063CDE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AbnormalMouseLauncher/AbnormalMouseLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouseLauncher/Preview Content\"";
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = AbnormalMouseLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		842B14C924A9CC360063CDE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AbnormalMouseLauncher/AbnormalMouseLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouseLauncher/Preview Content\"";
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = AbnormalMouseLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Direct com.intii.AbnormalMouseLauncher macos";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8485C48524C5817400831C29 /* Preview */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG PREVIEW";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Preview;
+		};
+		8485C48624C5817400831C29 /* Preview */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA16F656E4CCD8FBCF39FB43 /* Pods-AbnormalMouse.preview.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AbnormalMouse/AbnormalMouse.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 11;
+				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = AbnormalMouse/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2020.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Preview;
+		};
+		8485C48724C5817400831C29 /* Preview */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				INFOPLIST_FILE = AbnormalMouseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AbnormalMouse.app/Contents/MacOS/AbnormalMouse";
+			};
+			name = Preview;
+		};
+		8485C48824C5817400831C29 /* Preview */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AbnormalMouseLauncher/AbnormalMouseLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouseLauncher/Preview Content\"";
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = AbnormalMouseLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Preview;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1383615A2487E70500E76F41 /* Build configuration list for PBXProject "AbnormalMouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1383617B2487E70700E76F41 /* Debug */,
+				8485C48524C5817400831C29 /* Preview */,
+				1383617C2487E70700E76F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1383617D2487E70700E76F41 /* Build configuration list for PBXNativeTarget "AbnormalMouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1383617E2487E70700E76F41 /* Debug */,
+				8485C48624C5817400831C29 /* Preview */,
+				1383617F2487E70700E76F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		138361802487E70700E76F41 /* Build configuration list for PBXNativeTarget "AbnormalMouseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				138361812487E70700E76F41 /* Debug */,
+				8485C48724C5817400831C29 /* Preview */,
+				138361822487E70700E76F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842B14C724A9CC360063CDE0 /* Build configuration list for PBXNativeTarget "AbnormalMouseLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842B14C824A9CC360063CDE0 /* Debug */,
+				8485C48824C5817400831C29 /* Preview */,
+				842B14C924A9CC360063CDE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		136E6D8425033AB000F540B3 /* XCRemoteSwiftPackageReference "CGEventOverride" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:intitni/CGEventOverride.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		8462A5E424B56B9E00380FAF /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		84C8EAEC248A2C6800C53CFD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+		84D83A9E24B706820015E30C /* XCRemoteSwiftPackageReference "CombineExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineExt";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		136E6D8525033AB000F540B3 /* CGEventOverride */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 136E6D8425033AB000F540B3 /* XCRemoteSwiftPackageReference "CGEventOverride" */;
+			productName = CGEventOverride;
+		};
+		13A9481F2504D21500B8990F /* LicenseWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LicenseWrapper;
+		};
+		8462A5E524B56B9E00380FAF /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8462A5E424B56B9E00380FAF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		84C8EAED248A2C6800C53CFD /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84C8EAEC248A2C6800C53CFD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		84D83A9F24B706820015E30C /* CombineExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84D83A9E24B706820015E30C /* XCRemoteSwiftPackageReference "CombineExt" */;
+			productName = CombineExt;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 138361572487E70500E76F41 /* Project object */;
+}

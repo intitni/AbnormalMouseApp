@@ -1,0 +1,25 @@
+"DevelopedBy" = "Developed by";
+"ContactMe" = "If you have any problem using the app, feel free to contact me at";
+"Quit" = "Quit Abnormal Mouse";
+"AutoStart" = "Automatically start at login";
+
+"Title.General" = "General";
+"Title.About" = "About";
+
+"TrialEnd" = "Trial has ended.";
+"TrialDaysRemain" = "Trial will end in %d days.";
+"Activate" = "Activate";
+"Purchase" = "Buy Now";
+"Deactivate" = "Deactivate";
+"Deactivating" = "Deactivating..";
+"LicenseValid" = "License is valid.";
+"LicenseInvalid" = "License is not valid.";
+"LicenseRefunded" = "License is refunded.";
+"LicenseTo" = "Licensed to %@";
+
+"Version" = "Version %@";
+"CheckForUpdate" = "Check Now";
+"AutomaticallyCheckForUpdate" = "Automatically check for update";
+
+"ErrorMessage.FailedToDeactivate" = "Failed to deactivate, please try again later.";
+"ErrorMessage.NetworkError" = "Please check your network and try again.";

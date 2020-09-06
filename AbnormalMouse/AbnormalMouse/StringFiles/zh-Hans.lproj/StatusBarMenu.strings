@@ -1,0 +1,12 @@
+"IsEnabled" = "不一般鼠标正在运行中..";
+"IsDisabled" = "不一般鼠标已停止运行..";
+"ShowPreferences" = "显示设置";
+"Quit" = "退出";
+
+"PurchaseStatus.Fetching" = "正在获取激活状态..";
+"PurchaseStatus.Ended" = "试用期已结束。";
+"PurchaseStatus.Trial" = "试用期剩余 %@ 天。";
+"PurchaseStatus.Activated" = "已激活。";
+"PurchaseStatus.CantVerify" = "无法验证激活状态。";
+"PurchaseStatus.Refunded" = "已退款。";
+"PurchaseStatus.Invalid" = "许可证无效";

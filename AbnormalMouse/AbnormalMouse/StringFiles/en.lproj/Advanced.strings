@@ -1,0 +1,4 @@
+"View.Title" = "Advanced";
+
+"View.ListenToKeyboardEvent" = "Listen to keyboard event (restart app to take effect)";
+"View.ListenToKeyboardEventIntroduction" = "Defaultly this app listens to your keystrokes so you can use hotkeys as activators. But letting an app read your keystrokes can be risky (though we are not doing anything). You can turn it off if you are only using mouse buttons as activators. You can use tools like ReiKey to check if the app is still listening to you keystrokes";

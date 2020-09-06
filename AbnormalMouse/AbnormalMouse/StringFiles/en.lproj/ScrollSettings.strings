@@ -1,0 +1,13 @@
+"View.Title" = "Scroll and Swipe";
+"View.Introduction" = "This feature converts mouse movement into scrolling. Better than that, it also allows you to play drag gestures by moving the mouse, like navigating back in Safari or marking emails as read in the Mail app.";
+"View.ActivationKeyCombinationTitle" = "Active when holding";
+"View.ScrollSpeedSliderTitle" = "Scroll speed";
+"View.SwipeSpeedSliderTitle" = "Swipe speed";
+"View.ScrollSpeedSliderIntroduction" = "Scroll speed controls how mouse movements will be scaled into scrolls, a bigger number is preferred since you will not want to move the mouse a lot to scroll.";
+"View.SwipeSpeedSliderIntroduction" = "Swipe speed controls how it's scaled into swipe gesture translations, a lower speed will make it feel more natural.";
+"View.Tips.Usage" = "Hold activator then move your mouse to scroll.";
+"View.Tips.ActivatorChoice" = "Set a mouse button as activator to have a drag-to-scroll like experience.";
+"View.Tips.PageDown" = "Double tap to scroll down half a page.";
+"View.Tips.ScrollBar" = "Turn off show scroll bar in system preferences if you don't have a trackpad connected.";
+"View.InertiaEffectCheckboxTitle" = "Emulate inertia effect";
+"View.InertiaEffectIntroduction" = "We recommend you to keep it on, disabling it will disable inertia effect in some apps.";

@@ -1,0 +1,18 @@
+"TabTitle.MoveToScroll" = "滚动和划动";
+
+"TabTitle.TapAndClick" = "点按和轻点";
+
+"TabTitle.ZoomAndRotate" = "缩放和旋转";
+
+"TabTitle.Advanced" = "高级设置";
+
+"TabTitle.General" = "一般设置";
+
+"Status.NotEnabled" = "不一般鼠标尚未启动";
+
+"Status.EnableButtonTitle" = "启动";
+
+"ExpireAlert.Title" = "试用期已经结束了";
+"ExpireAlert.Content" = "非常感谢你能够试用不一般鼠标，如果你希望继续使用它，可以输入激活码将其激活。";
+"ExpireAlert.Activate" = "激活";
+"ExpireAlert.BuyNow" = "立即购买";

@@ -1,0 +1,25 @@
+"DevelopedBy" = "开发者";
+"ContactMe" = "在使用过程中遇到任何问题，可以通过邮件与我联系";
+"Quit" = "关闭不一般鼠标";
+"AutoStart" = "登录时自动启动";
+
+"Title.General" = "一般设置";
+"Title.About" = "关于";
+
+"TrialEnd" = "试用已经结束了。";
+"TrialDaysRemain" = "试用期还剩 %@ 天";
+"Activate" = "激活";
+"Purchase" = "立即购买";
+"Deactivate" = "反激活";
+"Deactivating" = "正在反激活..";
+"LicenseValid" = "已激活。";
+"LicenseInvalid" = "许可证无效。";
+"LicenseRefunded" = "已退款，许可证已失效。";
+"LicenseTo" = "激活邮箱 %@。";
+
+"Version" = "版本号 %@";
+"CheckForUpdate" = "检查更新";
+"AutomaticallyCheckForUpdate" = "自动检查更新";
+
+"ErrorMessage.FailedToDeactivate" = "无法反激活，请稍后再试。";
+"ErrorMessage.NetworkError" = "请检查你的网络并重试。";

@@ -1,0 +1,15 @@
+"View.EnterKeyCombination" = "输入组合键";
+"View.KeyCombinationNotSetup" = "设置";
+
+"MouseCodeName.Left" = "鼠标(左)";
+"MouseCodeName.Right" = "鼠标(右)";
+"MouseCodeName.Middle" = "鼠标(中)";
+"MouseCodeName.Other" = "鼠标(%@)";
+
+"AppName" = "不一般鼠标";
+
+"TipsTitle.Default" = "小帖士";
+"TipsTitle.Usage" = "用法";
+"TipsTitle.Bug" = "已知问题";
+
+"HomepageURLString" = "https://abnormalmouse.intii.com/zh-cn";

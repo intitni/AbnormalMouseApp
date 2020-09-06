@@ -1,0 +1,15 @@
+"View.EnterKeyCombination" = "Enter key combination";
+"View.KeyCombinationNotSetup" = "Setup";
+
+"MouseCodeName.Left" = "Mouse(L)";
+"MouseCodeName.Right" = "Mouse(R)";
+"MouseCodeName.Middle" = "Mouse(M)";
+"MouseCodeName.Other" = "Mouse(%@)";
+
+"AppName" = "Abnormal Mouse";
+
+"TipsTitle.Default" = "Tips";
+"TipsTitle.Usage" = "Usage";
+"TipsTitle.Bug" = "Bug";
+
+"HomepageURLString" = "https://abnormalmouse.intii.com";

@@ -1,0 +1,12 @@
+xcassets:
+  inputs:
+    - AbnormalMouse/Assets.xcassets
+  outputs:
+    - templateName: swift4
+      output: AbnormalMouse/Generated/Assets.swift
+strings:
+  inputs: AbnormalMouse/StringFiles/en.lproj
+  filter: .+\.strings$
+  outputs:
+    - templateName: structured-swift4
+      output: AbnormalMouse/Generated/Strings.swift
