@@ -8,6 +8,8 @@
 
 "TabTitle.General" = "一般设置";
 
+"TabTitle.DockSwipe" = "多指划动";
+
 "Status.NotEnabled" = "不一般鼠标尚未启动";
 
 "Status.EnableButtonTitle" = "启动";

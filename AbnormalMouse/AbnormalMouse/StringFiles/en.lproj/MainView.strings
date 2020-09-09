@@ -8,6 +8,8 @@
 
 "TabTitle.General" = "General";
 
+"TabTitle.DockSwipe" = "Dock Swipe";
+
 "Status.NotEnabled" = "Abnormal Mouse is not enabled.";
 
 "Status.EnableButtonTitle" = "Enable";

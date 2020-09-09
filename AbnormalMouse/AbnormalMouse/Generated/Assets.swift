@@ -21,6 +21,7 @@ internal enum Asset {
   internal static let iconAccessabilityOff = ImageAsset(name: "icon_accessabilityOff")
   internal static let iconAdvanced = ImageAsset(name: "icon_advanced")
   internal static let iconApp = ImageAsset(name: "icon_app")
+  internal static let iconDockSwipe = ImageAsset(name: "icon_dockSwipe")
   internal static let iconGeneral = ImageAsset(name: "icon_general")
   internal static let iconMenuBar = ImageAsset(name: "icon_menuBar")
   internal static let iconMoveToScroll = ImageAsset(name: "icon_moveToScroll")
