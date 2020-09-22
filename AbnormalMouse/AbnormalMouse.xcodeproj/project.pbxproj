@@ -12,6 +12,7 @@
 		131367DC25090AA800BA888C /* DockSwipeSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 131367DE25090AA800BA888C /* DockSwipeSettings.strings */; };
 		136E6D812502A7DA00F540B3 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E6D802502A7DA00F540B3 /* License.swift */; };
 		136E6D8625033AB000F540B3 /* CGEventOverride in Frameworks */ = {isa = PBXBuildFile; productRef = 136E6D8525033AB000F540B3 /* CGEventOverride */; };
+		137477A9251A324F00451154 /* DockSwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137477A8251A324F00451154 /* DockSwipeController.swift */; };
 		138361632487E70500E76F41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361622487E70500E76F41 /* AppDelegate.swift */; };
 		138361652487E70500E76F41 /* MoveToScrollSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361642487E70500E76F41 /* MoveToScrollSettingsView.swift */; };
 		138361672487E70700E76F41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 138361662487E70700E76F41 /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		131367DD25090AA800BA888C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DockSwipeSettings.strings"; sourceTree = "<group>"; };
 		131367DF25090AA900BA888C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DockSwipeSettings.strings; sourceTree = "<group>"; };
 		136E6D802502A7DA00F540B3 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		137477A8251A324F00451154 /* DockSwipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeController.swift; sourceTree = "<group>"; };
 		1383615F2487E70500E76F41 /* AbnormalMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbnormalMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		138361622487E70500E76F41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		138361642487E70500E76F41 /* MoveToScrollSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToScrollSettingsView.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 			children = (
 				138361832487E75800E76F41 /* MoveToScrollController.swift */,
 				84399B172488CBB000970CFF /* ZoomAndRotateController.swift */,
+				137477A8251A324F00451154 /* DockSwipeController.swift */,
 				138361852487E76B00E76F41 /* EmulateEventPoster.swift */,
 				84A574AC248F60C400BC2380 /* EventSequeceController.swift */,
 				84A574AE248F6AC500BC2380 /* OverrideController.swift */,
@@ -818,6 +821,7 @@
 				845A29F324D152900086477D /* MouseMovementGestureRecognizer.swift in Sources */,
 				84399B16248898C300970CFF /* Persisted.swift in Sources */,
 				84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */,
+				137477A9251A324F00451154 /* DockSwipeController.swift in Sources */,
 				84680E3224D2C6E100DFFBE1 /* AdvancedView.swift in Sources */,
 				84C8EAFD248B72BC00C53CFD /* MouseCode+Name.swift in Sources */,
 				84FAB1F224C53547001265FD /* Readonly.swift in Sources */,

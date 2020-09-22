@@ -307,4 +307,14 @@ struct EmulateEventPoster {
         e[134] = 1_065_353_216 // magic
         p(e)
     }
+    
+    func postDockSwipe(
+        v: Int = 0,
+        h: Int = 0
+    ) {
+        let e = CGEvent(source: nil)!
+        e.type = CGEventType.dockGesture
+        e[.gestureType] = GestureType.navigationSwipe.rawValue
+        p(e)
+    }
 }

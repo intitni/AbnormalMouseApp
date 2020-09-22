@@ -1,0 +1,711 @@
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728061031428 (864728061031428.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728061031428 (864728061031428.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728062220978 (864728062220978.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728062220978 (864728062220978.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728067627371 (864728067627371.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728067627371 (864728067627371.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728074496433 (864728074496433.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728074496433 (864728074496433.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728082666505 (864728082666505.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728082666505 (864728082666505.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728106827695 (864728106827695.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728106827695 (864728106827695.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728116101704 (864728116101704.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728116101704 (864728116101704.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728124128475 (864728124128475.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728124128475 (864728124128475.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728132133248 (864728132133248.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728132133248 (864728132133248.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728140197601 (864728140197601.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728140197601 (864728140197601.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728148106888 (864728148106888.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728148106888 (864728148106888.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728156030704 (864728156030704.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728156030704 (864728156030704.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728156030704 (864728156030704.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 1 (1.0)
+[134]Unnamed 1 (1.0)
+[135]Unnamed 3158966272 (3158966272.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728156030704 (864728156030704.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728163857095 (864728163857095.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728163857095 (864728163857095.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728163857095 (864728163857095.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3170254848 (3170254848.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728163857095 (864728163857095.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728171859820 (864728171859820.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728171859820 (864728171859820.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728171859820 (864728171859820.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[115]ZoomDirection 8 (8.0)
+[117]SwipeDirection 8 (8.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3176349696 (3176349696.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[164]Unnamed 8 (8.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728171859820 (864728171859820.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728179321230 (864728179321230.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728179321230 (864728179321230.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728179321230 (864728179321230.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3181168640 (3181168640.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728179321230 (864728179321230.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728187486894 (864728187486894.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728187486894 (864728187486894.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728187486894 (864728187486894.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3185307648 (3185307648.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728187486894 (864728187486894.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728194681172 (864728194681172.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728194681172 (864728194681172.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728194681172 (864728194681172.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3188567040 (3188567040.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728194681172 (864728194681172.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728202607644 (864728202607644.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728202607644 (864728202607644.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728202607644 (864728202607644.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3191089152 (3191089152.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728202607644 (864728202607644.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728210897763 (864728210897763.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728210897763 (864728210897763.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728210897763 (864728210897763.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3193663488 (3193663488.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728210897763 (864728210897763.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728219938862 (864728219938862.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728219938862 (864728219938862.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728219938862 (864728219938862.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3196376064 (3196376064.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728219938862 (864728219938862.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728226409170 (864728226409170.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728226409170 (864728226409170.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728226409170 (864728226409170.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3197617664 (3197617664.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728226409170 (864728226409170.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728234523428 (864728234523428.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728234523428 (864728234523428.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728234523428 (864728234523428.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3199284736 (3199284736.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728234523428 (864728234523428.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728241668015 (864728241668015.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728241668015 (864728241668015.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728241668015 (864728241668015.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3200597504 (3200597504.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728241668015 (864728241668015.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728249631103 (864728249631103.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728249631103 (864728249631103.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728249631103 (864728249631103.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3202112000 (3202112000.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728249631103 (864728249631103.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728257805376 (864728257805376.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728257805376 (864728257805376.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728257805376 (864728257805376.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 2 (2.0)
+[134]Unnamed 2 (2.0)
+[135]Unnamed 3203652608 (3203652608.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728257805376 (864728257805376.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728265623574 (864728265623574.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728265623574 (864728265623574.0)
+===========
+
+===========
+Event Type dockGesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 30 (30.0)
+[58]Unnamed 864728265623574 (864728265623574.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[110]GestureType 23 (23.0)
+[123]scrollWheelEventMomentumPhase 1 (1.0)
+[132]Phase 4 (4.0)
+[134]Unnamed 4 (4.0)
+[135]Unnamed 3203652608 (3203652608.0)
+[136]Unnamed 1 (1.0)
+[138]Unnamed 3 (3.0)
+[165]Unnamed 1 (1.0)
+[169]Unnamed 864728265623574 (864728265623574.0)
+===========
+
+===========
+Event Type gesture
+[39]eventTargetProcessSerialNumber 17096781 (17096781.0)
+[40]eventTargetUnixProcessID 12775 (12775.0)
+[45]eventSourceStateID 1 (1.0)
+[50]windowNumber 248 (248.0)
+[55]Unnamed 29 (29.0)
+[58]Unnamed 864728272325143 (864728272325143.0)
+[85]Unnamed 376431 (376431.0)
+[87]Unnamed 4296568173 (4296568173.0)
+[101]Unnamed 4 (4.0)
+[169]Unnamed 864728272325143 (864728272325143.0)
+===========
+
