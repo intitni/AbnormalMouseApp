@@ -56,7 +56,7 @@ struct Persisted: PersistedType {
         var rotateGestureDirection: MoveMouseDirection
 
         let smartZoom = SmartZoom()
-        struct SmartZoom {
+        struct SmartZoom: PersistedType {
             static func key(_ name: String) -> String { return "SmartZoom\(name)" }
             @UserDefault(key("UseZoomAndRotateDoubleTap"), defaultValue: true)
             var useZoomAndRotateDoubleTap: Bool
