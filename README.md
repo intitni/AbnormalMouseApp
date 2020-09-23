@@ -21,9 +21,10 @@ Abnormal Mouse itself is a paid app, but the open-source part does not include c
 ## How to use it
 
 1. Clone this repo.
-2. Execute `make bootstrap`.
-3. Compile and run with Xcode.
-4. Turn off automatically check for updates.
+2. Install [CocoaPods](https://cocoapods.org).
+3. Execute `make bootstrap`.
+4. Compile and run with Xcode.
+5. Turn off automatically check for updates.
 
 ## Contribute.
 

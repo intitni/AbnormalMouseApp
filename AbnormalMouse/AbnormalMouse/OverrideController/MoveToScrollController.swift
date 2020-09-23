@@ -136,7 +136,7 @@ extension MoveToScrollController {
         /// we were trying to achieve.
         func postEvents() {
             func resetMousePosition() {
-                CGWarpMouseCursorPosition(.init(x: state.mouseLocation.x, y: state.mouseLocation.y))
+                CGWarpMouseCursorPosition(state.mouseLocation)
             }
             switch state.eventPosterState {
             case .inactive:
@@ -149,18 +149,11 @@ extension MoveToScrollController {
                 p.postEventPerFrame([])
                 p.postScrollGesture(phase: .began)
                 p.postScroll(v: v, h: h, phase: .began)
-                // We used to post a mayBegin scroll gesture event here, but it's not neccessary
-                // and will create bugs.
                 resetMousePosition()
             case .gestureShouldBegin:
-                // We can't post a cancel event here because it will trigger Swish.app
-                // gestures immediately. Thankfully a mayBegin event is more than enough to allow
-                // a scroll gesture event start at any time during the movement.
-                // p.postScroll(v: v, h: h, phase: .mayBegin)
                 p.postScroll(v: v, h: h, phase: .changed)
                 resetMousePosition()
             case .gestureRestartingScroll:
-                // p.postScroll(v: v, h: h, phase: .began)
                 p.postScrollGesture(v: v, h: h, sh: sh, phase: .changed)
                 resetMousePosition()
             case .gestureHasBegun:
@@ -185,7 +178,7 @@ extension MoveToScrollController {
             ///              double check this block of code to make sure it still works, if
             ///              `postInertiaEffect` is changed!!! __2020-7-21__
             case .everythingShouldEnd:
-                // Cancel because Reeder.app will not have inertia effect
+                // Cancel or Reeder.app will not have inertia effect
                 p.postScroll(phase: .cancelled)
                 p.postScrollGesture(v: v, h: h, sh: sh, phase: .ended)
                 p.postNullGesture()

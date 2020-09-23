@@ -22,9 +22,10 @@ Abnormal Mouse 本身是一个收费应用，但开源的部分不包含软件�
 ## 使用方法
 
 1. Clone 这个 repo；
-2. 执行 `make bootstrap`；
-3. 使用 Xcode 编译运行；
-4. 关掉自动检查更新。
+2. 安装 [CocoaPods](https://cocoapods.org).
+3. 执行 `make bootstrap`；
+4. 使用 Xcode 编译运行；
+5. 关掉自动检查更新。
 
 ## 贡献
 

@@ -189,7 +189,7 @@ extension ZoomAndRotateController {
         }
 
         if isActive {
-            CGWarpMouseCursorPosition(.init(x: state.mouseLocation.x, y: state.mouseLocation.y))
+            CGWarpMouseCursorPosition(state.mouseLocation)
         }
     }
 }
