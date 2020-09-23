@@ -2,6 +2,11 @@
 
 ### Next
 
+- Support 4 finger swipe gestures.
+- Fix that smart zoom settings are not persisted.
+
+### Open Source
+
 - Open source.
 - Support to build without license management logics.
 - Detach license management and CGEventOverride to other repos.

@@ -10,15 +10,17 @@ Using a normal mouse in macOS is a terrible thing, the missing gestures and four
 - Four-way scrolling (drag-to-scroll by holding down the trigger button and moving the mouse, which may seem odd, but I kind of like it).
 - Two-finger swipe gestures (Safari's swipe to back, Reeder's pull to refresh, etc.).
 - Zoom and rotate.
+- Four-finger swipe gestures (Switch between spaces, Mission Control).
   
 ### The planned features are
-- [ ] Four-finger gesture.
 - [ ] Shared triggers.
 
 ## About this version
 Abnormal Mouse itself is a paid app, but the open-source part does not include code related to software activation. If you compile it yourself,  you will be able to use it for free. If you like this app, please consider [buying a copy here](https://abnormalmouse.intii.com).
 
 ## How to use it
+
+You can [download a trial version here](https://abnormalmouse.intii.com), or build it yourself:
 
 1. Clone this repo.
 2. Install [CocoaPods](https://cocoapods.org).

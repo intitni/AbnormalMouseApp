@@ -20,6 +20,7 @@ struct MainDomain: Domain {
 
         var moveToScrollSettings = MoveToScrollDomain.State()
         var zoomAndRotateSettings = ZoomAndRotateDomain.State()
+        var dockSwipeSettings = DockSwipeDomain.State()
         var needAccessability = NeedAccessabilityDomain.State()
         var advanced = AdvancedDomain.State()
         var general = GeneralDomain.State()
@@ -35,6 +36,7 @@ struct MainDomain: Domain {
 
         case moveToScrollSettings(action: MoveToScrollDomain.Action)
         case zoomAndRotateSettings(action: ZoomAndRotateDomain.Action)
+        case dockSwipeSettings(action: DockSwipeDomain.Action)
         case needAccessability(action: NeedAccessabilityDomain.Action)
         case advanced(action: AdvancedDomain.Action)
         case general(action: GeneralDomain.Action)
@@ -69,6 +71,8 @@ struct MainDomain: Domain {
             case .moveToScrollSettings:
                 return .none
             case .zoomAndRotateSettings:
+                return .none
+            case .dockSwipeSettings:
                 return .none
             case .needAccessability:
                 return .none
@@ -107,6 +111,13 @@ struct MainDomain: Domain {
                     moveToScrollPersisted: $0.persisted.moveToScroll,
                     openURL: $0.openURL
                 )
+            }
+        ),
+        DockSwipeDomain.reducer.pullback(
+            state: \.dockSwipeSettings,
+            action: /Action.dockSwipeSettings,
+            environment: {
+                DockSwipeDomain.Environment(persisted: $0.persisted.dockSwipe)
             }
         ),
         NeedAccessabilityDomain.reducer.pullback(

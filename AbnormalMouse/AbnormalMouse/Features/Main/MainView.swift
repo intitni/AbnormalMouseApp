@@ -88,6 +88,15 @@ private struct MainView: View {
                 }
             )
             NavigationLink(
+                destination: self.dockSwipeScreen,
+                label: {
+                    NavigationTabTitle(
+                        image: Image(Asset.iconDockSwipe.name),
+                        title: _L10n.View.TabTitle.dockSwipe
+                    )
+                }
+            )
+            NavigationLink(
                 destination: self.advancedScreen,
                 label: {
                     NavigationTabTitle(
@@ -130,6 +139,17 @@ private struct MainView: View {
                 store: self.store.scope(
                     state: { $0.zoomAndRotateSettings },
                     action: { .zoomAndRotateSettings(action: $0) }
+                )
+            )
+        )
+    }
+    
+    private var dockSwipeScreen: some View {
+        withEnableStatus(
+            DockSwipeSettingsScreen(
+                store: self.store.scope(
+                    state: { $0.dockSwipeSettings },
+                    action: { .dockSwipeSettings(action: $0) }
                 )
             )
         )
