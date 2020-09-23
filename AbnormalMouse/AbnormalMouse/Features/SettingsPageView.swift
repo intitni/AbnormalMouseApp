@@ -65,12 +65,10 @@ extension SettingsSectionView where Introduction == EmptyView {
         @ViewBuilder title: () -> Title,
         @ViewBuilder content: () -> Content
     ) {
-        self.init(
-            showSeparator: showSeparator,
-            title: title,
-            introduction: { nil },
-            content: content
-        )
+        self.showSeparator = showSeparator
+        self.title = title()
+        self.introduction = nil
+        self.content = content()
     }
 }
 
@@ -79,12 +77,10 @@ extension SettingsSectionView where Title == EmptyView, Introduction == EmptyVie
         showSeparator: Bool = false,
         @ViewBuilder content: () -> Content
     ) {
-        self.init(
-            showSeparator: showSeparator,
-            title: { nil },
-            introduction: { nil },
-            content: content
-        )
+        self.showSeparator = showSeparator
+        self.title = nil
+        self.introduction = nil
+        self.content = content()
     }
 }
 
