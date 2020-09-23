@@ -48,6 +48,10 @@ private let store = TheApp.Store(
                 persisted: Readonly(persisted.zoomAndRotate),
                 hook: eventHook
             ),
+            DockSwipeController(
+                persisted: Readonly(persisted.dockSwipe),
+                hook: eventHook
+            ),
         ]
     ))
 )
@@ -75,7 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
         if EnvironmentVariable.isUnitTest { return }
         buildStatusBarMenu()
-        
+
         #if !PREVIEW
         defer { persisted.launchCount += 1 }
         purchaseManager.startTrialIfNeeded()
@@ -327,7 +331,7 @@ enum EnvironmentVariable {
     static var isUnitTest: Bool {
         ProcessInfo.processInfo.environment["IS_UNIT_TEST"] == "YES"
     }
-    
+
     static var neverWaitAtLeast: Bool {
         ProcessInfo.processInfo.environment["NEVER_WAIT_AT_LEAST"] == "YES"
     }
