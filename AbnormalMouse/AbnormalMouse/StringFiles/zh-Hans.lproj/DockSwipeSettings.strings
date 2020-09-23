@@ -1,4 +1,4 @@
-"View.Title" = "Dock Swipe";
-"View.Introduction" = "This feature converts mouse movement into scrolling. Better than that, it also allows you to play drag gestures by moving the mouse, like navigating back in Safari or marking emails as read in the Mail app.";
-"View.ActivationKeyCombinationTitle" = "Active when holding";
-"View.Tips.Usage" = "Hold activator then move your mouse to swipe.";
+"View.Title" = "四指轻扫";
+"View.Introduction" = "这个功能能够将鼠标移动转变为四指轻扫手势，如此一来你就能通过一个普通鼠标在空间之间移动、呼出调度中心了。";
+"View.ActivationKeyCombinationTitle" = "按住触发键生效";
+"View.Tips.Usage" = "你需要按住触发键，同时移动鼠标以实现轻扫。";

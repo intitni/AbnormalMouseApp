@@ -53,9 +53,9 @@ internal enum L10n {
     internal enum View {
       /// Active when holding
       internal static let activationKeyCombinationTitle = L10n.tr("DockSwipeSettings", "View.ActivationKeyCombinationTitle")
-      /// This feature converts mouse movement into scrolling. Better than that, it also allows you to play drag gestures by moving the mouse, like navigating back in Safari or marking emails as read in the Mail app.
+      /// This feature converts mouse movement into four-finger swipe, so you can switch spaces with a normal mouse.
       internal static let introduction = L10n.tr("DockSwipeSettings", "View.Introduction")
-      /// Dock Swipe
+      /// 4-Finger Swipe
       internal static let title = L10n.tr("DockSwipeSettings", "View.Title")
       internal enum Tips {
         /// Hold activator then move your mouse to swipe.
@@ -137,7 +137,7 @@ internal enum L10n {
     internal enum TabTitle {
       /// Advanced
       internal static let advanced = L10n.tr("MainView", "TabTitle.Advanced")
-      /// Dock Swipe
+      /// 4-Finger Swipe
       internal static let dockSwipe = L10n.tr("MainView", "TabTitle.DockSwipe")
       /// General
       internal static let general = L10n.tr("MainView", "TabTitle.General")
