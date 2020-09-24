@@ -166,10 +166,14 @@ extension DockSwipeController {
 
             switch state {
             case .inactive:
-                if abs(horizontalAccumulation) > 10 {
-                    state = .shouldBegin(.horizontal)
-                } else if abs(verticalAccumulation) > 10 {
-                    state = .shouldBegin(.vertical)
+                let absh = abs(horizontalAccumulation)
+                let absv = abs(verticalAccumulation)
+                if absh > 10 || absv > 10 {
+                    if absh > absv {
+                        state = .shouldBegin(.horizontal)
+                    } else {
+                        state = .shouldBegin(.vertical)
+                    }
                 }
             case let .shouldBegin(direction):
                 state = .begin(direction)
