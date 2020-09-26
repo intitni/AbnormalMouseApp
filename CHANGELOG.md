@@ -1,6 +1,6 @@
 # Change Log
 
-### Next
+### 2020.4
 
 - Support 4 finger swipe gestures.
 - Fix that smart zoom settings are not persisted.

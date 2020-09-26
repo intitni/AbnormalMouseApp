@@ -344,15 +344,17 @@ struct EmulateEventPoster {
         func buildValue(_ accumulation: Double) -> Int64 {
             let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
             if accumulation == 0 { return sign }
-            let scale: Double = min(max(0, abs(accumulation)), 1)
-            let v = Int64(1_000_000_000 + 70_000_000 * scale)
+            func easingFunction(_ x: Double) -> Double {
+                x > 1 ? 1 + (x - 1) * 0.05 : sqrt(1 - pow(x - 1, 2))
+            }
+            let v = Int64(980_000_000 + 80_000_000 * easingFunction(abs(accumulation)))
             return accumulation > 0 ? sign + v : v
         }
         
         switch direction {
         case let .horizontal(accumulation):
             guard accumulation != 0 else { return }
-            e[.scrollWheelEventMomentumPhase] = 1 // Magic
+            e[.scrollWheelEventMomentumPhase] = 0 // Magic
             e[135] = buildValue(accumulation)
             e[165] = 1 // Magic
         case let .vertical(accumulation):
