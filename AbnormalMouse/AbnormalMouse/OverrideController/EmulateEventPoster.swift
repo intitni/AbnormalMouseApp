@@ -248,12 +248,14 @@ struct EmulateEventPoster {
         p(e)
     }
 
+    /// Post a gesture between gestureStarted and gestureEnded events.
     func postGesture(_ gesture: () -> Void) {
         postGestureStart()
         defer { postGestureEnd() }
         gesture()
     }
 
+    /// Post a smart zoom gesture.
     func postSmartZoom() {
         postGesture {
             let e = CGEvent(source: nil)!
@@ -263,6 +265,11 @@ struct EmulateEventPoster {
         }
     }
 
+    /// Post a zoom gesture event.
+    /// - Parameters:
+    ///   - direction: in which direction the zoom happens
+    ///   - t: how much is the zoom
+    ///   - phase: gesture phase
     func postZoom(direction: ZoomDirection, t: Int, phase: CGGesturePhase) {
         queue.async {
             let e = CGEvent(source: nil)!
@@ -290,6 +297,10 @@ struct EmulateEventPoster {
         }
     }
 
+    /// Post a rotation gesture event.
+    /// - Parameters:
+    ///   - direction: which direction to rotate
+    ///   - phase: gesture phase
     func postRotation(direction: RotateDirection, phase: CGGesturePhase) {
         let e = CGEvent(source: nil)!
         e.type = CGEventType.gesture
@@ -299,6 +310,9 @@ struct EmulateEventPoster {
         p(e)
     }
 
+    /// Post a translation gesture event.
+    /// - Parameters:
+    ///   - phase: gesture phase
     func postTranslation(phase: CGGesturePhase) {
         let e = CGEvent(source: nil)!
         e.type = CGEventType.gesture
@@ -307,4 +321,57 @@ struct EmulateEventPoster {
         e[134] = 1_065_353_216 // magic
         p(e)
     }
+    
+    /// Post a 4-finger swipe gesture event.
+    /// - Parameters:
+    ///   - direction: swipe direction and swipe progress
+    ///   - phase: gesture phase
+    ///
+    /// - Important: value 135 defines the progress of this gesture. unlike other swipe gestures,
+    ///              the 'progress' value needs to be accumulated along with the whole gesture.
+    func postDockSwipe(
+        direction: DockSwipeDirection,
+        phase: CGGesturePhase
+    ) {
+        let e = CGEvent(source: nil)!
+        e.type = CGEventType.dockGesture
+        e[.gestureType] = GestureType.dockSwipe.rawValue
+        e[.gesturePhase] = Int64(phase.rawValue)
+        e[134] = Int64(phase.rawValue)
+        e[136] = 1 // Magic
+        e[138] = 3 // Magic
+        
+        func buildValue(_ accumulation: Double) -> Int64 {
+            let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
+            if accumulation == 0 { return sign }
+            func easingFunction(_ x: Double) -> Double {
+                x > 1 ? 1 + (x - 1) * 0.05 : sqrt(1 - pow(x - 1, 2))
+            }
+            let v = Int64(980_000_000 + 80_000_000 * easingFunction(abs(accumulation)))
+            return accumulation > 0 ? sign + v : v
+        }
+        
+        switch direction {
+        case let .horizontal(accumulation):
+            guard accumulation != 0 else { return }
+            e[.scrollWheelEventMomentumPhase] = 0 // Magic
+            e[135] = buildValue(accumulation)
+            e[165] = 1 // Magic
+        case let .vertical(accumulation):
+            guard accumulation != 0 else { return }
+            e[.scrollWheelEventMomentumPhase] = 2 // Magic
+            e[135] = buildValue(accumulation)
+            e[165] = 2 // Magic
+        }
+    
+        p(e)
+    }
+}
+
+/// Dock swipe direction and progress
+enum DockSwipeDirection {
+    /// Vertical swipe with progress
+    case vertical(upAccumulation: Double)
+    /// Horizontal swipe with progress
+    case horizontal(rightAccumulation: Double)
 }

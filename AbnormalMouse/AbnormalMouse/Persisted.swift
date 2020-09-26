@@ -56,13 +56,22 @@ struct Persisted: PersistedType {
         var rotateGestureDirection: MoveMouseDirection
 
         let smartZoom = SmartZoom()
-        struct SmartZoom {
+        struct SmartZoom: PersistedType {
             static func key(_ name: String) -> String { return "SmartZoom\(name)" }
             @UserDefault(key("UseZoomAndRotateDoubleTap"), defaultValue: true)
             var useZoomAndRotateDoubleTap: Bool
             @UserDefault(key("KeyCombination"), defaultValue: nil)
             var keyCombination: KeyCombination?
         }
+    }
+    
+    // MARK: Dock Swipe
+    
+    let dockSwipe = DockSwipe()
+    struct DockSwipe: PersistedType {
+        static func key(_ name: String) -> String { "DockSwipe\(name)" }
+        @UserDefault(key("KeyCombination"), defaultValue: nil)
+        var keyCombination: KeyCombination?
     }
 }
 

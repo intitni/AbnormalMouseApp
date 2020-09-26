@@ -1,4 +1,4 @@
-"TabTitle.MoveToScroll" = "滚动和划动";
+"TabTitle.MoveToScroll" = "滚动和轻扫";
 
 "TabTitle.TapAndClick" = "点按和轻点";
 
@@ -7,6 +7,8 @@
 "TabTitle.Advanced" = "高级设置";
 
 "TabTitle.General" = "一般设置";
+
+"TabTitle.DockSwipe" = "四指轻扫";
 
 "Status.NotEnabled" = "不一般鼠标尚未启动";
 

@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131367D52509086500BA888C /* DockSwipeDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131367D42509086500BA888C /* DockSwipeDomain.swift */; };
+		131367D72509087200BA888C /* DockSwipeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131367D62509087200BA888C /* DockSwipeSettingsView.swift */; };
+		131367DC25090AA800BA888C /* DockSwipeSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 131367DE25090AA800BA888C /* DockSwipeSettings.strings */; };
 		136E6D812502A7DA00F540B3 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E6D802502A7DA00F540B3 /* License.swift */; };
 		136E6D8625033AB000F540B3 /* CGEventOverride in Frameworks */ = {isa = PBXBuildFile; productRef = 136E6D8525033AB000F540B3 /* CGEventOverride */; };
+		137477A9251A324F00451154 /* DockSwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137477A8251A324F00451154 /* DockSwipeController.swift */; };
 		138361632487E70500E76F41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361622487E70500E76F41 /* AppDelegate.swift */; };
 		138361652487E70500E76F41 /* MoveToScrollSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361642487E70500E76F41 /* MoveToScrollSettingsView.swift */; };
 		138361672487E70700E76F41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 138361662487E70700E76F41 /* Assets.xcassets */; };
@@ -107,7 +111,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		131367D42509086500BA888C /* DockSwipeDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeDomain.swift; sourceTree = "<group>"; };
+		131367D62509087200BA888C /* DockSwipeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeSettingsView.swift; sourceTree = "<group>"; };
+		131367DD25090AA800BA888C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DockSwipeSettings.strings"; sourceTree = "<group>"; };
+		131367DF25090AA900BA888C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DockSwipeSettings.strings; sourceTree = "<group>"; };
 		136E6D802502A7DA00F540B3 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		137477A8251A324F00451154 /* DockSwipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeController.swift; sourceTree = "<group>"; };
 		1383615F2487E70500E76F41 /* AbnormalMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbnormalMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		138361622487E70500E76F41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		138361642487E70500E76F41 /* MoveToScrollSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToScrollSettingsView.swift; sourceTree = "<group>"; };
@@ -237,6 +246,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		131367D32509085600BA888C /* DockSwipe */ = {
+			isa = PBXGroup;
+			children = (
+				131367D42509086500BA888C /* DockSwipeDomain.swift */,
+				131367D62509087200BA888C /* DockSwipeSettingsView.swift */,
+			);
+			path = DockSwipe;
+			sourceTree = "<group>";
+		};
 		138361562487E70500E76F41 = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +370,7 @@
 				84AEF73724D3CAA500DFF5D3 /* Main */,
 				84E49411248DE4260074540F /* Scroll */,
 				84E49417248DE49C0074540F /* ZoomAndRotate */,
+				131367D32509085600BA888C /* DockSwipe */,
 				84E49418248DE4AA0074540F /* NeedAccessability */,
 				84680E2E24D2C6BD00DFFBE1 /* Advanced */,
 				13864A06248E945800704C21 /* General */,
@@ -439,6 +458,7 @@
 			children = (
 				138361832487E75800E76F41 /* MoveToScrollController.swift */,
 				84399B172488CBB000970CFF /* ZoomAndRotateController.swift */,
+				137477A8251A324F00451154 /* DockSwipeController.swift */,
 				138361852487E76B00E76F41 /* EmulateEventPoster.swift */,
 				84A574AC248F60C400BC2380 /* EventSequeceController.swift */,
 				84A574AE248F6AC500BC2380 /* OverrideController.swift */,
@@ -520,6 +540,7 @@
 				13BB14D524AB9299007C5A81 /* General.strings */,
 				84A022CC24BC533200ED8FA4 /* Activation.strings */,
 				8493D7F724C7CCE000BD2A17 /* Advanced.strings */,
+				131367DE25090AA800BA888C /* DockSwipeSettings.strings */,
 			);
 			path = StringFiles;
 			sourceTree = "<group>";
@@ -661,6 +682,7 @@
 				1383616A2487E70700E76F41 /* Preview Assets.xcassets in Resources */,
 				138361672487E70700E76F41 /* Assets.xcassets in Resources */,
 				84A022CA24BC533200ED8FA4 /* Activation.strings in Resources */,
+				131367DC25090AA800BA888C /* DockSwipeSettings.strings in Resources */,
 				84A37D922499C70E00FB4D98 /* StatusBarMenu.strings in Resources */,
 				84E49426248E283A0074540F /* Main.storyboard in Resources */,
 				84AA166D2492293B00D2C34E /* ZoomAndRotateSettings.strings in Resources */,
@@ -774,9 +796,11 @@
 				84399B182488CBB000970CFF /* ZoomAndRotateController.swift in Sources */,
 				8463B80C24C975C7008D7988 /* EventThrottler.swift in Sources */,
 				845A29F124D11FB30086477D /* TapHoldGestureRecognizer.swift in Sources */,
+				131367D72509087200BA888C /* DockSwipeSettingsView.swift in Sources */,
 				138361652487E70500E76F41 /* MoveToScrollSettingsView.swift in Sources */,
 				84B8C1E924D262D600BF3378 /* GestureRecognizer.swift in Sources */,
 				138361632487E70500E76F41 /* AppDelegate.swift in Sources */,
+				131367D52509086500BA888C /* DockSwipeDomain.swift in Sources */,
 				84D83A9924B6B6220015E30C /* ActivationView.swift in Sources */,
 				849F4F8324BD9DEC00EF6512 /* MoveApplication.swift in Sources */,
 				84426AF224B01C1E006CF972 /* TipsViewBuilder.swift in Sources */,
@@ -797,6 +821,7 @@
 				845A29F324D152900086477D /* MouseMovementGestureRecognizer.swift in Sources */,
 				84399B16248898C300970CFF /* Persisted.swift in Sources */,
 				84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */,
+				137477A9251A324F00451154 /* DockSwipeController.swift in Sources */,
 				84680E3224D2C6E100DFFBE1 /* AdvancedView.swift in Sources */,
 				84C8EAFD248B72BC00C53CFD /* MouseCode+Name.swift in Sources */,
 				84FAB1F224C53547001265FD /* Readonly.swift in Sources */,
@@ -834,6 +859,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		131367DE25090AA800BA888C /* DockSwipeSettings.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				131367DD25090AA800BA888C /* zh-Hans */,
+				131367DF25090AA900BA888C /* en */,
+			);
+			name = DockSwipeSettings.strings;
+			sourceTree = "<group>";
+		};
 		13BB14D524AB9299007C5A81 /* General.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1071,7 +1105,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1086,7 +1120,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2020.3;
+				MARKETING_VERSION = 2020.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.intii.AbnormalMouse macos";
@@ -1106,7 +1140,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1121,7 +1155,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2020.3;
+				MARKETING_VERSION = 2020.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Direct com.intii.AbnormalMouse macos";
@@ -1301,7 +1335,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1316,7 +1350,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2020.3;
+				MARKETING_VERSION = 2020.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.intii.AbnormalMouse macos";

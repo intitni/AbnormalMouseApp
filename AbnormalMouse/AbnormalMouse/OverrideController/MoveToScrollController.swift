@@ -135,31 +135,23 @@ extension MoveToScrollController {
         /// However, swipe gesture can now happen anytime after activator is pressed, which is what
         /// we were trying to achieve.
         func postEvents() {
-            func resetMousePosition() {
-                CGWarpMouseCursorPosition(state.mouseLocation)
-            }
             switch state.eventPosterState {
             case .inactive:
                 break
             case .scrollShouldBegin:
                 tapHold.consume()
                 p.postScroll(v: v, h: h, phase: .mayBegin)
-                resetMousePosition()
             case .scrollHasBegun:
                 p.postEventPerFrame([])
                 p.postScrollGesture(phase: .began)
                 p.postScroll(v: v, h: h, phase: .began)
-                resetMousePosition()
             case .gestureShouldBegin:
                 p.postScroll(v: v, h: h, phase: .changed)
-                resetMousePosition()
             case .gestureRestartingScroll:
                 p.postScrollGesture(v: v, h: h, sh: sh, phase: .changed)
-                resetMousePosition()
             case .gestureHasBegun:
                 p.postScroll(v: v, h: h, phase: .changed)
                 p.postScrollGesture(v: v, h: h, sh: sh, phase: .changed)
-                resetMousePosition()
 
             /// To change the implementaion of this state, one should test that
             ///
@@ -178,7 +170,7 @@ extension MoveToScrollController {
             ///              double check this block of code to make sure it still works, if
             ///              `postInertiaEffect` is changed!!! __2020-7-21__
             case .everythingShouldEnd:
-                // Cancel or Reeder.app will not have inertia effect
+                // Cancel because Reeder.app will not have inertia effect
                 p.postScroll(phase: .cancelled)
                 p.postScrollGesture(v: v, h: h, sh: sh, phase: .ended)
                 p.postNullGesture()
@@ -195,6 +187,8 @@ extension MoveToScrollController {
         Tool.advanceState(&state.eventPosterState, isActive: isActive, h: h, v: v)
         defer { Tool.resetStateIfNeeded(&state.eventPosterState) }
         postEvents()
+        
+        CGWarpMouseCursorPosition(state.mouseLocation)
     }
 }
 
