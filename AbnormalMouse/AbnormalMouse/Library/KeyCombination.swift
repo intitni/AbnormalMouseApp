@@ -93,6 +93,11 @@ struct KeyCombination: Equatable {
         self.activator = act
     }
 
+    init(modifiers: [KeyDown], activator: KeyDown) {
+        self.modifiers = modifiers
+        self.activator = activator
+    }
+
     init?(rawKeys: [Int64], rawMouse: Int64?) {
         var keys = Set(rawKeys.lazy.map(Int.init).map(KeyDown.key))
         if let mouse = rawMouse.map(Int.init).map(KeyDown.mouse) {

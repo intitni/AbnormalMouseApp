@@ -219,7 +219,7 @@ internal enum L10n {
       internal static let usage = L10n.tr("Shared", "TipsTitle.Usage")
     }
     internal enum View {
-      /// Enter key combination
+      /// Enter..
       internal static let enterKeyCombination = L10n.tr("Shared", "View.EnterKeyCombination")
       /// Setup
       internal static let keyCombinationNotSetup = L10n.tr("Shared", "View.KeyCombinationNotSetup")
