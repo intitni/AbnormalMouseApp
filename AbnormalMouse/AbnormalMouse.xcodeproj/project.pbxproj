@@ -369,8 +369,6 @@
 		84399B1D2488CCCE00970CFF /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				84C8EAE82489F41000C53CFD /* SettingsPageView.swift */,
-				84C8EB01248B770D00C53CFD /* KeyboardEventChecker.swift */,
 				84AEF73724D3CAA500DFF5D3 /* Main */,
 				84E49411248DE4260074540F /* Scroll */,
 				84E49417248DE49C0074540F /* ZoomAndRotate */,
@@ -407,6 +405,8 @@
 		848B1247251C45FF00A53F75 /* SharedViews */ = {
 			isa = PBXGroup;
 			children = (
+				84C8EAE82489F41000C53CFD /* SettingsPageView.swift */,
+				84C8EB01248B770D00C53CFD /* KeyboardEventChecker.swift */,
 				848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */,
 			);
 			path = SharedViews;

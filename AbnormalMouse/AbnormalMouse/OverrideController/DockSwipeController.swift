@@ -76,6 +76,11 @@ final class DockSwipeController: OverrideController {
                 }
             })
             .store(in: &cancellables)
+
+        NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in self?.updateSettings() }
+            .store(in: &cancellables)
     }
 
     private func updateSettings() {

@@ -89,14 +89,14 @@ extension GestureRecognizers.Tap {
 
         switch type {
         case .keyDown:
-            guard !state.isDown else { return .discarded }
+            guard !state.isDown else { return shouldDiscardEvent ? .discarded : .unchange }
             down(code: code)
             state.isDown = true
-            return .discarded
+            return shouldDiscardEvent ? .discarded : .unchange
         case .keyUp:
             up(code: code)
             state.isDown = false
-            return .discarded
+            return shouldDiscardEvent ? .discarded : .unchange
         default: return .unchange
         }
     }
@@ -115,10 +115,10 @@ extension GestureRecognizers.Tap {
         switch type {
         case .otherMouseDown:
             down(code: code)
-            return .discarded
+            return shouldDiscardEvent ? .discarded : .unchange
         case .otherMouseUp:
             up(code: code)
-            return .discarded
+            return shouldDiscardEvent ? .discarded : .unchange
         default: return .unchange
         }
     }
