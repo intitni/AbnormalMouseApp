@@ -175,7 +175,7 @@ extension DockSwipeController {
                 let absh = abs(horizontalAccumulation)
                 let absv = abs(verticalAccumulation)
                 if absh > 10 || absv > 10 {
-                    if absh > absv {
+                    if absh >= absv {
                         state = .shouldBegin(.horizontal)
                     } else {
                         state = .shouldBegin(.vertical)

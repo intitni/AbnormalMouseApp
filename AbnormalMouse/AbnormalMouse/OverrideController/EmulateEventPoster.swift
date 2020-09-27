@@ -276,7 +276,7 @@ struct EmulateEventPoster {
             e.type = CGEventType.gesture
             e[.gestureType] = GestureType.zoom.rawValue
 
-            let scale: Double = min(max(0.1, Double(abs(t)) / 60), 1)
+            let scale: Double = min(max(0.1, Double(abs(t)) / 40), 1)
 
             let value: Int64 = {
                 let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
@@ -304,7 +304,7 @@ struct EmulateEventPoster {
     func postRotation(direction: RotateDirection, phase: CGGesturePhase) {
         let e = CGEvent(source: nil)!
         e.type = CGEventType.gesture
-        e[.gestureType] = GestureType.rotation.rawValue
+        e[.gestureType] = GestureType.rotation.rawValue * 3
         e[.gestureSwipeValueX] = direction.rawValue
         e[.gesturePhase] = Int64(phase.rawValue)
         p(e)

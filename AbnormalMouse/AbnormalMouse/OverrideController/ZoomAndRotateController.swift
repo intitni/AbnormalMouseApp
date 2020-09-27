@@ -210,10 +210,14 @@ extension ZoomAndRotateController {
                 guard isActive else { return }
                 state = .mayBegin
             case .mayBegin:
-                if abs(zoomThreshold) > 40 {
-                    state = .begin(.zoom)
-                } else if abs(rotateThreshold) > 40 {
-                    state = .begin(.rotate)
+                let absZoom = abs(zoomThreshold)
+                let absRotate = abs(rotateThreshold)
+                if absZoom > 10 || absRotate > 10 {
+                    if absZoom >= absRotate {
+                        state = .begin(.zoom)
+                    } else {
+                        state = .begin(.rotate)
+                    }
                 }
                 endIfNeeded(nil)
             case let .begin(type):
