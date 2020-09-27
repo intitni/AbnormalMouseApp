@@ -50,25 +50,29 @@ struct SettingsKeyCombinationInput<Title: View>: View {
                 Toggle(
                     isOn: toggleBinding(modifier: .key(KeyboardCode.shift.rawValue)),
                     label: { Text("⇧") }
-                ).toggleStyle(ModifierToggleStyle())
-                    .padding(.leading, 1)
+                )
+                .toggleStyle(ModifierToggleStyle())
+                .padding(.leading, 1)
 
                 Toggle(
                     isOn: toggleBinding(modifier: .key(KeyboardCode.control.rawValue)),
                     label: { Text("⌃") }
-                ).toggleStyle(ModifierToggleStyle())
+                )
+                .toggleStyle(ModifierToggleStyle())
 
                 Toggle(
                     isOn: toggleBinding(modifier: .key(KeyboardCode.option.rawValue)),
                     label: { Text("⌥") }
-                ).toggleStyle(ModifierToggleStyle())
+                )
+                .toggleStyle(ModifierToggleStyle())
 
                 Toggle(
                     isOn: toggleBinding(modifier: .key(KeyboardCode.command.rawValue)),
                     label: { Text("⌘") }
-                ).toggleStyle(ModifierToggleStyle())
+                )
+                .toggleStyle(ModifierToggleStyle())
 
-                button {
+                editKeyCombinationButton {
                     if isEditing {
                         Text(L10n.Shared.View.enterKeyCombination)
                             .foregroundColor(Color(NSColor.placeholderTextColor))
@@ -80,7 +84,7 @@ struct SettingsKeyCombinationInput<Title: View>: View {
                             .foregroundColor(Color(NSColor.placeholderTextColor))
                     }
                 }
-                
+
                 Button(
                     action: {
                         let next = numberOfTap + 1
@@ -111,7 +115,7 @@ struct SettingsKeyCombinationInput<Title: View>: View {
         }
     }
 
-    private func button<Label: View>(
+    private func editKeyCombinationButton<Label: View>(
         @ViewBuilder label: () -> Label
     ) -> some View {
         label()
@@ -156,6 +160,8 @@ struct SettingsKeyCombinationInput<Title: View>: View {
     }
 }
 
+// MARK: - Styles
+
 private struct ModifierToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -184,8 +190,10 @@ private struct ModifierToggleStyle: ToggleStyle {
                         )
                         : AnyView(EmptyView())
                 }
+                .disabled(true)
             )
             .animation(.linear)
+            .onTapGesture { configuration.isOn.toggle() }
     }
 }
 
@@ -197,6 +205,8 @@ private struct ModifierButtonStyle: ButtonStyle {
             .background(Color(.controlBackgroundColor))
     }
 }
+
+// MARK: - Preview
 
 struct SettingsKeyCombinationInput_Previews: PreviewProvider {
     static var previews: some View {
