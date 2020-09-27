@@ -7,15 +7,16 @@ struct SettingsKeyCombinationInput<Title: View>: View {
     @State var isEditing: Bool = false
     @State var isHovering: Bool = false
     @Binding var keyCombination: KeyCombination?
-    @Binding var numberOfTap: Int
+    @Binding var numberOfTapsRequired: Int
 
     init(
         keyCombination: Binding<KeyCombination?>,
+        numberOfTapsRequired: Binding<Int> = Binding.constant(1),
         hasConflict: Bool = false,
         @ViewBuilder title: () -> Title
     ) {
         _keyCombination = keyCombination
-        _numberOfTap = Binding.constant(1)
+        _numberOfTapsRequired = numberOfTapsRequired
         self.hasConflict = hasConflict
         self.title = title()
     }
@@ -87,15 +88,15 @@ struct SettingsKeyCombinationInput<Title: View>: View {
 
                 Button(
                     action: {
-                        let next = numberOfTap + 1
+                        let next = numberOfTapsRequired + 1
                         if next > 3 {
-                            numberOfTap = 1
+                            numberOfTapsRequired = 1
                         } else {
-                            numberOfTap = next
+                            numberOfTapsRequired = next
                         }
                     },
                     label: {
-                        Text("\(numberOfTap)×")
+                        Text("\(numberOfTapsRequired)×")
                     }
                 ).buttonStyle(ModifierButtonStyle())
             }

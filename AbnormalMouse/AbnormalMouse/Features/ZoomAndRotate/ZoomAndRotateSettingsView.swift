@@ -56,20 +56,33 @@ private struct ZoomAndRotateView: View {
 
     private var activationCombinationSetter: some View {
         WithViewStore(
-            store.scope(state: \.zoomAndRotateActivationKeyCombination)
+            store.scope(
+                state: \.zoomAndRotateActivator,
+                action: ZoomAndRotateDomain.Action.zoomAndRotate
+            )
         ) { viewStore in
             SettingsKeyCombinationInput(
                 keyCombination: viewStore.binding(
-                    get: { $0 },
-                    send: { .setZoomAndRotateActivationKeyCombination($0) }
+                    get: { $0.keyCombination },
+                    send: { .setKeyCombination($0) }
                 ),
+                numberOfTapsRequired: viewStore.binding(
+                    get: { $0.numberOfTapsRequired },
+                    send: { .setNumberOfTapsRequired($0) }
+                ),
+                hasConflict: viewStore.hasConflict,
                 title: { Text(_L10n.View.activationKeyCombinationTitle) }
             )
         }
     }
 
     private var zoomDirectionPicker: some View {
-        WithViewStore(store.scope(state: \.zoomGestureDirection)) { viewStore in
+        WithViewStore(
+            store.scope(
+                state: \.zoomGestureDirection,
+                action: ZoomAndRotateDomain.Action.zoomAndRotate
+            )
+        ) { viewStore in
             SettingsPicker(
                 title: Text(_L10n.View.zoomDirectionTitle),
                 selection: viewStore.binding(
@@ -93,7 +106,12 @@ private struct ZoomAndRotateView: View {
     }
 
     private var rotateDirectionPicker: some View {
-        WithViewStore(store.scope(state: \.rotateGestureDirection)) { viewStore in
+        WithViewStore(
+            store.scope(
+                state: \.rotateGestureDirection,
+                action: ZoomAndRotateDomain.Action.zoomAndRotate
+            )
+        ) { viewStore in
             SettingsPicker(
                 title: Text(_L10n.View.rotateDirectionTitle),
                 selection: viewStore.binding(
@@ -141,11 +159,14 @@ private struct SmartZoomView: View {
 
     private var reuseCombinationToggle: some View {
         WithViewStore(
-            store.scope(state: \.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap)
+            store.scope(
+                state: \.smartZoomActivator.shouldUseZoomAndRotateKeyCombinationDoubleTap,
+                action: ZoomAndRotateDomain.Action.smartZoom
+            )
         ) { viewStore in
             SettingsCheckbox(isOn: viewStore.binding(
                 get: { $0 },
-                send: { _ in .toggleSmartZoomUseZoomAndRotateKeyCombinationDoubleTap }
+                send: { _ in .toggleUseZoomAndRotateKeyCombinationDoubleTap }
             )) {
                 Text(_L10n.View.doubleTapToActivate)
             }
@@ -160,13 +181,23 @@ private struct SmartZoomView: View {
     }
 
     private var activationCombinationSetter: some View {
-        WithViewStore(store) { viewStore in
-            if !viewStore.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap {
+        WithViewStore(
+            store.scope(
+                state: \.smartZoomActivator,
+                action: ZoomAndRotateDomain.Action.smartZoom
+            )
+        ) { viewStore in
+            if !viewStore.shouldUseZoomAndRotateKeyCombinationDoubleTap {
                 SettingsKeyCombinationInput(
                     keyCombination: viewStore.binding(
-                        get: { $0.smartZoomActivationKeyCombination },
-                        send: { .setSmartZoomActivationKeyCombination($0) }
+                        get: { $0.keyCombination },
+                        send: { .setKeyCombination($0) }
                     ),
+                    numberOfTapsRequired: viewStore.binding(
+                        get: { $0.numberOfTapsRequired },
+                        send: { .setNumberOfTapsRequired($0) }
+                    ),
+                    hasConflict: viewStore.hasConflict,
                     title: { Text(_L10n.View.activationKeyCombinationTitle) }
                 )
 

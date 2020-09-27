@@ -5,12 +5,12 @@ import Foundation
 
 struct Activator: Equatable {
     var keyCombination: KeyCombination
-    var numberOfTapRequired: Int
+    var numberOfTapsRequired: Int
 
     init?(keyCombination: KeyCombination?, numberOfTapRequired: Int) {
         guard let combination = keyCombination else { return nil }
         self.keyCombination = combination
-        self.numberOfTapRequired = numberOfTapRequired
+        numberOfTapsRequired = numberOfTapRequired
     }
 }
 

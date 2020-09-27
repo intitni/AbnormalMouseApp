@@ -80,6 +80,7 @@ final class DockSwipeController: OverrideController {
 
     private func updateSettings() {
         tapHold.keyCombination = persisted.keyCombination
+        tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
     }
 }
 

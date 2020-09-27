@@ -32,13 +32,23 @@ private struct DockSwipeView: View {
             title: { Text(_L10n.View.title) },
             introduction: { Text(_L10n.View.introduction) },
             content: {
-                WithViewStore(store.scope(state: \.dockSwipeActivationKeyCombination)) {
+                WithViewStore(
+                    store.scope(
+                        state: \.dockSwipeActivator,
+                        action: DockSwipeDomain.Action.dockSwipeActivator
+                    )
+                ) {
                     viewStore in
                     SettingsKeyCombinationInput(
                         keyCombination: viewStore.binding(
-                            get: { $0 },
-                            send: { .setDockSwipeActivationKeyCombination($0) }
+                            get: { $0.keyCombination },
+                            send: { .setKeyCombination($0) }
                         ),
+                        numberOfTapsRequired: viewStore.binding(
+                            get: { $0.numberOfTapsRequired },
+                            send: { .setNumberOfTapsRequired($0) }
+                        ),
+                        hasConflict: viewStore.hasConflict,
                         title: { Text(_L10n.View.activationKeyCombinationTitle) }
                     )
                 }
@@ -60,7 +70,7 @@ private enum _L10n {
 struct DockSwipeSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         DockSwipeSettingsView(store: .init(
-            initialState: .init(dockSwipeActivationKeyCombination: nil),
+            initialState: .init(),
             reducer: DockSwipeDomain.reducer,
             environment: .live(environment: .init(
                 persisted: .init(),

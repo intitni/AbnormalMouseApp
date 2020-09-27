@@ -13,6 +13,12 @@ struct MoveToScrollSettingsScreen: View {
 }
 
 private struct MoveToScrollSettingsView: View {
+    private enum _L10n {
+        typealias View = L10n.ScrollSettings.View
+        typealias Tips = L10n.ScrollSettings.View.Tips
+        typealias TipsTitle = L10n.Shared.TipsTitle
+    }
+
     let store: MoveToScrollDomain.Store
 
     var body: some View {
@@ -32,13 +38,13 @@ private struct MoveToScrollSettingsView: View {
                         Text(_L10n.Tips.usage).tipsTitle(_L10n.TipsTitle.usage)
                         Text(_L10n.Tips.activatorChoice)
                             .tipsTitle(_L10n.TipsTitle.default)
-                        Text(_L10n.Tips.pageDown)
-                            .tipsTitle(_L10n.TipsTitle.default)
                         Text(_L10n.Tips.scrollBar)
                             .tipsTitle(_L10n.TipsTitle.default)
                     }
                 }
             }
+
+            HalfPageScrollView(store: store)
 
             SettingsSectionView(showSeparator: false) {
                 inertiaEffectCheckbox
@@ -58,12 +64,22 @@ private struct MoveToScrollSettingsView: View {
             }
         }
 
-        return WithViewStore(store.scope(state: \.activationKeyCombination)) { viewStore in
+        return WithViewStore(
+            store.scope(
+                state: \.moveToScrollActivator,
+                action: MoveToScrollDomain.Action.moveToScroll
+            )
+        ) { viewStore in
             SettingsKeyCombinationInput(
                 keyCombination: viewStore.binding(
-                    get: { $0 },
-                    send: { .setActivationKeyCombination($0) }
+                    get: { $0.keyCombination },
+                    send: { .setKeyCombination($0) }
                 ),
+                numberOfTapsRequired: viewStore.binding(
+                    get: { $0.numberOfTapsRequired },
+                    send: { .setNumberOfTapsRequired($0) }
+                ),
+                hasConflict: viewStore.hasConflict,
                 title: { Text(_L10n.View.activationKeyCombinationTitle) }
             )
         }
@@ -74,7 +90,7 @@ private struct MoveToScrollSettingsView: View {
             SettingsSlider(
                 value: viewStore.binding(
                     get: { $0 },
-                    send: { .changeScrollSpeedMultiplierTo($0) }
+                    send: { .moveToScroll(.changeScrollSpeedMultiplierTo($0)) }
                 ),
                 in: 0.5...3.5,
                 step: 0.5,
@@ -90,7 +106,7 @@ private struct MoveToScrollSettingsView: View {
             SettingsSlider(
                 value: viewStore.binding(
                     get: { $0 },
-                    send: { .changeSwipeSpeedMultiplierTo($0) }
+                    send: { .moveToScroll(.changeSwipeSpeedMultiplierTo($0)) }
                 ),
                 in: 0...2,
                 step: 0.25,
@@ -116,10 +132,79 @@ private struct MoveToScrollSettingsView: View {
     }
 }
 
-private enum _L10n {
-    typealias View = L10n.ScrollSettings.View
-    typealias Tips = L10n.ScrollSettings.View.Tips
-    typealias TipsTitle = L10n.Shared.TipsTitle
+// MARK: - Smart Zoom
+
+private struct HalfPageScrollView: View {
+    private struct _L10n {
+        typealias View = L10n.ScrollSettings.HalfPageScrollView
+        typealias TipsTitle = L10n.Shared.TipsTitle
+    }
+
+    let store: MoveToScrollDomain.Store
+
+    var body: some View {
+        SettingsSectionView(
+            showSeparator: true,
+            title: { Text(_L10n.View.title) },
+            introduction: { Text(_L10n.View.introduction) },
+            content: {
+                reuseCombinationToggle
+                activationCombinationSetter
+            }
+        )
+    }
+
+    private var reuseCombinationToggle: some View {
+        WithViewStore(
+            store.scope(
+                state: \.halfPageScrollActivator.shouldUseMoveToScrollKeyCombination,
+                action: MoveToScrollDomain.Action.halfPageScroll
+            )
+        ) { viewStore in
+            SettingsCheckbox(isOn: viewStore.binding(
+                get: { $0 },
+                send: { _ in .toggleUseMoveToScrollKeyCombinationDoubleTap }
+            )) {
+                Text(_L10n.View.doubleTapToActivate)
+            }
+
+            if viewStore.state {
+                SettingsTips {
+                    Text(_L10n.View.Tips.usageA).tipsTitle(_L10n.TipsTitle.usage)
+                    EmptyView() // workaround function builder bug
+                }
+            }
+        }
+    }
+
+    private var activationCombinationSetter: some View {
+        WithViewStore(
+            store.scope(
+                state: \.halfPageScrollActivator,
+                action: MoveToScrollDomain.Action.halfPageScroll
+            )
+        ) { viewStore in
+            if !viewStore.shouldUseMoveToScrollKeyCombination {
+                SettingsKeyCombinationInput(
+                    keyCombination: viewStore.binding(
+                        get: { $0.keyCombination },
+                        send: { .setKeyCombination($0) }
+                    ),
+                    numberOfTapsRequired: viewStore.binding(
+                        get: { $0.numberOfTapsRequired },
+                        send: { .setNumberOfTapsRequired($0) }
+                    ),
+                    hasConflict: viewStore.hasConflict,
+                    title: { Text(_L10n.View.activationKeyCombinationTitle) }
+                )
+
+                SettingsTips {
+                    Text(_L10n.View.Tips.usageB).tipsTitle(_L10n.TipsTitle.usage)
+                    EmptyView() // workaround function builder bug
+                }
+            }
+        }
+    }
 }
 
 #if DEBUG

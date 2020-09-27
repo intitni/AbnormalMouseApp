@@ -36,7 +36,7 @@ final class MoveToScrollController: OverrideController {
     private let hook: CGEventHookType
     private let eventPoster = EmulateEventPoster(type: EventSequenceKey())
     private var state = State()
-    private let doubleTap: GestureRecognizers.Tap
+    private let tap: GestureRecognizers.Tap
     private let tapHold: GestureRecognizers.TapHold
     private let mouseMovement: GestureRecognizers.MouseMovement
     private var cancellables = Set<AnyCancellable>()
@@ -61,12 +61,11 @@ final class MoveToScrollController: OverrideController {
     ) {
         self.persisted = persisted
         self.hook = hook
-        doubleTap = GestureRecognizers.Tap(
+        tap = GestureRecognizers.Tap(
             hook: hook,
             key: DoubleTapKey(),
             tapGestureDelayInMilliSeconds: { 0 }
         )
-        doubleTap.numberOfTapsRequired = 2
         tapHold = GestureRecognizers.TapHold(hook: hook, key: HookKeyKey())
         mouseMovement = GestureRecognizers.MouseMovement(hook: hook, key: HookMouseKey())
 
@@ -89,7 +88,7 @@ final class MoveToScrollController: OverrideController {
             }
             .store(in: &cancellables)
 
-        doubleTap.publisher
+        tap.publisher
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 guard let app = NSWorkspace.shared.frontmostApplication else { return }
@@ -109,8 +108,16 @@ final class MoveToScrollController: OverrideController {
         state.scrollSpeedMultiplier = CGFloat(persisted.scrollSpeedMultiplier)
         state.isInertiaEffectEnabled = persisted.isInertiaEffectEnabled
         state.swipeSpeedMultiplier = CGFloat(persisted.swipeSpeedMultiplier)
-        doubleTap.keyCombination = persisted.keyCombination
         tapHold.keyCombination = persisted.keyCombination
+        tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
+
+        if persisted.halfPageScroll.useMoveToScrollDoubleTap {
+            tap.numberOfTapsRequired = persisted.numberOfTapsRequired + 1
+            tap.keyCombination = persisted.keyCombination
+        } else {
+            tap.numberOfTapsRequired = persisted.halfPageScroll.numberOfTapsRequired
+            tap.keyCombination = persisted.halfPageScroll.keyCombination
+        }
     }
 }
 

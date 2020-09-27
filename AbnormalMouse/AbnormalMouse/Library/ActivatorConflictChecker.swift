@@ -32,31 +32,39 @@ final class ActivatorConflictChecker {
     private func updateKeyCombinations() {
         activators[.scrollAndSwipe] = Activator(
             keyCombination: persisted.moveToScroll.keyCombination,
-            numberOfTapRequired: 1
+            numberOfTapRequired: persisted.moveToScroll.numberOfTapsRequired
         )
-        activators[.halfPageScroll] = Activator(
-            keyCombination: persisted.moveToScroll.keyCombination,
-            numberOfTapRequired: 1
-        )
+        activators[.halfPageScroll] = {
+            if persisted.moveToScroll.halfPageScroll.useMoveToScrollDoubleTap {
+                return Activator(
+                    keyCombination: persisted.moveToScroll.keyCombination,
+                    numberOfTapRequired: persisted.moveToScroll.numberOfTapsRequired + 1
+                )
+            }
+            return Activator(
+                keyCombination: persisted.moveToScroll.halfPageScroll.keyCombination,
+                numberOfTapRequired: persisted.moveToScroll.halfPageScroll.numberOfTapsRequired
+            )
+        }()
         activators[.zoomAndRotate] = Activator(
             keyCombination: persisted.zoomAndRotate.keyCombination,
-            numberOfTapRequired: 1
+            numberOfTapRequired: persisted.zoomAndRotate.numberOfTapsRequired
         )
         activators[.smartZoom] = {
             if persisted.zoomAndRotate.smartZoom.useZoomAndRotateDoubleTap {
                 return Activator(
                     keyCombination: persisted.zoomAndRotate.keyCombination,
-                    numberOfTapRequired: 1
+                    numberOfTapRequired: persisted.zoomAndRotate.numberOfTapsRequired + 1
                 )
             }
             return Activator(
                 keyCombination: persisted.zoomAndRotate.smartZoom.keyCombination,
-                numberOfTapRequired: 1
+                numberOfTapRequired: persisted.zoomAndRotate.smartZoom.numberOfTapsRequired
             )
         }()
         activators[.dockSwipe] = Activator(
             keyCombination: persisted.dockSwipe.keyCombination,
-            numberOfTapRequired: 1
+            numberOfTapRequired: persisted.dockSwipe.numberOfTapsRequired
         )
     }
 }

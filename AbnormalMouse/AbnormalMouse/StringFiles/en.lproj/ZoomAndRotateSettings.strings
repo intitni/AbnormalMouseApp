@@ -6,7 +6,7 @@
 "SmartZoomView.Title" = "Smart Zoom";
 "SmartZoomView.introduction" = "With trackpad, you can zoom in with double-tap. Now you can do the same with a key combination.";
 "SmartZoomView.ActivationKeyCombinationTitle" = "Trigger when";
-"SmartZoomView.DoubleTapToActivate" = "Double tap key combination to smart zoom";
+"SmartZoomView.DoubleTapToActivate" = "Reuse activator for \"zoom and rotate\"";
 
 "ZoomAndRotateView.ZoomDirectionTitle" = "Zoom gesture direction";
 "ZoomAndRotateView.ZoomDirectionNone" = "Never zoom";

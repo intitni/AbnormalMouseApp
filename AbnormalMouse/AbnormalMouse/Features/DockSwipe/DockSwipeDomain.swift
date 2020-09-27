@@ -5,17 +5,27 @@ import Foundation
 
 enum DockSwipeDomain: Domain {
     struct State: Equatable {
-        var dockSwipeActivationKeyCombination: KeyCombination? = nil
-        var activatorHasConflict = false
+        struct DockSwipeActivator: Equatable {
+            var keyCombination: KeyCombination? = nil
+            var hasConflict = false
+            var numberOfTapsRequired = 1
+        }
+
+        var dockSwipeActivator = DockSwipeActivator()
     }
 
     enum Action: Equatable {
         case appear
-        case setDockSwipeActivationKeyCombination(KeyCombination?)
-        case clearDockSwipeActivationKeyCombination
+
+        case dockSwipeActivator(DockSwipeActivator)
+        enum DockSwipeActivator: Equatable {
+            case setKeyCombination(KeyCombination?)
+            case clearKeyCombination
+            case setNumberOfTapsRequired(Int)
+        }
 
         case _internal(Internal)
-        enum Internal {
+        enum Internal: Equatable {
             case checkConflict
         }
     }
@@ -26,36 +36,58 @@ enum DockSwipeDomain: Domain {
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
     }
 
-    static let reducer = Reducer { state, action, environment in
-        switch action {
-        case .appear:
-            state = State(from: environment.persisted)
-            return .none
-        case let .setDockSwipeActivationKeyCombination(combination):
-            state.dockSwipeActivationKeyCombination = combination
-            let (keys, mouse) = combination?.raw ?? ([], nil)
-            return .fireAndForget {
-                environment.persisted.keyCombination = combination
+    static let reducer = Reducer.combine(
+        Reducer { state, action, environment in
+            switch action {
+            case let .dockSwipeActivator(action):
+                switch action {
+                case let .setKeyCombination(combination):
+                    state.dockSwipeActivator.keyCombination = combination
+                    let (keys, mouse) = combination?.raw ?? ([], nil)
+                    return .fireAndForget {
+                        environment.persisted.keyCombination = combination
+                    }
+                case let .setNumberOfTapsRequired(count):
+                    let clamped = min(max(1, count), 3)
+                    state.dockSwipeActivator.numberOfTapsRequired = clamped
+                    return .fireAndForget {
+                        environment.persisted.numberOfTapsRequired = clamped
+                    }
+                case .clearKeyCombination:
+                    state.dockSwipeActivator.keyCombination = nil
+                    return .fireAndForget {
+                        environment.persisted.keyCombination = nil
+                    }
+                }
+            default: return .none
             }
-        case .clearDockSwipeActivationKeyCombination:
-            state.dockSwipeActivationKeyCombination = nil
-            return .fireAndForget {
-                environment.persisted.keyCombination = nil
-            }
-        case let ._internal(internalAction):
-            switch internalAction {
-            case .checkConflict:
-                state.activatorHasConflict = environment.featureHasConflict(.dockSwipe)
-                return .none
+        },
+        Reducer { state, action, environment in
+            switch action {
+            case .appear:
+                state = State(from: environment.persisted)
+                return .init(value: ._internal(.checkConflict))
+            case .dockSwipeActivator:
+                return .init(value: ._internal(.checkConflict))
+            case let ._internal(internalAction):
+                switch internalAction {
+                case .checkConflict:
+                    state.dockSwipeActivator.hasConflict = environment
+                        .featureHasConflict(.dockSwipe)
+                    return .none
+                }
             }
         }
-    }
+    )
 }
 
 extension DockSwipeDomain.State {
     init(from persisted: Persisted.DockSwipe) {
         self.init(
-            dockSwipeActivationKeyCombination: persisted.keyCombination
+            dockSwipeActivator: .init(
+                keyCombination: persisted.keyCombination,
+                numberOfTapsRequired: persisted.numberOfTapsRequired
+            )
         )
     }
 }

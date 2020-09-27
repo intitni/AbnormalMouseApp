@@ -107,11 +107,12 @@ final class ZoomAndRotateController: OverrideController {
         state.zoomGestureDirection = persisted.zoomGestureDirection
         state.rotateGestureDirection = persisted.rotateGestureDirection
         tapHold.keyCombination = persisted.keyCombination
+        tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
         if persisted.smartZoom.useZoomAndRotateDoubleTap {
-            tap.numberOfTapsRequired = 2
+            tap.numberOfTapsRequired = persisted.numberOfTapsRequired + 1
             tap.keyCombination = persisted.keyCombination
         } else {
-            tap.numberOfTapsRequired = 1
+            tap.numberOfTapsRequired = persisted.smartZoom.numberOfTapsRequired
             tap.keyCombination = persisted.smartZoom.keyCombination
         }
     }
