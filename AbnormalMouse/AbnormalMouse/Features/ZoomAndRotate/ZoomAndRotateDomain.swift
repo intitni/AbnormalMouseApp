@@ -6,10 +6,12 @@ import Foundation
 enum ZoomAndRotateDomain: Domain {
     struct State: Equatable {
         var zoomAndRotateActivationKeyCombination: KeyCombination? = nil
+        var zoomAndRotateActivatorHasConflict = false
         var zoomGestureDirection: MoveMouseDirection = .none
         var rotateGestureDirection: MoveMouseDirection = .none
         var shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap: Bool = true
         var smartZoomActivationKeyCombination: KeyCombination? = nil
+        var smartZoomActivatorHasConflict = false
     }
 
     enum Action: Equatable {
@@ -23,11 +25,17 @@ enum ZoomAndRotateDomain: Domain {
         case toggleSmartZoomUseZoomAndRotateKeyCombinationDoubleTap
         case setSmartZoomActivationKeyCombination(KeyCombination?)
         case clearSmartZoomActivationKeyCombination
+
+        case _internal(Internal)
+        enum Internal {
+            case checkConflict
+        }
     }
 
     struct Environment {
         var persisted: Persisted.ZoomAndRotate
         var moveToScrollPersisted: Persisted.MoveToScroll
+        var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
         var openURL: (URL) -> Void
     }
 
@@ -38,18 +46,24 @@ enum ZoomAndRotateDomain: Domain {
                 from: environment.persisted,
                 moveToScrollPersisted: environment.moveToScrollPersisted
             )
-            return .none
+            return .init(value: ._internal(.checkConflict))
         case let .setZoomAndRotateActivationKeyCombination(combination):
             state.zoomAndRotateActivationKeyCombination = combination
             let (keys, mouse) = combination?.raw ?? ([], nil)
-            return .fireAndForget {
-                environment.persisted.keyCombination = combination
-            }
+            return .merge(
+                .fireAndForget {
+                    environment.persisted.keyCombination = combination
+                },
+                .init(value: ._internal(.checkConflict))
+            )
         case .clearZoomAndRotateActivationKeyCombination:
             state.zoomAndRotateActivationKeyCombination = nil
-            return .fireAndForget {
-                environment.persisted.keyCombination = nil
-            }
+            return .merge(
+                .fireAndForget {
+                    environment.persisted.keyCombination = nil
+                },
+                .init(value: ._internal(.checkConflict))
+            )
         case let .changeZoomGestureDirectionToOption(option):
             let direction = MoveMouseDirection(rawValue: option) ?? .none
             state.zoomGestureDirection = direction
@@ -75,19 +89,36 @@ enum ZoomAndRotateDomain: Domain {
         case .toggleSmartZoomUseZoomAndRotateKeyCombinationDoubleTap:
             state.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap.toggle()
             let result = state.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap
-            return .fireAndForget {
-                environment.persisted.smartZoom.useZoomAndRotateDoubleTap = result
-            }
+            return .merge(
+                .fireAndForget {
+                    environment.persisted.smartZoom.useZoomAndRotateDoubleTap = result
+                },
+                .init(value: ._internal(.checkConflict))
+            )
         case let .setSmartZoomActivationKeyCombination(combination):
             state.smartZoomActivationKeyCombination = combination
             let (keys, mouse) = combination?.raw ?? ([], nil)
-            return .fireAndForget {
-                environment.persisted.smartZoom.keyCombination = combination
-            }
+            return .merge(
+                .fireAndForget {
+                    environment.persisted.smartZoom.keyCombination = combination
+                },
+                .init(value: ._internal(.checkConflict))
+            )
         case .clearSmartZoomActivationKeyCombination:
             state.smartZoomActivationKeyCombination = nil
-            return .fireAndForget {
-                environment.persisted.smartZoom.keyCombination = nil
+            return .merge(
+                .fireAndForget {
+                    environment.persisted.smartZoom.keyCombination = nil
+                },
+                .init(value: ._internal(.checkConflict))
+            )
+        case let ._internal(internalAction):
+            switch internalAction {
+            case .checkConflict:
+                let hasConflict = environment.featureHasConflict
+                state.zoomAndRotateActivatorHasConflict = hasConflict(.zoomAndRotate)
+                state.smartZoomActivatorHasConflict = hasConflict(.smartZoom)
+                return .none
             }
         }
     }
@@ -117,6 +148,7 @@ extension Store where Action == ZoomAndRotateDomain.Action, State == ZoomAndRota
             environment: .init(
                 persisted: .init(),
                 moveToScrollPersisted: .init(),
+                featureHasConflict: { _ in true },
                 openURL: { _ in }
             )
         )

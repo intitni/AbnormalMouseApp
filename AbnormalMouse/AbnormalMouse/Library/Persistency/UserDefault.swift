@@ -1,4 +1,4 @@
-import Foundation
+import AppKit
 
 /// Typed UserDefaults。
 @propertyWrapper
@@ -43,7 +43,15 @@ protocol PropertyListStorage {
 extension UserDefaults: PropertyListStorage {}
 
 final class MemoryPropertyListStorage: PropertyListStorage {
-    var content = [String: Any]()
+    var content = [String: Any]() {
+        didSet {
+            NSWorkspace.shared.notificationCenter.post(
+                name: UserDefaults.didChangeNotification,
+                object: nil
+            )
+        }
+    }
+
     func object(forKey key: String) -> Any? {
         content[key]
     }

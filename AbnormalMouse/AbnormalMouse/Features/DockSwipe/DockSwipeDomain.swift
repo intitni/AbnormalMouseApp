@@ -6,16 +6,23 @@ import Foundation
 enum DockSwipeDomain: Domain {
     struct State: Equatable {
         var dockSwipeActivationKeyCombination: KeyCombination? = nil
+        var activatorHasConflict = false
     }
 
     enum Action: Equatable {
         case appear
         case setDockSwipeActivationKeyCombination(KeyCombination?)
         case clearDockSwipeActivationKeyCombination
+
+        case _internal(Internal)
+        enum Internal {
+            case checkConflict
+        }
     }
 
     struct Environment {
         var persisted: Persisted.DockSwipe
+        var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
     }
 
     static let reducer = Reducer { state, action, environment in
@@ -33,6 +40,12 @@ enum DockSwipeDomain: Domain {
             state.dockSwipeActivationKeyCombination = nil
             return .fireAndForget {
                 environment.persisted.keyCombination = nil
+            }
+        case let ._internal(internalAction):
+            switch internalAction {
+            case .checkConflict:
+                state.activatorHasConflict = environment.featureHasConflict(.dockSwipe)
+                return .none
             }
         }
     }
@@ -52,7 +65,8 @@ extension Store where Action == DockSwipeDomain.Action, State == DockSwipeDomain
             initialState: .init(),
             reducer: DockSwipeDomain.reducer,
             environment: .init(
-                persisted: .init()
+                persisted: .init(),
+                featureHasConflict: { _ in true }
             )
         )
     }

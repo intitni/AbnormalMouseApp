@@ -10,6 +10,7 @@ struct MainDomain: Domain {
 
     struct _Environment {
         var persisted: Persisted
+        var activatorConflictChecker: ActivatorConflictChecker
         var purchaseManager: PurchaseManagerType
         var updater: SUUpdater
     }
@@ -98,7 +99,8 @@ struct MainDomain: Domain {
             action: /Action.moveToScrollSettings,
             environment: {
                 MoveToScrollDomain.Environment(
-                    persisted: $0.persisted.moveToScroll
+                    persisted: $0.persisted.moveToScroll,
+                    featureHasConflict: $0.activatorConflictChecker.featureHasConflict
                 )
             }
         ),
@@ -109,6 +111,7 @@ struct MainDomain: Domain {
                 ZoomAndRotateDomain.Environment(
                     persisted: $0.persisted.zoomAndRotate,
                     moveToScrollPersisted: $0.persisted.moveToScroll,
+                    featureHasConflict: $0.activatorConflictChecker.featureHasConflict,
                     openURL: $0.openURL
                 )
             }
@@ -117,7 +120,10 @@ struct MainDomain: Domain {
             state: \.dockSwipeSettings,
             action: /Action.dockSwipeSettings,
             environment: {
-                DockSwipeDomain.Environment(persisted: $0.persisted.dockSwipe)
+                DockSwipeDomain.Environment(
+                    persisted: $0.persisted.dockSwipe,
+                    featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                )
             }
         ),
         NeedAccessabilityDomain.reducer.pullback(
@@ -159,7 +165,11 @@ struct MainDomain: Domain {
 
 extension Store where Action == MainDomain.Action, State == MainDomain.State {
     static var testStore: Self {
-        .init(
+        let persisted = Persisted(
+            userDefaults: MemoryPropertyListStorage(),
+            keychainAccess: FakeKeychainAccess()
+        )
+        return .init(
             initialState: .init(
                 isAccessabilityAuthorized: false,
                 isNeedAccessabilityViewPresented: false,
@@ -170,10 +180,8 @@ extension Store where Action == MainDomain.Action, State == MainDomain.State {
             ),
             reducer: MainDomain.reducer,
             environment: .live(environment: .init(
-                persisted: .init(
-                    userDefaults: MemoryPropertyListStorage(),
-                    keychainAccess: FakeKeychainAccess()
-                ),
+                persisted: persisted,
+                activatorConflictChecker: .init(persisted: Readonly(persisted)),
                 purchaseManager: FakePurchaseManager(),
                 updater: SUUpdater.shared()
             ))

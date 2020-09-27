@@ -6,6 +6,7 @@ import Foundation
 enum MoveToScrollDomain: Domain {
     struct State: Equatable {
         var activationKeyCombination: KeyCombination? = nil
+        var isKeyCombinationConflict: Bool = false
         var scrollSpeedMultiplier: Double = 4
         var swipeSpeedMultiplier: Double = 3
         var isInertiaEffectEnabled = false
@@ -18,29 +19,35 @@ enum MoveToScrollDomain: Domain {
         case clearActivationKeyCombination
         case changeScrollSpeedMultiplierTo(Double)
         case changeSwipeSpeedMultiplierTo(Double)
+
+        case _internal(Internal)
+        enum Internal {
+            case checkConflict
+        }
     }
 
     struct Environment {
         var persisted: Persisted.MoveToScroll
+        var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
     }
 
     static let reducer = Reducer { state, action, environment in
         switch action {
         case .appear:
             state = State(from: environment.persisted)
-            return .none
+            return .init(value: ._internal(.checkConflict))
         case .toggleInertiaEffect:
             state.isInertiaEffectEnabled.toggle()
             let result = state.isInertiaEffectEnabled
-            return .fireAndForget {
-                environment.persisted.isInertiaEffectEnabled = result
-            }
+            return .merge(
+                .fireAndForget { environment.persisted.isInertiaEffectEnabled = result },
+                .init(value: ._internal(.checkConflict))
+            )
         case let .setActivationKeyCombination(combination):
             state.activationKeyCombination = combination
             let (keys, mouse) = combination?.raw ?? ([], nil)
-            return .fireAndForget {
-                environment.persisted.keyCombination = combination
-            }
+
+            return .fireAndForget { environment.persisted.keyCombination = combination }
         case .clearActivationKeyCombination:
             state.activationKeyCombination = nil
             return .fireAndForget {
@@ -55,6 +62,12 @@ enum MoveToScrollDomain: Domain {
             state.swipeSpeedMultiplier = multilier
             return .fireAndForget {
                 environment.persisted.swipeSpeedMultiplier = multilier
+            }
+        case let ._internal(internalAction):
+            switch internalAction {
+            case .checkConflict:
+                state.isKeyCombinationConflict = environment.featureHasConflict(.scrollAndSwipe)
+                return .none
             }
         }
     }
@@ -77,7 +90,8 @@ extension Store where Action == MoveToScrollDomain.Action, State == MoveToScroll
             initialState: .init(),
             reducer: MoveToScrollDomain.reducer,
             environment: .init(
-                persisted: .init()
+                persisted: .init(),
+                featureHasConflict: { _ in true }
             )
         )
     }

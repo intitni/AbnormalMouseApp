@@ -1,6 +1,19 @@
 import CGEventOverride
 import Foundation
 
+// MARK: - Activator
+
+struct Activator: Equatable {
+    var keyCombination: KeyCombination
+    var numberOfTapRequired: Int
+
+    init?(keyCombination: KeyCombination?, numberOfTapRequired: Int) {
+        guard let combination = keyCombination else { return nil }
+        self.keyCombination = combination
+        self.numberOfTapRequired = numberOfTapRequired
+    }
+}
+
 // MARK: - KeyDown
 
 /// Defines what the key or mouse-key is when a physical key is pressed down.
@@ -66,7 +79,7 @@ extension KeyDown: Codable {
 
 /// A combination of `KeyDown`s.
 struct KeyCombination: Equatable {
-    let modifiers: [KeyDown]
+    let modifiers: Set<KeyDown>
     let activator: KeyDown
 
     init?(_ keys: Set<KeyDown>) {
@@ -89,12 +102,12 @@ struct KeyCombination: Equatable {
         }
 
         guard let act = activator else { return nil }
-        self.modifiers = modifiers.sorted { $0.rawValue < $1.rawValue }
+        self.modifiers = Set(modifiers.sorted { $0.rawValue < $1.rawValue })
         self.activator = act
     }
 
     init(modifiers: [KeyDown], activator: KeyDown) {
-        self.modifiers = modifiers
+        self.modifiers = Set(modifiers)
         self.activator = activator
     }
 

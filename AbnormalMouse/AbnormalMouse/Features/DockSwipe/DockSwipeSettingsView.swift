@@ -62,7 +62,10 @@ struct DockSwipeSettingsView_Previews: PreviewProvider {
         DockSwipeSettingsView(store: .init(
             initialState: .init(dockSwipeActivationKeyCombination: nil),
             reducer: DockSwipeDomain.reducer,
-            environment: .init(persisted: .init())
+            environment: .init(
+                persisted: .init(),
+                featureHasConflict: { _ in true }
+            )
         ))
     }
 }

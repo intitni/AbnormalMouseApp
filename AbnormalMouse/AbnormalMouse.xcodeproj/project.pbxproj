@@ -27,6 +27,7 @@
 		13C51ABD249BA43B007881A5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABB249BA2F3007881A5 /* Style.swift */; };
 		13C51ABF249E5813007881A5 /* MoveMouseDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */; };
 		526678DE369BE036D03DF016 /* Pods_AbnormalMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */; };
+		840E3297251D8FD400FDD1B3 /* ActivatorConflictChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */; };
 		842B147F24A9C3C20063CDE0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 842B148124A9C3C20063CDE0 /* InfoPlist.strings */; };
 		842B14BA24A9CC350063CDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B14B924A9CC350063CDE0 /* AppDelegate.swift */; };
 		842B14C124A9CC360063CDE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842B14C024A9CC360063CDE0 /* Preview Assets.xcassets */; };
@@ -140,6 +141,7 @@
 		35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbnormalMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E99A3A881BF298122F310CD /* Pods-AbnormalMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.release.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.release.xcconfig"; sourceTree = "<group>"; };
 		6B229038B0F13F1DAD33760D /* Pods-AbnormalMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.debug.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.debug.xcconfig"; sourceTree = "<group>"; };
+		840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatorConflictChecker.swift; sourceTree = "<group>"; };
 		842B148024A9C3C20063CDE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		842B148224A9C3C40063CDE0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbnormalMouseLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -490,6 +492,7 @@
 				84426AF124B01C1E006CF972 /* TipsViewBuilder.swift */,
 				8463B80B24C975C7008D7988 /* EventThrottler.swift */,
 				136E6D802502A7DA00F540B3 /* License.swift */,
+				840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 			files = (
 				138361842487E75800E76F41 /* MoveToScrollController.swift in Sources */,
 				84C8EAE92489F41000C53CFD /* SettingsPageView.swift in Sources */,
+				840E3297251D8FD400FDD1B3 /* ActivatorConflictChecker.swift in Sources */,
 				84E49433248E2A770074540F /* Assets.swift in Sources */,
 				84399B142488988900970CFF /* UserDefault.swift in Sources */,
 				84D83A9724B6B61A0015E30C /* ActivationDomain.swift in Sources */,
