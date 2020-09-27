@@ -35,17 +35,13 @@ enum ZoomAndRotateDomain: Domain {
     typealias Environment = SystemEnvironment<_Environment>
     struct _Environment {
         var persisted: Persisted.ZoomAndRotate
-        var moveToScrollPersisted: Persisted.MoveToScroll
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
     }
 
     static let reducer = Reducer { state, action, environment in
         switch action {
         case .appear:
-            state = State(
-                from: environment.persisted,
-                moveToScrollPersisted: environment.moveToScrollPersisted
-            )
+            state = State(from: environment.persisted)
             return .init(value: ._internal(.checkConflict))
         case let .setZoomAndRotateActivationKeyCombination(combination):
             state.zoomAndRotateActivationKeyCombination = combination
@@ -125,10 +121,7 @@ enum ZoomAndRotateDomain: Domain {
 }
 
 extension ZoomAndRotateDomain.State {
-    init(
-        from persisted: Persisted.ZoomAndRotate,
-        moveToScrollPersisted _: Persisted.MoveToScroll
-    ) {
+    init(from persisted: Persisted.ZoomAndRotate) {
         self.init(
             zoomAndRotateActivationKeyCombination: persisted.keyCombination,
             zoomGestureDirection: persisted.zoomGestureDirection,
@@ -147,7 +140,6 @@ extension Store where Action == ZoomAndRotateDomain.Action, State == ZoomAndRota
             reducer: ZoomAndRotateDomain.reducer,
             environment: .live(environment: .init(
                 persisted: .init(),
-                moveToScrollPersisted: .init(),
                 featureHasConflict: { _ in true }
             ))
         )

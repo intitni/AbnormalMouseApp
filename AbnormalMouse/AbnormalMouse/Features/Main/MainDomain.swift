@@ -113,7 +113,6 @@ struct MainDomain: Domain {
                 $0.map {
                     .init(
                         persisted: $0.persisted.zoomAndRotate,
-                        moveToScrollPersisted: $0.persisted.moveToScroll,
                         featureHasConflict: $0.activatorConflictChecker.featureHasConflict
                     )
                 }
