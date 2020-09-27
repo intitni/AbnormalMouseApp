@@ -30,7 +30,8 @@ enum ActivationDomain: Domain {
         case dismiss
     }
 
-    struct Environment {
+    typealias Environment = SystemEnvironment<_Environment>
+    struct _Environment {
         let purchaseManager: PurchaseManagerType
     }
 
@@ -91,9 +92,9 @@ extension Store where State == ActivationDomain.State, Action == ActivationDomai
         return .init(
             initialState: state,
             reducer: ActivationDomain.reducer,
-            environment: .init(
+            environment: .live(environment: .init(
                 purchaseManager: FakePurchaseManager()
-            )
+            ))
         )
     }
 }

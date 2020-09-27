@@ -98,66 +98,77 @@ struct MainDomain: Domain {
             state: \.moveToScrollSettings,
             action: /Action.moveToScrollSettings,
             environment: {
-                MoveToScrollDomain.Environment(
-                    persisted: $0.persisted.moveToScroll,
-                    featureHasConflict: $0.activatorConflictChecker.featureHasConflict
-                )
+                $0.map {
+                    .init(
+                        persisted: $0.persisted.moveToScroll,
+                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                    )
+                }
             }
         ),
         ZoomAndRotateDomain.reducer.pullback(
             state: \.zoomAndRotateSettings,
             action: /Action.zoomAndRotateSettings,
             environment: {
-                ZoomAndRotateDomain.Environment(
-                    persisted: $0.persisted.zoomAndRotate,
-                    moveToScrollPersisted: $0.persisted.moveToScroll,
-                    featureHasConflict: $0.activatorConflictChecker.featureHasConflict,
-                    openURL: $0.openURL
-                )
+                $0.map {
+                    .init(
+                        persisted: $0.persisted.zoomAndRotate,
+                        moveToScrollPersisted: $0.persisted.moveToScroll,
+                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                    )
+                }
             }
         ),
         DockSwipeDomain.reducer.pullback(
             state: \.dockSwipeSettings,
             action: /Action.dockSwipeSettings,
             environment: {
-                DockSwipeDomain.Environment(
-                    persisted: $0.persisted.dockSwipe,
-                    featureHasConflict: $0.activatorConflictChecker.featureHasConflict
-                )
+                $0.map {
+                    .init(
+                        persisted: $0.persisted.dockSwipe,
+                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                    )
+                }
             }
         ),
         NeedAccessabilityDomain.reducer.pullback(
             state: \.needAccessability,
             action: /Action.needAccessability,
             environment: {
-                NeedAccessabilityDomain.Environment(openURL: $0.openURL)
+                $0.map { _ in
+                    .init()
+                }
             }
         ),
         AdvancedDomain.reducer.pullback(
             state: \.advanced,
             action: /Action.advanced,
             environment: {
-                .init(persisted: $0.persisted.advanced)
+                $0.map {
+                    .init(persisted: $0.persisted.advanced)
+                }
             }
         ),
         GeneralDomain.reducer.pullback(
             state: \.general,
             action: /Action.general,
             environment: {
-                .init(
-                    persisted: $0.persisted.general,
-                    purchaseManager: $0.purchaseManager,
-                    updater: $0.updater,
-                    openURL: $0.openURL,
-                    quitApp: $0.quitApp
-                )
+                $0.map {
+                    .init(
+                        persisted: $0.persisted.general,
+                        purchaseManager: $0.purchaseManager,
+                        updater: $0.updater
+                    )
+                }
             }
         ),
         ActivationDomain.reducer.optional().pullback(
             state: \.activationState,
             action: /Action.activation,
             environment: {
-                ActivationDomain.Environment(purchaseManager: $0.purchaseManager)
+                $0.map {
+                    .init(purchaseManager: $0.purchaseManager)
+                }
             }
         )
     )

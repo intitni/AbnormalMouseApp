@@ -20,7 +20,8 @@ enum DockSwipeDomain: Domain {
         }
     }
 
-    struct Environment {
+    typealias Environment = SystemEnvironment<_Environment>
+    struct _Environment {
         var persisted: Persisted.DockSwipe
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
     }
@@ -64,10 +65,10 @@ extension Store where Action == DockSwipeDomain.Action, State == DockSwipeDomain
         .init(
             initialState: .init(),
             reducer: DockSwipeDomain.reducer,
-            environment: .init(
+            environment: .live(environment: .init(
                 persisted: .init(),
                 featureHasConflict: { _ in true }
-            )
+            ))
         )
     }
 }

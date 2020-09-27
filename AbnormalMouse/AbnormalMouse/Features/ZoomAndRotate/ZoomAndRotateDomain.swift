@@ -32,11 +32,11 @@ enum ZoomAndRotateDomain: Domain {
         }
     }
 
-    struct Environment {
+    typealias Environment = SystemEnvironment<_Environment>
+    struct _Environment {
         var persisted: Persisted.ZoomAndRotate
         var moveToScrollPersisted: Persisted.MoveToScroll
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
-        var openURL: (URL) -> Void
     }
 
     static let reducer = Reducer { state, action, environment in
@@ -145,12 +145,11 @@ extension Store where Action == ZoomAndRotateDomain.Action, State == ZoomAndRota
         .init(
             initialState: .init(),
             reducer: ZoomAndRotateDomain.reducer,
-            environment: .init(
+            environment: .live(environment: .init(
                 persisted: .init(),
                 moveToScrollPersisted: .init(),
-                featureHasConflict: { _ in true },
-                openURL: { _ in }
-            )
+                featureHasConflict: { _ in true }
+            ))
         )
     }
 }

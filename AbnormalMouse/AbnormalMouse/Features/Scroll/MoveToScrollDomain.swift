@@ -26,7 +26,8 @@ enum MoveToScrollDomain: Domain {
         }
     }
 
-    struct Environment {
+    typealias Environment = SystemEnvironment<_Environment>
+    struct _Environment {
         var persisted: Persisted.MoveToScroll
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
     }
@@ -89,10 +90,10 @@ extension Store where Action == MoveToScrollDomain.Action, State == MoveToScroll
         .init(
             initialState: .init(),
             reducer: MoveToScrollDomain.reducer,
-            environment: .init(
+            environment: .live(environment: .init(
                 persisted: .init(),
                 featureHasConflict: { _ in true }
-            )
+            ))
         )
     }
 }
