@@ -7,6 +7,7 @@
 - Allow setting half page scroll activator.
 - Support activator sharing with different number-of-taps-required.
 - Add activator conflict check.
+- Tweak zoom and rotate.
 
 ### 2020.4
 
