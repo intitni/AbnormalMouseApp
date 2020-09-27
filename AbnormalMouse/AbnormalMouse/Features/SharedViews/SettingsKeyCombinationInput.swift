@@ -46,7 +46,28 @@ struct SettingsKeyCombinationInput<Title: View>: View {
             title
                 .asWidgetTitle()
 
-            HStack(spacing: 0) {
+            HStack(spacing: 1) {
+                Toggle(
+                    isOn: toggleBinding(modifier: .key(KeyboardCode.shift.rawValue)),
+                    label: { Text("⇧") }
+                ).toggleStyle(ModifierToggleStyle())
+                    .padding(.leading, 1)
+
+                Toggle(
+                    isOn: toggleBinding(modifier: .key(KeyboardCode.control.rawValue)),
+                    label: { Text("⌃") }
+                ).toggleStyle(ModifierToggleStyle())
+
+                Toggle(
+                    isOn: toggleBinding(modifier: .key(KeyboardCode.option.rawValue)),
+                    label: { Text("⌥") }
+                ).toggleStyle(ModifierToggleStyle())
+
+                Toggle(
+                    isOn: toggleBinding(modifier: .key(KeyboardCode.command.rawValue)),
+                    label: { Text("⌘") }
+                ).toggleStyle(ModifierToggleStyle())
+
                 button {
                     if isEditing {
                         Text(L10n.Shared.View.enterKeyCombination)
@@ -59,51 +80,28 @@ struct SettingsKeyCombinationInput<Title: View>: View {
                             .foregroundColor(Color(NSColor.placeholderTextColor))
                     }
                 }
-
-                HStack(spacing: 1) {
-                    Toggle(
-                        isOn: toggleBinding(modifier: .key(KeyboardCode.shift.rawValue)),
-                        label: { Text("⇧") }
-                    ).toggleStyle(ModifierToggleStyle())
-                        .padding(.leading, 1)
-
-                    Toggle(
-                        isOn: toggleBinding(modifier: .key(KeyboardCode.control.rawValue)),
-                        label: { Text("⌃") }
-                    ).toggleStyle(ModifierToggleStyle())
-
-                    Toggle(
-                        isOn: toggleBinding(modifier: .key(KeyboardCode.option.rawValue)),
-                        label: { Text("⌥") }
-                    ).toggleStyle(ModifierToggleStyle())
-
-                    Toggle(
-                        isOn: toggleBinding(modifier: .key(KeyboardCode.command.rawValue)),
-                        label: { Text("⌘") }
-                    ).toggleStyle(ModifierToggleStyle())
-
-                    Button(
-                        action: {
-                            let next = numberOfTap + 1
-                            if next > 3 {
-                                numberOfTap = 1
-                            } else {
-                                numberOfTap = next
-                            }
-                        },
-                        label: {
-                            Text("\(numberOfTap)×")
+                
+                Button(
+                    action: {
+                        let next = numberOfTap + 1
+                        if next > 3 {
+                            numberOfTap = 1
+                        } else {
+                            numberOfTap = next
                         }
-                    ).buttonStyle(ModifierButtonStyle())
-                }
-                .background(Color(.separatorColor))
+                    },
+                    label: {
+                        Text("\(numberOfTap)×")
+                    }
+                ).buttonStyle(ModifierButtonStyle())
             }
             .cornerRadius(4)
             .clipped()
+            .frame(height: 22)
             .roundedCornerBackground(
                 cornerRadius: 4,
-                fillColor: Color(NSColor.controlBackgroundColor),
-                strokeColor: Color(NSColor.gridColor),
+                fillColor: Color(.separatorColor),
+                strokeColor: Color(.gridColor),
                 strokeWidth: 1
             )
 
@@ -117,7 +115,8 @@ struct SettingsKeyCombinationInput<Title: View>: View {
         @ViewBuilder label: () -> Label
     ) -> some View {
         label()
-            .frame(width: 100, height: 22)
+            .frame(width: 100, height: 21)
+            .background(Color(.controlBackgroundColor))
             .overlay(
                 KeyEventHandling(
                     isEditing: $isEditing,
