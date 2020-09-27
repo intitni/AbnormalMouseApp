@@ -27,7 +27,8 @@ enum NeedAccessabilityDomain: Domain {
 }
 
 extension Store where Action == NeedAccessabilityDomain.Action,
-    State == NeedAccessabilityDomain.State {
+    State == NeedAccessabilityDomain.State
+{
     static var testStore: Self {
         Self(
             initialState: .init(),

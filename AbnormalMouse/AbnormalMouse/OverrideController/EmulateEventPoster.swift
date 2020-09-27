@@ -281,7 +281,7 @@ struct EmulateEventPoster {
             let value: Int64 = {
                 let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
                 func buildValuePart() -> Int64 {
-                    return Int64(41_127_040 * scale) + 990_052_352
+                    Int64(41_127_040 * scale) + 990_052_352
                 }
 
                 switch direction {
@@ -321,7 +321,7 @@ struct EmulateEventPoster {
         e[134] = 1_065_353_216 // magic
         p(e)
     }
-    
+
     /// Post a 4-finger swipe gesture event.
     /// - Parameters:
     ///   - direction: swipe direction and swipe progress
@@ -340,7 +340,7 @@ struct EmulateEventPoster {
         e[134] = Int64(phase.rawValue)
         e[136] = 1 // Magic
         e[138] = 3 // Magic
-        
+
         func buildValue(_ accumulation: Double) -> Int64 {
             let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
             if accumulation == 0 { return sign }
@@ -350,7 +350,7 @@ struct EmulateEventPoster {
             let v = Int64(980_000_000 + 80_000_000 * easingFunction(abs(accumulation)))
             return accumulation > 0 ? sign + v : v
         }
-        
+
         switch direction {
         case let .horizontal(accumulation):
             guard accumulation != 0 else { return }
@@ -363,7 +363,7 @@ struct EmulateEventPoster {
             e[135] = buildValue(accumulation)
             e[165] = 2 // Magic
         }
-    
+
         p(e)
     }
 }

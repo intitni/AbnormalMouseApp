@@ -198,6 +198,5 @@ extension KeyCombination: Codable, PropertyListStorable {
         } catch {
             return KeyCombination([.mouse(7)])!
         }
-        
     }
 }

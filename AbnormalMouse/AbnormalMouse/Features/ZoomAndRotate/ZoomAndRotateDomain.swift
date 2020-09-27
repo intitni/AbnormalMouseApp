@@ -14,7 +14,7 @@ enum ZoomAndRotateDomain: Domain {
 
     enum Action: Equatable {
         case appear
-        
+
         case setZoomAndRotateActivationKeyCombination(KeyCombination?)
         case clearZoomAndRotateActivationKeyCombination
         case changeZoomGestureDirectionToOption(Int)
@@ -39,7 +39,7 @@ enum ZoomAndRotateDomain: Domain {
                 moveToScrollPersisted: environment.moveToScrollPersisted
             )
             return .none
-        case .setZoomAndRotateActivationKeyCombination(let combination):
+        case let .setZoomAndRotateActivationKeyCombination(combination):
             state.zoomAndRotateActivationKeyCombination = combination
             let (keys, mouse) = combination?.raw ?? ([], nil)
             return .fireAndForget {
@@ -50,7 +50,7 @@ enum ZoomAndRotateDomain: Domain {
             return .fireAndForget {
                 environment.persisted.keyCombination = nil
             }
-        case .changeZoomGestureDirectionToOption(let option):
+        case let .changeZoomGestureDirectionToOption(option):
             let direction = MoveMouseDirection(rawValue: option) ?? .none
             state.zoomGestureDirection = direction
             if state.rotateGestureDirection.isSameAxis(to: direction) {
@@ -61,7 +61,7 @@ enum ZoomAndRotateDomain: Domain {
                 environment.persisted.zoomGestureDirection = direction
                 environment.persisted.rotateGestureDirection = anotherDirection
             }
-        case .changeRotateGestureDirectionToOption(let option):
+        case let .changeRotateGestureDirectionToOption(option):
             let direction = MoveMouseDirection(rawValue: option) ?? .none
             state.rotateGestureDirection = direction
             if state.zoomGestureDirection.isSameAxis(to: direction) {
@@ -78,7 +78,7 @@ enum ZoomAndRotateDomain: Domain {
             return .fireAndForget {
                 environment.persisted.smartZoom.useZoomAndRotateDoubleTap = result
             }
-        case .setSmartZoomActivationKeyCombination(let combination):
+        case let .setSmartZoomActivationKeyCombination(combination):
             state.smartZoomActivationKeyCombination = combination
             let (keys, mouse) = combination?.raw ?? ([], nil)
             return .fireAndForget {
@@ -96,7 +96,7 @@ enum ZoomAndRotateDomain: Domain {
 extension ZoomAndRotateDomain.State {
     init(
         from persisted: Persisted.ZoomAndRotate,
-        moveToScrollPersisted: Persisted.MoveToScroll
+        moveToScrollPersisted _: Persisted.MoveToScroll
     ) {
         self.init(
             zoomAndRotateActivationKeyCombination: persisted.keyCombination,

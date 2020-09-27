@@ -149,7 +149,7 @@ extension GestureRecognizers.Tap {
                     self.state = State()
                 })
                 DispatchQueue.main.asyncAfter(
-                    deadline: .now() + .milliseconds(self.tapGestureDelayInMilliSeconds()),
+                    deadline: .now() + .milliseconds(tapGestureDelayInMilliSeconds()),
                     execute: delayedEvent!
                 )
             } else if state.tapCount > numberOfTapsRequired - 1 {

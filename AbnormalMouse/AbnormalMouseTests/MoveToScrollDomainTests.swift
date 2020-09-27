@@ -1,18 +1,21 @@
+import CGEventOverride
 import ComposableArchitecture
 import XCTest
-import CGEventOverride
 
 @testable import AbnormalMouse
 
 class MoveToScrollDomainTests: XCTestCase {
     let suiteName = String(describing: MoveToScrollDomainTests.self)
-    
+
     override func tearDown() {
         UserDefaults(suiteName: suiteName)?.removePersistentDomain(forName: suiteName)
     }
-    
+
     func testSettings() throws {
-        let persisted = Persisted(userDefaults: UserDefaults(suiteName: suiteName)!, keychainAccess: FakeKeychainAccess()).moveToScroll
+        let persisted = Persisted(
+            userDefaults: UserDefaults(suiteName: suiteName)!,
+            keychainAccess: FakeKeychainAccess()
+        ).moveToScroll
         defer { UserDefaults().removeSuite(named: suiteName) }
         persisted.scrollSpeedMultiplier = 1
         persisted.keyCombination = nil
@@ -24,15 +27,15 @@ class MoveToScrollDomainTests: XCTestCase {
                 persisted: persisted
             )
         )
-        
+
         let keyCombination = KeyCombination(Set([
             .key(KeyboardCode.command.rawValue),
-            .key(KeyboardCode.a.rawValue)
+            .key(KeyboardCode.a.rawValue),
         ]))
-        
+
         XCTAssertEqual(initialState.scrollSpeedMultiplier, 1)
         XCTAssertEqual(initialState.activationKeyCombination, nil)
-        
+
         store.assert(
             .send(.changeScrollSpeedMultiplierTo(2)) {
                 $0.scrollSpeedMultiplier = 2

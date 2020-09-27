@@ -159,7 +159,7 @@ struct MainDomain: Domain {
 
 extension Store where Action == MainDomain.Action, State == MainDomain.State {
     static var testStore: Self {
-        return .init(
+        .init(
             initialState: .init(
                 isAccessabilityAuthorized: false,
                 isNeedAccessabilityViewPresented: false,

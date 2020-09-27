@@ -152,7 +152,7 @@ struct TheApp: Domain {
 
 extension Store where Action == TheApp.Action, State == TheApp.State {
     static var testStore: Self {
-        return .init(
+        .init(
             initialState: .init(),
             reducer: TheApp.reducer,
             environment: .live(environment: .init(

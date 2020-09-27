@@ -1,18 +1,21 @@
+import CGEventOverride
 import ComposableArchitecture
 import XCTest
-import CGEventOverride
 
 @testable import AbnormalMouse
 
 class ZoomAndScrollDomainTests: XCTestCase {
     let suiteName = String(describing: ZoomAndScrollDomainTests.self)
-    
+
     override func tearDown() {
         UserDefaults(suiteName: suiteName)?.removePersistentDomain(forName: suiteName)
     }
-    
+
     func testSettings() throws {
-        let persisted = Persisted(userDefaults: UserDefaults(suiteName: suiteName)!, keychainAccess: FakeKeychainAccess())
+        let persisted = Persisted(
+            userDefaults: UserDefaults(suiteName: suiteName)!,
+            keychainAccess: FakeKeychainAccess()
+        )
         defer { UserDefaults().removeSuite(named: suiteName) }
         persisted.zoomAndRotate.rotateGestureDirection = .none
         persisted.zoomAndRotate.zoomGestureDirection = .none
@@ -20,9 +23,12 @@ class ZoomAndScrollDomainTests: XCTestCase {
         persisted.zoomAndRotate.smartZoom.keyCombination = nil
         persisted.zoomAndRotate.smartZoom.useZoomAndRotateDoubleTap = false
         persisted.moveToScroll.isInertiaEffectEnabled = true
-        
+
         let overrideController = FakeOverrideController()
-        let initialState = ZoomAndRotateDomain.State(from: persisted.zoomAndRotate, moveToScrollPersisted: persisted.moveToScroll)
+        let initialState = ZoomAndRotateDomain.State(
+            from: persisted.zoomAndRotate,
+            moveToScrollPersisted: persisted.moveToScroll
+        )
         let store = TestStore(
             initialState: initialState,
             reducer: ZoomAndRotateDomain.reducer,
@@ -32,21 +38,21 @@ class ZoomAndScrollDomainTests: XCTestCase {
                 openURL: { _ in }
             )
         )
-        
+
         let keyCombination = KeyCombination(Set([
             .key(KeyboardCode.command.rawValue),
-            .key(KeyboardCode.a.rawValue)
+            .key(KeyboardCode.a.rawValue),
         ]))
-        
+
         XCTAssertEqual(initialState.zoomAndRotateActivationKeyCombination, nil)
         XCTAssertEqual(initialState.smartZoomActivationKeyCombination, nil)
         XCTAssertEqual(initialState.zoomGestureDirection, .none)
         XCTAssertEqual(initialState.rotateGestureDirection, .none)
         XCTAssertEqual(initialState.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap, false)
         XCTAssertEqual(initialState.isInertiaEffectEnabled, true)
-        
+
         // key combination
-        
+
         store.assert(
             .send(.setZoomAndRotateActivationKeyCombination(keyCombination)) {
                 $0.zoomAndRotateActivationKeyCombination = keyCombination
@@ -69,11 +75,11 @@ class ZoomAndScrollDomainTests: XCTestCase {
                 XCTAssertEqual(persisted.zoomAndRotate.smartZoom.keyCombination, nil)
             }
         )
-        
+
         overrideController.updateSettingsCount = 0
-        
+
         // double tap
-        
+
         store.assert(
             .send(.toggleSmartZoomUseZoomAndRotateKeyCombinationDoubleTap) {
                 $0.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap = true
@@ -88,11 +94,11 @@ class ZoomAndScrollDomainTests: XCTestCase {
                 XCTAssertEqual(persisted.zoomAndRotate.smartZoom.useZoomAndRotateDoubleTap, false)
             }
         )
-        
+
         overrideController.updateSettingsCount = 0
-        
+
         // direction
-        
+
         store.assert(
             .send(.changeRotateGestureDirectionToOption(1)) {
                 $0.rotateGestureDirection = .left
@@ -133,9 +139,9 @@ class ZoomAndScrollDomainTests: XCTestCase {
                 XCTAssertEqual(persisted.zoomAndRotate.zoomGestureDirection, .none)
             }
         )
-        
+
         // turn off inertia effect
-        
+
         store.assert(
             .send(.turnOffInertiaEffect) {
                 $0.isInertiaEffectEnabled = false

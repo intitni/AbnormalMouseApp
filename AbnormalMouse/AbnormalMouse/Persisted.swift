@@ -18,7 +18,7 @@ struct Persisted: PersistedType {
         @UserDefault("StartAtLogin", defaultValue: false)
         var startAtLogin: Bool
     }
-    
+
     let advanced = Advanced()
     struct Advanced: PersistedType {
         static func key(_ name: String) -> String { "Advanced\(name)" }
@@ -57,16 +57,16 @@ struct Persisted: PersistedType {
 
         let smartZoom = SmartZoom()
         struct SmartZoom: PersistedType {
-            static func key(_ name: String) -> String { return "SmartZoom\(name)" }
+            static func key(_ name: String) -> String { "SmartZoom\(name)" }
             @UserDefault(key("UseZoomAndRotateDoubleTap"), defaultValue: true)
             var useZoomAndRotateDoubleTap: Bool
             @UserDefault(key("KeyCombination"), defaultValue: nil)
             var keyCombination: KeyCombination?
         }
     }
-    
+
     // MARK: Dock Swipe
-    
+
     let dockSwipe = DockSwipe()
     struct DockSwipe: PersistedType {
         static func key(_ name: String) -> String { "DockSwipe\(name)" }

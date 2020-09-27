@@ -27,7 +27,7 @@ final class ZoomAndRotateController: OverrideController {
 
         var zoomGestureDirection: MoveMouseDirection = .none
         var rotateGestureDirection: MoveMouseDirection = .none
-        
+
         var zoomThreshold = 0
         var rotateThreshold = 0
     }
@@ -135,7 +135,7 @@ extension ZoomAndRotateController {
         }
         let zoom = extractValue(direction: state.zoomGestureDirection) * 3
         let rotate = extractValue(direction: state.rotateGestureDirection)
-        
+
         Tool.advanceState(
             &state.gestureState,
             isActive: isActive,
@@ -157,7 +157,6 @@ extension ZoomAndRotateController {
         case .mayBegin:
             state.zoomThreshold += abs(zoom)
             state.rotateThreshold += abs(rotate)
-            break
         case let .begin(type):
             tapHold.consume()
             switch type {

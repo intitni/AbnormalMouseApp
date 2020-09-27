@@ -71,7 +71,7 @@ extension TapGestureRecognizer {
         else { return .unchange }
 
         fix()
-        
+
         switch type {
         case .keyDown:
             guard !state.isDown else { return .discarded }
@@ -96,7 +96,7 @@ extension TapGestureRecognizer {
         guard case let .mouse(target) = activator, target == code else { return .unchange }
 
         fix()
-        
+
         switch type {
         case .otherMouseDown:
             down(code: code)
@@ -107,22 +107,22 @@ extension TapGestureRecognizer {
         default: return .unchange
         }
     }
-    
+
     private var duration: TimeInterval { Double(numberOfTapsRequired) * 0.3 }
-    
+
     private func fix() {
         if Date().timeIntervalSince1970 - state.lastButtonUpTimestamp >= duration {
             state.tapCount = 0
         }
     }
-    
+
     private func down(code: Int64) {
         state.holdingDownMouseButtons.insert(code)
         if state.tapCount == 0 {
             state.lastButtonUpTimestamp = Date().timeIntervalSince1970
         }
     }
-    
+
     private func up(code: Int64) {
         state.holdingDownMouseButtons.remove(code)
         if Date().timeIntervalSince1970 - state.lastButtonUpTimestamp < duration {

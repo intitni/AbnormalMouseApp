@@ -23,7 +23,7 @@ enum DockSwipeDomain: Domain {
         case .appear:
             state = State(from: environment.persisted)
             return .none
-        case .setDockSwipeActivationKeyCombination(let combination):
+        case let .setDockSwipeActivationKeyCombination(combination):
             state.dockSwipeActivationKeyCombination = combination
             let (keys, mouse) = combination?.raw ?? ([], nil)
             return .fireAndForget {

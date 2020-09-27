@@ -98,7 +98,7 @@ final class MoveToScrollController: OverrideController {
                 self.eventPoster.postSmoothScroll(v: Double(heightOfWindow / 2))
             }
             .store(in: &cancellables)
-        
+
         NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in self?.updateSettings() }
@@ -187,7 +187,7 @@ extension MoveToScrollController {
         Tool.advanceState(&state.eventPosterState, isActive: isActive, h: h, v: v)
         defer { Tool.resetStateIfNeeded(&state.eventPosterState) }
         postEvents()
-        
+
         CGWarpMouseCursorPosition(state.mouseLocation)
     }
 }
@@ -240,7 +240,8 @@ func getWindowBounds(ofPid pid: pid_t) -> CGRect {
     let windowListInfo = CGWindowListCopyWindowInfo(options, kCGNullWindowID)
     guard let infoList = windowListInfo as NSArray? as? [[String: AnyObject]] else { return .zero }
     if let window = infoList.first(where: { ($0["kCGWindowOwnerPID"] as? pid_t) == pid }),
-        let bounds = window["kCGWindowBounds"] {
+        let bounds = window["kCGWindowBounds"]
+    {
         func extract(_ v: Any??) -> CGFloat {
             guard let number = v as? NSNumber else { return 0 }
             return CGFloat(number.doubleValue)

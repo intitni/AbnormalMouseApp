@@ -124,11 +124,11 @@ private enum _L10n {
 
 #if DEBUG
 
-    struct MoveToScrollSettingsView_Previews: PreviewProvider {
-        static var previews: some View {
-            MoveToScrollSettingsView(store: .testStore)
-                .frame(width: 400, height: 500, alignment: .center)
-        }
+struct MoveToScrollSettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        MoveToScrollSettingsView(store: .testStore)
+            .frame(width: 400, height: 500, alignment: .center)
     }
+}
 
 #endif

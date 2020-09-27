@@ -55,7 +55,7 @@ private struct ZoomAndRotateView: View {
     }
 
     private var activationCombinationSetter: some View {
-        return WithViewStore(
+        WithViewStore(
             store.scope(state: \.zoomAndRotateActivationKeyCombination)
         ) { viewStore in
             SettingsKeyCombinationInput(
@@ -198,10 +198,10 @@ struct AttributedLabel: NSViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator()
+        Coordinator()
     }
 
-    func makeNSView(context: Context) -> NSTextView {
+    func makeNSView(context _: Context) -> NSTextView {
         let it = NSTextView()
         it.isEditable = false
         it.backgroundColor = .clear
@@ -211,7 +211,7 @@ struct AttributedLabel: NSViewRepresentable {
         return it
     }
 
-    func updateNSView(_ nsView: NSTextView, context: Context) {
+    func updateNSView(_ nsView: NSTextView, context _: Context) {
         nsView.textStorage?.setAttributedString(attributedString)
     }
 }

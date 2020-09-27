@@ -35,7 +35,7 @@ private struct AdvancedView: View {
                         )) {
                             Text(_L10n.View.listenToKeyboardEvent)
                         }
-                        
+
                         Text(_L10n.View.listenToKeyboardEventIntroduction).asFeatureIntroduction()
                     }
                 }

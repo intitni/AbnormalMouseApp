@@ -44,7 +44,7 @@ extension GestureRecognizers {
                 translation.send((p.0, e))
             }
             super.init()
-            
+
             hook.add(
                 .init(
                     eventsOfInterest: [.mouseMoved, .otherMouseDragged],

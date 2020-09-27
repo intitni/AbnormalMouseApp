@@ -58,14 +58,15 @@ struct KeyEventHandling: NSViewRepresentable {
                 let combination = Set([KeyDown.key(keyCode.rawValue)] + modifierKeyDowns)
                 onKeyReceive(combination)
             } else if event.type == .otherMouseDown,
-                let mouseCode = MouseCode(rawValue: Int(event.buttonNumber)) {
+                let mouseCode = MouseCode(rawValue: Int(event.buttonNumber))
+            {
                 let combination = Set([KeyDown.mouse(mouseCode.rawValue)] + modifierKeyDowns)
                 onKeyReceive(combination)
             }
         }
     }
 
-    func makeNSView(context: Context) -> NSView {
+    func makeNSView(context _: Context) -> NSView {
         let view = KeyView()
         if isEditing {
             DispatchQueue.main.async {
@@ -75,7 +76,7 @@ struct KeyEventHandling: NSViewRepresentable {
         return view
     }
 
-    func updateNSView(_ nsView: NSView, context: Context) {
+    func updateNSView(_ nsView: NSView, context _: Context) {
         guard let view = nsView as? KeyView else { return }
         view.isEditing = _isEditing
         view.onKeyReceive = {

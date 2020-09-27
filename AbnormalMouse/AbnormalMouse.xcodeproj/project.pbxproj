@@ -50,6 +50,7 @@
 		84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84680E2F24D2C6D800DFFBE1 /* AdvancedDomain.swift */; };
 		84680E3224D2C6E100DFFBE1 /* AdvancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */; };
 		846CA1B924A9DBD00084F753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846CA1B824A9DBD00084F753 /* Main.storyboard */; };
+		848B1249251C463200A53F75 /* SettingsKeyCombinationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */; };
 		848F0BBC24D509EC00F9F5CD /* MainDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F0BBB24D509EC00F9F5CD /* MainDomain.swift */; };
 		8493D7F524C7CCE000BD2A17 /* Advanced.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8493D7F724C7CCE000BD2A17 /* Advanced.strings */; };
 		849F4F8324BD9DEC00EF6512 /* MoveApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F4F8224BD9DEC00EF6512 /* MoveApplication.swift */; };
@@ -166,6 +167,7 @@
 		84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedView.swift; sourceTree = "<group>"; };
 		846CA1B824A9DBD00084F753 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		846DA82D24AC5F4100039E60 /* CGEventExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CGEventExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeyCombinationInput.swift; sourceTree = "<group>"; };
 		848F0BBB24D509EC00F9F5CD /* MainDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDomain.swift; sourceTree = "<group>"; };
 		8493D7F624C7CCE000BD2A17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Advanced.strings; sourceTree = "<group>"; };
 		8493D7F824C7CE1C00BD2A17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Advanced.strings"; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				84680E2E24D2C6BD00DFFBE1 /* Advanced */,
 				13864A06248E945800704C21 /* General */,
 				84D83A9524B6B5EA0015E30C /* Activation */,
+				848B1247251C45FF00A53F75 /* SharedViews */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -397,6 +400,14 @@
 				84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */,
 			);
 			path = Advanced;
+			sourceTree = "<group>";
+		};
+		848B1247251C45FF00A53F75 /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+				848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */,
+			);
+			path = SharedViews;
 			sourceTree = "<group>";
 		};
 		84AEF73124D3C9E100DFF5D3 /* Persistency */ = {
@@ -564,6 +575,7 @@
 			buildConfigurationList = 1383617D2487E70700E76F41 /* Build configuration list for PBXNativeTarget "AbnormalMouse" */;
 			buildPhases = (
 				8447845B62469B04C9FA7CFE /* [CP] Check Pods Manifest.lock */,
+				84CD3155251C71D20020D15C /* ShellScript */,
 				84E4942E248E2A020074540F /* SwiftGen */,
 				1383615B2487E70500E76F41 /* Sources */,
 				1383615C2487E70500E76F41 /* Frameworks */,
@@ -753,6 +765,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		84CD3155251C71D20020D15C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
+		};
 		84E4942E248E2A020074540F /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -786,6 +815,7 @@
 				84C8EAF0248A2C7800C53CFD /* App.swift in Sources */,
 				845A29EF24D11F9D0086477D /* TapGestureRecognizer.swift in Sources */,
 				848F0BBC24D509EC00F9F5CD /* MainDomain.swift in Sources */,
+				848B1249251C463200A53F75 /* SettingsKeyCombinationInput.swift in Sources */,
 				84E49413248DE4400074540F /* MoveToScrollDomain.swift in Sources */,
 				84C8EAFB248B72B500C53CFD /* KeyboardCode+Name.swift in Sources */,
 				136E6D812502A7DA00F540B3 /* License.swift in Sources */,

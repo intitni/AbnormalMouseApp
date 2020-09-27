@@ -66,4 +66,3 @@ struct DockSwipeSettingsView_Previews: PreviewProvider {
         ))
     }
 }
-

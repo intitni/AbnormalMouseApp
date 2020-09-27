@@ -22,14 +22,15 @@ extension Publishers {
         }
 
         func receive<S>(subscriber: S)
-            where S: Subscriber, Upstream.Failure == S.Failure, Upstream.Output == S.Input {
+            where S: Subscriber, Upstream.Failure == S.Failure, Upstream.Output == S.Input
+        {
             Publishers.Zip(
                 Result<Int, Never>.Publisher(0)
                     .delay(for: delay, scheduler: scheduler),
                 upstream
                     .materialize()
             )
-            .map { $0.1 }
+            .map(\.1)
             .dematerialize()
             .receive(subscriber: subscriber)
         }

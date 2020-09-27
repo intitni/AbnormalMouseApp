@@ -80,7 +80,7 @@ extension GestureRecognizers.TapHold {
         guard case let .key(target) = activator, code == target else { return .unchange }
 
         resetStateIfNeeded()
-        
+
         switch type {
         case .keyDown:
             guard combination.matchesFlags(event.flags) else { return .unchange }
@@ -107,7 +107,7 @@ extension GestureRecognizers.TapHold {
         guard case let .mouse(target) = activator, code == target else { return .unchange }
 
         resetStateIfNeeded()
-        
+
         switch type {
         case .otherMouseDown:
             down(code: code)
@@ -119,7 +119,7 @@ extension GestureRecognizers.TapHold {
             return .unchange
         }
     }
-    
+
     private func resetStateIfNeeded() {
         if Date().timeIntervalSince1970 - state.lastButtonDownTimestamp >= duration + 0.2 {
             state.tapCount = 0

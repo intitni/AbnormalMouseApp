@@ -179,13 +179,13 @@ private struct PurchaseStateView: View {
                 Text(viewStore.state.isDuringDeactivation ? _L10n.deactivating : _L10n.deactivate)
             }
             .disabled(viewStore.state.isDuringDeactivation)
-            
+
             #if DEBUG
             Button(action: { viewStore.send(.verify) }) {
                 Text("Verify License")
             }
             #endif
-            
+
             Text(viewStore.state.deactivationFailedReason)
                 .foregroundColor(Color.red)
                 .multilineTextAlignment(.trailing)

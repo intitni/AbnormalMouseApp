@@ -19,7 +19,7 @@ class UserDefault<Value: PropertyListStorable> {
 
     var wrappedValue: Value {
         get {
-            return (
+            (
                 try? (userDefaults.object(forKey: key) as? Value.V)
                     .map(Value.makeFromPropertyListValue(value:))
             ) ?? defaultValue
@@ -45,7 +45,7 @@ extension UserDefaults: PropertyListStorage {}
 final class MemoryPropertyListStorage: PropertyListStorage {
     var content = [String: Any]()
     func object(forKey key: String) -> Any? {
-        return content[key]
+        content[key]
     }
 
     func removeObject(forKey key: String) {
@@ -111,7 +111,7 @@ extension UInt64: TrivialPropertyListStorable {}
 extension Double: TrivialPropertyListStorable {}
 extension Float: TrivialPropertyListStorable {}
 #if os(macOS)
-    extension Float80: TrivialPropertyListStorable {}
+extension Float80: TrivialPropertyListStorable {}
 #endif
 
 // MARK: - Array
@@ -146,7 +146,8 @@ extension Optional: PropertyListStorable where Wrapped: PropertyListStorable {
 
 /// When a dictionary has values of trivial values, it's already storable in UserDefaults.
 extension Dictionary: PropertyListValue
-    where Key == String, Value: TrivialPropertyListStorable {
+    where Key == String, Value: TrivialPropertyListStorable
+{
     var isRemoveValue: Bool { isEmpty }
 }
 
