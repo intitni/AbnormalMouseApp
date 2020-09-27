@@ -6,7 +6,7 @@
 - New activator setter.
 - Allow setting half page scroll activator.
 - Support activator sharing with different number-of-taps-required.
-- Support conflict alert.
+- Add activator conflict check.
 
 ### 2020.4
 
