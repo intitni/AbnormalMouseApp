@@ -10,9 +10,8 @@ enum NeedAccessabilityDomain: Domain {
         case goToAccessbilityPreferencePane
     }
 
-    struct Environment {
-        let openURL: (URL) -> Void
-    }
+    typealias Environment = SystemEnvironment<_Environment>
+    struct _Environment {}
 
     static let reducer = Reducer { _, action, environment in
         switch action {
@@ -27,12 +26,13 @@ enum NeedAccessabilityDomain: Domain {
 }
 
 extension Store where Action == NeedAccessabilityDomain.Action,
-    State == NeedAccessabilityDomain.State {
+    State == NeedAccessabilityDomain.State
+{
     static var testStore: Self {
         Self(
             initialState: .init(),
             reducer: NeedAccessabilityDomain.reducer,
-            environment: .init(openURL: { _ in })
+            environment: .live(environment: .init())
         )
     }
 }

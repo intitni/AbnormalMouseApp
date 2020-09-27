@@ -26,7 +26,7 @@ final class FakeCGEventHook: CGEventHookType {
     func removeManipulation(forKey key: AnyHashable) {
         manipulations[key] = nil
     }
-    
+
     func deactivate() {
         isEnabled = false
     }

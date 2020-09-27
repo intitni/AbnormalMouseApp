@@ -18,7 +18,7 @@ struct Persisted: PersistedType {
         @UserDefault("StartAtLogin", defaultValue: false)
         var startAtLogin: Bool
     }
-    
+
     let advanced = Advanced()
     struct Advanced: PersistedType {
         static func key(_ name: String) -> String { "Advanced\(name)" }
@@ -35,12 +35,25 @@ struct Persisted: PersistedType {
         static func key(_ name: String) -> String { "MoveToScroll\(name)" }
         @UserDefault(key("KeyCombination"), defaultValue: nil)
         var keyCombination: KeyCombination?
+        @UserDefault(key("NumberOfTapsRequired"), defaultValue: 1)
+        var numberOfTapsRequired: Int
         @UserDefault(key("SpeedMultiplier"), defaultValue: 3)
         var scrollSpeedMultiplier: Double
         @UserDefault(key("SwipeSpeedMultiplier"), defaultValue: 0.5)
         var swipeSpeedMultiplier: Double
         @UserDefault(key("InertiaEffect"), defaultValue: true)
         var isInertiaEffectEnabled: Bool
+
+        let halfPageScroll = HalfPageScroll()
+        struct HalfPageScroll: PersistedType {
+            static func key(_ name: String) -> String { "HalfPageScroll\(name)" }
+            @UserDefault(key("UseMoveToScrollDoubleTap"), defaultValue: true)
+            var useMoveToScrollDoubleTap: Bool
+            @UserDefault(key("KeyCombination"), defaultValue: nil)
+            var keyCombination: KeyCombination?
+            @UserDefault(key("NumberOfTapsRequired"), defaultValue: 1)
+            var numberOfTapsRequired: Int
+        }
     }
 
     // MARK: Zoom and Rotate
@@ -50,6 +63,8 @@ struct Persisted: PersistedType {
         static func key(_ name: String) -> String { "ZoomAndRotate\(name)" }
         @UserDefault(key("KeyCombination"), defaultValue: nil)
         var keyCombination: KeyCombination?
+        @UserDefault(key("NumberOfTapsRequired"), defaultValue: 1)
+        var numberOfTapsRequired: Int
         @UserDefault(key("ZoomSpeedDirection"), defaultValue: .up)
         var zoomGestureDirection: MoveMouseDirection
         @UserDefault(key("RotateSpeedDirection"), defaultValue: .right)
@@ -57,21 +72,25 @@ struct Persisted: PersistedType {
 
         let smartZoom = SmartZoom()
         struct SmartZoom: PersistedType {
-            static func key(_ name: String) -> String { return "SmartZoom\(name)" }
+            static func key(_ name: String) -> String { "SmartZoom\(name)" }
             @UserDefault(key("UseZoomAndRotateDoubleTap"), defaultValue: true)
             var useZoomAndRotateDoubleTap: Bool
             @UserDefault(key("KeyCombination"), defaultValue: nil)
             var keyCombination: KeyCombination?
+            @UserDefault(key("NumberOfTapsRequired"), defaultValue: 1)
+            var numberOfTapsRequired: Int
         }
     }
-    
+
     // MARK: Dock Swipe
-    
+
     let dockSwipe = DockSwipe()
     struct DockSwipe: PersistedType {
         static func key(_ name: String) -> String { "DockSwipe\(name)" }
         @UserDefault(key("KeyCombination"), defaultValue: nil)
         var keyCombination: KeyCombination?
+        @UserDefault(key("NumberOfTapsRequired"), defaultValue: 1)
+        var numberOfTapsRequired: Int
     }
 }
 

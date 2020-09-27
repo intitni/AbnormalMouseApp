@@ -3,12 +3,12 @@
 @dynamicMemberLookup
 struct Readonly<T> {
     private let wrappedValue: T
-    
+
     init(_ object: T) {
         wrappedValue = object
     }
-    
+
     subscript<V>(dynamicMember member: KeyPath<T, V>) -> V {
-        return wrappedValue[keyPath: member]
+        wrappedValue[keyPath: member]
     }
 }

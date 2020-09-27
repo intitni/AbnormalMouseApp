@@ -1,98 +1,90 @@
+import CGEventOverride
 import ComposableArchitecture
 import XCTest
-import CGEventOverride
 
 @testable import AbnormalMouse
 
 class ZoomAndScrollDomainTests: XCTestCase {
-    let suiteName = String(describing: ZoomAndScrollDomainTests.self)
-    
-    override func tearDown() {
-        UserDefaults(suiteName: suiteName)?.removePersistentDomain(forName: suiteName)
-    }
-    
-    func testSettings() throws {
-        let persisted = Persisted(userDefaults: UserDefaults(suiteName: suiteName)!, keychainAccess: FakeKeychainAccess())
-        defer { UserDefaults().removeSuite(named: suiteName) }
-        persisted.zoomAndRotate.rotateGestureDirection = .none
-        persisted.zoomAndRotate.zoomGestureDirection = .none
+    func testZoomAndRotationKeyCombinationSettings() throws {
+        let persisted = Persisted(
+            userDefaults: MemoryPropertyListStorage(),
+            keychainAccess: FakeKeychainAccess()
+        )
+
         persisted.zoomAndRotate.keyCombination = nil
-        persisted.zoomAndRotate.smartZoom.keyCombination = nil
-        persisted.zoomAndRotate.smartZoom.useZoomAndRotateDoubleTap = false
-        persisted.moveToScroll.isInertiaEffectEnabled = true
-        
-        let overrideController = FakeOverrideController()
-        let initialState = ZoomAndRotateDomain.State(from: persisted.zoomAndRotate, moveToScrollPersisted: persisted.moveToScroll)
+        persisted.zoomAndRotate.numberOfTapsRequired = 1
+
+        var hasConflict: (ActivatorConflictChecker.Feature) -> Bool = { $0 == .zoomAndRotate }
+
+        let initialState = ZoomAndRotateDomain.State(from: persisted.zoomAndRotate)
         let store = TestStore(
             initialState: initialState,
             reducer: ZoomAndRotateDomain.reducer,
-            environment: ZoomAndRotateDomain.Environment(
-                persisted: persisted.zoomAndRotate,
-                moveToScrollPersisted: persisted.moveToScroll,
-                openURL: { _ in }
+            environment: .init(
+                environment: .init(
+                    persisted: persisted.zoomAndRotate,
+                    featureHasConflict: { hasConflict($0) }
+                ),
+                date: { Date() },
+                openURL: { _ in },
+                quitApp: {},
+                mainQueue: { .main }
             )
         )
-        
+
         let keyCombination = KeyCombination(Set([
             .key(KeyboardCode.command.rawValue),
-            .key(KeyboardCode.a.rawValue)
+            .key(KeyboardCode.a.rawValue),
         ]))
-        
-        XCTAssertEqual(initialState.zoomAndRotateActivationKeyCombination, nil)
-        XCTAssertEqual(initialState.smartZoomActivationKeyCombination, nil)
-        XCTAssertEqual(initialState.zoomGestureDirection, .none)
-        XCTAssertEqual(initialState.rotateGestureDirection, .none)
-        XCTAssertEqual(initialState.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap, false)
-        XCTAssertEqual(initialState.isInertiaEffectEnabled, true)
-        
-        // key combination
-        
+
         store.assert(
-            .send(.setZoomAndRotateActivationKeyCombination(keyCombination)) {
-                $0.zoomAndRotateActivationKeyCombination = keyCombination
+            .send(.zoomAndRotate(.setKeyCombination(keyCombination))) {
+                $0.zoomAndRotateActivator.keyCombination = keyCombination
             },
-            .send(.setSmartZoomActivationKeyCombination(keyCombination)) {
-                $0.smartZoomActivationKeyCombination = keyCombination
+            .receive(._internal(.checkConflict)) {
+                $0.zoomAndRotateActivator.hasConflict = true
             },
             .do {
                 XCTAssertEqual(persisted.zoomAndRotate.keyCombination, keyCombination)
-                XCTAssertEqual(persisted.zoomAndRotate.smartZoom.keyCombination, keyCombination)
+                hasConflict = { _ in false }
             },
-            .send(.clearZoomAndRotateActivationKeyCombination) {
-                $0.zoomAndRotateActivationKeyCombination = nil
+            .send(.zoomAndRotate(.clearKeyCombination)) {
+                $0.zoomAndRotateActivator.keyCombination = nil
             },
-            .send(.clearSmartZoomActivationKeyCombination) {
-                $0.smartZoomActivationKeyCombination = nil
+            .receive(._internal(.checkConflict)) {
+                $0.zoomAndRotateActivator.hasConflict = false
             },
             .do {
                 XCTAssertEqual(persisted.zoomAndRotate.keyCombination, nil)
-                XCTAssertEqual(persisted.zoomAndRotate.smartZoom.keyCombination, nil)
             }
         )
-        
-        overrideController.updateSettingsCount = 0
-        
-        // double tap
-        
-        store.assert(
-            .send(.toggleSmartZoomUseZoomAndRotateKeyCombinationDoubleTap) {
-                $0.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap = true
-            },
-            .do {
-                XCTAssertEqual(persisted.zoomAndRotate.smartZoom.useZoomAndRotateDoubleTap, true)
-            },
-            .send(.toggleSmartZoomUseZoomAndRotateKeyCombinationDoubleTap) {
-                $0.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap = false
-            },
-            .do {
-                XCTAssertEqual(persisted.zoomAndRotate.smartZoom.useZoomAndRotateDoubleTap, false)
-            }
+    }
+
+    func testZoomAndScrollDirectionSettings() {
+        let persisted = Persisted(
+            userDefaults: MemoryPropertyListStorage(),
+            keychainAccess: FakeKeychainAccess()
         )
-        
-        overrideController.updateSettingsCount = 0
-        
-        // direction
-        
+
+        let initialState = ZoomAndRotateDomain.State(from: persisted.zoomAndRotate)
+        let store = TestStore(
+            initialState: initialState,
+            reducer: ZoomAndRotateDomain.reducer,
+            environment: .init(
+                environment: .init(
+                    persisted: persisted.zoomAndRotate,
+                    featureHasConflict: { _ in false }
+                ),
+                date: { Date() },
+                openURL: { _ in },
+                quitApp: {},
+                mainQueue: { .main }
+            )
+        )
+
+        XCTAssertEqual(initialState.rotateGestureDirection, .right)
+        XCTAssertEqual(initialState.zoomGestureDirection, .up)
+
         store.assert(
             .send(.changeRotateGestureDirectionToOption(1)) {
                 $0.rotateGestureDirection = .left
@@ -133,15 +125,76 @@ class ZoomAndScrollDomainTests: XCTestCase {
                 XCTAssertEqual(persisted.zoomAndRotate.zoomGestureDirection, .none)
             }
         )
-        
-        // turn off inertia effect
-        
+    }
+
+    func testSmartZoomSettings() {
+        let persisted = Persisted(
+            userDefaults: MemoryPropertyListStorage(),
+            keychainAccess: FakeKeychainAccess()
+        )
+
+        var hasConflict: (ActivatorConflictChecker.Feature) -> Bool = { _ in false }
+
+        let initialState = ZoomAndRotateDomain.State(from: persisted.zoomAndRotate)
+        let store = TestStore(
+            initialState: initialState,
+            reducer: ZoomAndRotateDomain.reducer,
+            environment: .init(
+                environment: .init(
+                    persisted: persisted.zoomAndRotate,
+                    featureHasConflict: { hasConflict($0) }
+                ),
+                date: { Date() },
+                openURL: { _ in },
+                quitApp: {},
+                mainQueue: { .main }
+            )
+        )
+
+        let keyCombination = KeyCombination(Set([
+            .key(KeyboardCode.command.rawValue),
+            .key(KeyboardCode.a.rawValue),
+        ]))
+
+        XCTAssertTrue(initialState.smartZoomActivator.shouldUseZoomAndRotateKeyCombinationDoubleTap)
+        XCTAssertNil(initialState.smartZoomActivator.keyCombination)
+        XCTAssertEqual(initialState.smartZoomActivator.numberOfTapsRequired, 1)
+        XCTAssertFalse(initialState.smartZoomActivator.hasConflict)
+
         store.assert(
-            .send(.turnOffInertiaEffect) {
-                $0.isInertiaEffectEnabled = false
+            .send(.smartZoom(.toggleUseZoomAndRotateKeyCombinationDoubleTap)) {
+                $0.smartZoomActivator.shouldUseZoomAndRotateKeyCombinationDoubleTap = false
+            },
+            .receive(._internal(.checkConflict)),
+            .do {
+                XCTAssertFalse(persisted.zoomAndRotate.smartZoom.useZoomAndRotateDoubleTap)
+                hasConflict = { $0 == .smartZoom }
+            },
+            .send(.smartZoom(.setKeyCombination(keyCombination))) {
+                $0.smartZoomActivator.keyCombination = keyCombination
+            },
+            .receive(._internal(.checkConflict)) {
+                $0.smartZoomActivator.hasConflict = true
             },
             .do {
-                XCTAssertEqual(persisted.moveToScroll.isInertiaEffectEnabled, false)
+                XCTAssertEqual(persisted.zoomAndRotate.smartZoom.keyCombination, keyCombination)
+                hasConflict = { _ in false }
+            },
+            .send(.smartZoom(.setNumberOfTapsRequired(2))) {
+                $0.smartZoomActivator.numberOfTapsRequired = 2
+            },
+            .receive(._internal(.checkConflict)) {
+                $0.smartZoomActivator.hasConflict = false
+            },
+            .do {
+                XCTAssertEqual(persisted.zoomAndRotate.smartZoom.numberOfTapsRequired, 2)
+            },
+            .send(.smartZoom(.clearKeyCombination)) {
+                $0.smartZoomActivator.keyCombination = nil
+            },
+            .receive(._internal(.checkConflict)),
+            .do {
+                XCTAssertEqual(persisted.zoomAndRotate.smartZoom.keyCombination, nil)
             }
         )
     }

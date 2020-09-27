@@ -9,6 +9,20 @@ extension Font {
     public static let widgetTitle: Font = .system(size: 14, weight: .semibold, design: .default)
 }
 
+extension View {
+    func asFeatureIntroduction() -> some View {
+        modifier(FeatureIntroductionTextModifier())
+    }
+
+    func asFeatureTitle() -> some View {
+        modifier(FeatureTitleTextModifier())
+    }
+
+    func asWidgetTitle() -> some View {
+        modifier(WidgetTitleTextModifier())
+    }
+}
+
 struct FeatureIntroductionTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -32,11 +46,25 @@ struct WidgetTitleTextModifier: ViewModifier {
     }
 }
 
+struct Style_Title_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text("Feature Title").asFeatureTitle()
+            Text("Feature Introduction").asFeatureIntroduction()
+            Text("Widget Title").asWidgetTitle()
+        }
+        .frame(width: 200, alignment: .leading)
+        .padding(4)
+    }
+}
+
+// MARK: - Background
+
 struct ShadowModifier: ViewModifier {
-    let color = Color(NSColor.shadowColor).opacity(0.2)
-    let radius: CGFloat = 4
-    let x: CGFloat = 0
-    let y: CGFloat = 0
+    var color = Color(NSColor.shadowColor).opacity(0.2)
+    var radius: CGFloat = 4
+    var x: CGFloat = 0
+    var y: CGFloat = 0
 
     func body(content: Content) -> some View {
         content
@@ -45,18 +73,6 @@ struct ShadowModifier: ViewModifier {
 }
 
 extension View {
-    func asFeatureIntroduction() -> some View {
-        modifier(FeatureIntroductionTextModifier())
-    }
-
-    func asFeatureTitle() -> some View {
-        modifier(FeatureTitleTextModifier())
-    }
-
-    func asWidgetTitle() -> some View {
-        modifier(WidgetTitleTextModifier())
-    }
-
     func roundedCornerBackground(
         cornerRadius: CGFloat,
         fillColor: Color = .white,
@@ -77,30 +93,65 @@ extension View {
         }
         return background(AnyView(content))
     }
+}
 
+struct Style_RoundedCornerBackground_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+            .padding(4)
+            .roundedCornerBackground(
+                cornerRadius: 4,
+                fillColor: .gray,
+                strokeColor: .black,
+                strokeWidth: 2,
+                shadow: ShadowModifier(color: .black, radius: 4, x: 0, y: 1)
+            )
+            .padding(10)
+    }
+}
+
+extension View {
     func circleBackground(
         fillColor: Color = .white,
         strokeColor: Color = .clear,
-        strokeWidth: CGFloat = 0
+        strokeWidth: CGFloat = 0,
+        shadow: ShadowModifier? = nil
     ) -> some View {
-        background(
-            GeometryReader { proxy in
-                ZStack {
-                    RoundedRectangle(
-                        cornerRadius: min(proxy.size.width, proxy.size.height) / 2,
-                        style: .continuous
-                    )
-                    .fill(fillColor)
-                    RoundedRectangle(
-                        cornerRadius: min(proxy.size.width, proxy.size.height) / 2,
-                        style: .continuous
-                    )
-                    .stroke(strokeColor, lineWidth: strokeWidth)
-                }.frame(width: proxy.size.width, height: proxy.size.height)
-            }
-        )
+        let content = GeometryReader { proxy in
+            ZStack {
+                RoundedRectangle(
+                    cornerRadius: min(proxy.size.width, proxy.size.height) / 2,
+                    style: .continuous
+                )
+                .fill(fillColor)
+                RoundedRectangle(
+                    cornerRadius: min(proxy.size.width, proxy.size.height) / 2,
+                    style: .continuous
+                )
+                .stroke(strokeColor, lineWidth: strokeWidth)
+            }.frame(width: proxy.size.width, height: proxy.size.height)
+        }
+        if let shadowModifier = shadow {
+            return background(AnyView(content.modifier(shadowModifier)))
+        }
+        return background(AnyView(content))
     }
+}
 
+struct Style_CircleBackground_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+            .padding(4)
+            .circleBackground(
+                fillColor: .gray,
+                strokeColor: .black,
+                strokeWidth: 2
+            )
+            .padding(10)
+    }
+}
+
+extension View {
     func overlayWhen<Overlay>(
         _ shouldOverlay: Bool,
         view: Overlay,

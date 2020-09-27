@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ActivationScreen: View {
     let store: ActivationDomain.Store
-    
+
     var body: some View {
         ActivationView(store: store)
     }
@@ -57,24 +57,24 @@ private struct ActivationView: View {
             TextField("", text: text)
         }
     }
-    
+
     var warningMessage: some View {
         Spacer()
-        .frame(maxWidth: .infinity)
-        .overlay(
-            WithViewStore(store.scope(state: \.activationState)) { viewStore in
-                Text({
-                    if case let .failed(reason) = viewStore.state { return reason }
-                    return ""
-                }() as String)
-                    .foregroundColor(Color.red)
-                    .multilineTextAlignment(.trailing)
-                    .padding(.bottom, 4)
-            },
-            alignment: .bottomTrailing
-        )
+            .frame(maxWidth: .infinity)
+            .overlay(
+                WithViewStore(store.scope(state: \.activationState)) { viewStore in
+                    Text({
+                        if case let .failed(reason) = viewStore.state { return reason }
+                        return ""
+                    }() as String)
+                        .foregroundColor(Color.red)
+                        .multilineTextAlignment(.trailing)
+                        .padding(.bottom, 4)
+                },
+                alignment: .bottomTrailing
+            )
     }
-    
+
     var buttons: some View {
         WithViewStore(store) { viewStore in
             HStack {
@@ -95,7 +95,7 @@ private struct ActivationView: View {
                             }
                             return _L10n.Button.activate
                         }() as String)
-                        .frame(minWidth: 70)
+                            .frame(minWidth: 70)
                     }
                     .disabled(!viewStore.state.isActivateButtonEnabled)
                 }

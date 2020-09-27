@@ -162,6 +162,22 @@ internal enum L10n {
     }
   }
   internal enum ScrollSettings {
+    internal enum HalfPageScrollView {
+      /// Trigger when
+      internal static let activationKeyCombinationTitle = L10n.tr("ScrollSettings", "HalfPageScrollView.ActivationKeyCombinationTitle")
+      /// Reuse activator for "move to scroll"
+      internal static let doubleTapToActivate = L10n.tr("ScrollSettings", "HalfPageScrollView.DoubleTapToActivate")
+      /// Page-down is cool but a full page scroll can be quite annoying. This feature allows you to scroll down half a page.
+      internal static let introduction = L10n.tr("ScrollSettings", "HalfPageScrollView.introduction")
+      /// Half Page Scroll
+      internal static let title = L10n.tr("ScrollSettings", "HalfPageScrollView.Title")
+      internal enum Tips {
+        /// Double tap activator for "move to scroll" to trigger half page scroll.
+        internal static let usageA = L10n.tr("ScrollSettings", "HalfPageScrollView.Tips.UsageA")
+        /// Tap activator to trigger half page scroll.
+        internal static let usageB = L10n.tr("ScrollSettings", "HalfPageScrollView.Tips.UsageB")
+      }
+    }
     internal enum View {
       /// Active when holding
       internal static let activationKeyCombinationTitle = L10n.tr("ScrollSettings", "View.ActivationKeyCombinationTitle")
@@ -219,7 +235,9 @@ internal enum L10n {
       internal static let usage = L10n.tr("Shared", "TipsTitle.Usage")
     }
     internal enum View {
-      /// Enter key combination
+      /// Activator already in use
+      internal static let activatorConflict = L10n.tr("Shared", "View.ActivatorConflict")
+      /// Enter..
       internal static let enterKeyCombination = L10n.tr("Shared", "View.EnterKeyCombination")
       /// Setup
       internal static let keyCombinationNotSetup = L10n.tr("Shared", "View.KeyCombinationNotSetup")
@@ -257,7 +275,7 @@ internal enum L10n {
     internal enum SmartZoomView {
       /// Trigger when
       internal static let activationKeyCombinationTitle = L10n.tr("ZoomAndRotateSettings", "SmartZoomView.ActivationKeyCombinationTitle")
-      /// Double tap key combination to smart zoom
+      /// Reuse activator for "zoom and rotate"
       internal static let doubleTapToActivate = L10n.tr("ZoomAndRotateSettings", "SmartZoomView.DoubleTapToActivate")
       /// With trackpad, you can zoom in with double-tap. Now you can do the same with a key combination.
       internal static let introduction = L10n.tr("ZoomAndRotateSettings", "SmartZoomView.introduction")

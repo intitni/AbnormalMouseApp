@@ -76,10 +76,16 @@ final class DockSwipeController: OverrideController {
                 }
             })
             .store(in: &cancellables)
+
+        NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in self?.updateSettings() }
+            .store(in: &cancellables)
     }
 
     private func updateSettings() {
         tapHold.keyCombination = persisted.keyCombination
+        tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
     }
 }
 
@@ -169,7 +175,7 @@ extension DockSwipeController {
                 let absh = abs(horizontalAccumulation)
                 let absv = abs(verticalAccumulation)
                 if absh > 10 || absv > 10 {
-                    if absh > absv {
+                    if absh >= absv {
                         state = .shouldBegin(.horizontal)
                     } else {
                         state = .shouldBegin(.vertical)

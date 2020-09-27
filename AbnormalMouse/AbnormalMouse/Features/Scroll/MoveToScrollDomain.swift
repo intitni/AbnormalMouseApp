@@ -5,7 +5,23 @@ import Foundation
 
 enum MoveToScrollDomain: Domain {
     struct State: Equatable {
-        var activationKeyCombination: KeyCombination? = nil
+        struct MoveToScrollActivator: Equatable {
+            var keyCombination: KeyCombination? = nil
+            var numberOfTapsRequired = 1
+            var hasConflict = false
+        }
+
+        var moveToScrollActivator = MoveToScrollActivator()
+
+        struct HalfPageScrollActivator: Equatable {
+            var shouldUseMoveToScrollKeyCombination = true
+            var keyCombination: KeyCombination? = nil
+            var numberOfTapsRequired = 1
+            var hasConflict = false
+        }
+
+        var halfPageScrollActivator = HalfPageScrollActivator()
+
         var scrollSpeedMultiplier: Double = 4
         var swipeSpeedMultiplier: Double = 3
         var isInertiaEffectEnabled = false
@@ -14,56 +30,127 @@ enum MoveToScrollDomain: Domain {
     enum Action: Equatable {
         case appear
         case toggleInertiaEffect
-        case setActivationKeyCombination(KeyCombination?)
-        case clearActivationKeyCombination
+
+        case moveToScroll(MoveToScroll)
+        enum MoveToScroll: Equatable {
+            case setKeyCombination(KeyCombination?)
+            case setNumberOfTapsRequired(Int)
+            case clearKeyCombination
+        }
+
         case changeScrollSpeedMultiplierTo(Double)
         case changeSwipeSpeedMultiplierTo(Double)
-    }
 
-    struct Environment {
-        var persisted: Persisted.MoveToScroll
-    }
+        case halfPageScroll(HalfPageScroll)
+        enum HalfPageScroll: Equatable {
+            case toggleUseMoveToScrollKeyCombinationDoubleTap
+            case setKeyCombination(KeyCombination?)
+            case setNumberOfTapsRequired(Int)
+            case clearKeyCombination
+        }
 
-    static let reducer = Reducer { state, action, environment in
-        switch action {
-        case .appear:
-            state = State(from: environment.persisted)
-            return .none
-        case .toggleInertiaEffect:
-            state.isInertiaEffectEnabled.toggle()
-            let result = state.isInertiaEffectEnabled
-            return .fireAndForget {
-                environment.persisted.isInertiaEffectEnabled = result
-            }
-        case let .setActivationKeyCombination(combination):
-            state.activationKeyCombination = combination
-            let (keys, mouse) = combination?.raw ?? ([], nil)
-            return .fireAndForget {
-                environment.persisted.keyCombination = combination
-            }
-        case .clearActivationKeyCombination:
-            state.activationKeyCombination = nil
-            return .fireAndForget {
-                environment.persisted.keyCombination = nil
-            }
-        case let .changeScrollSpeedMultiplierTo(multilier):
-            state.scrollSpeedMultiplier = multilier
-            return .fireAndForget {
-                environment.persisted.scrollSpeedMultiplier = multilier
-            }
-        case let .changeSwipeSpeedMultiplierTo(multilier):
-            state.swipeSpeedMultiplier = multilier
-            return .fireAndForget {
-                environment.persisted.swipeSpeedMultiplier = multilier
-            }
+        case _internal(Internal)
+        enum Internal {
+            case checkConflict
         }
     }
+
+    typealias Environment = SystemEnvironment<_Environment>
+    struct _Environment {
+        var persisted: Persisted.MoveToScroll
+        var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
+    }
+
+    static let reducer = Reducer.combine(
+        Reducer { state, action, environment in
+            guard case let .moveToScroll(action) = action else { return .none }
+            switch action {
+            case let .setKeyCombination(combination):
+                state.moveToScrollActivator.keyCombination = combination
+                return .fireAndForget { environment.persisted.keyCombination = combination }
+            case let .setNumberOfTapsRequired(count):
+                let clamped = min(max(1, count), 3)
+                state.moveToScrollActivator.numberOfTapsRequired = clamped
+                return .fireAndForget {
+                    environment.persisted.numberOfTapsRequired = clamped
+                }
+            case .clearKeyCombination:
+                state.moveToScrollActivator.keyCombination = nil
+                return .fireAndForget { environment.persisted.keyCombination = nil }
+            }
+        },
+        Reducer { state, action, environment in
+            guard case let .halfPageScroll(action) = action else { return .none }
+            switch action {
+            case .toggleUseMoveToScrollKeyCombinationDoubleTap:
+                state.halfPageScrollActivator.shouldUseMoveToScrollKeyCombination.toggle()
+                let result = state.halfPageScrollActivator.shouldUseMoveToScrollKeyCombination
+                return .fireAndForget {
+                    environment.persisted.halfPageScroll.useMoveToScrollDoubleTap = result
+                }
+            case let .setKeyCombination(combination):
+                state.halfPageScrollActivator.keyCombination = combination
+                return .fireAndForget {
+                    environment.persisted.halfPageScroll.keyCombination = combination
+                }
+            case let .setNumberOfTapsRequired(count):
+                let clamped = min(max(1, count), 3)
+                state.halfPageScrollActivator.numberOfTapsRequired = clamped
+                return .fireAndForget {
+                    environment.persisted.halfPageScroll.numberOfTapsRequired = clamped
+                }
+            case .clearKeyCombination:
+                state.halfPageScrollActivator.keyCombination = nil
+                return .fireAndForget {
+                    environment.persisted.halfPageScroll.keyCombination = nil
+                }
+            }
+        },
+        Reducer { state, action, environment in
+            switch action {
+            case .appear:
+                state = State(from: environment.persisted)
+                return .init(value: ._internal(.checkConflict))
+            case .toggleInertiaEffect:
+                state.isInertiaEffectEnabled.toggle()
+                let result = state.isInertiaEffectEnabled
+                return .fireAndForget { environment.persisted.isInertiaEffectEnabled = result }
+            case let .moveToScroll(action):
+                return .init(value: ._internal(.checkConflict))
+            case let .changeScrollSpeedMultiplierTo(multilier):
+                state.scrollSpeedMultiplier = multilier
+                return .fireAndForget { environment.persisted.scrollSpeedMultiplier = multilier }
+            case let .changeSwipeSpeedMultiplierTo(multilier):
+                state.swipeSpeedMultiplier = multilier
+                return .fireAndForget { environment.persisted.swipeSpeedMultiplier = multilier }
+            case .halfPageScroll:
+                return .init(value: ._internal(.checkConflict))
+            case let ._internal(internalAction):
+                switch internalAction {
+                case .checkConflict:
+                    let check = environment.featureHasConflict
+                    state.moveToScrollActivator.hasConflict = check(.moveToScroll)
+                    state.halfPageScrollActivator.hasConflict = check(.halfPageScroll)
+                    return .none
+                }
+            }
+        }
+    )
 }
 
 extension MoveToScrollDomain.State {
     init(from persisted: Persisted.MoveToScroll) {
         self.init(
-            activationKeyCombination: persisted.keyCombination,
+            moveToScrollActivator: .init(
+                keyCombination: persisted.keyCombination,
+                numberOfTapsRequired: persisted.numberOfTapsRequired
+            ),
+            halfPageScrollActivator: .init(
+                shouldUseMoveToScrollKeyCombination: persisted.halfPageScroll
+                    .useMoveToScrollDoubleTap,
+                keyCombination: persisted.halfPageScroll.keyCombination,
+                numberOfTapsRequired: persisted.halfPageScroll.numberOfTapsRequired
+            ),
             scrollSpeedMultiplier: persisted.scrollSpeedMultiplier,
             swipeSpeedMultiplier: persisted.swipeSpeedMultiplier,
             isInertiaEffectEnabled: persisted.isInertiaEffectEnabled
@@ -76,9 +163,10 @@ extension Store where Action == MoveToScrollDomain.Action, State == MoveToScroll
         .init(
             initialState: .init(),
             reducer: MoveToScrollDomain.reducer,
-            environment: .init(
-                persisted: .init()
-            )
+            environment: .live(environment: .init(
+                persisted: .init(),
+                featureHasConflict: { _ in true }
+            ))
         )
     }
 }

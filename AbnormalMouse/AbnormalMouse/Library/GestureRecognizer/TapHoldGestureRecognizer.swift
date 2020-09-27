@@ -62,6 +62,7 @@ extension GestureRecognizers {
 
 extension GestureRecognizers.TapHold: Cancellable {
     func cancel() {
+        guard isHolding else { return }
         state = State()
         isHolding = false
     }
@@ -80,19 +81,19 @@ extension GestureRecognizers.TapHold {
         guard case let .key(target) = activator, code == target else { return .unchange }
 
         resetStateIfNeeded()
-        
+
         switch type {
         case .keyDown:
             guard combination.matchesFlags(event.flags) else { return .unchange }
-            guard !state.isDown else { return .discarded }
+            guard !state.isDown else { return shouldDiscardEvent ? .discarded : .unchange }
             down(code: code)
             state.isDown = true
-            return .discarded
+            return shouldDiscardEvent ? .discarded : .unchange
         case .keyUp:
             guard state.isDown else { return .unchange }
             up(code: code)
             state.isDown = false
-            return .discarded
+            return shouldDiscardEvent ? .discarded : .unchange
         default: return .unchange
         }
     }
@@ -107,19 +108,19 @@ extension GestureRecognizers.TapHold {
         guard case let .mouse(target) = activator, code == target else { return .unchange }
 
         resetStateIfNeeded()
-        
+
         switch type {
         case .otherMouseDown:
             down(code: code)
-            return .discarded
+            return shouldDiscardEvent ? .discarded : .unchange
         case .otherMouseUp:
             up(code: code)
-            return .discarded
+            return shouldDiscardEvent ? .discarded : .unchange
         default:
             return .unchange
         }
     }
-    
+
     private func resetStateIfNeeded() {
         if Date().timeIntervalSince1970 - state.lastButtonDownTimestamp >= duration + 0.2 {
             state.tapCount = 0
@@ -133,7 +134,7 @@ extension GestureRecognizers.TapHold {
         }
         state.tapCount += 1
         if state.tapCount == numberOfTapsRequired {
-            cancelOtherGestures()
+            cancelOtherGestures { $0 is GestureRecognizers.TapHold }
             isHolding = true
         } else {
             isHolding = false

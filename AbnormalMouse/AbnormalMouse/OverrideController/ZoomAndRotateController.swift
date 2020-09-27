@@ -27,7 +27,7 @@ final class ZoomAndRotateController: OverrideController {
 
         var zoomGestureDirection: MoveMouseDirection = .none
         var rotateGestureDirection: MoveMouseDirection = .none
-        
+
         var zoomThreshold = 0
         var rotateThreshold = 0
     }
@@ -107,11 +107,12 @@ final class ZoomAndRotateController: OverrideController {
         state.zoomGestureDirection = persisted.zoomGestureDirection
         state.rotateGestureDirection = persisted.rotateGestureDirection
         tapHold.keyCombination = persisted.keyCombination
+        tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
         if persisted.smartZoom.useZoomAndRotateDoubleTap {
-            tap.numberOfTapsRequired = 2
+            tap.numberOfTapsRequired = persisted.numberOfTapsRequired + 1
             tap.keyCombination = persisted.keyCombination
         } else {
-            tap.numberOfTapsRequired = 1
+            tap.numberOfTapsRequired = persisted.smartZoom.numberOfTapsRequired
             tap.keyCombination = persisted.smartZoom.keyCombination
         }
     }
@@ -135,7 +136,7 @@ extension ZoomAndRotateController {
         }
         let zoom = extractValue(direction: state.zoomGestureDirection) * 3
         let rotate = extractValue(direction: state.rotateGestureDirection)
-        
+
         Tool.advanceState(
             &state.gestureState,
             isActive: isActive,
@@ -157,7 +158,6 @@ extension ZoomAndRotateController {
         case .mayBegin:
             state.zoomThreshold += abs(zoom)
             state.rotateThreshold += abs(rotate)
-            break
         case let .begin(type):
             tapHold.consume()
             switch type {
@@ -210,10 +210,14 @@ extension ZoomAndRotateController {
                 guard isActive else { return }
                 state = .mayBegin
             case .mayBegin:
-                if abs(zoomThreshold) > 40 {
-                    state = .begin(.zoom)
-                } else if abs(rotateThreshold) > 40 {
-                    state = .begin(.rotate)
+                let absZoom = abs(zoomThreshold)
+                let absRotate = abs(rotateThreshold)
+                if absZoom > 10 || absRotate > 10 {
+                    if absZoom >= absRotate {
+                        state = .begin(.zoom)
+                    } else {
+                        state = .begin(.rotate)
+                    }
                 }
                 endIfNeeded(nil)
             case let .begin(type):

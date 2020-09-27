@@ -54,12 +54,11 @@ enum GeneralDomain: Domain {
         case activation(ActivationDomain.Action)
     }
 
-    struct Environment {
+    typealias Environment = SystemEnvironment<_Environment>
+    struct _Environment {
         let persisted: Persisted.General
         let purchaseManager: PurchaseManagerType
         let updater: SUUpdater?
-        let openURL: (URL) -> Void
-        let quitApp: () -> Void
     }
 
     enum CancellableKeys: Hashable {
@@ -198,7 +197,9 @@ enum GeneralDomain: Domain {
             state: \.activationState,
             action: /Action.activation,
             environment: {
-                ActivationDomain.Environment(purchaseManager: $0.purchaseManager)
+                $0.map {
+                    .init(purchaseManager: $0.purchaseManager)
+                }
             }
         )
     )
@@ -215,12 +216,10 @@ extension Store where State == GeneralDomain.State, Action == GeneralDomain.Acti
     static let testStore: GeneralDomain.Store = .init(
         initialState: .init(),
         reducer: GeneralDomain.reducer,
-        environment: .init(
+        environment: .live(environment: .init(
             persisted: .init(),
             purchaseManager: FakePurchaseManager(),
-            updater: SUUpdater.shared(),
-            openURL: { print($0) },
-            quitApp: { print("Quit") }
-        )
+            updater: SUUpdater.shared()
+        ))
     )
 }

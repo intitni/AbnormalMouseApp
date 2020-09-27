@@ -10,6 +10,8 @@
 		131367D52509086500BA888C /* DockSwipeDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131367D42509086500BA888C /* DockSwipeDomain.swift */; };
 		131367D72509087200BA888C /* DockSwipeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131367D62509087200BA888C /* DockSwipeSettingsView.swift */; };
 		131367DC25090AA800BA888C /* DockSwipeSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 131367DE25090AA800BA888C /* DockSwipeSettings.strings */; };
+		1351534C2520EC9200EEEBB4 /* DockSwipeDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1351534B2520EC9200EEEBB4 /* DockSwipeDomainTests.swift */; };
+		135153512520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135153502520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift */; };
 		136E6D812502A7DA00F540B3 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E6D802502A7DA00F540B3 /* License.swift */; };
 		136E6D8625033AB000F540B3 /* CGEventOverride in Frameworks */ = {isa = PBXBuildFile; productRef = 136E6D8525033AB000F540B3 /* CGEventOverride */; };
 		137477A9251A324F00451154 /* DockSwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137477A8251A324F00451154 /* DockSwipeController.swift */; };
@@ -27,6 +29,7 @@
 		13C51ABD249BA43B007881A5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABB249BA2F3007881A5 /* Style.swift */; };
 		13C51ABF249E5813007881A5 /* MoveMouseDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */; };
 		526678DE369BE036D03DF016 /* Pods_AbnormalMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */; };
+		840E3297251D8FD400FDD1B3 /* ActivatorConflictChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */; };
 		842B147F24A9C3C20063CDE0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 842B148124A9C3C20063CDE0 /* InfoPlist.strings */; };
 		842B14BA24A9CC350063CDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B14B924A9CC350063CDE0 /* AppDelegate.swift */; };
 		842B14C124A9CC360063CDE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842B14C024A9CC360063CDE0 /* Preview Assets.xcassets */; };
@@ -50,6 +53,7 @@
 		84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84680E2F24D2C6D800DFFBE1 /* AdvancedDomain.swift */; };
 		84680E3224D2C6E100DFFBE1 /* AdvancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */; };
 		846CA1B924A9DBD00084F753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846CA1B824A9DBD00084F753 /* Main.storyboard */; };
+		848B1249251C463200A53F75 /* SettingsKeyCombinationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */; };
 		848F0BBC24D509EC00F9F5CD /* MainDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F0BBB24D509EC00F9F5CD /* MainDomain.swift */; };
 		8493D7F524C7CCE000BD2A17 /* Advanced.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8493D7F724C7CCE000BD2A17 /* Advanced.strings */; };
 		849F4F8324BD9DEC00EF6512 /* MoveApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F4F8224BD9DEC00EF6512 /* MoveApplication.swift */; };
@@ -63,6 +67,10 @@
 		84AA16612492079100D2C34E /* ScrollSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84AA16632492079100D2C34E /* ScrollSettings.strings */; };
 		84AA166D2492293B00D2C34E /* ZoomAndRotateSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84AA166F2492293B00D2C34E /* ZoomAndRotateSettings.strings */; };
 		84AEF73624D3CA7900DFF5D3 /* Effect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AEF73524D3CA7900DFF5D3 /* Effect+Extensions.swift */; };
+		84B093A725203DC6007BA556 /* SettingsTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B093A625203DC6007BA556 /* SettingsTipsView.swift */; };
+		84B093AC25203DF8007BA556 /* SettingsCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B093AB25203DF8007BA556 /* SettingsCheckbox.swift */; };
+		84B093B125203E19007BA556 /* SettingsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B093B025203E19007BA556 /* SettingsPicker.swift */; };
+		84B093B625203E3B007BA556 /* SettingsSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B093B525203E3B007BA556 /* SettingsSlider.swift */; };
 		84B8C1E924D262D600BF3378 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8C1E824D262D600BF3378 /* GestureRecognizer.swift */; };
 		84C8EAE72489D25A00C53CFD /* ZoomAndRotateSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAE62489D25A00C53CFD /* ZoomAndRotateSettingsView.swift */; };
 		84C8EAE92489F41000C53CFD /* SettingsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAE82489F41000C53CFD /* SettingsPageView.swift */; };
@@ -115,6 +123,8 @@
 		131367D62509087200BA888C /* DockSwipeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeSettingsView.swift; sourceTree = "<group>"; };
 		131367DD25090AA800BA888C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DockSwipeSettings.strings"; sourceTree = "<group>"; };
 		131367DF25090AA900BA888C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DockSwipeSettings.strings; sourceTree = "<group>"; };
+		1351534B2520EC9200EEEBB4 /* DockSwipeDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeDomainTests.swift; sourceTree = "<group>"; };
+		135153502520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatorConflictCheckerTests.swift; sourceTree = "<group>"; };
 		136E6D802502A7DA00F540B3 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		137477A8251A324F00451154 /* DockSwipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeController.swift; sourceTree = "<group>"; };
 		1383615F2487E70500E76F41 /* AbnormalMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbnormalMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +149,7 @@
 		35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbnormalMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E99A3A881BF298122F310CD /* Pods-AbnormalMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.release.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.release.xcconfig"; sourceTree = "<group>"; };
 		6B229038B0F13F1DAD33760D /* Pods-AbnormalMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.debug.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.debug.xcconfig"; sourceTree = "<group>"; };
+		840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatorConflictChecker.swift; sourceTree = "<group>"; };
 		842B148024A9C3C20063CDE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		842B148224A9C3C40063CDE0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbnormalMouseLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +177,7 @@
 		84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedView.swift; sourceTree = "<group>"; };
 		846CA1B824A9DBD00084F753 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		846DA82D24AC5F4100039E60 /* CGEventExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CGEventExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeyCombinationInput.swift; sourceTree = "<group>"; };
 		848F0BBB24D509EC00F9F5CD /* MainDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDomain.swift; sourceTree = "<group>"; };
 		8493D7F624C7CCE000BD2A17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Advanced.strings; sourceTree = "<group>"; };
 		8493D7F824C7CE1C00BD2A17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Advanced.strings"; sourceTree = "<group>"; };
@@ -186,6 +198,10 @@
 		84AA166E2492293B00D2C34E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ZoomAndRotateSettings.strings; sourceTree = "<group>"; };
 		84AA16702492293E00D2C34E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ZoomAndRotateSettings.strings"; sourceTree = "<group>"; };
 		84AEF73524D3CA7900DFF5D3 /* Effect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effect+Extensions.swift"; sourceTree = "<group>"; };
+		84B093A625203DC6007BA556 /* SettingsTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTipsView.swift; sourceTree = "<group>"; };
+		84B093AB25203DF8007BA556 /* SettingsCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCheckbox.swift; sourceTree = "<group>"; };
+		84B093B025203E19007BA556 /* SettingsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPicker.swift; sourceTree = "<group>"; };
+		84B093B525203E3B007BA556 /* SettingsSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSlider.swift; sourceTree = "<group>"; };
 		84B8C1E824D262D600BF3378 /* GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
 		84C8EAE62489D25A00C53CFD /* ZoomAndRotateSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndRotateSettingsView.swift; sourceTree = "<group>"; };
 		84C8EAE82489F41000C53CFD /* SettingsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageView.swift; sourceTree = "<group>"; };
@@ -314,6 +330,8 @@
 				1383617A2487E70700E76F41 /* Info.plist */,
 				138361782487E70700E76F41 /* MoveToScrollDomainTests.swift */,
 				846403B424AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift */,
+				1351534B2520EC9200EEEBB4 /* DockSwipeDomainTests.swift */,
+				135153502520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift */,
 			);
 			path = AbnormalMouseTests;
 			sourceTree = "<group>";
@@ -365,8 +383,6 @@
 		84399B1D2488CCCE00970CFF /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				84C8EAE82489F41000C53CFD /* SettingsPageView.swift */,
-				84C8EB01248B770D00C53CFD /* KeyboardEventChecker.swift */,
 				84AEF73724D3CAA500DFF5D3 /* Main */,
 				84E49411248DE4260074540F /* Scroll */,
 				84E49417248DE49C0074540F /* ZoomAndRotate */,
@@ -375,6 +391,7 @@
 				84680E2E24D2C6BD00DFFBE1 /* Advanced */,
 				13864A06248E945800704C21 /* General */,
 				84D83A9524B6B5EA0015E30C /* Activation */,
+				848B1247251C45FF00A53F75 /* SharedViews */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -397,6 +414,20 @@
 				84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */,
 			);
 			path = Advanced;
+			sourceTree = "<group>";
+		};
+		848B1247251C45FF00A53F75 /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+				84C8EAE82489F41000C53CFD /* SettingsPageView.swift */,
+				84C8EB01248B770D00C53CFD /* KeyboardEventChecker.swift */,
+				848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */,
+				84B093A625203DC6007BA556 /* SettingsTipsView.swift */,
+				84B093AB25203DF8007BA556 /* SettingsCheckbox.swift */,
+				84B093B025203E19007BA556 /* SettingsPicker.swift */,
+				84B093B525203E3B007BA556 /* SettingsSlider.swift */,
+			);
+			path = SharedViews;
 			sourceTree = "<group>";
 		};
 		84AEF73124D3C9E100DFF5D3 /* Persistency */ = {
@@ -479,6 +510,7 @@
 				84426AF124B01C1E006CF972 /* TipsViewBuilder.swift */,
 				8463B80B24C975C7008D7988 /* EventThrottler.swift */,
 				136E6D802502A7DA00F540B3 /* License.swift */,
+				840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -564,6 +596,7 @@
 			buildConfigurationList = 1383617D2487E70700E76F41 /* Build configuration list for PBXNativeTarget "AbnormalMouse" */;
 			buildPhases = (
 				8447845B62469B04C9FA7CFE /* [CP] Check Pods Manifest.lock */,
+				84CD3155251C71D20020D15C /* ShellScript */,
 				84E4942E248E2A020074540F /* SwiftGen */,
 				1383615B2487E70500E76F41 /* Sources */,
 				1383615C2487E70500E76F41 /* Frameworks */,
@@ -753,6 +786,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		84CD3155251C71D20020D15C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
+		};
 		84E4942E248E2A020074540F /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -780,12 +830,14 @@
 			files = (
 				138361842487E75800E76F41 /* MoveToScrollController.swift in Sources */,
 				84C8EAE92489F41000C53CFD /* SettingsPageView.swift in Sources */,
+				840E3297251D8FD400FDD1B3 /* ActivatorConflictChecker.swift in Sources */,
 				84E49433248E2A770074540F /* Assets.swift in Sources */,
 				84399B142488988900970CFF /* UserDefault.swift in Sources */,
 				84D83A9724B6B61A0015E30C /* ActivationDomain.swift in Sources */,
 				84C8EAF0248A2C7800C53CFD /* App.swift in Sources */,
 				845A29EF24D11F9D0086477D /* TapGestureRecognizer.swift in Sources */,
 				848F0BBC24D509EC00F9F5CD /* MainDomain.swift in Sources */,
+				848B1249251C463200A53F75 /* SettingsKeyCombinationInput.swift in Sources */,
 				84E49413248DE4400074540F /* MoveToScrollDomain.swift in Sources */,
 				84C8EAFB248B72B500C53CFD /* KeyboardCode+Name.swift in Sources */,
 				136E6D812502A7DA00F540B3 /* License.swift in Sources */,
@@ -806,6 +858,7 @@
 				84426AF224B01C1E006CF972 /* TipsViewBuilder.swift in Sources */,
 				13864A0A248E947900704C21 /* GeneralView.swift in Sources */,
 				842B14CF24A9CFA80063CDE0 /* LaunchAtLogin.swift in Sources */,
+				84B093B125203E19007BA556 /* SettingsPicker.swift in Sources */,
 				84C8EB02248B770D00C53CFD /* KeyboardEventChecker.swift in Sources */,
 				84A574AF248F6AC500BC2380 /* OverrideController.swift in Sources */,
 				138361862487E76B00E76F41 /* EmulateEventPoster.swift in Sources */,
@@ -815,12 +868,15 @@
 				84A574AD248F60C400BC2380 /* EventSequeceController.swift in Sources */,
 				84399B212488CCF100970CFF /* NeedAccessabilityView.swift in Sources */,
 				84C8EAE72489D25A00C53CFD /* ZoomAndRotateSettingsView.swift in Sources */,
+				84B093B625203E3B007BA556 /* SettingsSlider.swift in Sources */,
 				13C51ABD249BA43B007881A5 /* Style.swift in Sources */,
 				84AA16572491D39B00D2C34E /* ZoomAndRotateDomain.swift in Sources */,
+				84B093A725203DC6007BA556 /* SettingsTipsView.swift in Sources */,
 				84E4941A248DE4BA0074540F /* NeedAccessabilityDomain.swift in Sources */,
 				845A29F324D152900086477D /* MouseMovementGestureRecognizer.swift in Sources */,
 				84399B16248898C300970CFF /* Persisted.swift in Sources */,
 				84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */,
+				84B093AC25203DF8007BA556 /* SettingsCheckbox.swift in Sources */,
 				137477A9251A324F00451154 /* DockSwipeController.swift in Sources */,
 				84680E3224D2C6E100DFFBE1 /* AdvancedView.swift in Sources */,
 				84C8EAFD248B72BC00C53CFD /* MouseCode+Name.swift in Sources */,
@@ -835,6 +891,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				138361792487E70700E76F41 /* MoveToScrollDomainTests.swift in Sources */,
+				135153512520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift in Sources */,
+				1351534C2520EC9200EEEBB4 /* DockSwipeDomainTests.swift in Sources */,
 				846403B524AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -55,14 +55,22 @@ private struct ZoomAndRotateView: View {
     }
 
     private var activationCombinationSetter: some View {
-        return WithViewStore(
-            store.scope(state: \.zoomAndRotateActivationKeyCombination)
+        WithViewStore(
+            store.scope(
+                state: \.zoomAndRotateActivator,
+                action: ZoomAndRotateDomain.Action.zoomAndRotate
+            )
         ) { viewStore in
             SettingsKeyCombinationInput(
                 keyCombination: viewStore.binding(
-                    get: { $0 },
-                    send: { .setZoomAndRotateActivationKeyCombination($0) }
+                    get: { $0.keyCombination },
+                    send: { .setKeyCombination($0) }
                 ),
+                numberOfTapsRequired: viewStore.binding(
+                    get: { $0.numberOfTapsRequired },
+                    send: { .setNumberOfTapsRequired($0) }
+                ),
+                hasConflict: viewStore.hasConflict,
                 title: { Text(_L10n.View.activationKeyCombinationTitle) }
             )
         }
@@ -141,11 +149,14 @@ private struct SmartZoomView: View {
 
     private var reuseCombinationToggle: some View {
         WithViewStore(
-            store.scope(state: \.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap)
+            store.scope(
+                state: \.smartZoomActivator.shouldUseZoomAndRotateKeyCombinationDoubleTap,
+                action: ZoomAndRotateDomain.Action.smartZoom
+            )
         ) { viewStore in
             SettingsCheckbox(isOn: viewStore.binding(
                 get: { $0 },
-                send: { _ in .toggleSmartZoomUseZoomAndRotateKeyCombinationDoubleTap }
+                send: { _ in .toggleUseZoomAndRotateKeyCombinationDoubleTap }
             )) {
                 Text(_L10n.View.doubleTapToActivate)
             }
@@ -160,13 +171,23 @@ private struct SmartZoomView: View {
     }
 
     private var activationCombinationSetter: some View {
-        WithViewStore(store) { viewStore in
-            if !viewStore.shouldSmartZoomUseZoomAndRotateKeyCombinationDoubleTap {
+        WithViewStore(
+            store.scope(
+                state: \.smartZoomActivator,
+                action: ZoomAndRotateDomain.Action.smartZoom
+            )
+        ) { viewStore in
+            if !viewStore.shouldUseZoomAndRotateKeyCombinationDoubleTap {
                 SettingsKeyCombinationInput(
                     keyCombination: viewStore.binding(
-                        get: { $0.smartZoomActivationKeyCombination },
-                        send: { .setSmartZoomActivationKeyCombination($0) }
+                        get: { $0.keyCombination },
+                        send: { .setKeyCombination($0) }
                     ),
+                    numberOfTapsRequired: viewStore.binding(
+                        get: { $0.numberOfTapsRequired },
+                        send: { .setNumberOfTapsRequired($0) }
+                    ),
+                    hasConflict: viewStore.hasConflict,
                     title: { Text(_L10n.View.activationKeyCombinationTitle) }
                 )
 
@@ -198,10 +219,10 @@ struct AttributedLabel: NSViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator()
+        Coordinator()
     }
 
-    func makeNSView(context: Context) -> NSTextView {
+    func makeNSView(context _: Context) -> NSTextView {
         let it = NSTextView()
         it.isEditable = false
         it.backgroundColor = .clear
@@ -211,7 +232,7 @@ struct AttributedLabel: NSViewRepresentable {
         return it
     }
 
-    func updateNSView(_ nsView: NSTextView, context: Context) {
+    func updateNSView(_ nsView: NSTextView, context _: Context) {
         nsView.textStorage?.setAttributedString(attributedString)
     }
 }
