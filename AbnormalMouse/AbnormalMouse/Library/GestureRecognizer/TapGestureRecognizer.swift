@@ -144,7 +144,6 @@ extension GestureRecognizers.Tap {
             if state.tapCount == numberOfTapsRequired - 1 {
                 delayedEvent = .init(block: { [weak self] in
                     guard let self = self else { return }
-                    self.cancelOtherGestures()
                     self.subject.send(())
                     self.state = State()
                 })

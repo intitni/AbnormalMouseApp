@@ -62,6 +62,7 @@ extension GestureRecognizers {
 
 extension GestureRecognizers.TapHold: Cancellable {
     func cancel() {
+        guard isHolding else { return }
         state = State()
         isHolding = false
     }
@@ -133,7 +134,7 @@ extension GestureRecognizers.TapHold {
         }
         state.tapCount += 1
         if state.tapCount == numberOfTapsRequired {
-            cancelOtherGestures()
+            cancelOtherGestures { $0 is GestureRecognizers.TapHold }
             isHolding = true
         } else {
             isHolding = false

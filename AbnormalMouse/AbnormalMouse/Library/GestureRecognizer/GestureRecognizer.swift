@@ -3,19 +3,23 @@ import Combine
 
 enum GestureRecognizers {}
 
+private var allGestureRecognizers = [GestureRecognizer]()
+
 class GestureRecognizer {
-    private var gesturesThatForceToFail = [Cancellable & GestureRecognizer]()
+    init() {
+        allGestureRecognizers.append(self)
+    }
 
     final var shouldDiscardEvent: Bool {
         NSWorkspace.shared.frontmostApplication?.bundleIdentifier != "com.intii.AbnormalMouse"
     }
 
-    /// When this gesture is actively running, force to fail the target gesture recognizer.
-    final func force(cancel otherGestureRecognizer: Cancellable & GestureRecognizer) {
-        gesturesThatForceToFail.append(otherGestureRecognizer)
-    }
-
-    final func cancelOtherGestures() {
-        gesturesThatForceToFail.forEach { $0.cancel() }
+    final func cancelOtherGestures(where condition: (GestureRecognizer) -> Bool = { _ in true }) {
+        allGestureRecognizers.forEach {
+            guard $0 !== self else { return }
+            guard condition($0) else { return }
+            guard let cancellable = $0 as? Cancellable else { return }
+            cancellable.cancel()
+        }
     }
 }
