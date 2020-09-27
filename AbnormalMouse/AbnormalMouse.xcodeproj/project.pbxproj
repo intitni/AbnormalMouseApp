@@ -65,6 +65,10 @@
 		84AA16612492079100D2C34E /* ScrollSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84AA16632492079100D2C34E /* ScrollSettings.strings */; };
 		84AA166D2492293B00D2C34E /* ZoomAndRotateSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84AA166F2492293B00D2C34E /* ZoomAndRotateSettings.strings */; };
 		84AEF73624D3CA7900DFF5D3 /* Effect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AEF73524D3CA7900DFF5D3 /* Effect+Extensions.swift */; };
+		84B093A725203DC6007BA556 /* SettingsTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B093A625203DC6007BA556 /* SettingsTipsView.swift */; };
+		84B093AC25203DF8007BA556 /* SettingsCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B093AB25203DF8007BA556 /* SettingsCheckbox.swift */; };
+		84B093B125203E19007BA556 /* SettingsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B093B025203E19007BA556 /* SettingsPicker.swift */; };
+		84B093B625203E3B007BA556 /* SettingsSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B093B525203E3B007BA556 /* SettingsSlider.swift */; };
 		84B8C1E924D262D600BF3378 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8C1E824D262D600BF3378 /* GestureRecognizer.swift */; };
 		84C8EAE72489D25A00C53CFD /* ZoomAndRotateSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAE62489D25A00C53CFD /* ZoomAndRotateSettingsView.swift */; };
 		84C8EAE92489F41000C53CFD /* SettingsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAE82489F41000C53CFD /* SettingsPageView.swift */; };
@@ -190,6 +194,10 @@
 		84AA166E2492293B00D2C34E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ZoomAndRotateSettings.strings; sourceTree = "<group>"; };
 		84AA16702492293E00D2C34E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ZoomAndRotateSettings.strings"; sourceTree = "<group>"; };
 		84AEF73524D3CA7900DFF5D3 /* Effect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effect+Extensions.swift"; sourceTree = "<group>"; };
+		84B093A625203DC6007BA556 /* SettingsTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTipsView.swift; sourceTree = "<group>"; };
+		84B093AB25203DF8007BA556 /* SettingsCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCheckbox.swift; sourceTree = "<group>"; };
+		84B093B025203E19007BA556 /* SettingsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPicker.swift; sourceTree = "<group>"; };
+		84B093B525203E3B007BA556 /* SettingsSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSlider.swift; sourceTree = "<group>"; };
 		84B8C1E824D262D600BF3378 /* GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
 		84C8EAE62489D25A00C53CFD /* ZoomAndRotateSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndRotateSettingsView.swift; sourceTree = "<group>"; };
 		84C8EAE82489F41000C53CFD /* SettingsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageView.swift; sourceTree = "<group>"; };
@@ -408,6 +416,10 @@
 				84C8EAE82489F41000C53CFD /* SettingsPageView.swift */,
 				84C8EB01248B770D00C53CFD /* KeyboardEventChecker.swift */,
 				848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */,
+				84B093A625203DC6007BA556 /* SettingsTipsView.swift */,
+				84B093AB25203DF8007BA556 /* SettingsCheckbox.swift */,
+				84B093B025203E19007BA556 /* SettingsPicker.swift */,
+				84B093B525203E3B007BA556 /* SettingsSlider.swift */,
 			);
 			path = SharedViews;
 			sourceTree = "<group>";
@@ -840,6 +852,7 @@
 				84426AF224B01C1E006CF972 /* TipsViewBuilder.swift in Sources */,
 				13864A0A248E947900704C21 /* GeneralView.swift in Sources */,
 				842B14CF24A9CFA80063CDE0 /* LaunchAtLogin.swift in Sources */,
+				84B093B125203E19007BA556 /* SettingsPicker.swift in Sources */,
 				84C8EB02248B770D00C53CFD /* KeyboardEventChecker.swift in Sources */,
 				84A574AF248F6AC500BC2380 /* OverrideController.swift in Sources */,
 				138361862487E76B00E76F41 /* EmulateEventPoster.swift in Sources */,
@@ -849,12 +862,15 @@
 				84A574AD248F60C400BC2380 /* EventSequeceController.swift in Sources */,
 				84399B212488CCF100970CFF /* NeedAccessabilityView.swift in Sources */,
 				84C8EAE72489D25A00C53CFD /* ZoomAndRotateSettingsView.swift in Sources */,
+				84B093B625203E3B007BA556 /* SettingsSlider.swift in Sources */,
 				13C51ABD249BA43B007881A5 /* Style.swift in Sources */,
 				84AA16572491D39B00D2C34E /* ZoomAndRotateDomain.swift in Sources */,
+				84B093A725203DC6007BA556 /* SettingsTipsView.swift in Sources */,
 				84E4941A248DE4BA0074540F /* NeedAccessabilityDomain.swift in Sources */,
 				845A29F324D152900086477D /* MouseMovementGestureRecognizer.swift in Sources */,
 				84399B16248898C300970CFF /* Persisted.swift in Sources */,
 				84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */,
+				84B093AC25203DF8007BA556 /* SettingsCheckbox.swift in Sources */,
 				137477A9251A324F00451154 /* DockSwipeController.swift in Sources */,
 				84680E3224D2C6E100DFFBE1 /* AdvancedView.swift in Sources */,
 				84C8EAFD248B72BC00C53CFD /* MouseCode+Name.swift in Sources */,
