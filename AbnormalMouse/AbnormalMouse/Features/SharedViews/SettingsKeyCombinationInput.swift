@@ -21,57 +21,19 @@ struct SettingsKeyCombinationInput<Title: View>: View {
         self.title = title()
     }
 
-    func toggleBinding(modifier: KeyDown) -> Binding<Bool> {
-        .init(
-            get: {
-                keyCombination?.modifiers.contains(modifier) ?? false
-            },
-            set: { insert in
-                guard let keyCombination = keyCombination else { return }
-                var modifiers = Set(keyCombination.modifiers)
-                if insert {
-                    modifiers.insert(modifier)
-                } else {
-                    modifiers.remove(modifier)
-                }
-                self.keyCombination = .init(
-                    modifiers: Array(modifiers),
-                    activator: keyCombination.activator
-                )
-            }
-        )
-    }
-
     var body: some View {
         HStack(alignment: .center) {
             title
                 .asWidgetTitle()
 
             HStack(spacing: 1) {
-                Toggle(
-                    isOn: toggleBinding(modifier: .key(KeyboardCode.shift.rawValue)),
-                    label: { Text("⇧") }
-                )
-                .toggleStyle(ModifierToggleStyle())
-                .padding(.leading, 1)
+                modifierToggle(.shift).padding(.leading, 1)
 
-                Toggle(
-                    isOn: toggleBinding(modifier: .key(KeyboardCode.control.rawValue)),
-                    label: { Text("⌃") }
-                )
-                .toggleStyle(ModifierToggleStyle())
+                modifierToggle(.control)
 
-                Toggle(
-                    isOn: toggleBinding(modifier: .key(KeyboardCode.option.rawValue)),
-                    label: { Text("⌥") }
-                )
-                .toggleStyle(ModifierToggleStyle())
+                modifierToggle(.option)
 
-                Toggle(
-                    isOn: toggleBinding(modifier: .key(KeyboardCode.command.rawValue)),
-                    label: { Text("⌘") }
-                )
-                .toggleStyle(ModifierToggleStyle())
+                modifierToggle(.command)
 
                 editKeyCombinationButton {
                     if isEditing {
@@ -86,41 +48,96 @@ struct SettingsKeyCombinationInput<Title: View>: View {
                     }
                 }
 
-                Button(
-                    action: {
-                        let next = numberOfTapsRequired + 1
-                        if next > 3 {
-                            numberOfTapsRequired = 1
-                        } else {
-                            numberOfTapsRequired = next
-                        }
-                    },
-                    label: {
-                        Text("\(numberOfTapsRequired)×")
-                    }
-                ).buttonStyle(ModifierButtonStyle())
+                numberOfTapsButton()
             }
             .cornerRadius(4)
             .clipped()
             .frame(height: 22)
             .roundedCornerBackground(
                 cornerRadius: 4,
-                fillColor: Color(.separatorColor),
-                strokeColor: Color(.gridColor),
-                strokeWidth: 1
+                fillColor: Color(.separatorColor)
+            )
+            .overlay(
+                GeometryReader { proxy in
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color(.gridColor))
+                        .frame(width: proxy.size.width, height: proxy.size.height)
+                }
             )
 
             if hasConflict {
-                Text("conflict").foregroundColor(Color.red)
+                Text(L10n.Shared.View.activatorConflict)
+                    .foregroundColor(Color.red)
             }
         }
+    }
+}
+
+// MARK: - Subviews
+
+extension SettingsKeyCombinationInput {
+    private func modifierToggle(_ code: KeyboardCode) -> some View {
+        func toggleBinding() -> Binding<Bool> {
+            let keyDown = KeyDown.key(code.rawValue)
+            return .init(
+                get: {
+                    keyCombination?.modifiers.contains(keyDown) ?? false
+                },
+                set: { insert in
+                    guard let keyCombination = keyCombination else { return }
+                    var modifiers = Set(keyCombination.modifiers)
+                    if insert {
+                        modifiers.insert(keyDown)
+                    } else {
+                        modifiers.remove(keyDown)
+                    }
+                    self.keyCombination = .init(
+                        modifiers: Array(modifiers),
+                        activator: keyCombination.activator
+                    )
+                }
+            )
+        }
+
+        return Toggle(
+            isOn: toggleBinding(),
+            label: { Text(code.name) }
+        )
+        .toggleStyle(ModifierToggleStyle())
+        .frame(maxWidth: 30, maxHeight: .infinity, alignment: .center)
     }
 
     private func editKeyCombinationButton<Label: View>(
         @ViewBuilder label: () -> Label
     ) -> some View {
-        label()
-            .frame(width: 100, height: 21)
+        var clearButton: some View {
+            Button(action: {
+                self.keyCombination = nil
+                self.isEditing = false
+            }) {
+                Path {
+                    $0.move(to: .init(x: 4, y: 4))
+                    $0.addLine(to: .init(x: 10, y: 10))
+                    $0.move(to: .init(x: 4, y: 10))
+                    $0.addLine(to: .init(x: 10, y: 4))
+                }
+                .stroke(style: StrokeStyle(lineWidth: 1, lineCap: .round))
+                .foregroundColor(Color(NSColor.controlBackgroundColor))
+                .frame(width: 14, height: 14)
+                .circleBackground(
+                    fillColor: isHovering
+                        ? Color(NSColor.secondaryLabelColor)
+                        : .clear
+                )
+            }
+            .buttonStyle(PlainButtonStyle())
+            .animation(Animation.linear(duration: 0.1))
+            .padding(.trailing, 3)
+            .padding(.top, 1)
+        }
+
+        return label()
+            .frame(minWidth: 100, idealWidth: 100, maxHeight: .infinity, alignment: .center)
             .background(Color(.controlBackgroundColor))
             .overlay(
                 KeyEventHandling(
@@ -138,26 +155,22 @@ struct SettingsKeyCombinationInput<Title: View>: View {
             .overlay(clearButton, alignment: .trailing)
     }
 
-    private var clearButton: some View {
-        Button(action: {
-            self.keyCombination = nil
-            self.isEditing = false
-        }) {
-            Path {
-                $0.move(to: .init(x: 4, y: 4))
-                $0.addLine(to: .init(x: 10, y: 10))
-                $0.move(to: .init(x: 4, y: 10))
-                $0.addLine(to: .init(x: 10, y: 4))
+    private func numberOfTapsButton() -> some View {
+        Button(
+            action: {
+                let next = numberOfTapsRequired + 1
+                if next > 3 {
+                    numberOfTapsRequired = 1
+                } else {
+                    numberOfTapsRequired = next
+                }
+            },
+            label: {
+                Text("×\(numberOfTapsRequired)")
             }
-            .stroke(style: StrokeStyle(lineWidth: 1, lineCap: .round))
-            .foregroundColor(Color(NSColor.controlBackgroundColor))
-            .frame(width: 14, height: 14)
-            .circleBackground(fillColor: isHovering ? Color(NSColor.secondaryLabelColor) : .clear)
-        }
-        .buttonStyle(PlainButtonStyle())
-        .animation(Animation.linear(duration: 0.1))
-        .padding(.trailing, 3)
-        .padding(.top, 1)
+        )
+        .buttonStyle(ModifierButtonStyle())
+        .frame(maxWidth: 30, maxHeight: .infinity, alignment: .center)
     }
 }
 
@@ -166,7 +179,7 @@ struct SettingsKeyCombinationInput<Title: View>: View {
 private struct ModifierToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(width: 30, height: 21, alignment: .center)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .foregroundColor(
                 configuration.isOn
                     ? Color(.controlAccentColor)
@@ -179,21 +192,21 @@ private struct ModifierToggleStyle: ToggleStyle {
             )
             .overlay(
                 GeometryReader { proxy in
-                    configuration.isOn
-                        ? AnyView(
-                            Path(CGRect(
-                                x: 0,
-                                y: proxy.size.height - 2,
-                                width: proxy.size.width,
-                                height: 2
-                            ))
-                                .fill(Color(.controlAccentColor))
+                    Path(CGRect(
+                        x: 0,
+                        y: proxy.size.height - 2,
+                        width: proxy.size.width,
+                        height: 2
+                    ))
+                        .fill(Color(.controlAccentColor))
+                        .opacity(
+                            configuration.isOn
+                                ? 1
+                                : 0
                         )
-                        : AnyView(EmptyView())
+                        .animation(Animation.linear(duration: 0.1))
                 }
-                .disabled(true)
             )
-            .animation(.linear)
             .onTapGesture { configuration.isOn.toggle() }
     }
 }
@@ -201,9 +214,10 @@ private struct ModifierToggleStyle: ToggleStyle {
 private struct ModifierButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(width: 30, height: 21, alignment: .center)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .foregroundColor(Color(.selectedControlTextColor))
             .background(Color(.controlBackgroundColor))
+            .font(Font.system(size: 12).monospacedDigit())
     }
 }
 

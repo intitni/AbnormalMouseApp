@@ -235,6 +235,8 @@ internal enum L10n {
       internal static let usage = L10n.tr("Shared", "TipsTitle.Usage")
     }
     internal enum View {
+      /// Activator already in use
+      internal static let activatorConflict = L10n.tr("Shared", "View.ActivatorConflict")
       /// Enter..
       internal static let enterKeyCombination = L10n.tr("Shared", "View.EnterKeyCombination")
       /// Setup

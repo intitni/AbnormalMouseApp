@@ -1,5 +1,6 @@
 "View.EnterKeyCombination" = "输入..";
 "View.KeyCombinationNotSetup" = "设置";
+"View.ActivatorConflict" = "触发键已被其它功能使用";
 
 "MouseCodeName.Left" = "鼠标(左)";
 "MouseCodeName.Right" = "鼠标(右)";
