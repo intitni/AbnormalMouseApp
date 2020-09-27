@@ -17,8 +17,8 @@ enum DockSwipeDomain: Domain {
     enum Action: Equatable {
         case appear
 
-        case dockSwipeActivator(DockSwipeActivator)
-        enum DockSwipeActivator: Equatable {
+        case dockSwipe(DockSwipe)
+        enum DockSwipe: Equatable {
             case setKeyCombination(KeyCombination?)
             case clearKeyCombination
             case setNumberOfTapsRequired(Int)
@@ -39,7 +39,7 @@ enum DockSwipeDomain: Domain {
     static let reducer = Reducer.combine(
         Reducer { state, action, environment in
             switch action {
-            case let .dockSwipeActivator(action):
+            case let .dockSwipe(action):
                 switch action {
                 case let .setKeyCombination(combination):
                     state.dockSwipeActivator.keyCombination = combination
@@ -67,7 +67,7 @@ enum DockSwipeDomain: Domain {
             case .appear:
                 state = State(from: environment.persisted)
                 return .init(value: ._internal(.checkConflict))
-            case .dockSwipeActivator:
+            case .dockSwipe:
                 return .init(value: ._internal(.checkConflict))
             case let ._internal(internalAction):
                 switch internalAction {

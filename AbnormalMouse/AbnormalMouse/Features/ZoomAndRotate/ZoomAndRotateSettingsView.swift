@@ -77,12 +77,7 @@ private struct ZoomAndRotateView: View {
     }
 
     private var zoomDirectionPicker: some View {
-        WithViewStore(
-            store.scope(
-                state: \.zoomGestureDirection,
-                action: ZoomAndRotateDomain.Action.zoomAndRotate
-            )
-        ) { viewStore in
+        WithViewStore(store.scope(state: \.zoomGestureDirection)) { viewStore in
             SettingsPicker(
                 title: Text(_L10n.View.zoomDirectionTitle),
                 selection: viewStore.binding(
@@ -106,12 +101,7 @@ private struct ZoomAndRotateView: View {
     }
 
     private var rotateDirectionPicker: some View {
-        WithViewStore(
-            store.scope(
-                state: \.rotateGestureDirection,
-                action: ZoomAndRotateDomain.Action.zoomAndRotate
-            )
-        ) { viewStore in
+        WithViewStore(store.scope(state: \.rotateGestureDirection)) { viewStore in
             SettingsPicker(
                 title: Text(_L10n.View.rotateDirectionTitle),
                 selection: viewStore.binding(

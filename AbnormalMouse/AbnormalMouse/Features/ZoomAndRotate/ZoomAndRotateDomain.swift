@@ -33,9 +33,10 @@ enum ZoomAndRotateDomain: Domain {
             case setKeyCombination(KeyCombination?)
             case setNumberOfTapsRequired(Int)
             case clearKeyCombination
-            case changeZoomGestureDirectionToOption(Int)
-            case changeRotateGestureDirectionToOption(Int)
         }
+
+        case changeZoomGestureDirectionToOption(Int)
+        case changeRotateGestureDirectionToOption(Int)
 
         case smartZoom(SmartZoom)
         enum SmartZoom: Equatable {
@@ -78,28 +79,6 @@ enum ZoomAndRotateDomain: Domain {
                 return .fireAndForget {
                     environment.persisted.keyCombination = nil
                 }
-            case let .changeZoomGestureDirectionToOption(option):
-                let direction = MoveMouseDirection(rawValue: option) ?? .none
-                state.zoomGestureDirection = direction
-                if state.rotateGestureDirection.isSameAxis(to: direction) {
-                    state.rotateGestureDirection = .none
-                }
-                let anotherDirection = state.rotateGestureDirection
-                return .fireAndForget {
-                    environment.persisted.zoomGestureDirection = direction
-                    environment.persisted.rotateGestureDirection = anotherDirection
-                }
-            case let .changeRotateGestureDirectionToOption(option):
-                let direction = MoveMouseDirection(rawValue: option) ?? .none
-                state.rotateGestureDirection = direction
-                if state.zoomGestureDirection.isSameAxis(to: direction) {
-                    state.zoomGestureDirection = .none
-                }
-                let anotherDirection = state.zoomGestureDirection
-                return .fireAndForget {
-                    environment.persisted.zoomGestureDirection = anotherDirection
-                    environment.persisted.rotateGestureDirection = direction
-                }
             }
         },
         Reducer { state, action, environment in
@@ -138,6 +117,28 @@ enum ZoomAndRotateDomain: Domain {
                 return .init(value: ._internal(.checkConflict))
             case .zoomAndRotate:
                 return .init(value: ._internal(.checkConflict))
+            case let .changeZoomGestureDirectionToOption(option):
+                let direction = MoveMouseDirection(rawValue: option) ?? .none
+                state.zoomGestureDirection = direction
+                if state.rotateGestureDirection.isSameAxis(to: direction) {
+                    state.rotateGestureDirection = .none
+                }
+                let anotherDirection = state.rotateGestureDirection
+                return .fireAndForget {
+                    environment.persisted.zoomGestureDirection = direction
+                    environment.persisted.rotateGestureDirection = anotherDirection
+                }
+            case let .changeRotateGestureDirectionToOption(option):
+                let direction = MoveMouseDirection(rawValue: option) ?? .none
+                state.rotateGestureDirection = direction
+                if state.zoomGestureDirection.isSameAxis(to: direction) {
+                    state.zoomGestureDirection = .none
+                }
+                let anotherDirection = state.zoomGestureDirection
+                return .fireAndForget {
+                    environment.persisted.zoomGestureDirection = anotherDirection
+                    environment.persisted.rotateGestureDirection = direction
+                }
             case let .smartZoom(action):
                 return .init(value: ._internal(.checkConflict))
             case let ._internal(internalAction):

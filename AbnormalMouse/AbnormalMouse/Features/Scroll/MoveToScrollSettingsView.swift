@@ -90,7 +90,7 @@ private struct MoveToScrollSettingsView: View {
             SettingsSlider(
                 value: viewStore.binding(
                     get: { $0 },
-                    send: { .moveToScroll(.changeScrollSpeedMultiplierTo($0)) }
+                    send: { .changeScrollSpeedMultiplierTo($0) }
                 ),
                 in: 0.5...3.5,
                 step: 0.5,
@@ -106,7 +106,7 @@ private struct MoveToScrollSettingsView: View {
             SettingsSlider(
                 value: viewStore.binding(
                     get: { $0 },
-                    send: { .moveToScroll(.changeSwipeSpeedMultiplierTo($0)) }
+                    send: { .changeSwipeSpeedMultiplierTo($0) }
                 ),
                 in: 0...2,
                 step: 0.25,

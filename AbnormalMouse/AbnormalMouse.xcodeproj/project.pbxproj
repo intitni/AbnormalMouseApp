@@ -10,6 +10,8 @@
 		131367D52509086500BA888C /* DockSwipeDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131367D42509086500BA888C /* DockSwipeDomain.swift */; };
 		131367D72509087200BA888C /* DockSwipeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131367D62509087200BA888C /* DockSwipeSettingsView.swift */; };
 		131367DC25090AA800BA888C /* DockSwipeSettings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 131367DE25090AA800BA888C /* DockSwipeSettings.strings */; };
+		1351534C2520EC9200EEEBB4 /* DockSwipeDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1351534B2520EC9200EEEBB4 /* DockSwipeDomainTests.swift */; };
+		135153512520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135153502520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift */; };
 		136E6D812502A7DA00F540B3 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E6D802502A7DA00F540B3 /* License.swift */; };
 		136E6D8625033AB000F540B3 /* CGEventOverride in Frameworks */ = {isa = PBXBuildFile; productRef = 136E6D8525033AB000F540B3 /* CGEventOverride */; };
 		137477A9251A324F00451154 /* DockSwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137477A8251A324F00451154 /* DockSwipeController.swift */; };
@@ -121,6 +123,8 @@
 		131367D62509087200BA888C /* DockSwipeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeSettingsView.swift; sourceTree = "<group>"; };
 		131367DD25090AA800BA888C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DockSwipeSettings.strings"; sourceTree = "<group>"; };
 		131367DF25090AA900BA888C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DockSwipeSettings.strings; sourceTree = "<group>"; };
+		1351534B2520EC9200EEEBB4 /* DockSwipeDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeDomainTests.swift; sourceTree = "<group>"; };
+		135153502520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatorConflictCheckerTests.swift; sourceTree = "<group>"; };
 		136E6D802502A7DA00F540B3 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		137477A8251A324F00451154 /* DockSwipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeController.swift; sourceTree = "<group>"; };
 		1383615F2487E70500E76F41 /* AbnormalMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbnormalMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,6 +330,8 @@
 				1383617A2487E70700E76F41 /* Info.plist */,
 				138361782487E70700E76F41 /* MoveToScrollDomainTests.swift */,
 				846403B424AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift */,
+				1351534B2520EC9200EEEBB4 /* DockSwipeDomainTests.swift */,
+				135153502520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift */,
 			);
 			path = AbnormalMouseTests;
 			sourceTree = "<group>";
@@ -885,6 +891,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				138361792487E70700E76F41 /* MoveToScrollDomainTests.swift in Sources */,
+				135153512520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift in Sources */,
+				1351534C2520EC9200EEEBB4 /* DockSwipeDomainTests.swift in Sources */,
 				846403B524AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

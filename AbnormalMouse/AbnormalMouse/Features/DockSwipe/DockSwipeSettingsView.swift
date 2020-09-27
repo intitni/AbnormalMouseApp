@@ -35,7 +35,7 @@ private struct DockSwipeView: View {
                 WithViewStore(
                     store.scope(
                         state: \.dockSwipeActivator,
-                        action: DockSwipeDomain.Action.dockSwipeActivator
+                        action: DockSwipeDomain.Action.dockSwipe
                     )
                 ) {
                     viewStore in

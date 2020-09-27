@@ -2,8 +2,8 @@ import AppKit
 import Combine
 
 final class ActivatorConflictChecker {
-    enum Feature: Equatable {
-        case scrollAndSwipe
+    enum Feature: Equatable, CaseIterable {
+        case moveToScroll
         case halfPageScroll
         case zoomAndRotate
         case smartZoom
@@ -30,7 +30,7 @@ final class ActivatorConflictChecker {
     }
 
     private func updateKeyCombinations() {
-        activators[.scrollAndSwipe] = Activator(
+        activators[.moveToScroll] = Activator(
             keyCombination: persisted.moveToScroll.keyCombination,
             numberOfTapRequired: persisted.moveToScroll.numberOfTapsRequired
         )

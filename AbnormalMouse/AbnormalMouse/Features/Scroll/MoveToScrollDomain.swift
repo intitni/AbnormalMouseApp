@@ -36,9 +36,10 @@ enum MoveToScrollDomain: Domain {
             case setKeyCombination(KeyCombination?)
             case setNumberOfTapsRequired(Int)
             case clearKeyCombination
-            case changeScrollSpeedMultiplierTo(Double)
-            case changeSwipeSpeedMultiplierTo(Double)
         }
+
+        case changeScrollSpeedMultiplierTo(Double)
+        case changeSwipeSpeedMultiplierTo(Double)
 
         case halfPageScroll(HalfPageScroll)
         enum HalfPageScroll: Equatable {
@@ -76,12 +77,6 @@ enum MoveToScrollDomain: Domain {
             case .clearKeyCombination:
                 state.moveToScrollActivator.keyCombination = nil
                 return .fireAndForget { environment.persisted.keyCombination = nil }
-            case let .changeScrollSpeedMultiplierTo(multilier):
-                state.scrollSpeedMultiplier = multilier
-                return .fireAndForget { environment.persisted.scrollSpeedMultiplier = multilier }
-            case let .changeSwipeSpeedMultiplierTo(multilier):
-                state.swipeSpeedMultiplier = multilier
-                return .fireAndForget { environment.persisted.swipeSpeedMultiplier = multilier }
             }
         },
         Reducer { state, action, environment in
@@ -120,15 +115,21 @@ enum MoveToScrollDomain: Domain {
                 state.isInertiaEffectEnabled.toggle()
                 let result = state.isInertiaEffectEnabled
                 return .fireAndForget { environment.persisted.isInertiaEffectEnabled = result }
-            case .moveToScroll:
+            case let .moveToScroll(action):
                 return .init(value: ._internal(.checkConflict))
+            case let .changeScrollSpeedMultiplierTo(multilier):
+                state.scrollSpeedMultiplier = multilier
+                return .fireAndForget { environment.persisted.scrollSpeedMultiplier = multilier }
+            case let .changeSwipeSpeedMultiplierTo(multilier):
+                state.swipeSpeedMultiplier = multilier
+                return .fireAndForget { environment.persisted.swipeSpeedMultiplier = multilier }
             case .halfPageScroll:
                 return .init(value: ._internal(.checkConflict))
             case let ._internal(internalAction):
                 switch internalAction {
                 case .checkConflict:
                     let check = environment.featureHasConflict
-                    state.moveToScrollActivator.hasConflict = check(.scrollAndSwipe)
+                    state.moveToScrollActivator.hasConflict = check(.moveToScroll)
                     state.halfPageScrollActivator.hasConflict = check(.halfPageScroll)
                     return .none
                 }
