@@ -165,7 +165,7 @@ internal enum L10n {
     internal enum HalfPageScrollView {
       /// Trigger when
       internal static let activationKeyCombinationTitle = L10n.tr("ScrollSettings", "HalfPageScrollView.ActivationKeyCombinationTitle")
-      /// Reuse activator for "move to scroll"
+      /// Reuse activator for "scroll and swipe"
       internal static let doubleTapToActivate = L10n.tr("ScrollSettings", "HalfPageScrollView.DoubleTapToActivate")
       /// Page-down is cool but a full page scroll can be quite annoying. This feature allows you to scroll down half a page.
       internal static let introduction = L10n.tr("ScrollSettings", "HalfPageScrollView.introduction")
