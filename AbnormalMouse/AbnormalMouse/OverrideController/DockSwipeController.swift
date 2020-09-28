@@ -146,8 +146,6 @@ extension DockSwipeController {
             }
         }
 
-        CGWarpMouseCursorPosition(state.mouseLocation)
-
         Tool.advanceState(
             &state.eventPosterState,
             isActive: isActive,
@@ -156,6 +154,8 @@ extension DockSwipeController {
         )
         defer { Tool.resetStateIfNeeded(&state.eventPosterState) }
         postEvents()
+
+        CGWarpMouseCursorPosition(state.mouseLocation)
     }
 }
 
