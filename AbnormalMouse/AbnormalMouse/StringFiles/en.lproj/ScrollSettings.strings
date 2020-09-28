@@ -11,3 +11,11 @@
 "View.Tips.ScrollBar" = "Turn off show scroll bar in system preferences if you don't have a trackpad connected.";
 "View.InertiaEffectCheckboxTitle" = "Emulate inertia effect";
 "View.InertiaEffectIntroduction" = "We recommend you to keep it on, disabling it will disable inertia effect in some apps.";
+
+"HalfPageScrollView.Tips.UsageA" = "Double tap activator for \"move to scroll\" to trigger half page scroll.";
+"HalfPageScrollView.Tips.UsageB" = "Tap activator to trigger half page scroll.";
+
+"HalfPageScrollView.Title" = "Half Page Scroll";
+"HalfPageScrollView.introduction" = "Page-down is cool but a full page scroll can be quite annoying. This feature allows you to scroll down half a page.";
+"HalfPageScrollView.ActivationKeyCombinationTitle" = "Trigger when";
+"HalfPageScrollView.DoubleTapToActivate" = "Reuse activator for \"scroll and swipe\"";

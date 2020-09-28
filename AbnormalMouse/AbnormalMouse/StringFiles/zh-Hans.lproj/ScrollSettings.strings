@@ -11,3 +11,11 @@
 "View.Tips.ScrollBar" = "如果你没有连接任何的触控板或妙控鼠标，你可以在系统设置中将滚动条隐藏。";
 "View.InertiaEffectCheckboxTitle" = "模拟滚动惯性";
 "View.InertiaEffectIntroduction" = "我们建议你开启这个功能，关闭之后某些 app 会没有滚动惯性效果。";
+
+"HalfPageScrollView.Tips.UsageA" = "连续点击“滚动和轻扫”的触发键触发半页滚动。";
+"HalfPageScrollView.Tips.UsageB" = "点击触发键触发半页滚动。";
+
+"HalfPageScrollView.Title" = "半页滚动";
+"HalfPageScrollView.introduction" = "键盘上的 PageDown 本身是个很棒的功能，但是它只能滚动整页。这个功能让滚动半页成为可能。";
+"HalfPageScrollView.ActivationKeyCombinationTitle" = "通过快捷键触发";
+"HalfPageScrollView.DoubleTapToActivate" = "重用“滚动和轻扫”的触发键";

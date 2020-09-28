@@ -38,31 +38,34 @@ final class RealPurchaseManager: PurchaseManagerType {
     let purchaseState = CurrentValueRelay<PurchaseState>(.initial)
     private let p = FastSpringPurchaseManager()
     private var cancellables = Set<AnyCancellable>()
-    
+
     init() {
         p.purchaseState.subscribe(purchaseState).store(in: &cancellables)
     }
-    
+
     func startTrialIfNeeded() {
         p.startTrialIfNeeded()
     }
-    
+
     func reverifyIfNeeded() {
         p.reverifyIfNeeded()
     }
-    
-    func activateLicense(key: String, email: String) -> Effect<Result<Void, PurchaseError>, Never> {
+
+    func activateLicense(
+        key: String,
+        email: String
+    ) -> Effect<Result<Void, PurchaseError>, Never> {
         p.activateLicense(key: key, email: email).catchToEffect()
     }
-    
+
     func verifyLicense() -> Effect<Result<Void, PurchaseError>, Never> {
         p.verifyLicense().catchToEffect()
     }
-    
+
     func deactivate() -> Effect<Result<Void, PurchaseError>, Never> {
         p.deactivate().catchToEffect()
     }
-    
+
     func updatePurchaseState() {
         p.updatePurchaseState()
     }
@@ -99,18 +102,21 @@ struct FakePurchaseManager: PurchaseManagerType {
     var purchaseState: CurrentValueRelay<PurchaseState> = .init(.activated(email: "github"))
 
     func updatePurchaseState() {}
-    
+
     func startTrialIfNeeded() {}
 
-    func activateLicense(key: String, email: String) -> Effect<Result<Void, PurchaseError>, Never> {
-        return Effect(value: .success(()))
+    func activateLicense(
+        key _: String,
+        email _: String
+    ) -> Effect<Result<Void, PurchaseError>, Never> {
+        Effect(value: .success(()))
     }
 
     func verifyLicense() -> Effect<Result<Void, PurchaseError>, Never> {
-        return Effect(value: .success(()))
+        Effect(value: .success(()))
     }
 
     func deactivate() -> Effect<Result<Void, PurchaseError>, Never> {
-        return Effect(value: .success(()))
+        Effect(value: .success(()))
     }
 }

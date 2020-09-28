@@ -6,7 +6,7 @@
 "SmartZoomView.Title" = "智能缩放";
 "SmartZoomView.introduction" = "双击触控板触发的智能缩放，现在可以通过设置快捷键实现。";
 "SmartZoomView.ActivationKeyCombinationTitle" = "通过快捷键触发";
-"SmartZoomView.DoubleTapToActivate" = "双击触发键触发";
+"SmartZoomView.DoubleTapToActivate" = "重用“缩放与旋转”的触发键";
 
 "ZoomAndRotateView.ZoomDirectionTitle" = "缩放手势方向";
 "ZoomAndRotateView.ZoomDirectionNone" = "不缩放";
@@ -25,5 +25,5 @@
 "ZoomAndRotateView.Tips.Usage" = "你需要按住触发键，同时移动鼠标以实现缩放和旋转。";
 "ZoomAndRotateView.Tips.Recover" = "有时缩放和旋转会突然间不工作。这是一个已知的系统问题，而且无法由我们解决。如果你遇到了这个问题，可以尝试通过以下步骤恢复: \n① 进入系统设置中的触控板选项，尝试重新开启相关手势；\n② 如果你在别的应用中使用了缩放和旋转手势作为触发手势，请尝试关闭它们然后重启电脑；\n③ 重启能解决一切问题。";
 
-"SmartZoomView.Tips.UsageA" = "双击“缩放与旋转”的触发键以触发智能缩放。";
+"SmartZoomView.Tips.UsageA" = "连续点击“缩放与旋转”的触发键以触发智能缩放。";
 "SmartZoomView.Tips.UsageB" = "点击触发键以触发智能缩放。";

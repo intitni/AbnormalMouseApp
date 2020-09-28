@@ -14,7 +14,7 @@ class KeychainStored<Value: KeychainStorable> {
 
     var wrappedValue: Value {
         get {
-            if Value.KV.self == String.self || Value.KV.self == Optional<String>.self {
+            if Value.KV.self == String.self || Value.KV.self == String?.self {
                 guard let rawValue = keychain.string(for: key) as? Value.KV
                 else { return defaultValue }
                 return Value.makeFromKeychainValue(value: rawValue)
@@ -53,7 +53,7 @@ final class FakeKeychainAccess: KeychainAccess {
     func remove(key: String) { contents[key] = nil }
     func set(_ string: String, for key: String) { contents[key] = .string(string) }
     func set(_ data: Data, for key: String) { contents[key] = .data(data) }
-    
+
     func string(for key: String) -> String? {
         if case let .string(s) = contents[key] { return s }
         return nil
@@ -122,11 +122,11 @@ extension Optional: KeychainStorable where Wrapped: KeychainStorable {
 extension Set: KeychainValue, KeychainStorable where Element: Codable {
     var isKeychainRemoveValue: Bool { isEmpty }
     var keychianValue: Data {
-        return (try? JSONEncoder().encode(self)) ?? Data()
+        (try? JSONEncoder().encode(self)) ?? Data()
     }
 
     static func makeFromKeychainValue(value: Data) -> Self {
-        return (try? JSONDecoder().decode(Self.self, from: value)) ?? .init()
+        (try? JSONDecoder().decode(Self.self, from: value)) ?? .init()
     }
 }
 

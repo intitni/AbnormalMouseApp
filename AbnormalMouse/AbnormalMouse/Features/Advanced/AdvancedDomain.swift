@@ -15,7 +15,8 @@ enum AdvancedDomain: Domain {
         case toggleListenToKeyboardEvents
     }
 
-    struct Environment {
+    typealias Environment = SystemEnvironment<_Environment>
+    struct _Environment {
         let persisted: Persisted.Advanced
     }
 
@@ -48,8 +49,8 @@ extension Store where State == AdvancedDomain.State, Action == AdvancedDomain.Ac
     static let testStore: AdvancedDomain.Store = .init(
         initialState: .init(),
         reducer: AdvancedDomain.reducer,
-        environment: .init(
+        environment: .live(environment: .init(
             persisted: .init()
-        )
+        ))
     )
 }

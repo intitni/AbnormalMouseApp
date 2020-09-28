@@ -6,10 +6,10 @@ final class DockSwipeController: OverrideController {
     struct State {
         enum EventPosterState {
             case inactive
-            case shouldBegin(Direction)
+            case mayBegin
             case begin(Direction)
             case changed(Direction)
-            case shouldEnd(Direction)
+            case shouldEnd(Direction?)
 
             enum Direction {
                 case horizontal
@@ -76,10 +76,16 @@ final class DockSwipeController: OverrideController {
                 }
             })
             .store(in: &cancellables)
+
+        NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in self?.updateSettings() }
+            .store(in: &cancellables)
     }
 
     private func updateSettings() {
         tapHold.keyCombination = persisted.keyCombination
+        tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
     }
 }
 
@@ -106,7 +112,7 @@ extension DockSwipeController {
             case .inactive:
                 break
 
-            case .shouldBegin:
+            case .mayBegin:
                 p.postNullGesture()
 
             case let .begin(direction):
@@ -132,14 +138,13 @@ extension DockSwipeController {
                     p.postDockSwipe(direction: .horizontal(rightAccumulation: ra), phase: .ended)
                 case .vertical:
                     p.postDockSwipe(direction: .vertical(upAccumulation: ua), phase: .ended)
+                case .none: break
                 }
 
                 state.horizontalAccumulation = 0
                 state.verticalAccumulation = 0
             }
         }
-
-        CGWarpMouseCursorPosition(state.mouseLocation)
 
         Tool.advanceState(
             &state.eventPosterState,
@@ -149,6 +154,8 @@ extension DockSwipeController {
         )
         defer { Tool.resetStateIfNeeded(&state.eventPosterState) }
         postEvents()
+
+        CGWarpMouseCursorPosition(state.mouseLocation)
     }
 }
 
@@ -160,24 +167,25 @@ extension DockSwipeController {
             horizontalAccumulation: Double,
             verticalAccumulation: Double
         ) {
-            func endIfNeeded(_ direction: State.EventPosterState.Direction) {
+            func endIfNeeded(_ direction: State.EventPosterState.Direction?) {
                 if !isActive { state = .shouldEnd(direction) }
             }
 
             switch state {
             case .inactive:
+                guard isActive else { return }
+                state = .mayBegin
+            case .mayBegin:
                 let absh = abs(horizontalAccumulation)
                 let absv = abs(verticalAccumulation)
                 if absh > 10 || absv > 10 {
-                    if absh > absv {
-                        state = .shouldBegin(.horizontal)
+                    if absh >= absv {
+                        state = .begin(.horizontal)
                     } else {
-                        state = .shouldBegin(.vertical)
+                        state = .begin(.vertical)
                     }
                 }
-            case let .shouldBegin(direction):
-                state = .begin(direction)
-                endIfNeeded(direction)
+                endIfNeeded(nil)
             case let .begin(direction):
                 state = .changed(direction)
                 endIfNeeded(direction)

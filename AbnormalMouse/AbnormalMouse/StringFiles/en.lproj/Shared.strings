@@ -1,5 +1,6 @@
-"View.EnterKeyCombination" = "Enter key combination";
+"View.EnterKeyCombination" = "Enter..";
 "View.KeyCombinationNotSetup" = "Setup";
+"View.ActivatorConflict" = "Activator already in use";
 
 "MouseCodeName.Left" = "Mouse(L)";
 "MouseCodeName.Right" = "Mouse(R)";
@@ -13,3 +14,4 @@
 "TipsTitle.Bug" = "Bug";
 
 "HomepageURLString" = "https://abnormalmouse.intii.com";
+

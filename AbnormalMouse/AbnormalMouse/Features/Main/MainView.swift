@@ -3,7 +3,7 @@ import SwiftUI
 
 struct MainScreen: View {
     let store: MainDomain.Store
-    
+
     var body: some View {
         MainView(store: store)
     }
@@ -143,7 +143,7 @@ private struct MainView: View {
             )
         )
     }
-    
+
     private var dockSwipeScreen: some View {
         withEnableStatus(
             DockSwipeSettingsScreen(
@@ -154,7 +154,7 @@ private struct MainView: View {
             )
         )
     }
-    
+
     private var advancedScreen: some View {
         withEnableStatus(
             AdvancedScreen(
@@ -203,7 +203,9 @@ private struct MainView: View {
         }
     }
 
-    private func trialEndAlert(viewStore: ViewStore<MainDomain.State, MainDomain.Action>) -> some View {
+    private func trialEndAlert(
+        viewStore: ViewStore<MainDomain.State, MainDomain.Action>
+    ) -> some View {
         VStack(spacing: 8) {
             Text(_L10n.View.ExpireAlert.title)
                 .asFeatureTitle()
@@ -229,7 +231,9 @@ private struct MainView: View {
         .padding([.all], 8)
     }
 
-    private func activationState(viewStore: ViewStore<MainDomain.State, MainDomain.Action>) -> some View {
+    private func activationState(
+        viewStore: ViewStore<MainDomain.State, MainDomain.Action>
+    ) -> some View {
         Text(viewStore.state.activationStateDescription ?? "")
             .padding([.top, .bottom], 8)
             .padding([.leading, .trailing], 16)

@@ -10,7 +10,7 @@ extension GestureRecognizers {
             didSet {
                 guard isActive != oldValue else { return }
                 if isActive {
-                    cancelOtherGestures()
+                    cancelOtherGestures { $0 is MouseMovement }
                 } else {
                     shouldPostLastEvent = true
                 }
@@ -44,7 +44,7 @@ extension GestureRecognizers {
                 translation.send((p.0, e))
             }
             super.init()
-            
+
             hook.add(
                 .init(
                     eventsOfInterest: [.mouseMoved, .otherMouseDragged],

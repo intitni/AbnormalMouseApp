@@ -7,20 +7,20 @@ enum ActivationDomain: Domain {
     struct State: Equatable {
         var licenseKey = ""
         var email = ""
-        
+
         var activationState: ActivationState = .entering
         enum ActivationState: Equatable {
             case entering
             case activating
             case failed(reason: String)
         }
-        
+
         var isActivateButtonEnabled: Bool {
             if case .activating = activationState { return false }
             return !licenseKey.isEmpty && !email.isEmpty
         }
     }
-    
+
     enum Action {
         case updateLicenseKey(String)
         case updateEmail(String)
@@ -29,17 +29,18 @@ enum ActivationDomain: Domain {
         case failInActivation(reason: String)
         case dismiss
     }
-    
-    struct Environment {
+
+    typealias Environment = SystemEnvironment<_Environment>
+    struct _Environment {
         let purchaseManager: PurchaseManagerType
     }
-    
+
     static let reducer = Reducer { state, action, environment in
         switch action {
-        case .updateLicenseKey(let key):
+        case let .updateLicenseKey(key):
             state.licenseKey = key
             return .none
-        case .updateEmail(let email):
+        case let .updateEmail(email):
             state.email = email
             return .none
         case .buyNow: // handled by parent
@@ -56,7 +57,7 @@ enum ActivationDomain: Domain {
                 .map { result in
                     switch result {
                     case .success: return .dismiss
-                    case .failure(let error):
+                    case let .failure(error):
                         switch error {
                         case .other:
                             return .failInActivation(reason: _L10n.FailureReason.networkError)
@@ -75,7 +76,7 @@ enum ActivationDomain: Domain {
                 .eraseToEffect()
             case .activating: return .none
             }
-        case .failInActivation(let reason):
+        case let .failInActivation(reason):
             state.activationState = .failed(reason: reason)
             return .none
         case .dismiss: // handled by parent
@@ -91,9 +92,9 @@ extension Store where State == ActivationDomain.State, Action == ActivationDomai
         return .init(
             initialState: state,
             reducer: ActivationDomain.reducer,
-            environment: .init(
+            environment: .live(environment: .init(
                 purchaseManager: FakePurchaseManager()
-            )
+            ))
         )
     }
 }

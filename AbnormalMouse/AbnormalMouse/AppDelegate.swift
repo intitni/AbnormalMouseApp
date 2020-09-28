@@ -39,6 +39,7 @@ private let store = TheApp.Store(
         persisted: persisted,
         purchaseManager: purchaseManager,
         updater: SUUpdater.shared(),
+        activatorConflictChecker: .init(persisted: Readonly(persisted)),
         overrideControllers: [
             MoveToScrollController(
                 persisted: Readonly(persisted.moveToScroll),

@@ -68,6 +68,7 @@ struct TheApp: Domain {
         var persisted: Persisted
         var purchaseManager: PurchaseManagerType
         var updater: SUUpdater
+        var activatorConflictChecker: ActivatorConflictChecker
 
         let overrideControllers: [OverrideController]
     }
@@ -141,6 +142,7 @@ struct TheApp: Domain {
                 $0.map {
                     MainDomain._Environment(
                         persisted: $0.persisted,
+                        activatorConflictChecker: $0.activatorConflictChecker,
                         purchaseManager: $0.purchaseManager,
                         updater: $0.updater
                     )
@@ -152,16 +154,18 @@ struct TheApp: Domain {
 
 extension Store where Action == TheApp.Action, State == TheApp.State {
     static var testStore: Self {
+        let persisted = Persisted(
+            userDefaults: MemoryPropertyListStorage(),
+            keychainAccess: FakeKeychainAccess()
+        )
         return .init(
             initialState: .init(),
             reducer: TheApp.reducer,
             environment: .live(environment: .init(
-                persisted: .init(
-                    userDefaults: MemoryPropertyListStorage(),
-                    keychainAccess: FakeKeychainAccess()
-                ),
+                persisted: persisted,
                 purchaseManager: FakePurchaseManager(),
                 updater: SUUpdater.shared(),
+                activatorConflictChecker: .init(persisted: Readonly(persisted)),
                 overrideControllers: []
             ))
         )

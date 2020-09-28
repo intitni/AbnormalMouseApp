@@ -1,5 +1,14 @@
 # Change Log
 
+### 2020.5
+
+- Code cleanup.
+- New activator setter.
+- Allow setting half page scroll activator.
+- Support activator sharing with different number-of-taps-required.
+- Add activator conflict check.
+- Tweak zoom and rotate.
+
 ### 2020.4
 
 - Support 4 finger swipe gestures.
