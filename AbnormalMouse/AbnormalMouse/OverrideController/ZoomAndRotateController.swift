@@ -181,7 +181,7 @@ extension ZoomAndRotateController {
                 p.postZoom(direction: .none, t: zoom, phase: .ended)
             case .rotate:
                 p.postRotation(direction: .none, phase: .ended)
-            default: break
+            case .none: break
             }
             p.postTranslation(phase: .ended)
             state.zoomThreshold = 0
