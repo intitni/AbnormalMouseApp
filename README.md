@@ -10,6 +10,7 @@ Using a normal mouse in macOS is a terrible thing, the missing gestures and four
 
 ### The currently supported features are
 - Four-way scrolling (drag-to-scroll by holding down the trigger button and moving the mouse, which may seem odd, but I kind of like it).
+- Half page down.
 - Two-finger swipe gestures (Safari's swipe to back, Reeder's pull to refresh, etc.).
 - Zoom and rotate.
 - Four-finger swipe gestures (Switch between spaces, Mission Control).
