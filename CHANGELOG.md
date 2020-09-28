@@ -1,6 +1,6 @@
 # Change Log
 
-### Next
+### 2020.5
 
 - Code cleanup.
 - New activator setter.

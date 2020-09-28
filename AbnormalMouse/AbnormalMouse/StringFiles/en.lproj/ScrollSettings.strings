@@ -18,4 +18,4 @@
 "HalfPageScrollView.Title" = "Half Page Scroll";
 "HalfPageScrollView.introduction" = "Page-down is cool but a full page scroll can be quite annoying. This feature allows you to scroll down half a page.";
 "HalfPageScrollView.ActivationKeyCombinationTitle" = "Trigger when";
-"HalfPageScrollView.DoubleTapToActivate" = "Reuse activator for \"move to scroll\"";
+"HalfPageScrollView.DoubleTapToActivate" = "Reuse activator for \"scroll and swipe\"";
