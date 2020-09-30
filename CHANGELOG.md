@@ -1,5 +1,10 @@
 # Change Log
 
+### 2020.6
+
+- Fix that multiple tap hold gesture with keyboard key as activator is automatically canceled after trigger.
+- Fix that modifiers are ignored when using mouse buttons as activators.
+
 ### 2020.5
 
 - Code cleanup.
