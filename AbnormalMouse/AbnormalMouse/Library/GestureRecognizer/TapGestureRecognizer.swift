@@ -114,6 +114,7 @@ extension GestureRecognizers.Tap {
 
         switch type {
         case .otherMouseDown:
+            guard combination.matchesFlags(event.flags) else { return .unchange }
             down(code: code)
             return shouldDiscardEvent ? .discarded : .unchange
         case .otherMouseUp:
