@@ -16,13 +16,15 @@ extension GestureRecognizers {
         struct State {
             var lastButtonDownTimestamp = 0 as TimeInterval
             var tapCount = 0
-            var isDown = false
             var holdingDownKeys = Set<Int64>()
             var holdingDownMouseButtons = Set<Int64>()
         }
 
         private let hook: CGEventHookType
+        /// Track to prevent keyDown events to repeat
+        private var isKeyboardKeyDown = false
         @Published private var isHolding: Bool = false
+
         private(set) var state = State()
         private let key: AnyHashable
 
@@ -85,14 +87,14 @@ extension GestureRecognizers.TapHold {
         switch type {
         case .keyDown:
             guard combination.matchesFlags(event.flags) else { return .unchange }
-            guard !state.isDown else { return shouldDiscardEvent ? .discarded : .unchange }
+            guard !isKeyboardKeyDown else { return shouldDiscardEvent ? .discarded : .unchange }
             down(code: code)
-            state.isDown = true
+            isKeyboardKeyDown = true
             return shouldDiscardEvent ? .discarded : .unchange
         case .keyUp:
-            guard state.isDown else { return .unchange }
+            guard isKeyboardKeyDown else { return .unchange }
             up(code: code)
-            state.isDown = false
+            isKeyboardKeyDown = false
             return shouldDiscardEvent ? .discarded : .unchange
         default: return .unchange
         }
@@ -111,6 +113,7 @@ extension GestureRecognizers.TapHold {
 
         switch type {
         case .otherMouseDown:
+            guard combination.matchesFlags(event.flags) else { return .unchange }
             down(code: code)
             return shouldDiscardEvent ? .discarded : .unchange
         case .otherMouseUp:
