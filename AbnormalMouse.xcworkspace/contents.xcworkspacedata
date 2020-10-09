@@ -11,7 +11,7 @@
       location = "group:CHANGELOG.md">
    </FileRef>
    <FileRef
-      location = "group:LicenseWrapper">
+      location = "group:AppDependencies">
    </FileRef>
    <FileRef
       location = "group:AbnormalMouse/AbnormalMouse.xcodeproj">

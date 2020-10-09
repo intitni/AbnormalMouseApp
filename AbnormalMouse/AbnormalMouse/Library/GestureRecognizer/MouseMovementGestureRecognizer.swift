@@ -67,10 +67,10 @@ extension GestureRecognizers.MouseMovement: Cancellable {
 
 extension GestureRecognizers.MouseMovement {
     private func handleMouse(event: CGEvent) -> CGEventManipulation.Result {
-        let v = event[double: .mouseEventDeltaY]
-        let h = event[double: .mouseEventDeltaX]
         guard isActive else {
             if shouldPostLastEvent {
+                let v = event[double: .mouseEventDeltaY]
+                let h = event[double: .mouseEventDeltaX]
                 throttler.end(accumulate: { t in
                     t.0.width += CGFloat(h)
                     t.0.height += CGFloat(v)
@@ -80,6 +80,9 @@ extension GestureRecognizers.MouseMovement {
             }
             return .unchange
         }
+
+        let v = event[double: .mouseEventDeltaY]
+        let h = event[double: .mouseEventDeltaX]
         throttler.post(accumulate: { t in
             t.0.width += CGFloat(h)
             t.0.height += CGFloat(v)
