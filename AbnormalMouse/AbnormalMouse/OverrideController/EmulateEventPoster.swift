@@ -281,7 +281,7 @@ struct EmulateEventPoster {
             let value: Int64 = {
                 let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
                 func buildValuePart() -> Int64 {
-                    Int64(41_127_040 * scale) + 990_052_352
+                    Int64(50_000_000 * scale) + 980_000_000
                 }
 
                 switch direction {
