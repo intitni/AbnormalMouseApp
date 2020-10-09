@@ -13,7 +13,6 @@
 		1351534C2520EC9200EEEBB4 /* DockSwipeDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1351534B2520EC9200EEEBB4 /* DockSwipeDomainTests.swift */; };
 		135153512520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135153502520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift */; };
 		136E6D812502A7DA00F540B3 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136E6D802502A7DA00F540B3 /* License.swift */; };
-		136E6D8625033AB000F540B3 /* CGEventOverride in Frameworks */ = {isa = PBXBuildFile; productRef = 136E6D8525033AB000F540B3 /* CGEventOverride */; };
 		137477A9251A324F00451154 /* DockSwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137477A8251A324F00451154 /* DockSwipeController.swift */; };
 		138361632487E70500E76F41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361622487E70500E76F41 /* AppDelegate.swift */; };
 		138361652487E70500E76F41 /* MoveToScrollSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361642487E70500E76F41 /* MoveToScrollSettingsView.swift */; };
@@ -24,12 +23,12 @@
 		138361862487E76B00E76F41 /* EmulateEventPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138361852487E76B00E76F41 /* EmulateEventPoster.swift */; };
 		13864A08248E947300704C21 /* GeneralDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13864A07248E947300704C21 /* GeneralDomain.swift */; };
 		13864A0A248E947900704C21 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13864A09248E947900704C21 /* GeneralView.swift */; };
-		13A948202504D21500B8990F /* LicenseWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 13A9481F2504D21500B8990F /* LicenseWrapper */; };
 		13BB14D324AB9299007C5A81 /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13BB14D524AB9299007C5A81 /* General.strings */; };
 		13C51ABD249BA43B007881A5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABB249BA2F3007881A5 /* Style.swift */; };
 		13C51ABF249E5813007881A5 /* MoveMouseDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */; };
 		526678DE369BE036D03DF016 /* Pods_AbnormalMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */; };
 		840E3297251D8FD400FDD1B3 /* ActivatorConflictChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */; };
+		8423BE2F25300BD30055F55E /* AppDependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 8423BE2E25300BD30055F55E /* AppDependencies */; };
 		842B147F24A9C3C20063CDE0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 842B148124A9C3C20063CDE0 /* InfoPlist.strings */; };
 		842B14BA24A9CC350063CDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B14B924A9CC350063CDE0 /* AppDelegate.swift */; };
 		842B14C124A9CC360063CDE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842B14C024A9CC360063CDE0 /* Preview Assets.xcassets */; };
@@ -46,7 +45,6 @@
 		845A29EF24D11F9D0086477D /* TapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A29EE24D11F9D0086477D /* TapGestureRecognizer.swift */; };
 		845A29F124D11FB30086477D /* TapHoldGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A29F024D11FB30086477D /* TapHoldGestureRecognizer.swift */; };
 		845A29F324D152900086477D /* MouseMovementGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A29F224D152900086477D /* MouseMovementGestureRecognizer.swift */; };
-		8462A5E624B56B9E00380FAF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8462A5E524B56B9E00380FAF /* KeychainAccess */; };
 		8462A5E824B56BBC00380FAF /* KeychainValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462A5E724B56BBC00380FAF /* KeychainValue.swift */; };
 		8463B80C24C975C7008D7988 /* EventThrottler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463B80B24C975C7008D7988 /* EventThrottler.swift */; };
 		846403B524AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846403B424AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift */; };
@@ -74,7 +72,6 @@
 		84B8C1E924D262D600BF3378 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8C1E824D262D600BF3378 /* GestureRecognizer.swift */; };
 		84C8EAE72489D25A00C53CFD /* ZoomAndRotateSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAE62489D25A00C53CFD /* ZoomAndRotateSettingsView.swift */; };
 		84C8EAE92489F41000C53CFD /* SettingsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAE82489F41000C53CFD /* SettingsPageView.swift */; };
-		84C8EAEE248A2C6800C53CFD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 84C8EAED248A2C6800C53CFD /* ComposableArchitecture */; };
 		84C8EAF0248A2C7800C53CFD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAEF248A2C7800C53CFD /* App.swift */; };
 		84C8EAFB248B72B500C53CFD /* KeyboardCode+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAFA248B72B500C53CFD /* KeyboardCode+Name.swift */; };
 		84C8EAFD248B72BC00C53CFD /* MouseCode+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EAFC248B72BC00C53CFD /* MouseCode+Name.swift */; };
@@ -83,7 +80,6 @@
 		84D83A9724B6B61A0015E30C /* ActivationDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83A9624B6B61A0015E30C /* ActivationDomain.swift */; };
 		84D83A9924B6B6220015E30C /* ActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83A9824B6B6220015E30C /* ActivationView.swift */; };
 		84D83A9D24B705900015E30C /* Combine+WaitAtLeast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83A9C24B705900015E30C /* Combine+WaitAtLeast.swift */; };
-		84D83AA024B706820015E30C /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 84D83A9F24B706820015E30C /* CombineExt */; };
 		84E49413248DE4400074540F /* MoveToScrollDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49412248DE4400074540F /* MoveToScrollDomain.swift */; };
 		84E4941A248DE4BA0074540F /* NeedAccessabilityDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49419248DE4BA0074540F /* NeedAccessabilityDomain.swift */; };
 		84E49426248E283A0074540F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E49428248E283A0074540F /* Main.storyboard */; };
@@ -235,12 +231,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D83AA024B706820015E30C /* CombineExt in Frameworks */,
-				84C8EAEE248A2C6800C53CFD /* ComposableArchitecture in Frameworks */,
-				136E6D8625033AB000F540B3 /* CGEventOverride in Frameworks */,
-				13A948202504D21500B8990F /* LicenseWrapper in Frameworks */,
 				842B14CC24A9CCA30063CDE0 /* ServiceManagement.framework in Frameworks */,
-				8462A5E624B56B9E00380FAF /* KeychainAccess in Frameworks */,
+				8423BE2F25300BD30055F55E /* AppDependencies in Frameworks */,
 				526678DE369BE036D03DF016 /* Pods_AbnormalMouse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,11 +602,7 @@
 			);
 			name = AbnormalMouse;
 			packageProductDependencies = (
-				84C8EAED248A2C6800C53CFD /* ComposableArchitecture */,
-				8462A5E524B56B9E00380FAF /* KeychainAccess */,
-				84D83A9F24B706820015E30C /* CombineExt */,
-				136E6D8525033AB000F540B3 /* CGEventOverride */,
-				13A9481F2504D21500B8990F /* LicenseWrapper */,
+				8423BE2E25300BD30055F55E /* AppDependencies */,
 			);
 			productName = AbnormalMouse;
 			productReference = 1383615F2487E70500E76F41 /* AbnormalMouse.app */;
@@ -689,10 +677,6 @@
 			);
 			mainGroup = 138361562487E70500E76F41;
 			packageReferences = (
-				84C8EAEC248A2C6800C53CFD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
-				8462A5E424B56B9E00380FAF /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				84D83A9E24B706820015E30C /* XCRemoteSwiftPackageReference "CombineExt" */,
-				136E6D8425033AB000F540B3 /* XCRemoteSwiftPackageReference "CGEventOverride" */,
 			);
 			productRefGroup = 138361602487E70500E76F41 /* Products */;
 			projectDirPath = "";
@@ -1513,65 +1497,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		136E6D8425033AB000F540B3 /* XCRemoteSwiftPackageReference "CGEventOverride" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:intitni/CGEventOverride.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		8462A5E424B56B9E00380FAF /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.0;
-			};
-		};
-		84C8EAEC248A2C6800C53CFD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.0;
-			};
-		};
-		84D83A9E24B706820015E30C /* XCRemoteSwiftPackageReference "CombineExt" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/CombineCommunity/CombineExt";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		136E6D8525033AB000F540B3 /* CGEventOverride */ = {
+		8423BE2E25300BD30055F55E /* AppDependencies */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 136E6D8425033AB000F540B3 /* XCRemoteSwiftPackageReference "CGEventOverride" */;
-			productName = CGEventOverride;
-		};
-		13A9481F2504D21500B8990F /* LicenseWrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LicenseWrapper;
-		};
-		8462A5E524B56B9E00380FAF /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8462A5E424B56B9E00380FAF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
-		};
-		84C8EAED248A2C6800C53CFD /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84C8EAEC248A2C6800C53CFD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-		84D83A9F24B706820015E30C /* CombineExt */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84D83A9E24B706820015E30C /* XCRemoteSwiftPackageReference "CombineExt" */;
-			productName = CombineExt;
+			productName = AppDependencies;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

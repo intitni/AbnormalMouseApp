@@ -12,10 +12,10 @@
       },
       {
         "package": "CGEventOverride",
-        "repositoryURL": "git@github.com:intitni/CGEventOverride.git",
+        "repositoryURL": "https://github.com/intitni/CGEventOverride.git",
         "state": {
           "branch": "master",
-          "revision": "5586310ed43c10f54b09f8414621bc673659a320",
+          "revision": "85c93c4f0d0af185789126024cc3b3266ff09eb0",
           "version": null
         }
       },

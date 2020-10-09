@@ -3,6 +3,7 @@
 ### Next
 
 - Update UI for Big Sur.
+- Use a swift package AppDependencies to handle all swift dependencies.
 
 ### 2020.6
 
