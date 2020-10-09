@@ -5,7 +5,7 @@ import SwiftUI
 
 extension Font {
     public static let pageTitle: Font = .system(size: 22, weight: .bold, design: .default)
-    public static let introduction: Font = .footnote
+    public static let introduction: Font = .system(size: 12)
     public static let widgetTitle: Font = .system(size: 14, weight: .semibold, design: .default)
 }
 

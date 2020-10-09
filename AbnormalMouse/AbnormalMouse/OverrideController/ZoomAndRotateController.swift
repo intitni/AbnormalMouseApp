@@ -164,7 +164,7 @@ extension ZoomAndRotateController {
             case .zoom:
                 p.postZoom(direction: zoomDirection, t: zoom, phase: .began)
             case .rotate:
-                p.postRotation(direction: rotateDirection, phase: .began)
+                p.postRotation(direction: rotateDirection, t: rotate, phase: .began)
             }
             p.postTranslation(phase: .began)
         case let .hasBegun(type):
@@ -172,7 +172,7 @@ extension ZoomAndRotateController {
             case .zoom:
                 p.postZoom(direction: zoomDirection, t: zoom, phase: .changed)
             case .rotate:
-                p.postRotation(direction: rotateDirection, phase: .changed)
+                p.postRotation(direction: rotateDirection, t: rotate, phase: .changed)
             }
             p.postTranslation(phase: .changed)
         case let .shouldEnd(type):
@@ -180,7 +180,7 @@ extension ZoomAndRotateController {
             case .zoom:
                 p.postZoom(direction: .none, t: zoom, phase: .ended)
             case .rotate:
-                p.postRotation(direction: .none, phase: .ended)
+                p.postRotation(direction: .none, t: rotate, phase: .ended)
             case .none: break
             }
             p.postTranslation(phase: .ended)

@@ -1,5 +1,11 @@
 # Change Log
 
+### Next
+
+- Update UI for Big Sur.
+- Use a swift package AppDependencies to handle all swift dependencies.
+- Compute rotation value with mouse translation.
+
 ### 2020.6
 
 - Fix that multiple tap hold gesture with keyboard key as activator is automatically canceled after trigger.

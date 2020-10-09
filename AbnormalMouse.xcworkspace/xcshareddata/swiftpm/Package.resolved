@@ -2,11 +2,20 @@
   "object": {
     "pins": [
       {
-        "package": "CGEventOverride",
-        "repositoryURL": "git@github.com:intitni/CGEventOverride.git",
+        "package": "License",
+        "repositoryURL": "https://github.com/intitni/AbnormalMouseLicense",
         "state": {
           "branch": "master",
-          "revision": "38f4c96558c39c1aea05c34515cf626091885c35",
+          "revision": "fe24110147e1317536d049c1071ee4e3306ef856",
+          "version": null
+        }
+      },
+      {
+        "package": "CGEventOverride",
+        "repositoryURL": "https://github.com/intitni/CGEventOverride.git",
+        "state": {
+          "branch": "master",
+          "revision": "85c93c4f0d0af185789126024cc3b3266ff09eb0",
           "version": null
         }
       },
@@ -33,8 +42,8 @@
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
         "state": {
           "branch": null,
-          "revision": "3d0ea2c0806791abcc5d7f0d9f62f1cfd4a7264d",
-          "version": "4.2.0"
+          "revision": "654d52d30f3dd4592e944c3e0bccb53178c992f6",
+          "version": "4.2.1"
         }
       },
       {

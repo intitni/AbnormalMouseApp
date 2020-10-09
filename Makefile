@@ -5,9 +5,9 @@ bootstrap: needlicense
 
 needlicense:
 	@if [ $(NEED_LICENSE) == true ]; then \
-		cp LicenseWrapper/Package_NeedLicense.swift LicenseWrapper/Package.swift; \
+		cp AppDependencies/Package_NeedLicense.swift AppDependencies/Package.swift; \
 	else \
-		cp LicenseWrapper/Package_NoLicense.swift LicenseWrapper/Package.swift;\
+		cp AppDependencies/Package_NoLicense.swift AppDependencies/Package.swift;\
 	fi
 
 .PHONY: needlicense
