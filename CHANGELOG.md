@@ -4,6 +4,7 @@
 
 - Update UI for Big Sur.
 - Use a swift package AppDependencies to handle all swift dependencies.
+- Compute rotation value with mouse translation.
 
 ### 2020.6
 
