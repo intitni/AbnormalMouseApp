@@ -94,7 +94,7 @@ private struct GeneralView: View {
 
     private var about: some View {
         SettingsSectionView(
-            showSeparator: true,
+            showSeparator: false,
             title: { Text(_L10n.Title.about) },
             content: {
                 WithViewStore(store) { viewStore in
