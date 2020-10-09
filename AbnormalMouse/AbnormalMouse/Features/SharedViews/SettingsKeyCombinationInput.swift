@@ -27,7 +27,7 @@ struct SettingsKeyCombinationInput<Title: View>: View {
                 .asWidgetTitle()
 
             HStack(spacing: 1) {
-                modifierToggle(.shift).padding(.leading, 1)
+                modifierToggle(.shift)
 
                 modifierToggle(.control)
 
@@ -60,7 +60,7 @@ struct SettingsKeyCombinationInput<Title: View>: View {
             .overlay(
                 GeometryReader { proxy in
                     RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color(.gridColor))
+                        .stroke(Color(.separatorColor))
                         .frame(width: proxy.size.width, height: proxy.size.height)
                 }
             )

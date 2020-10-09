@@ -24,7 +24,7 @@ private struct AdvancedView: View {
 
     private var settings: some View {
         SettingsSectionView(
-            showSeparator: true,
+            showSeparator: false,
             title: { Text(_L10n.View.title) },
             content: {
                 WithViewStore(store) { viewStore in
@@ -46,4 +46,14 @@ private struct AdvancedView: View {
 
 private enum _L10n {
     typealias View = L10n.Advanced.View
+}
+
+struct AdvancedView_Previews: PreviewProvider {
+    static var previews: some View {
+        AdvancedView(store: .init(
+            initialState: .init(),
+            reducer: AdvancedDomain.reducer,
+            environment: .live(environment: .init(persisted: .init()))
+        ))
+    }
 }

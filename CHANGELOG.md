@@ -1,5 +1,9 @@
 # Change Log
 
+### Next
+
+- Update UI for Big Sur.
+
 ### 2020.6
 
 - Fix that multiple tap hold gesture with keyboard key as activator is automatically canceled after trigger.
