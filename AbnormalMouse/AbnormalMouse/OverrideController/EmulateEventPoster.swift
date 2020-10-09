@@ -301,11 +301,26 @@ struct EmulateEventPoster {
     /// - Parameters:
     ///   - direction: which direction to rotate
     ///   - phase: gesture phase
-    func postRotation(direction: RotateDirection, phase: CGGesturePhase) {
+    func postRotation(direction: RotateDirection, t: Int, phase: CGGesturePhase) {
         let e = CGEvent(source: nil)!
         e.type = CGEventType.gesture
         e[.gestureType] = GestureType.rotation.rawValue
-        e[.gestureSwipeValueX] = direction.rawValue * 3
+
+        let scale: Double = min(max(0.1, Double(abs(t)) / 40), 1)
+        let value: Int64 = {
+            switch direction {
+            case .clockwise:
+                return Int64(scale * 14)
+            case .counterClockwise:
+                return -Int64(scale * 14)
+            case .none:
+                return 0
+            }
+        }()
+
+        print(t, value)
+
+        e[.gestureSwipeValueX] = value
         e[.gesturePhase] = Int64(phase.rawValue)
         p(e)
     }
