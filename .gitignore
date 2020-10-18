@@ -74,4 +74,4 @@ DerivedData/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,cocoapods,macos
-/LicenseWrapper/Package.swift
+/AppDependencies/Package.swift
