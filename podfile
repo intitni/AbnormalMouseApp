@@ -8,7 +8,6 @@ workspace 'AbnormalMouse'
 def tool
     pod 'SwiftFormat/CLI'
     pod 'SwiftGen', '~> 6.0'
-    pod 'Sparkle'
 end
 
 target 'AbnormalMouse' do
