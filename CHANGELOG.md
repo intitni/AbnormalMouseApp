@@ -1,6 +1,17 @@
 # Change Log
 
-### Next
+### 2020.9
+
+- Adjust app icon to have a stronger Big Sur taste.
+- Add more keyboard code name.
+- Build also for Apple Silicon (untested).
+
+### 2020.8
+
+- Build for Apple Silicon (not tested).
+- Tweak icon color.
+
+### 2020.7
 
 - Update UI for Big Sur.
 - Use a swift package AppDependencies to handle all swift dependencies.

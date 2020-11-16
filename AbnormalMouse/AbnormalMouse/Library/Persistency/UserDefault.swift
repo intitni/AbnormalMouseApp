@@ -118,9 +118,6 @@ extension UInt32: TrivialPropertyListStorable {}
 extension UInt64: TrivialPropertyListStorable {}
 extension Double: TrivialPropertyListStorable {}
 extension Float: TrivialPropertyListStorable {}
-#if os(macOS)
-extension Float80: TrivialPropertyListStorable {}
-#endif
 
 // MARK: - Array
 
