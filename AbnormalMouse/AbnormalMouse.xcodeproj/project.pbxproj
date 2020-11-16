@@ -26,7 +26,7 @@
 		13BB14D324AB9299007C5A81 /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13BB14D524AB9299007C5A81 /* General.strings */; };
 		13C51ABD249BA43B007881A5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABB249BA2F3007881A5 /* Style.swift */; };
 		13C51ABF249E5813007881A5 /* MoveMouseDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */; };
-		526678DE369BE036D03DF016 /* Pods_AbnormalMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */; };
+		66B691ECFBDA99FF4810D05B /* Pods_AbnormalMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968124F027596FA20DBC84F9 /* Pods_AbnormalMouse.framework */; };
 		840E3297251D8FD400FDD1B3 /* ActivatorConflictChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */; };
 		8423BE2F25300BD30055F55E /* AppDependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 8423BE2E25300BD30055F55E /* AppDependencies */; };
 		842B147F24A9C3C20063CDE0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 842B148124A9C3C20063CDE0 /* InfoPlist.strings */; };
@@ -142,9 +142,9 @@
 		13C51ABB249BA2F3007881A5 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveMouseDirection.swift; sourceTree = "<group>"; };
 		13EE2C6E2504C9B100BE46BC /* LicenseWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LicenseWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbnormalMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E99A3A881BF298122F310CD /* Pods-AbnormalMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.release.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.release.xcconfig"; sourceTree = "<group>"; };
-		6B229038B0F13F1DAD33760D /* Pods-AbnormalMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.debug.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.debug.xcconfig"; sourceTree = "<group>"; };
+		48FB07C6FEB6FFEB2BE5E487 /* Pods-AbnormalMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.release.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.release.xcconfig"; sourceTree = "<group>"; };
+		5A642789AC60774CFB5266C8 /* Pods-AbnormalMouse.preview.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.preview.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.preview.xcconfig"; sourceTree = "<group>"; };
+		6560342084616E79FE3BD3CE /* Pods-AbnormalMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.debug.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.debug.xcconfig"; sourceTree = "<group>"; };
 		840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatorConflictChecker.swift; sourceTree = "<group>"; };
 		842B148024A9C3C20063CDE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		842B148224A9C3C40063CDE0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 		84E4943C248E2BFA0074540F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NeedAccessability.strings"; sourceTree = "<group>"; };
 		84FAB1EA24C13253001265FD /* SCA+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCA+Extentions.swift"; sourceTree = "<group>"; };
 		84FAB1F124C53547001265FD /* Readonly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readonly.swift; sourceTree = "<group>"; };
-		CA16F656E4CCD8FBCF39FB43 /* Pods-AbnormalMouse.preview.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.preview.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.preview.xcconfig"; sourceTree = "<group>"; };
+		968124F027596FA20DBC84F9 /* Pods_AbnormalMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbnormalMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +233,7 @@
 			files = (
 				842B14CC24A9CCA30063CDE0 /* ServiceManagement.framework in Frameworks */,
 				8423BE2F25300BD30055F55E /* AppDependencies in Frameworks */,
-				526678DE369BE036D03DF016 /* Pods_AbnormalMouse.framework in Frameworks */,
+				66B691ECFBDA99FF4810D05B /* Pods_AbnormalMouse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +254,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11B0260554CF92C4049894B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6560342084616E79FE3BD3CE /* Pods-AbnormalMouse.debug.xcconfig */,
+				5A642789AC60774CFB5266C8 /* Pods-AbnormalMouse.preview.xcconfig */,
+				48FB07C6FEB6FFEB2BE5E487 /* Pods-AbnormalMouse.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		131367D32509085600BA888C /* DockSwipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,7 +282,7 @@
 				842B14B824A9CC350063CDE0 /* AbnormalMouseLauncher */,
 				138361602487E70500E76F41 /* Products */,
 				84399B0E248894D400970CFF /* Frameworks */,
-				E8D6F0628305FAF6F43A7940 /* Pods */,
+				11B0260554CF92C4049894B3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -367,7 +378,7 @@
 				842B14CB24A9CCA30063CDE0 /* ServiceManagement.framework */,
 				84C8EB03248B787700C53CFD /* CGEventOverride.framework */,
 				84399B0F248894D400970CFF /* CGEventInception.framework */,
-				35CEA303D0CE6D823FDA405D /* Pods_AbnormalMouse.framework */,
+				968124F027596FA20DBC84F9 /* Pods_AbnormalMouse.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -569,17 +580,6 @@
 			path = StringFiles;
 			sourceTree = "<group>";
 		};
-		E8D6F0628305FAF6F43A7940 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6B229038B0F13F1DAD33760D /* Pods-AbnormalMouse.debug.xcconfig */,
-				4E99A3A881BF298122F310CD /* Pods-AbnormalMouse.release.xcconfig */,
-				CA16F656E4CCD8FBCF39FB43 /* Pods-AbnormalMouse.preview.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -587,14 +587,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1383617D2487E70700E76F41 /* Build configuration list for PBXNativeTarget "AbnormalMouse" */;
 			buildPhases = (
-				8447845B62469B04C9FA7CFE /* [CP] Check Pods Manifest.lock */,
+				FDA889CBDC795ADE4B7F2E15 /* [CP] Check Pods Manifest.lock */,
 				84CD3155251C71D20020D15C /* ShellScript */,
 				84E4942E248E2A020074540F /* SwiftGen */,
 				1383615B2487E70500E76F41 /* Sources */,
 				1383615C2487E70500E76F41 /* Frameworks */,
 				1383615D2487E70500E76F41 /* Resources */,
 				842B149A24A9CBE50063CDE0 /* CopyFiles */,
-				37BD8F770BB7D53E90EA314C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -650,7 +649,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = Intii.com;
 				TargetAttributes = {
 					1383615E2487E70500E76F41 = {
@@ -676,8 +675,6 @@
 				Base,
 			);
 			mainGroup = 138361562487E70500E76F41;
-			packageReferences = (
-			);
 			productRefGroup = 138361602487E70500E76F41 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -731,45 +728,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		37BD8F770BB7D53E90EA314C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8447845B62469B04C9FA7CFE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AbnormalMouse-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		84CD3155251C71D20020D15C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -804,6 +762,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen\n";
+		};
+		FDA889CBDC795ADE4B7F2E15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AbnormalMouse-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1049,6 +1029,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1110,6 +1091,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1139,7 +1121,7 @@
 		};
 		1383617E2487E70700E76F41 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B229038B0F13F1DAD33760D /* Pods-AbnormalMouse.debug.xcconfig */;
+			baseConfigurationReference = 6560342084616E79FE3BD3CE /* Pods-AbnormalMouse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1174,7 +1156,7 @@
 		};
 		1383617F2487E70700E76F41 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E99A3A881BF298122F310CD /* Pods-AbnormalMouse.release.xcconfig */;
+			baseConfigurationReference = 48FB07C6FEB6FFEB2BE5E487 /* Pods-AbnormalMouse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1333,6 +1315,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1369,7 +1352,7 @@
 		};
 		8485C48624C5817400831C29 /* Preview */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA16F656E4CCD8FBCF39FB43 /* Pods-AbnormalMouse.preview.xcconfig */;
+			baseConfigurationReference = 5A642789AC60774CFB5266C8 /* Pods-AbnormalMouse.preview.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
