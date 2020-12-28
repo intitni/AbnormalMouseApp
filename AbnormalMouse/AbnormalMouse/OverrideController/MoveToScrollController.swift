@@ -15,11 +15,9 @@ final class MoveToScrollController: OverrideController {
             case scrollShouldBegin
             /// Scroll has begun, but gesture is idle.
             case scrollHasBegun
-            /// Gesture is about to begin, it will reset the current scroll events.
-            case gestureShouldBegin
-            /// Gesture is restarting scroll events.
-            case gestureRestartingScroll
-            /// Gesture has begun, scroll has been restarted.
+            /// Can start to send scroll events.
+            case scrollCanChange
+            /// Can start to send gesture events.
             case gestureHasBegun
             /// Both gesture and scoll should end.
             case everythingShouldEnd
@@ -30,6 +28,7 @@ final class MoveToScrollController: OverrideController {
         var scrollSpeedMultiplier: CGFloat = 0
         var swipeSpeedMultiplier: CGFloat = 0
         var isInertiaEffectEnabled = false
+        var didPostMayBegin = false
     }
 
     private let persisted: Readonly<Persisted.MoveToScroll>
@@ -128,34 +127,23 @@ extension MoveToScrollController {
         let h = min(Int(translation.width * state.scrollSpeedMultiplier), 200)
         let sh = h
 
-        /// 2020-7-29 a few things have change to tweak experience, but it may conflict to some
-        /// decisions I made in the past. So I am keeping the structure here temporarily.
-        ///
-        /// 1. scroll gesture event now begins at the very begining.
-        /// 2. no more scroll event cancellation and restart at stage `.gestureShouldBegin`
-        ///    and `.gestureRestartingScroll`.
-        /// 3. scroll and gesture now begins at stage `.scrollHasBegun`, and this stage is guarded
-        ///    to enter only after mouse movement is detected. see `Tool.advanceState`.
-        ///
-        /// These changes should make swipe gestures more natural, and allow it to work in
-        /// App Store.app. But swipe gestures can no longer happens at any time during scrolling.
-        /// However, swipe gesture can now happen anytime after activator is pressed, which is what
-        /// we were trying to achieve.
         func postEvents() {
             switch state.eventPosterState {
             case .inactive:
                 break
             case .scrollShouldBegin:
                 tapHold.consume()
-                p.postScroll(v: v, h: h, phase: .mayBegin)
+                if !state.didPostMayBegin {
+                    p.postScroll(v: v, h: h, phase: .mayBegin)
+                    p.postScrollGesture(phase: .mayBegin)
+                    state.didPostMayBegin = true
+                }
             case .scrollHasBegun:
                 p.postEventPerFrame([])
-                p.postScrollGesture(phase: .began)
                 p.postScroll(v: v, h: h, phase: .began)
-            case .gestureShouldBegin:
+                p.postScrollGesture(phase: .began)
+            case .scrollCanChange:
                 p.postScroll(v: v, h: h, phase: .changed)
-            case .gestureRestartingScroll:
-                p.postScrollGesture(v: v, h: h, sh: sh, phase: .changed)
             case .gestureHasBegun:
                 p.postScroll(v: v, h: h, phase: .changed)
                 p.postScrollGesture(v: v, h: h, sh: sh, phase: .changed)
@@ -167,7 +155,6 @@ extension MoveToScrollController {
             /// 3. Reeder.app scroll, overscroll, inertia effect works properly.
             /// 4. Reeder.app horizontal pan works properly.
             /// 5. Swish.app works properly
-            /// 5. Swish.app works properly.
             /// 6. LaunchPad horizontal pan works properly.
             ///
             /// Currently a scroll-event-strategy is used because it's the only way to make
@@ -178,6 +165,7 @@ extension MoveToScrollController {
             ///              `postInertiaEffect` is changed!!! __2020-7-21__
             case .everythingShouldEnd:
                 // Cancel because Reeder.app will not have inertia effect
+                p.postScroll(v: v, h: h, phase: .changed)
                 p.postScroll(phase: .cancelled)
                 p.postScrollGesture(v: v, h: h, sh: sh, phase: .ended)
                 p.postNullGesture()
@@ -191,8 +179,8 @@ extension MoveToScrollController {
             }
         }
 
-        Tool.advanceState(&state.eventPosterState, isActive: isActive, h: h, v: v)
-        defer { Tool.resetStateIfNeeded(&state.eventPosterState) }
+        Tool.advanceState(&state, isActive: isActive, h: h, v: v)
+        defer { Tool.resetStateIfNeeded(&state) }
         postEvents()
 
         CGWarpMouseCursorPosition(state.mouseLocation)
@@ -202,38 +190,36 @@ extension MoveToScrollController {
 extension MoveToScrollController {
     enum Tool {
         static func advanceState(
-            _ state: inout State.EventPosterState,
+            _ state: inout State,
             isActive: Bool,
             h: Int,
             v: Int
         ) {
-            func endIfNeeded() { if !isActive { state = .everythingShouldEnd } }
-            switch state {
+            func endIfNeeded() { if !isActive { state.eventPosterState = .everythingShouldEnd } }
+            switch state.eventPosterState {
             case .inactive:
-                if isActive { state = .scrollShouldBegin }
+                if isActive { state.eventPosterState = .scrollShouldBegin }
             case .scrollShouldBegin:
-                if abs(h) > 5 { state = .scrollHasBegun }
-                else if abs(v) > 5 { state = .scrollHasBegun }
-                endIfNeeded()
+                defer { endIfNeeded() }
+                guard abs(h) > 5 || abs(v) > 5 else { break }
+                state.eventPosterState = .scrollHasBegun
             case .scrollHasBegun:
-                state = .gestureShouldBegin
+                state.eventPosterState = .scrollCanChange
                 endIfNeeded()
-            case .gestureShouldBegin:
-                state = .gestureRestartingScroll
-                endIfNeeded()
-            case .gestureRestartingScroll:
-                state = .gestureHasBegun
+            case .scrollCanChange:
+                state.eventPosterState = .gestureHasBegun
                 endIfNeeded()
             case .gestureHasBegun:
                 endIfNeeded()
             case .everythingShouldEnd:
-                state = .inactive
+                state.eventPosterState = .inactive
             }
         }
 
-        static func resetStateIfNeeded(_ state: inout State.EventPosterState) {
-            if state == .everythingShouldEnd {
-                state = .inactive
+        static func resetStateIfNeeded(_ state: inout State) {
+            if state.eventPosterState == .everythingShouldEnd {
+                state.eventPosterState = .inactive
+                state.didPostMayBegin = false
             }
         }
     }
