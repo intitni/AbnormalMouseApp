@@ -1,20 +1,15 @@
 # Change Log
 
-### Next 
+### 2020.9
 
 - Fix Reeder.app won't recognize scroll sometimes.
 - Fix Calendar.app won't recognize scroll.
 
-### 2020.9
+### 2020.8
 
 - Adjust app icon to have a stronger Big Sur taste.
 - Add more keyboard code name.
-- Build also for Apple Silicon (untested).
-
-### 2020.8
-
 - Build for Apple Silicon (not tested).
-- Tweak icon color.
 
 ### 2020.7
 
