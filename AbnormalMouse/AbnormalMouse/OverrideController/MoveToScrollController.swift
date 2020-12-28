@@ -134,19 +134,22 @@ extension MoveToScrollController {
             case .scrollShouldBegin:
                 tapHold.consume()
                 if !state.didPostMayBegin {
-                    p.postScroll(v: v, h: h, phase: .mayBegin)
-                    p.postScrollGesture(phase: .mayBegin)
+                    p.postScroll(phase: .mayBegin)
+                    p.postNullGesture()
                     state.didPostMayBegin = true
                 }
             case .scrollHasBegun:
                 p.postEventPerFrame([])
-                p.postScroll(v: v, h: h, phase: .began)
                 p.postScrollGesture(phase: .began)
+                p.postScroll(v: v, h: h, phase: .began)
+                p.postNullGesture()
             case .scrollCanChange:
                 p.postScroll(v: v, h: h, phase: .changed)
+                p.postNullGesture()
             case .gestureHasBegun:
                 p.postScroll(v: v, h: h, phase: .changed)
                 p.postScrollGesture(v: v, h: h, sh: sh, phase: .changed)
+                p.postNullGesture()
 
             /// To change the implementaion of this state, one should test that
             ///
@@ -175,6 +178,7 @@ extension MoveToScrollController {
                     // Inertia effect will make Reeder end it's gesture recognizers, when
                     // inertia effect is off, we have to end it manually.
                     p.postScroll(phase: .ended)
+                    p.postNullGesture()
                 }
             }
         }

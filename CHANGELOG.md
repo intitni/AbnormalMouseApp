@@ -1,5 +1,10 @@
 # Change Log
 
+### Next 
+
+- Fix Reeder.app won't recognize scroll sometimes.
+- Fix Calendar.app won't recognize scroll.
+
 ### 2020.9
 
 - Adjust app icon to have a stronger Big Sur taste.

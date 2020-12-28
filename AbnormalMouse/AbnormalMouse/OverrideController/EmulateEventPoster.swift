@@ -226,7 +226,6 @@ struct EmulateEventPoster {
                 }
             }()
             e[.gestureSwipeDirection] = mystery
-            e[.gestureSwipeMotion] = mystery
             e[.gestureZoomDirection] = mystery
             e.post(tap: .cghidEventTap)
         }
