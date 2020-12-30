@@ -57,14 +57,11 @@ struct EmulateEventPoster {
                 previousH = scaledH
                 scheduledTask.append {
                     if i == 0 {
-                        self.postScroll(v: -sV, h: -sH, isPartOfPan: false, phase: .began)
+                        self.postScroll(v: -sV, h: -sH, isPartOfPan: false)
                     } else {
-                        self.postScroll(v: -sV, h: -sH, isPartOfPan: false, phase: .changed)
+                        self.postScroll(v: -sV, h: -sH, isPartOfPan: false)
                     }
                 }
-            }
-            scheduledTask.append {
-                self.postScroll(isPartOfPan: false, phase: .ended)
             }
             self.postEventPerFrame(scheduledTask)
         }
@@ -122,6 +119,10 @@ struct EmulateEventPoster {
     ///   - h: Horizontal translation in pixel.
     ///   - isPartOfPan: If it's a part of pan gesture.
     ///   - phase: Scroll event phase.
+    ///
+    /// - Important: when a scroll phase is provided, it is considered tied to a scroll gesture
+    ///     event, some apps may ignore it and use values from scroll gestures instead.
+    ///     Not sure what `isPartOfPan` does in it.
     func postScroll(
         v: Int = 0,
         h: Int = 0,
@@ -226,7 +227,6 @@ struct EmulateEventPoster {
                 }
             }()
             e[.gestureSwipeDirection] = mystery
-            e[.gestureSwipeMotion] = mystery
             e[.gestureZoomDirection] = mystery
             e.post(tap: .cghidEventTap)
         }
