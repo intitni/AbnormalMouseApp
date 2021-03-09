@@ -27,7 +27,7 @@ private struct ZoomAndRotateSettingsView: View {
 // MARK: - Zoom and Rotate
 
 private struct ZoomAndRotateView: View {
-    private struct _L10n {
+    private enum _L10n {
         typealias View = L10n.ZoomAndRotateSettings.ZoomAndRotateView
         typealias TipsTitle = L10n.Shared.TipsTitle
     }
@@ -128,7 +128,7 @@ private struct ZoomAndRotateView: View {
 // MARK: - Smart Zoom
 
 private struct SmartZoomView: View {
-    private struct _L10n {
+    private enum _L10n {
         typealias View = L10n.ZoomAndRotateSettings.SmartZoomView
         typealias TipsTitle = L10n.Shared.TipsTitle
     }

@@ -4,7 +4,6 @@ import Combine
 import ComposableArchitecture
 import KeychainAccess
 import ServiceManagement
-import Sparkle
 import SwiftUI
 
 // MARK: - Global Scope
@@ -38,7 +37,7 @@ private let store = TheApp.Store(
     environment: .live(environment: .init(
         persisted: persisted,
         purchaseManager: purchaseManager,
-        updater: SUUpdater.shared(),
+        updater: SparkleUpdater(),
         activatorConflictChecker: .init(persisted: Readonly(persisted)),
         overrideControllers: [
             MoveToScrollController(

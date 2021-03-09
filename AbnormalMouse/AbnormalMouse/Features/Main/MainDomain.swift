@@ -3,7 +3,6 @@ import CGEventOverride
 import Combine
 import ComposableArchitecture
 import Foundation
-import Sparkle
 
 struct MainDomain: Domain {
     typealias Environment = SystemEnvironment<_Environment>
@@ -12,7 +11,7 @@ struct MainDomain: Domain {
         var persisted: Persisted
         var activatorConflictChecker: ActivatorConflictChecker
         var purchaseManager: PurchaseManagerType
-        var updater: SUUpdater
+        var updater: Updater
     }
 
     struct State: Equatable {
@@ -193,7 +192,7 @@ extension Store where Action == MainDomain.Action, State == MainDomain.State {
                 persisted: persisted,
                 activatorConflictChecker: .init(persisted: Readonly(persisted)),
                 purchaseManager: FakePurchaseManager(),
-                updater: SUUpdater.shared()
+                updater: FakeUpdater()
             ))
         )
     }

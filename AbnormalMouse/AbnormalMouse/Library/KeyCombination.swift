@@ -183,8 +183,8 @@ struct KeyCombination: Equatable {
     }
 }
 
-extension KeyboardCode {
-    fileprivate var modifierFlag: CGEventFlags {
+private extension KeyboardCode {
+    var modifierFlag: CGEventFlags {
         switch self {
         case .shift: return .maskShift
         case .command: return .maskCommand

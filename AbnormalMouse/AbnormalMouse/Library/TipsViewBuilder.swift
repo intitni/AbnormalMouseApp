@@ -1,7 +1,7 @@
 import SwiftUI
 
 @_functionBuilder
-struct TipsViewBuilder {
+enum TipsViewBuilder {
     typealias Decorator = SettingsTipsDecorator
 
     static func d<Content: View>(_ content: Content) -> Decorator<Content> {

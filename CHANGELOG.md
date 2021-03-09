@@ -1,5 +1,11 @@
 # Change Log
 
+### 2020.10
+
+- Fix that SUUpdater was loaded too early and messed up windows. 
+- Again use CocoaPods for Sparkle.
+- Remove the name localization.
+
 ### 2020.9
 
 - Fix Reeder.app won't recognize scroll sometimes.

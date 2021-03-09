@@ -81,8 +81,8 @@ extension GestureRecognizers.Tap {
         let code = event[.keyboardEventKeycode]
         let activator = combination.activator
         guard case let .key(target) = activator,
-            code == target,
-            combination.matchesFlags(event.flags)
+              code == target,
+              combination.matchesFlags(event.flags)
         else { return .unchange }
 
         resetStateIfNeeded()

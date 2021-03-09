@@ -34,10 +34,6 @@ let package = Package(
             url: "https://github.com/CombineCommunity/CombineExt",
             .upToNextMajor(from: "1.2.0")
         ),
-        .package(
-            url: "https://github.com/sparkle-project/Sparkle",
-            .branch("master")
-        ),
     ],
     targets: [
         .target(
@@ -47,7 +43,6 @@ let package = Package(
                 "CGEventOverride",
                 "CombineExt",
                 "KeychainAccess",
-                "Sparkle",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),

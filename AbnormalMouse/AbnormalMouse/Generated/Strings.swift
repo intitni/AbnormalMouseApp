@@ -3,13 +3,12 @@
 
 import Foundation
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
+// swiftlint:disable superfluous_disable_command file_length implicit_return
 
 // MARK: - Strings
 
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
-// swiftlint:disable nesting type_body_length type_name
+// swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
   internal enum Activation {
     /// Email
@@ -85,8 +84,8 @@ internal enum L10n {
     /// License is refunded.
     internal static let licenseRefunded = L10n.tr("General", "LicenseRefunded")
     /// Licensed to %@
-    internal static func licenseTo(_ p1: String) -> String {
-      return L10n.tr("General", "LicenseTo", p1)
+    internal static func licenseTo(_ p1: Any) -> String {
+      return L10n.tr("General", "LicenseTo", String(describing: p1))
     }
     /// License is valid.
     internal static let licenseValid = L10n.tr("General", "LicenseValid")
@@ -101,8 +100,8 @@ internal enum L10n {
     /// Trial has ended.
     internal static let trialEnd = L10n.tr("General", "TrialEnd")
     /// Version %@
-    internal static func version(_ p1: String) -> String {
-      return L10n.tr("General", "Version", p1)
+    internal static func version(_ p1: Any) -> String {
+      return L10n.tr("General", "Version", String(describing: p1))
     }
     internal enum ErrorMessage {
       /// Failed to deactivate, please try again later.
@@ -220,8 +219,8 @@ internal enum L10n {
       /// Mouse(M)
       internal static let middle = L10n.tr("Shared", "MouseCodeName.Middle")
       /// Mouse(%@)
-      internal static func other(_ p1: String) -> String {
-        return L10n.tr("Shared", "MouseCodeName.Other", p1)
+      internal static func other(_ p1: Any) -> String {
+        return L10n.tr("Shared", "MouseCodeName.Other", String(describing: p1))
       }
       /// Mouse(R)
       internal static let `right` = L10n.tr("Shared", "MouseCodeName.Right")
@@ -333,16 +332,25 @@ internal enum L10n {
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
-// swiftlint:enable nesting type_body_length type_name
+// swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
 
 // MARK: - Implementation Details
 
 extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    // swiftlint:disable:next nslocalizedstring_key
-    let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
+    let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
 
-private final class BundleToken {}
+// swiftlint:disable convenience_type
+private final class BundleToken {
+  static let bundle: Bundle = {
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
+  }()
+}
+// swiftlint:enable convenience_type

@@ -3,7 +3,6 @@ import Combine
 import ComposableArchitecture
 import Foundation
 import ServiceManagement
-import Sparkle
 
 enum AdvancedDomain: Domain {
     struct State: Equatable {

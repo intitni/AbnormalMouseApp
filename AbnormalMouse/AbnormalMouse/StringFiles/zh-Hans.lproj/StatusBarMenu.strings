@@ -1,5 +1,5 @@
-"IsEnabled" = "不一般鼠标正在运行中..";
-"IsDisabled" = "不一般鼠标已停止运行..";
+"IsEnabled" = "Abnormal Mouse 正在运行中..";
+"IsDisabled" = "Abnormal Mouse 已停止运行..";
 "ShowPreferences" = "显示设置";
 "Quit" = "退出";
 
