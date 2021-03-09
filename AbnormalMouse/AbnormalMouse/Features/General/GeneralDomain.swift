@@ -3,7 +3,6 @@ import Combine
 import ComposableArchitecture
 import Foundation
 import ServiceManagement
-import Sparkle
 
 enum GeneralDomain: Domain {
     struct State: Equatable {
@@ -58,7 +57,7 @@ enum GeneralDomain: Domain {
     struct _Environment {
         let persisted: Persisted.General
         let purchaseManager: PurchaseManagerType
-        let updater: SUUpdater?
+        let updater: Updater?
     }
 
     enum CancellableKeys: Hashable {
@@ -206,7 +205,7 @@ enum GeneralDomain: Domain {
 }
 
 extension GeneralDomain.State {
-    init(from persisted: Persisted.General, updater: SUUpdater) {
+    init(from persisted: Persisted.General, updater: Updater) {
         startAtLogin = persisted.startAtLogin
         automaticallyCheckForUpdate = updater.automaticallyChecksForUpdates
     }
@@ -219,7 +218,7 @@ extension Store where State == GeneralDomain.State, Action == GeneralDomain.Acti
         environment: .live(environment: .init(
             persisted: .init(),
             purchaseManager: FakePurchaseManager(),
-            updater: SUUpdater.shared()
+            updater: FakeUpdater()
         ))
     )
 }

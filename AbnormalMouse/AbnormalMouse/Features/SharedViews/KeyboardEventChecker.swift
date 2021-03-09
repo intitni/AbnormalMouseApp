@@ -58,7 +58,7 @@ struct KeyEventHandling: NSViewRepresentable {
                 let combination = Set([KeyDown.key(keyCode.rawValue)] + modifierKeyDowns)
                 onKeyReceive(combination)
             } else if event.type == .otherMouseDown,
-                let mouseCode = MouseCode(rawValue: Int(event.buttonNumber))
+                      let mouseCode = MouseCode(rawValue: Int(event.buttonNumber))
             {
                 let combination = Set([KeyDown.mouse(mouseCode.rawValue)] + modifierKeyDowns)
                 onKeyReceive(combination)

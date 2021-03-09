@@ -135,7 +135,7 @@ private struct MoveToScrollSettingsView: View {
 // MARK: - Smart Zoom
 
 private struct HalfPageScrollView: View {
-    private struct _L10n {
+    private enum _L10n {
         typealias View = L10n.ScrollSettings.HalfPageScrollView
         typealias TipsTitle = L10n.Shared.TipsTitle
     }

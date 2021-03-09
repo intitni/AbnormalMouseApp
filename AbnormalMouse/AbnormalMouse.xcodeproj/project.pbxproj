@@ -26,6 +26,7 @@
 		13BB14D324AB9299007C5A81 /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13BB14D524AB9299007C5A81 /* General.strings */; };
 		13C51ABD249BA43B007881A5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABB249BA2F3007881A5 /* Style.swift */; };
 		13C51ABF249E5813007881A5 /* MoveMouseDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */; };
+		13D7E9E225F71BD8006EE50C /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D7E9E125F71BD8006EE50C /* Updater.swift */; };
 		66B691ECFBDA99FF4810D05B /* Pods_AbnormalMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968124F027596FA20DBC84F9 /* Pods_AbnormalMouse.framework */; };
 		840E3297251D8FD400FDD1B3 /* ActivatorConflictChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */; };
 		8423BE2F25300BD30055F55E /* AppDependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 8423BE2E25300BD30055F55E /* AppDependencies */; };
@@ -141,6 +142,7 @@
 		13BB14D624AB929E007C5A81 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/General.strings"; sourceTree = "<group>"; };
 		13C51ABB249BA2F3007881A5 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		13C51ABE249E5813007881A5 /* MoveMouseDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveMouseDirection.swift; sourceTree = "<group>"; };
+		13D7E9E125F71BD8006EE50C /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 		13EE2C6E2504C9B100BE46BC /* LicenseWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LicenseWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48FB07C6FEB6FFEB2BE5E487 /* Pods-AbnormalMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.release.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.release.xcconfig"; sourceTree = "<group>"; };
 		5A642789AC60774CFB5266C8 /* Pods-AbnormalMouse.preview.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbnormalMouse.preview.xcconfig"; path = "Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse.preview.xcconfig"; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				138361622487E70500E76F41 /* AppDelegate.swift */,
+				13D7E9E125F71BD8006EE50C /* Updater.swift */,
 				84C8EAEF248A2C7800C53CFD /* App.swift */,
 				84399B15248898C300970CFF /* Persisted.swift */,
 				13C51ABB249BA2F3007881A5 /* Style.swift */,
@@ -588,12 +591,13 @@
 			buildConfigurationList = 1383617D2487E70700E76F41 /* Build configuration list for PBXNativeTarget "AbnormalMouse" */;
 			buildPhases = (
 				FDA889CBDC795ADE4B7F2E15 /* [CP] Check Pods Manifest.lock */,
-				84CD3155251C71D20020D15C /* ShellScript */,
+				84CD3155251C71D20020D15C /* Format Codes */,
 				84E4942E248E2A020074540F /* SwiftGen */,
 				1383615B2487E70500E76F41 /* Sources */,
 				1383615C2487E70500E76F41 /* Frameworks */,
 				1383615D2487E70500E76F41 /* Resources */,
 				842B149A24A9CBE50063CDE0 /* CopyFiles */,
+				1B9A457ACCA7A1298546206A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -649,7 +653,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = Intii.com;
 				TargetAttributes = {
 					1383615E2487E70500E76F41 = {
@@ -728,7 +732,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		84CD3155251C71D20020D15C /* ShellScript */ = {
+		1B9A457ACCA7A1298546206A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AbnormalMouse/Pods-AbnormalMouse-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84CD3155251C71D20020D15C /* Format Codes */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -737,6 +758,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Format Codes";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -837,6 +859,7 @@
 				84AA16572491D39B00D2C34E /* ZoomAndRotateDomain.swift in Sources */,
 				84B093A725203DC6007BA556 /* SettingsTipsView.swift in Sources */,
 				84E4941A248DE4BA0074540F /* NeedAccessabilityDomain.swift in Sources */,
+				13D7E9E225F71BD8006EE50C /* Updater.swift in Sources */,
 				845A29F324D152900086477D /* MouseMovementGestureRecognizer.swift in Sources */,
 				84399B16248898C300970CFF /* Persisted.swift in Sources */,
 				84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */,
@@ -1126,10 +1149,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AbnormalMouse/AbnormalMouse.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1144,10 +1167,11 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2020.9;
+				MARKETING_VERSION = 2020.10;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp --deep --options runtime";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.intii.AbnormalMouse macos";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1161,10 +1185,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AbnormalMouse/AbnormalMouse.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1179,10 +1203,11 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2020.9;
+				MARKETING_VERSION = 2020.10;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp --deep --options runtime";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Direct com.intii.AbnormalMouse macos";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1267,8 +1292,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AbnormalMouseLauncher/AbnormalMouseLauncher.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouseLauncher/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
@@ -1282,7 +1307,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Direct com.intii.AbnormalMouseLauncher macos";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1357,10 +1382,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AbnormalMouse/AbnormalMouse.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1375,10 +1400,11 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2020.9;
+				MARKETING_VERSION = 2020.10;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp --deep --options runtime";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.intii.AbnormalMouse macos";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

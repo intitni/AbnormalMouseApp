@@ -98,8 +98,8 @@ struct Persisted: PersistedType {
 
 private protocol PersistedType {}
 
-extension PersistedType {
-    fileprivate func replace(userDefaults: PropertyListStorage, keychainAccess: KeychainAccess) {
+private extension PersistedType {
+    func replace(userDefaults: PropertyListStorage, keychainAccess: KeychainAccess) {
         for child in Mirror(reflecting: self).children {
             if let ud = child.value as? UserDefaultStorableWrapper {
                 ud.userDefaults = userDefaults
@@ -113,7 +113,7 @@ extension PersistedType {
         }
     }
 
-    fileprivate func reset() {
+    func reset() {
         for child in Mirror(reflecting: self).children {
             if let ud = child.value as? UserDefaultStorableWrapper {
                 ud.reset()

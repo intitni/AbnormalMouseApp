@@ -3,7 +3,6 @@ import CGEventOverride
 import Combine
 import ComposableArchitecture
 import Foundation
-import Sparkle
 
 /// A spesific feature of the app.
 protocol Domain {
@@ -67,7 +66,7 @@ struct TheApp: Domain {
     struct _Environment {
         var persisted: Persisted
         var purchaseManager: PurchaseManagerType
-        var updater: SUUpdater
+        var updater: Updater
         var activatorConflictChecker: ActivatorConflictChecker
 
         let overrideControllers: [OverrideController]
@@ -164,7 +163,7 @@ extension Store where Action == TheApp.Action, State == TheApp.State {
             environment: .live(environment: .init(
                 persisted: persisted,
                 purchaseManager: FakePurchaseManager(),
-                updater: SUUpdater.shared(),
+                updater: FakeUpdater(),
                 activatorConflictChecker: .init(persisted: Readonly(persisted)),
                 overrideControllers: []
             ))

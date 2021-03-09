@@ -1,20 +1,24 @@
 PODS:
-  - SwiftFormat/CLI (0.46.3)
-  - SwiftGen (6.1.0)
+  - Sparkle (1.26.0)
+  - SwiftFormat/CLI (0.47.12)
+  - SwiftGen (6.4.0)
 
 DEPENDENCIES:
+  - Sparkle
   - SwiftFormat/CLI
   - SwiftGen (~> 6.0)
 
 SPEC REPOS:
   trunk:
+    - Sparkle
     - SwiftFormat
     - SwiftGen
 
 SPEC CHECKSUMS:
-  SwiftFormat: b639417da9e024b9e782f917bc9a080cf75bcb37
-  SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
+  Sparkle: d56d028f4b0c123577825f5d1004f6140d77f90e
+  SwiftFormat: 68cac6de69aafb44b60ae49a919600966b0dcabe
+  SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
 
-PODFILE CHECKSUM: fc4e7084ddbf49cbf051c011234339f3c13c3180
+PODFILE CHECKSUM: 71637b0bdf86c476e52e6a5b60330d9c9b093ef8
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

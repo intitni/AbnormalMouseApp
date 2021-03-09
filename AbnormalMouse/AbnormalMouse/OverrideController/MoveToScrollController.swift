@@ -237,7 +237,7 @@ func getWindowBounds(ofPid pid: pid_t) -> CGRect {
     let windowListInfo = CGWindowListCopyWindowInfo(options, kCGNullWindowID)
     guard let infoList = windowListInfo as NSArray? as? [[String: AnyObject]] else { return .zero }
     if let window = infoList.first(where: { ($0["kCGWindowOwnerPID"] as? pid_t) == pid }),
-        let bounds = window["kCGWindowBounds"]
+       let bounds = window["kCGWindowBounds"]
     {
         func extract(_ v: Any??) -> CGFloat {
             guard let number = v as? NSNumber else { return 0 }
