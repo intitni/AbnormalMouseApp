@@ -93,9 +93,9 @@ internal enum L10n {
     internal static let purchase = L10n.tr("General", "Purchase")
     /// Quit Abnormal Mouse
     internal static let quit = L10n.tr("General", "Quit")
-    /// Trial will end in %d days.
-    internal static func trialDaysRemain(_ p1: Int) -> String {
-      return L10n.tr("General", "TrialDaysRemain", p1)
+    /// Trial will end in %@ days.
+    internal static func trialDaysRemain(_ p1: Any) -> String {
+      return L10n.tr("General", "TrialDaysRemain", String(describing: p1))
     }
     /// Trial has ended.
     internal static let trialEnd = L10n.tr("General", "TrialEnd")
@@ -264,9 +264,9 @@ internal enum L10n {
       internal static let invalid = L10n.tr("StatusBarMenu", "PurchaseStatus.Invalid")
       /// License is refunded.
       internal static let refunded = L10n.tr("StatusBarMenu", "PurchaseStatus.Refunded")
-      /// Trial ends in %d days.
-      internal static func trial(_ p1: Int) -> String {
-        return L10n.tr("StatusBarMenu", "PurchaseStatus.Trial", p1)
+      /// Trial ends in %@ days.
+      internal static func trial(_ p1: Any) -> String {
+        return L10n.tr("StatusBarMenu", "PurchaseStatus.Trial", String(describing: p1))
       }
     }
   }

@@ -7,7 +7,7 @@
 "Title.About" = "About";
 
 "TrialEnd" = "Trial has ended.";
-"TrialDaysRemain" = "Trial will end in %d days.";
+"TrialDaysRemain" = "Trial will end in %@ days.";
 "Activate" = "Activate";
 "Purchase" = "Buy Now";
 "Deactivate" = "Deactivate";
