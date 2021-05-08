@@ -22,8 +22,6 @@ final class EventSequenceController {
 
     private static var _shared: EventSequenceController?
 
-    /// Makes sure that `queuedTasks` is thread safe.
-    private let queue = DispatchQueue(label: "Thread Safe", target: .global(qos: .userInteractive))
     private var queuedTasks = [AnyHashable: [Task]]()
     private var displayLink: CVDisplayLink!
     private var isDisplayLinkStarted: Bool = false
@@ -31,22 +29,20 @@ final class EventSequenceController {
     private init?() {
         _ = CVDisplayLinkCreateWithCGDisplay(CGMainDisplayID(), &displayLink)
         guard displayLink != nil else { return nil }
-
         CVDisplayLinkSetOutputHandler(displayLink) { [weak self] _, _, _, _, _ in
             guard let self = self else { return kCVReturnSuccess }
 
-            let tasks: [Task] = self.queue.sync(flags: .barrier) {
-                var runNow = [Task]()
-                var temp = self.queuedTasks
-                for (key, _list) in self.queuedTasks {
-                    var list = _list
-                    guard !list.isEmpty else { continue }
-                    runNow.append(list.removeFirst())
-                    temp[key] = list
-                }
-                self.queuedTasks = temp
-                return runNow
+            var runNow = [Task]()
+            var temp = self.queuedTasks
+            for (key, _list) in self.queuedTasks {
+                var list = _list
+                guard !list.isEmpty else { continue }
+                runNow.append(list.removeFirst())
+                temp[key] = list
             }
+            self.queuedTasks = temp
+            let tasks = runNow
+
             // for better performance, we disable displayLink when there is no more event to send.
             if tasks.isEmpty {
                 self.disableLink()
@@ -59,23 +55,19 @@ final class EventSequenceController {
 
     /// Schedule a sequence of event to be fired for a specific feature.
     func scheduleTasks(_ tasks: [() -> Void], forKey key: AnyHashable) {
-        if !tasks.isEmpty { startLink() }
-        queue.sync(flags: .barrier) {
-            queuedTasks[key] = tasks
-        }
-    }
-
-    private func startLink() {
-        queue.sync(flags: .barrier) {
-            CVDisplayLinkStart(displayLink)
-            isDisplayLinkStarted = true
+        DispatchQueue.main.async {
+            if !tasks.isEmpty {
+                CVDisplayLinkStart(self.displayLink)
+                self.isDisplayLinkStarted = true
+            }
+            self.queuedTasks[key] = tasks
         }
     }
 
     private func disableLink() {
-        queue.sync(flags: .barrier) {
-            CVDisplayLinkStop(displayLink)
-            isDisplayLinkStarted = false
+        DispatchQueue.main.async {
+            CVDisplayLinkStop(self.displayLink)
+            self.isDisplayLinkStarted = false
         }
     }
 }

@@ -88,6 +88,7 @@
 		84E49432248E2A770074540F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49430248E2A770074540F /* Strings.swift */; };
 		84E49433248E2A770074540F /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49431248E2A770074540F /* Assets.swift */; };
 		84E49439248E2BF80074540F /* NeedAccessability.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E4943B248E2BF80074540F /* NeedAccessability.strings */; };
+		84E6B6DD26461E3200887DE7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6B6DC26461E3200887DE7 /* Queue.swift */; };
 		84FAB1EB24C13253001265FD /* SCA+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1EA24C13253001265FD /* SCA+Extentions.swift */; };
 		84FAB1F224C53547001265FD /* Readonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1F124C53547001265FD /* Readonly.swift */; };
 /* End PBXBuildFile section */
@@ -223,6 +224,7 @@
 		84E49436248E2BCE0074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		84E4943A248E2BF80074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NeedAccessability.strings; sourceTree = "<group>"; };
 		84E4943C248E2BFA0074540F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NeedAccessability.strings"; sourceTree = "<group>"; };
+		84E6B6DC26461E3200887DE7 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		84FAB1EA24C13253001265FD /* SCA+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCA+Extentions.swift"; sourceTree = "<group>"; };
 		84FAB1F124C53547001265FD /* Readonly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readonly.swift; sourceTree = "<group>"; };
 		968124F027596FA20DBC84F9 /* Pods_AbnormalMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbnormalMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,6 +320,7 @@
 				842B148124A9C3C20063CDE0 /* InfoPlist.strings */,
 				1383616F2487E70700E76F41 /* AbnormalMouse.entitlements */,
 				138361682487E70700E76F41 /* Preview Content */,
+				84E6B6DC26461E3200887DE7 /* Queue.swift */,
 			);
 			path = AbnormalMouse;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				845A29F124D11FB30086477D /* TapHoldGestureRecognizer.swift in Sources */,
 				131367D72509087200BA888C /* DockSwipeSettingsView.swift in Sources */,
 				138361652487E70500E76F41 /* MoveToScrollSettingsView.swift in Sources */,
+				84E6B6DD26461E3200887DE7 /* Queue.swift in Sources */,
 				84B8C1E924D262D600BF3378 /* GestureRecognizer.swift in Sources */,
 				138361632487E70500E76F41 /* AppDelegate.swift in Sources */,
 				131367D52509086500BA888C /* DockSwipeDomain.swift in Sources */,

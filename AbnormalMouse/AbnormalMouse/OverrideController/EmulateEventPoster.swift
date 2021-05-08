@@ -3,29 +3,19 @@ import CGEventOverride
 import Foundation
 import IOKit
 
-private let queue = DispatchQueue(label: "EmulateEventPoster", qos: .userInteractive)
-
 struct EmulateEventPoster {
     let type: AnyHashable
 
     /// Post an event.
     /// - Parameter event: The event.
     private func p(_ event: CGEvent) {
-        queue.async { event.post(tap: .cghidEventTap) }
+        event.post(tap: .cghidEventTap)
     }
 
     /// Post a sequence of events per frame.
     /// - Parameter events: All events.
     func postEventPerFrame(_ events: [() -> Void]) {
         EventSequenceController.shared?.scheduleTasks(events, forKey: type)
-    }
-
-    /// Post an event on next runloop.
-    /// - Parameter block: The event
-    func postOnNextLoop(_ block: @escaping (EmulateEventPoster) -> Void) {
-        DispatchQueue.main.async {
-            block(self)
-        }
     }
 
     /// Post smooth scroll event.
@@ -40,31 +30,29 @@ struct EmulateEventPoster {
                 : 1 - pow(-2 * x + 2, 3) / 2
         }
 
-        queue.sync(flags: .barrier) {
-            let count = refreshRate / 2
-            var scheduledTask = [() -> Void]()
-            var previousV: Int = 0
-            var previousH: Int = 0
-            for i in stride(from: 0, to: count, by: 1) {
-                let x = i / count
-                let scale = easingFunction(x)
-                func scaled(_ k: Double) -> Int { Int(Double(k) * scale) }
-                let scaledV = scaled(v)
-                let scaledH = scaled(h)
-                let sV = scaledV - previousV
-                let sH = scaledH - previousH
-                previousV = scaledV
-                previousH = scaledH
-                scheduledTask.append {
-                    if i == 0 {
-                        self.postScroll(v: -sV, h: -sH, isPartOfPan: false)
-                    } else {
-                        self.postScroll(v: -sV, h: -sH, isPartOfPan: false)
-                    }
+        let count = refreshRate / 2
+        var scheduledTask = [() -> Void]()
+        var previousV: Int = 0
+        var previousH: Int = 0
+        for i in stride(from: 0, to: count, by: 1) {
+            let x = i / count
+            let scale = easingFunction(x)
+            func scaled(_ k: Double) -> Int { Int(Double(k) * scale) }
+            let scaledV = scaled(v)
+            let scaledH = scaled(h)
+            let sV = scaledV - previousV
+            let sH = scaledH - previousH
+            previousV = scaledV
+            previousH = scaledH
+            scheduledTask.append {
+                if i == 0 {
+                    self.postScroll(v: -sV, h: -sH, isPartOfPan: false)
+                } else {
+                    self.postScroll(v: -sV, h: -sH, isPartOfPan: false)
                 }
             }
-            self.postEventPerFrame(scheduledTask)
         }
+        postEventPerFrame(scheduledTask)
     }
 
     /// Post inertia effect after scrolling.
@@ -78,38 +66,36 @@ struct EmulateEventPoster {
     func postInertiaEffect(v: Double = 0, h: Double = 0) {
         func easingFunction(_ x: Double) -> Double { x * x }
 
-        queue.sync(flags: .barrier) {
-            let count = min(200, max(abs(v), abs(h))) / refreshSpeedScale / 2
-            if count <= 0 {
-                var scheduledTask = [() -> Void]()
-                scheduledTask.append {
-                    self.postScrollMomentum(phase: .begin)
-                }
-                scheduledTask.append {
-                    self.postScrollMomentum(phase: .end)
-                }
-                self.postEventPerFrame(scheduledTask)
-                return
-            }
-
+        let count = min(200, max(abs(v), abs(h))) / refreshSpeedScale / 2
+        if count <= 0 {
             var scheduledTask = [() -> Void]()
-            for i in stride(from: 0, to: count, by: 1) {
-                let x = 1 - i / count
-                let scale = easingFunction(x)
-                func scaled(_ k: Double) -> Double { Double(k) * scale }
-                scheduledTask.append {
-                    if i == 0 {
-                        self.postScrollMomentum(v: scaled(v), h: scaled(h), phase: .begin)
-                    } else {
-                        self.postScrollMomentum(v: scaled(v), h: scaled(h), phase: .continuous)
-                    }
-                }
+            scheduledTask.append {
+                self.postScrollMomentum(phase: .begin)
             }
             scheduledTask.append {
                 self.postScrollMomentum(phase: .end)
             }
-            self.postEventPerFrame(scheduledTask)
+            postEventPerFrame(scheduledTask)
+            return
         }
+
+        var scheduledTask = [() -> Void]()
+        for i in stride(from: 0, to: count, by: 1) {
+            let x = 1 - i / count
+            let scale = easingFunction(x)
+            func scaled(_ k: Double) -> Double { Double(k) * scale }
+            scheduledTask.append {
+                if i == 0 {
+                    self.postScrollMomentum(v: scaled(v), h: scaled(h), phase: .begin)
+                } else {
+                    self.postScrollMomentum(v: scaled(v), h: scaled(h), phase: .continuous)
+                }
+            }
+        }
+        scheduledTask.append {
+            self.postScrollMomentum(phase: .end)
+        }
+        postEventPerFrame(scheduledTask)
     }
 
     /// Post scroll event.
@@ -129,21 +115,19 @@ struct EmulateEventPoster {
         isPartOfPan: Bool = true,
         phase: CGScrollPhase = CGScrollPhase(rawValue: 0)!
     ) {
-        queue.async {
-            let e = CGEvent(
-                scrollWheelEvent2Source: nil,
-                units: .pixel,
-                wheelCount: 2,
-                wheel1: Int32(v),
-                wheel2: Int32(h),
-                wheel3: 0
-            )!
-            e[.scrollWheelEventIsContinuous] = 1
-            e[.scrollWheelEventScrollPhase] = Int64(phase.rawValue)
-            e[101] = 4 // magic
-            e[.scrollIsPartOfPan] = isPartOfPan ? 1 : 0
-            e.post(tap: .cghidEventTap)
-        }
+        let e = CGEvent(
+            scrollWheelEvent2Source: nil,
+            units: .pixel,
+            wheelCount: 2,
+            wheel1: Int32(v),
+            wheel2: Int32(h),
+            wheel3: 0
+        )!
+        e[.scrollWheelEventIsContinuous] = 1
+        e[.scrollWheelEventScrollPhase] = Int64(phase.rawValue)
+        e[101] = 4 // magic
+        e[.scrollIsPartOfPan] = isPartOfPan ? 1 : 0
+        e.post(tap: .cghidEventTap)
     }
 
     /// Post inertia effect after scrolling.
@@ -203,33 +187,31 @@ struct EmulateEventPoster {
         sh: Int = 0,
         phase: CGGesturePhase
     ) {
-        queue.async {
-            let e = CGEvent(source: nil)!
-            e.type = CGEventType.gesture
-            e[.gestureType] = GestureType.scroll.rawValue
-            e[.gestureValueX] = Int64(h)
-            e[.gestureSwipeValueX] = Int64(sh)
-            e[.gestureScrollValueY] = Int64(v)
-            e[.gesturePhase] = Int64(phase.rawValue)
-            e[135] = 1 // magic
-            let mystery: Int64 = {
-                if h == 0 { return 0 }
-                let maxH: Int64 = 200
-                let absH = min(max(0, abs(Int64(sh))), maxH)
-                if h < 0 {
-                    let min: Int64 = 3_220_000_000 // magic
-                    let d: Int64 = 40_000_000
-                    return min + d * absH / maxH
-                } else {
-                    let min: Int64 = 1_070_000_000 // magic
-                    let d: Int64 = 40_000_000
-                    return min + d * absH / maxH
-                }
-            }()
-            e[.gestureSwipeDirection] = mystery
-            e[.gestureZoomDirection] = mystery
-            e.post(tap: .cghidEventTap)
-        }
+        let e = CGEvent(source: nil)!
+        e.type = CGEventType.gesture
+        e[.gestureType] = GestureType.scroll.rawValue
+        e[.gestureValueX] = Int64(h)
+        e[.gestureSwipeValueX] = Int64(sh)
+        e[.gestureScrollValueY] = Int64(v)
+        e[.gesturePhase] = Int64(phase.rawValue)
+        e[135] = 1 // magic
+        let mystery: Int64 = {
+            if h == 0 { return 0 }
+            let maxH: Int64 = 200
+            let absH = min(max(0, abs(Int64(sh))), maxH)
+            if h < 0 {
+                let min: Int64 = 3_220_000_000 // magic
+                let d: Int64 = 40_000_000
+                return min + d * absH / maxH
+            } else {
+                let min: Int64 = 1_070_000_000 // magic
+                let d: Int64 = 40_000_000
+                return min + d * absH / maxH
+            }
+        }()
+        e[.gestureSwipeDirection] = mystery
+        e[.gestureZoomDirection] = mystery
+        e.post(tap: .cghidEventTap)
     }
 
     /// Post gesture start event.
@@ -271,30 +253,28 @@ struct EmulateEventPoster {
     ///   - t: how much is the zoom
     ///   - phase: gesture phase
     func postZoom(direction: ZoomDirection, t: Int, phase: CGGesturePhase) {
-        queue.async {
-            let e = CGEvent(source: nil)!
-            e.type = CGEventType.gesture
-            e[.gestureType] = GestureType.zoom.rawValue
+        let e = CGEvent(source: nil)!
+        e.type = CGEventType.gesture
+        e[.gestureType] = GestureType.zoom.rawValue
 
-            let scale: Double = min(max(0.1, Double(abs(t)) / 40), 1)
+        let scale: Double = min(max(0.1, Double(abs(t)) / 40), 1)
 
-            let value: Int64 = {
-                let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
-                func buildValuePart() -> Int64 {
-                    Int64(50_000_000 * scale) + 980_000_000
-                }
+        let value: Int64 = {
+            let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
+            func buildValuePart() -> Int64 {
+                Int64(50_000_000 * scale) + 980_000_000
+            }
 
-                switch direction {
-                case .none: return sign
-                case .expand: return buildValuePart()
-                case .contract: return sign + buildValuePart()
-                }
-            }()
-            e[.gestureSwipeDirection] = value
-            e[.gestureZoomDirection] = value
-            e[.gesturePhase] = Int64(phase.rawValue)
-            e.post(tap: .cghidEventTap)
-        }
+            switch direction {
+            case .none: return sign
+            case .expand: return buildValuePart()
+            case .contract: return sign + buildValuePart()
+            }
+        }()
+        e[.gestureSwipeDirection] = value
+        e[.gestureZoomDirection] = value
+        e[.gesturePhase] = Int64(phase.rawValue)
+        e.post(tap: .cghidEventTap)
     }
 
     /// Post a rotation gesture event.
@@ -317,8 +297,6 @@ struct EmulateEventPoster {
                 return 0
             }
         }()
-
-        print(t, value)
 
         e[.gestureSwipeValueX] = value
         e[.gesturePhase] = Int64(phase.rawValue)

@@ -38,7 +38,9 @@ extension GestureRecognizers {
             self.hook = hook
             let translation = PassthroughSubject<(CGSize, CGEvent), Never>()
             self.translation = translation
-            publisher = translation.eraseToAnyPublisher()
+            publisher = translation
+                .receive(on: DispatchQueue.default)
+                .eraseToAnyPublisher()
             throttler = .init((.zero, nil)) { p in
                 guard let e = p.1 else { return }
                 translation.send((p.0, e))
@@ -49,8 +51,10 @@ extension GestureRecognizers {
                 .init(
                     eventsOfInterest: [.mouseMoved, .otherMouseDragged],
                     convert: { [weak self] _, _, event -> CGEventManipulation.Result in
-                        guard let self = self else { return .unchange }
-                        return self.handleMouse(event: event)
+                        DispatchQueue.default.sync {
+                            guard let self = self else { return .unchange }
+                            return self.handleMouse(event: event)
+                        }
                     }
                 ),
                 forKey: key

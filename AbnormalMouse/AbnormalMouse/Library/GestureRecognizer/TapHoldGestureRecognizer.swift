@@ -9,7 +9,7 @@ extension GestureRecognizers {
         var keyCombination: KeyCombination? { didSet { state = State() } }
         var numberOfTapsRequired: Int = 1 { didSet { state = State() } }
         private(set) lazy var publisher: AnyPublisher<Bool, Never> = $isHolding
-            .receive(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.default)
             .share(replay: 1)
             .eraseToAnyPublisher()
 
@@ -42,13 +42,17 @@ extension GestureRecognizers {
                     eventsOfInterest: [.keyUp, .keyDown, .otherMouseUp, .otherMouseDown],
                     convert: { [weak self] _, type, event -> CGEventManipulation.Result in
                         guard let self = self else { return .unchange }
-                        switch type {
-                        case .keyUp, .keyDown:
-                            return self.handleKeys(type: type, event: event)
-                        case .otherMouseUp, .otherMouseDown:
-                            return self.handleMouseButton(type: type, event: event)
-                        default:
-                            return .unchange
+                        return DispatchQueue.default.sync {
+                            switch type {
+                            case .keyUp,
+                                 .keyDown:
+                                return self.handleKeys(type: type, event: event)
+                            case .otherMouseUp,
+                                 .otherMouseDown:
+                                return self.handleMouseButton(type: type, event: event)
+                            default:
+                                return .unchange
+                            }
                         }
                     }
                 ),

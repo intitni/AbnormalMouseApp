@@ -41,6 +41,7 @@ extension GestureRecognizers {
             self.tapGestureDelayInMilliSeconds = tapGestureDelayInMilliSeconds
             subject = .init()
             publisher = subject
+                .receive(on: DispatchQueue.default)
                 .share(replay: 1)
                 .eraseToAnyPublisher()
             super.init()
@@ -50,13 +51,17 @@ extension GestureRecognizers {
                     eventsOfInterest: [.keyUp, .keyDown, .otherMouseUp, .otherMouseDown],
                     convert: { [weak self] _, type, event -> CGEventManipulation.Result in
                         guard let self = self else { return .unchange }
-                        switch type {
-                        case .keyUp, .keyDown:
-                            return self.handleKeys(type: type, event: event)
-                        case .otherMouseUp, .otherMouseDown:
-                            return self.handleMouseButton(type: type, event: event)
-                        default:
-                            return .unchange
+                        return DispatchQueue.default.sync {
+                            switch type {
+                            case .keyUp,
+                                 .keyDown:
+                                return self.handleKeys(type: type, event: event)
+                            case .otherMouseUp,
+                                 .otherMouseDown:
+                                return self.handleMouseButton(type: type, event: event)
+                            default:
+                                return .unchange
+                            }
                         }
                     }
                 ),
@@ -148,7 +153,7 @@ extension GestureRecognizers.Tap {
                     self.subject.send(())
                     self.state = State()
                 })
-                DispatchQueue.main.asyncAfter(
+                DispatchQueue.default.asyncAfter(
                     deadline: .now() + .milliseconds(tapGestureDelayInMilliSeconds()),
                     execute: delayedEvent!
                 )
