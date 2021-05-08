@@ -1,7 +1,7 @@
 enum LaunchAtLoginConstants {
-    static let mainAppIdentifier = "com.intii.AbnormalMouse"
+    static let mainAppIdentifier = Bundle.main.bundleIdentifier ?? ""
     static let mainAppName = "AbnormalMouse"
-    static let launcherIdentifier = "com.intii.AbnormalMouseLauncher"
+    static let launcherIdentifier = "\(Bundle.main.bundleIdentifier ?? "")Launcher"
 }
 
 import Cocoa
