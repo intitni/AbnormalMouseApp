@@ -27,10 +27,6 @@ let package = Package(
             .upToNextMajor(from: "0.3.0")
         ),
         .package(
-            url: "https://github.com/kishikawakatsumi/KeychainAccess",
-            .upToNextMajor(from: "4.2.0")
-        ),
-        .package(
             url: "https://github.com/CombineCommunity/CombineExt",
             .upToNextMajor(from: "1.2.0")
         ),
@@ -42,7 +38,6 @@ let package = Package(
                 "License",
                 "CGEventOverride",
                 "CombineExt",
-                "KeychainAccess",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),

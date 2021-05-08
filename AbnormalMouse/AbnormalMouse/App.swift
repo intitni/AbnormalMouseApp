@@ -154,8 +154,7 @@ struct TheApp: Domain {
 extension Store where Action == TheApp.Action, State == TheApp.State {
     static var testStore: Self {
         let persisted = Persisted(
-            userDefaults: MemoryPropertyListStorage(),
-            keychainAccess: FakeKeychainAccess()
+            userDefaults: MemoryPropertyListStorage()
         )
         return .init(
             initialState: .init(),

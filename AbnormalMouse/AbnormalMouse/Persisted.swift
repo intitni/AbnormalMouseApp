@@ -1,9 +1,8 @@
 import Foundation
-import KeychainAccess
 
 struct Persisted: PersistedType {
-    init(userDefaults: PropertyListStorage, keychainAccess: KeychainAccess) {
-        replace(userDefaults: userDefaults, keychainAccess: keychainAccess)
+    init(userDefaults: PropertyListStorage) {
+        replace(userDefaults: userDefaults)
     }
 
     // MARK: App
@@ -99,16 +98,13 @@ struct Persisted: PersistedType {
 private protocol PersistedType {}
 
 private extension PersistedType {
-    func replace(userDefaults: PropertyListStorage, keychainAccess: KeychainAccess) {
+    func replace(userDefaults: PropertyListStorage) {
         for child in Mirror(reflecting: self).children {
             if let ud = child.value as? UserDefaultStorableWrapper {
                 ud.userDefaults = userDefaults
             }
-            if let ud = child.value as? KeychainStorableWrapper {
-                ud.keychain = keychainAccess
-            }
             if let pt = child.value as? PersistedType {
-                pt.replace(userDefaults: userDefaults, keychainAccess: keychainAccess)
+                pt.replace(userDefaults: userDefaults)
             }
         }
     }
@@ -116,9 +112,6 @@ private extension PersistedType {
     func reset() {
         for child in Mirror(reflecting: self).children {
             if let ud = child.value as? UserDefaultStorableWrapper {
-                ud.reset()
-            }
-            if let ud = child.value as? KeychainStorableWrapper {
                 ud.reset()
             }
             if let pt = child.value as? PersistedType {
@@ -136,40 +129,5 @@ protocol UserDefaultStorableWrapper: AnyObject {
 extension UserDefault: UserDefaultStorableWrapper {
     func reset() {
         wrappedValue = defaultValue
-    }
-}
-
-// MARK: - Keychain
-
-protocol KeychainStorableWrapper: AnyObject {
-    var keychain: KeychainAccess { get set }
-    func reset()
-}
-
-extension KeychainStored: KeychainStorableWrapper {
-    func reset() {
-        wrappedValue = defaultValue
-    }
-}
-
-extension Keychain: KeychainAccess {
-    public func set(_ string: String, for key: String) {
-        try? set(string, key: key)
-    }
-
-    public func set(_ data: Data, for key: String) {
-        try? set(data, key: key)
-    }
-
-    public func remove(key: String) {
-        try? remove(key)
-    }
-
-    public func string(for key: String) -> String? {
-        try? getString(key)
-    }
-
-    public func data(for key: String) -> Data? {
-        try? getData(key)
     }
 }

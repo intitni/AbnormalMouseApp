@@ -2,21 +2,18 @@ import CGEventOverride
 import Cocoa
 import Combine
 import ComposableArchitecture
-import KeychainAccess
 import ServiceManagement
 import SwiftUI
 
 // MARK: - Global Scope
 
 #if PREVIEW
-private let keychain = FakeKeychainAccess()
 private let userDefaults = MemoryPropertyListStorage()
-private let persisted = Persisted(userDefaults: userDefaults, keychainAccess: keychain)
+private let persisted = Persisted(userDefaults: userDefaults)
 private let eventHook = FakeCGEventHook()
 private let purchaseManager = FakePurchaseManager()
 #else
-private let keychain = Keychain(service: "com.intii.abnormalmouse.license")
-private let persisted = Persisted(userDefaults: UserDefaults.standard, keychainAccess: keychain)
+private let persisted = Persisted(userDefaults: UserDefaults.standard)
 private let eoi: Set<CGEventType> = {
     if persisted.advanced.listenToKeyboardEvent {
         return [
@@ -162,12 +159,14 @@ extension AppDelegate {
             action: #selector(showSettingsWindow),
             keyEquivalent: ""
         )
+        showSettingsItem.target = self
 
         let quitItem = NSMenuItem(
             title: L10n.StatusBarMenu.quit,
             action: #selector(quit),
             keyEquivalent: ""
         )
+        quitItem.target = self
 
         statusBarMenu.addItem(appStatusItem)
         statusBarMenu.addItem(.separator())
