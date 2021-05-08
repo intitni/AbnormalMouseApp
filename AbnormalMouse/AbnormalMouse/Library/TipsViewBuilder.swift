@@ -1,6 +1,6 @@
 import SwiftUI
 
-@_functionBuilder
+@resultBuilder
 enum TipsViewBuilder {
     typealias Decorator = SettingsTipsDecorator
 
