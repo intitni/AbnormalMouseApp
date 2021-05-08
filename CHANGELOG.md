@@ -1,5 +1,9 @@
 # Change Log
 
+### 2021.2
+
+- Fix that some localizations may crash the app at launch.
+
 ### 2020.10
 
 - Fix that SUUpdater was loaded too early and messed up windows. 

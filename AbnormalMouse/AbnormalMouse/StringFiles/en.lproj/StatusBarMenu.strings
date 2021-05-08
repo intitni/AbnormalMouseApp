@@ -5,7 +5,7 @@
 
 "PurchaseStatus.Fetching" = "Fetching activation status..";
 "PurchaseStatus.Ended" = "Trial has ended.";
-"PurchaseStatus.Trial" = "Trial ends in %d days.";
+"PurchaseStatus.Trial" = "Trial ends in %@ days.";
 "PurchaseStatus.Activated" = "License is valid.";
 "PurchaseStatus.CantVerify" = "Failed to verify license.";
 "PurchaseStatus.Refunded" = "License is refunded.";
