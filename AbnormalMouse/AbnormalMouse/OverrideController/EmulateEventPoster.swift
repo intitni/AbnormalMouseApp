@@ -6,12 +6,6 @@ import IOKit
 struct EmulateEventPoster {
     let type: AnyHashable
 
-    /// Post an event.
-    /// - Parameter event: The event.
-    private func p(_ event: CGEvent) {
-        event.post(tap: .cghidEventTap)
-    }
-
     /// Post a sequence of events per frame.
     /// - Parameter events: All events.
     func postEventPerFrame(_ events: [() -> Void]) {
@@ -163,14 +157,14 @@ struct EmulateEventPoster {
         e[.scrollWheelEventIsContinuous] = 1
         e[.scrollWheelEventMomentumPhase] = Int64(phase.rawValue)
         e[.scrollIsPartOfPan] = 1
-        p(e)
+        e.post(tap: .cghidEventTap)
     }
 
     /// Post a null gesture event.
     func postNullGesture() {
         let e = CGEvent(source: nil)!
         e.type = CGEventType.gesture
-        p(e)
+        e.post(tap: .cghidEventTap)
     }
 
     /// Post scroll gesture event.
@@ -219,7 +213,7 @@ struct EmulateEventPoster {
         let e = CGEvent(source: nil)!
         e.type = CGEventType.gesture
         e[.gestureType] = GestureType.gestureStarted.rawValue
-        p(e)
+        e.post(tap: .cghidEventTap)
     }
 
     /// Post gesture end event.
@@ -227,7 +221,7 @@ struct EmulateEventPoster {
         let e = CGEvent(source: nil)!
         e.type = CGEventType.gesture
         e[.gestureType] = GestureType.gestureEnded.rawValue
-        p(e)
+        e.post(tap: .cghidEventTap)
     }
 
     /// Post a gesture between gestureStarted and gestureEnded events.
@@ -243,7 +237,7 @@ struct EmulateEventPoster {
             let e = CGEvent(source: nil)!
             e.type = CGEventType.gesture
             e[.gestureType] = GestureType.zoomToggle.rawValue
-            p(e)
+            e.post(tap: .cghidEventTap)
         }
     }
 
@@ -300,7 +294,7 @@ struct EmulateEventPoster {
 
         e[.gestureSwipeValueX] = value
         e[.gesturePhase] = Int64(phase.rawValue)
-        p(e)
+        e.post(tap: .cghidEventTap)
     }
 
     /// Post a translation gesture event.
@@ -312,7 +306,7 @@ struct EmulateEventPoster {
         e[.gestureType] = GestureType.translation.rawValue
         e[.gesturePhase] = Int64(phase.rawValue)
         e[134] = 1_065_353_216 // magic
-        p(e)
+        e.post(tap: .cghidEventTap)
     }
 
     /// Post a 4-finger swipe gesture event.
@@ -357,7 +351,7 @@ struct EmulateEventPoster {
             e[165] = 2 // Magic
         }
 
-        p(e)
+        e.post(tap: .cghidEventTap)
     }
 }
 
