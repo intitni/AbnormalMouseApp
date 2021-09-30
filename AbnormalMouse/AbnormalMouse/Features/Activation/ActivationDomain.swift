@@ -72,7 +72,6 @@ enum ActivationDomain: Domain {
                         }
                     }
                 }
-                .waitAtLeast(delay: .milliseconds(1000))
                 .eraseToEffect()
             case .activating: return .none
             }
