@@ -93,7 +93,7 @@ extension PropertyListValue {
     var isRemoveValue: Bool { false }
 }
 
-extension PropertyListStorable where V: PropertyListValue {
+extension PropertyListStorable {
     var propertyListValue: Self { self }
     static func makeFromPropertyListValue(value: Self) -> Self { value }
 }

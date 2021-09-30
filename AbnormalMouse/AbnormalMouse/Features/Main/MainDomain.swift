@@ -28,7 +28,7 @@ struct MainDomain: Domain {
         var isTrialEnded: Bool = false
         var activationStateDescription: String?
 
-        var activationState: ActivationDomain.State? = nil
+        var activationState: ActivationDomain.State?
     }
 
     enum Action {

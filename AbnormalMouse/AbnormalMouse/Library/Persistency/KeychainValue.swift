@@ -83,7 +83,7 @@ extension KeychainValue {
     var isKeychainRemoveValue: Bool { false }
 }
 
-extension KeychainStorable where KV: KeychainValue {
+extension KeychainStorable {
     var keychianValue: Self { self }
     static func makeFromKeychainValue(value: Self) -> Self { value }
 }

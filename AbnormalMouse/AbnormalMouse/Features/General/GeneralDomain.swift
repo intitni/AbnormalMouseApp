@@ -29,7 +29,7 @@ enum GeneralDomain: Domain {
             var deactivationFailedReason: String = ""
         }
 
-        var activationState: ActivationDomain.State? = nil
+        var activationState: ActivationDomain.State?
     }
 
     enum Action {

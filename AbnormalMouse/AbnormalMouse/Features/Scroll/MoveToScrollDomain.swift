@@ -6,7 +6,7 @@ import Foundation
 enum MoveToScrollDomain: Domain {
     struct State: Equatable {
         struct MoveToScrollActivator: Equatable {
-            var keyCombination: KeyCombination? = nil
+            var keyCombination: KeyCombination?
             var numberOfTapsRequired = 1
             var hasConflict = false
         }
@@ -15,7 +15,7 @@ enum MoveToScrollDomain: Domain {
 
         struct HalfPageScrollActivator: Equatable {
             var shouldUseMoveToScrollKeyCombination = true
-            var keyCombination: KeyCombination? = nil
+            var keyCombination: KeyCombination?
             var numberOfTapsRequired = 1
             var hasConflict = false
         }
