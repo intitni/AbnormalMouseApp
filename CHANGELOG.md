@@ -1,5 +1,9 @@
 # Change Log
 
+### 2021.3
+
+- Fix that network requests are not sending sometimes (remove waitAtLeast).
+
 ### 2021.2
 
 - Fix that some localizations may crash the app at launch.
