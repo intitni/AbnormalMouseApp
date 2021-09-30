@@ -1,6 +1,6 @@
 PODS:
-  - Sparkle (1.26.0)
-  - SwiftFormat/CLI (0.47.12)
+  - Sparkle (1.27.0)
+  - SwiftFormat/CLI (0.48.11)
   - SwiftGen (6.4.0)
 
 DEPENDENCIES:
@@ -15,8 +15,8 @@ SPEC REPOS:
     - SwiftGen
 
 SPEC CHECKSUMS:
-  Sparkle: d56d028f4b0c123577825f5d1004f6140d77f90e
-  SwiftFormat: 68cac6de69aafb44b60ae49a919600966b0dcabe
+  Sparkle: e1245ce5ba951c60183444a13a2c7d227778205d
+  SwiftFormat: 938e5865a118c49d63c7a290ddad86335f9e585f
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
 
 PODFILE CHECKSUM: 71637b0bdf86c476e52e6a5b60330d9c9b093ef8

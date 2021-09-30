@@ -6,7 +6,7 @@ import Foundation
 enum DockSwipeDomain: Domain {
     struct State: Equatable {
         struct DockSwipeActivator: Equatable {
-            var keyCombination: KeyCombination? = nil
+            var keyCombination: KeyCombination?
             var hasConflict = false
             var numberOfTapsRequired = 1
         }
