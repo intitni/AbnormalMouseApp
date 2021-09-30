@@ -29,7 +29,7 @@ enum GeneralDomain: Domain {
             var deactivationFailedReason: String = ""
         }
 
-        var activationState: ActivationDomain.State? = nil
+        var activationState: ActivationDomain.State?
     }
 
     enum Action {
@@ -121,8 +121,8 @@ enum GeneralDomain: Domain {
                 state.purchaseState.isDuringDeactivation = true
                 state.purchaseState.deactivationFailedReason = ""
                 return environment.purchaseManager.deactivate()
-                    .waitAtLeast(delay: .milliseconds(1000))
                     .map { result in
+                        print(result)
                         switch result {
                         case .success: return .finishDeactivation
                         case let .failure(error): return .failedInDeactivation(error)

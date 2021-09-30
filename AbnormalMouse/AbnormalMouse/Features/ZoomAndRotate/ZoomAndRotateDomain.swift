@@ -6,7 +6,7 @@ import Foundation
 enum ZoomAndRotateDomain: Domain {
     struct State: Equatable {
         struct ZoomAndRotateActivator: Equatable {
-            var keyCombination: KeyCombination? = nil
+            var keyCombination: KeyCombination?
             var hasConflict = false
             var numberOfTapsRequired = 1
         }
@@ -17,7 +17,7 @@ enum ZoomAndRotateDomain: Domain {
 
         struct SmartZoomActivator: Equatable {
             var shouldUseZoomAndRotateKeyCombinationDoubleTap = true
-            var keyCombination: KeyCombination? = nil
+            var keyCombination: KeyCombination?
             var numberOfTapsRequired = 1
             var hasConflict = false
         }
