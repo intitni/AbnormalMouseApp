@@ -31,12 +31,7 @@
 		840E3297251D8FD400FDD1B3 /* ActivatorConflictChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */; };
 		8423BE2F25300BD30055F55E /* AppDependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 8423BE2E25300BD30055F55E /* AppDependencies */; };
 		842B147F24A9C3C20063CDE0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 842B148124A9C3C20063CDE0 /* InfoPlist.strings */; };
-		842B14BA24A9CC350063CDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B14B924A9CC350063CDE0 /* AppDelegate.swift */; };
-		842B14C124A9CC360063CDE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842B14C024A9CC360063CDE0 /* Preview Assets.xcassets */; };
-		842B14CA24A9CC650063CDE0 /* AbnormalMouseLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		842B14CC24A9CCA30063CDE0 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842B14CB24A9CCA30063CDE0 /* ServiceManagement.framework */; };
-		842B14CE24A9CF320063CDE0 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B14CD24A9CF320063CDE0 /* LaunchAtLogin.swift */; };
-		842B14CF24A9CFA80063CDE0 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B14CD24A9CF320063CDE0 /* LaunchAtLogin.swift */; };
 		84399B142488988900970CFF /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84399B132488988800970CFF /* UserDefault.swift */; };
 		84399B16248898C300970CFF /* Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84399B15248898C300970CFF /* Persisted.swift */; };
 		84399B182488CBB000970CFF /* ZoomAndRotateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84399B172488CBB000970CFF /* ZoomAndRotateController.swift */; };
@@ -51,7 +46,6 @@
 		846403B524AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846403B424AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift */; };
 		84680E3024D2C6D800DFFBE1 /* AdvancedDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84680E2F24D2C6D800DFFBE1 /* AdvancedDomain.swift */; };
 		84680E3224D2C6E100DFFBE1 /* AdvancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */; };
-		846CA1B924A9DBD00084F753 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846CA1B824A9DBD00084F753 /* Main.storyboard */; };
 		848B1249251C463200A53F75 /* SettingsKeyCombinationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */; };
 		848F0BBC24D509EC00F9F5CD /* MainDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F0BBB24D509EC00F9F5CD /* MainDomain.swift */; };
 		8493D7F524C7CCE000BD2A17 /* Advanced.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8493D7F724C7CCE000BD2A17 /* Advanced.strings */; };
@@ -90,6 +84,7 @@
 		84E6B6DD26461E3200887DE7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6B6DC26461E3200887DE7 /* Queue.swift */; };
 		84FAB1EB24C13253001265FD /* SCA+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1EA24C13253001265FD /* SCA+Extentions.swift */; };
 		84FAB1F224C53547001265FD /* Readonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1F124C53547001265FD /* Readonly.swift */; };
+		C81F2B6F2794103000210DA3 /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +104,6 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				842B14CA24A9CC650063CDE0 /* AbnormalMouseLauncher.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,13 +144,7 @@
 		840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatorConflictChecker.swift; sourceTree = "<group>"; };
 		842B148024A9C3C20063CDE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		842B148224A9C3C40063CDE0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbnormalMouseLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		842B14B924A9CC350063CDE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		842B14C024A9CC360063CDE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		842B14C524A9CC360063CDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		842B14C624A9CC360063CDE0 /* AbnormalMouseLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AbnormalMouseLauncher.entitlements; sourceTree = "<group>"; };
 		842B14CB24A9CCA30063CDE0 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		842B14CD24A9CF320063CDE0 /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
 		84399B0F248894D400970CFF /* CGEventInception.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CGEventInception.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84399B132488988800970CFF /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		84399B15248898C300970CFF /* Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persisted.swift; sourceTree = "<group>"; };
@@ -173,7 +161,6 @@
 		846403B424AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndScrollDomainTests.swift; sourceTree = "<group>"; };
 		84680E2F24D2C6D800DFFBE1 /* AdvancedDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedDomain.swift; sourceTree = "<group>"; };
 		84680E3124D2C6E100DFFBE1 /* AdvancedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedView.swift; sourceTree = "<group>"; };
-		846CA1B824A9DBD00084F753 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		846DA82D24AC5F4100039E60 /* CGEventExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CGEventExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		848B1248251C463200A53F75 /* SettingsKeyCombinationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeyCombinationInput.swift; sourceTree = "<group>"; };
 		848F0BBB24D509EC00F9F5CD /* MainDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDomain.swift; sourceTree = "<group>"; };
@@ -226,6 +213,7 @@
 		84FAB1EA24C13253001265FD /* SCA+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCA+Extentions.swift"; sourceTree = "<group>"; };
 		84FAB1F124C53547001265FD /* Readonly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readonly.swift; sourceTree = "<group>"; };
 		968124F027596FA20DBC84F9 /* Pods_AbnormalMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbnormalMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,13 +228,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		138361712487E70700E76F41 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		842B14B424A9CC350063CDE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,7 +262,6 @@
 			children = (
 				138361612487E70500E76F41 /* AbnormalMouse */,
 				138361772487E70700E76F41 /* AbnormalMouseTests */,
-				842B14B824A9CC350063CDE0 /* AbnormalMouseLauncher */,
 				138361602487E70500E76F41 /* Products */,
 				84399B0E248894D400970CFF /* Frameworks */,
 				11B0260554CF92C4049894B3 /* Pods */,
@@ -293,7 +273,6 @@
 			children = (
 				1383615F2487E70500E76F41 /* AbnormalMouse.app */,
 				138361742487E70700E76F41 /* AbnormalMouseTests.xctest */,
-				842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,27 +329,6 @@
 				13864A09248E947900704C21 /* GeneralView.swift */,
 			);
 			path = General;
-			sourceTree = "<group>";
-		};
-		842B14B824A9CC350063CDE0 /* AbnormalMouseLauncher */ = {
-			isa = PBXGroup;
-			children = (
-				846CA1B824A9DBD00084F753 /* Main.storyboard */,
-				842B14CD24A9CF320063CDE0 /* LaunchAtLogin.swift */,
-				842B14B924A9CC350063CDE0 /* AppDelegate.swift */,
-				842B14C524A9CC360063CDE0 /* Info.plist */,
-				842B14C624A9CC360063CDE0 /* AbnormalMouseLauncher.entitlements */,
-				842B14BF24A9CC360063CDE0 /* Preview Content */,
-			);
-			path = AbnormalMouseLauncher;
-			sourceTree = "<group>";
-		};
-		842B14BF24A9CC360063CDE0 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				842B14C024A9CC360063CDE0 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		84399B0E248894D400970CFF /* Frameworks */ = {
@@ -447,13 +405,6 @@
 			path = Persistency;
 			sourceTree = "<group>";
 		};
-		84AEF73224D3C9F600DFF5D3 /* CombineExtensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CombineExtensions;
-			sourceTree = "<group>";
-		};
 		84AEF73324D3C9FF00DFF5D3 /* ComposableArchitectureExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,7 +459,6 @@
 			children = (
 				845A29ED24D11F850086477D /* GestureRecognizer */,
 				84AEF73124D3C9E100DFF5D3 /* Persistency */,
-				84AEF73224D3C9F600DFF5D3 /* CombineExtensions */,
 				84AEF73424D3CA1100DFF5D3 /* MoveApplication */,
 				84AEF73324D3C9FF00DFF5D3 /* ComposableArchitectureExtension */,
 				84D22502248E41D40069BC36 /* KeyCombination.swift */,
@@ -517,6 +467,7 @@
 				8463B80B24C975C7008D7988 /* EventThrottler.swift */,
 				136E6D802502A7DA00F540B3 /* License.swift */,
 				840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */,
+				C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -629,23 +580,6 @@
 			productReference = 138361742487E70700E76F41 /* AbnormalMouseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		842B14B624A9CC350063CDE0 /* AbnormalMouseLauncher */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 842B14C724A9CC360063CDE0 /* Build configuration list for PBXNativeTarget "AbnormalMouseLauncher" */;
-			buildPhases = (
-				842B14B324A9CC350063CDE0 /* Sources */,
-				842B14B424A9CC350063CDE0 /* Frameworks */,
-				842B14B524A9CC350063CDE0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AbnormalMouseLauncher;
-			productName = AbnormalMouseLauncher;
-			productReference = 842B14B724A9CC350063CDE0 /* AbnormalMouseLauncher.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -663,9 +597,6 @@
 					138361732487E70700E76F41 = {
 						CreatedOnToolsVersion = 11.5;
 						TestTargetID = 1383615E2487E70500E76F41;
-					};
-					842B14B624A9CC350063CDE0 = {
-						CreatedOnToolsVersion = 11.5;
 					};
 				};
 			};
@@ -685,7 +616,6 @@
 			targets = (
 				1383615E2487E70500E76F41 /* AbnormalMouse */,
 				138361732487E70700E76F41 /* AbnormalMouseTests */,
-				842B14B624A9CC350063CDE0 /* AbnormalMouseLauncher */,
 			);
 		};
 /* End PBXProject section */
@@ -717,15 +647,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		842B14B524A9CC350063CDE0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				842B14C124A9CC360063CDE0 /* Preview Assets.xcassets in Resources */,
-				846CA1B924A9DBD00084F753 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,7 +765,6 @@
 				849F4F8324BD9DEC00EF6512 /* MoveApplication.swift in Sources */,
 				84426AF224B01C1E006CF972 /* TipsViewBuilder.swift in Sources */,
 				13864A0A248E947900704C21 /* GeneralView.swift in Sources */,
-				842B14CF24A9CFA80063CDE0 /* LaunchAtLogin.swift in Sources */,
 				84B093B125203E19007BA556 /* SettingsPicker.swift in Sources */,
 				84C8EB02248B770D00C53CFD /* KeyboardEventChecker.swift in Sources */,
 				84A574AF248F6AC500BC2380 /* OverrideController.swift in Sources */,
@@ -856,6 +776,7 @@
 				84399B212488CCF100970CFF /* NeedAccessabilityView.swift in Sources */,
 				84C8EAE72489D25A00C53CFD /* ZoomAndRotateSettingsView.swift in Sources */,
 				84B093B625203E3B007BA556 /* SettingsSlider.swift in Sources */,
+				C81F2B6F2794103000210DA3 /* LaunchAtLoginManager.swift in Sources */,
 				13C51ABD249BA43B007881A5 /* Style.swift in Sources */,
 				84AA16572491D39B00D2C34E /* ZoomAndRotateDomain.swift in Sources */,
 				84B093A725203DC6007BA556 /* SettingsTipsView.swift in Sources */,
@@ -881,15 +802,6 @@
 				135153512520EDF400EEEBB4 /* ActivatorConflictCheckerTests.swift in Sources */,
 				1351534C2520EC9200EEEBB4 /* DockSwipeDomainTests.swift in Sources */,
 				846403B524AC75CE007B4A20 /* ZoomAndScrollDomainTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		842B14B324A9CC350063CDE0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				842B14BA24A9CC350063CDE0 /* AppDelegate.swift in Sources */,
-				842B14CE24A9CF320063CDE0 /* LaunchAtLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1261,58 +1173,6 @@
 			};
 			name = Release;
 		};
-		842B14C824A9CC360063CDE0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AbnormalMouseLauncher/AbnormalMouseLauncher.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouseLauncher/Preview Content\"";
-				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = AbnormalMouseLauncher/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseLauncher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		842B14C924A9CC360063CDE0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AbnormalMouseLauncher/AbnormalMouseLauncher.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouseLauncher/Preview Content\"";
-				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = AbnormalMouseLauncher/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseLauncher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		8485C48524C5817400831C29 /* Preview */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1435,32 +1295,6 @@
 			};
 			name = Preview;
 		};
-		8485C48824C5817400831C29 /* Preview */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AbnormalMouseLauncher/AbnormalMouseLauncher.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouseLauncher/Preview Content\"";
-				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = AbnormalMouseLauncher/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouseLauncher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Preview;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1490,16 +1324,6 @@
 				138361812487E70700E76F41 /* Debug */,
 				8485C48724C5817400831C29 /* Preview */,
 				138361822487E70700E76F41 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		842B14C724A9CC360063CDE0 /* Build configuration list for PBXNativeTarget "AbnormalMouseLauncher" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				842B14C824A9CC360063CDE0 /* Debug */,
-				8485C48824C5817400831C29 /* Preview */,
-				842B14C924A9CC360063CDE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

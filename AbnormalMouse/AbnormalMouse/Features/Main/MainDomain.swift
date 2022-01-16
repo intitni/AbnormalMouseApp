@@ -12,6 +12,7 @@ struct MainDomain: Domain {
         var activatorConflictChecker: ActivatorConflictChecker
         var purchaseManager: PurchaseManagerType
         var updater: Updater
+        var launchAtLoginManager: LaunchAtLoginManagerType
     }
 
     struct State: Equatable {
@@ -155,7 +156,8 @@ struct MainDomain: Domain {
                     .init(
                         persisted: $0.persisted.general,
                         purchaseManager: $0.purchaseManager,
-                        updater: $0.updater
+                        updater: $0.updater,
+                        launchAtLoginManager: $0.launchAtLoginManager
                     )
                 }
             }
@@ -191,7 +193,8 @@ extension Store where Action == MainDomain.Action, State == MainDomain.State {
                 persisted: persisted,
                 activatorConflictChecker: .init(persisted: Readonly(persisted)),
                 purchaseManager: FakePurchaseManager(),
-                updater: FakeUpdater()
+                updater: FakeUpdater(),
+                launchAtLoginManager: FakeLaunchAtLoginManager()
             ))
         )
     }
