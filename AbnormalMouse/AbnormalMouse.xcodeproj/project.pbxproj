@@ -447,13 +447,6 @@
 			path = Persistency;
 			sourceTree = "<group>";
 		};
-		84AEF73224D3C9F600DFF5D3 /* CombineExtensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CombineExtensions;
-			sourceTree = "<group>";
-		};
 		84AEF73324D3C9FF00DFF5D3 /* ComposableArchitectureExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,7 +501,6 @@
 			children = (
 				845A29ED24D11F850086477D /* GestureRecognizer */,
 				84AEF73124D3C9E100DFF5D3 /* Persistency */,
-				84AEF73224D3C9F600DFF5D3 /* CombineExtensions */,
 				84AEF73424D3CA1100DFF5D3 /* MoveApplication */,
 				84AEF73324D3C9FF00DFF5D3 /* ComposableArchitectureExtension */,
 				84D22502248E41D40069BC36 /* KeyCombination.swift */,

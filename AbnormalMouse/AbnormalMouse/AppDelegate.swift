@@ -107,7 +107,6 @@ extension AppDelegate {
         NSApp.setActivationPolicy(.regular)
         if let window = window {
             window.makeKeyAndOrderFront(self)
-            NSApp.activate(ignoringOtherApps: true)
         } else {
             let window = NSWindow(
                 contentRect: NSRect(x: 0, y: 0, width: 700, height: 400),
@@ -129,6 +128,7 @@ extension AppDelegate {
             window.makeKeyAndOrderFront(self)
             self.window = window
         }
+        NSApp.activate(ignoringOtherApps: true)
     }
 
     @objc private func buildStatusBarMenu() {
@@ -227,7 +227,7 @@ extension AppDelegate: NSMenuDelegate {
 
 extension AppDelegate: NSWindowDelegate {
     func windowWillClose(_: Notification) {
-        NSApp.setActivationPolicy(.prohibited)
+        NSApp.setActivationPolicy(.accessory)
     }
 }
 
@@ -321,7 +321,7 @@ extension AppDelegate {
         if persisted.launchCount == 0 {
             showSettingsWindow()
         } else {
-            NSApp.setActivationPolicy(.prohibited)
+            NSApp.setActivationPolicy(.accessory)
         }
     }
 }
