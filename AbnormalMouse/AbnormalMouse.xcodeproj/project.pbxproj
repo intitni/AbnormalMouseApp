@@ -1144,7 +1144,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 45;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1159,7 +1159,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2021.3;
+				MARKETING_VERSION = 2022.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp --deep --options runtime";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1180,7 +1180,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 45;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1195,7 +1195,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2021.3;
+				MARKETING_VERSION = 2022.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp --deep --options runtime";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1377,7 +1377,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 45;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1392,7 +1392,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2021.3;
+				MARKETING_VERSION = 2022.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp --deep --options runtime";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
