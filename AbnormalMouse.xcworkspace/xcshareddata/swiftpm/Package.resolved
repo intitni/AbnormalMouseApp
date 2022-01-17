@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/intitni/CGEventOverride.git",
         "state": {
           "branch": "master",
-          "revision": "fe82cdda3bef29bc1596c86d1137fe25c2de3242",
+          "revision": "a6585d580eedc151ec9918af06a182d26e1248f5",
           "version": null
         }
       },
@@ -44,6 +44,15 @@
           "branch": null,
           "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
           "version": "4.2.2"
+        }
+      },
+      {
+        "package": "LaunchAtLogin",
+        "repositoryURL": "https://github.com/sindresorhus/LaunchAtLogin",
+        "state": {
+          "branch": null,
+          "revision": "e8171b3e38a2816f579f58f3dac1522aa39efe41",
+          "version": "4.2.0"
         }
       },
       {

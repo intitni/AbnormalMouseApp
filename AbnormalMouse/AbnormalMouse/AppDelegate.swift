@@ -12,6 +12,8 @@ private let userDefaults = MemoryPropertyListStorage()
 private let persisted = Persisted(userDefaults: userDefaults)
 private let eventHook = FakeCGEventHook()
 private let purchaseManager = FakePurchaseManager()
+private let launchAtLoginManager = FakeLaunchAtLoginManager()
+private let updater = FakeUpdater()
 #else
 private let persisted = Persisted(userDefaults: UserDefaults.standard)
 private let eoi: Set<CGEventType> = {
@@ -26,6 +28,8 @@ private let eoi: Set<CGEventType> = {
 
 private let eventHook = CGEventHook(eventsOfInterest: eoi)
 private let purchaseManager = RealPurchaseManager()
+private let launchAtLoginManager = LaunchAtLoginManager()
+private let updater = SparkleUpdater()
 #endif
 
 private let store = TheApp.Store(
@@ -34,8 +38,9 @@ private let store = TheApp.Store(
     environment: .live(environment: .init(
         persisted: persisted,
         purchaseManager: purchaseManager,
-        updater: SparkleUpdater(),
+        updater: updater,
         activatorConflictChecker: .init(persisted: Readonly(persisted)),
+        launchAtLoginManager: launchAtLoginManager,
         overrideControllers: [
             MoveToScrollController(
                 persisted: Readonly(persisted.moveToScroll),
@@ -80,8 +85,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         #if !PREVIEW
         defer { persisted.launchCount += 1 }
         purchaseManager.startTrialIfNeeded()
-        killLauncherIfNeeded()
-        setupStartAtLoginIfNeeded()
         startupPurchaseManager()
         observeForSleeps()
         presentWindowIfNeeded()
@@ -107,7 +110,6 @@ extension AppDelegate {
         NSApp.setActivationPolicy(.regular)
         if let window = window {
             window.makeKeyAndOrderFront(self)
-            NSApp.activate(ignoringOtherApps: true)
         } else {
             let window = NSWindow(
                 contentRect: NSRect(x: 0, y: 0, width: 700, height: 400),
@@ -129,6 +131,7 @@ extension AppDelegate {
             window.makeKeyAndOrderFront(self)
             self.window = window
         }
+        NSApp.activate(ignoringOtherApps: true)
     }
 
     @objc private func buildStatusBarMenu() {
@@ -227,31 +230,11 @@ extension AppDelegate: NSMenuDelegate {
 
 extension AppDelegate: NSWindowDelegate {
     func windowWillClose(_: Notification) {
-        NSApp.setActivationPolicy(.prohibited)
+        NSApp.setActivationPolicy(.accessory)
     }
 }
 
 extension AppDelegate {
-    private func killLauncherIfNeeded() {
-        let runningApps = NSWorkspace.shared.runningApplications
-        let isRunning = !runningApps
-            .filter { $0.bundleIdentifier == LaunchAtLoginConstants.launcherIdentifier }
-            .isEmpty
-
-        if isRunning {
-            DistributedNotificationCenter.default().post(
-                name: .killLauncher,
-                object: Bundle.main.bundleIdentifier!
-            )
-        }
-    }
-
-    private func setupStartAtLoginIfNeeded() {
-        let shouldStartAtLogin = persisted.general.startAtLogin
-        let launcherIdentifier = LaunchAtLoginConstants.launcherIdentifier
-        SMLoginItemSetEnabled(launcherIdentifier as CFString, shouldStartAtLogin)
-    }
-
     private func checkAuthorization() {
         let isTrusted = AXIsProcessTrusted()
         ViewStore(store).send(.setAccessabilityAuthorized(isTrusted))
@@ -321,7 +304,7 @@ extension AppDelegate {
         if persisted.launchCount == 0 {
             showSettingsWindow()
         } else {
-            NSApp.setActivationPolicy(.prohibited)
+            NSApp.setActivationPolicy(.accessory)
         }
     }
 }

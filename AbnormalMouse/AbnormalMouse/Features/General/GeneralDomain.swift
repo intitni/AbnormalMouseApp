@@ -58,6 +58,7 @@ enum GeneralDomain: Domain {
         let persisted: Persisted.General
         let purchaseManager: PurchaseManagerType
         let updater: Updater?
+        let launchAtLoginManager: LaunchAtLoginManagerType
     }
 
     enum CancellableKeys: Hashable {
@@ -70,14 +71,14 @@ enum GeneralDomain: Domain {
             case .appear:
                 state.automaticallyCheckForUpdate = environment.updater?
                     .automaticallyChecksForUpdates ?? false
+                state.startAtLogin = environment.launchAtLoginManager.launchAtLogin
                 return .none
             case .toggleStartAtLogin:
                 state.startAtLogin.toggle()
                 let shouldStartAtLogin = state.startAtLogin
                 return .fireAndForget {
-                    environment.persisted.startAtLogin = shouldStartAtLogin
-                    let launcherIdentifier = LaunchAtLoginConstants.launcherIdentifier
-                    SMLoginItemSetEnabled(launcherIdentifier as CFString, shouldStartAtLogin)
+                    let manager = environment.launchAtLoginManager
+                    manager.launchAtLogin = shouldStartAtLogin
                 }
             case .observePurchaseState:
                 return environment.purchaseManager.purchaseState
@@ -218,7 +219,8 @@ extension Store where State == GeneralDomain.State, Action == GeneralDomain.Acti
         environment: .live(environment: .init(
             persisted: .init(),
             purchaseManager: FakePurchaseManager(),
-            updater: FakeUpdater()
+            updater: FakeUpdater(),
+            launchAtLoginManager: FakeLaunchAtLoginManager()
         ))
     )
 }
