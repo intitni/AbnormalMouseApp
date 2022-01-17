@@ -85,6 +85,7 @@
 		84FAB1EB24C13253001265FD /* SCA+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1EA24C13253001265FD /* SCA+Extentions.swift */; };
 		84FAB1F224C53547001265FD /* Readonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1F124C53547001265FD /* Readonly.swift */; };
 		C81F2B6F2794103000210DA3 /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */; };
+		C8C1583827946DCE00FD3EF3 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C8C1583727946DCE00FD3EF3 /* LaunchAtLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,18 +97,6 @@
 			remoteInfo = AbnormalMouse;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		842B149A24A9CBE50063CDE0 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		131367D42509086500BA888C /* DockSwipeDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockSwipeDomain.swift; sourceTree = "<group>"; };
@@ -223,6 +212,7 @@
 			files = (
 				842B14CC24A9CCA30063CDE0 /* ServiceManagement.framework in Frameworks */,
 				8423BE2F25300BD30055F55E /* AppDependencies in Frameworks */,
+				C8C1583827946DCE00FD3EF3 /* LaunchAtLogin in Frameworks */,
 				66B691ECFBDA99FF4810D05B /* Pods_AbnormalMouse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,7 +537,7 @@
 				1383615B2487E70500E76F41 /* Sources */,
 				1383615C2487E70500E76F41 /* Frameworks */,
 				1383615D2487E70500E76F41 /* Resources */,
-				842B149A24A9CBE50063CDE0 /* CopyFiles */,
+				C8C158352794156100FD3EF3 /* Copy “Launch at Login Helper” */,
 				1B9A457ACCA7A1298546206A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -557,6 +547,7 @@
 			name = AbnormalMouse;
 			packageProductDependencies = (
 				8423BE2E25300BD30055F55E /* AppDependencies */,
+				C8C1583727946DCE00FD3EF3 /* LaunchAtLogin */,
 			);
 			productName = AbnormalMouse;
 			productReference = 1383615F2487E70500E76F41 /* AbnormalMouse.app */;
@@ -610,6 +601,9 @@
 				Base,
 			);
 			mainGroup = 138361562487E70500E76F41;
+			packageReferences = (
+				C8C1583627946DCE00FD3EF3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+			);
 			productRefGroup = 138361602487E70500E76F41 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -705,6 +699,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen\n";
+		};
+		C8C158352794156100FD3EF3 /* Copy “Launch at Login Helper” */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy “Launch at Login Helper”";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
 		};
 		FDA889CBDC795ADE4B7F2E15 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1330,10 +1342,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		C8C1583627946DCE00FD3EF3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		8423BE2E25300BD30055F55E /* AppDependencies */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppDependencies;
+		};
+		C8C1583727946DCE00FD3EF3 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8C1583627946DCE00FD3EF3 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

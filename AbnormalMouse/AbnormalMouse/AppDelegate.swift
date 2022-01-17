@@ -13,6 +13,7 @@ private let persisted = Persisted(userDefaults: userDefaults)
 private let eventHook = FakeCGEventHook()
 private let purchaseManager = FakePurchaseManager()
 private let launchAtLoginManager = FakeLaunchAtLoginManager()
+private let updater = FakeUpdater()
 #else
 private let persisted = Persisted(userDefaults: UserDefaults.standard)
 private let eoi: Set<CGEventType> = {
@@ -27,7 +28,8 @@ private let eoi: Set<CGEventType> = {
 
 private let eventHook = CGEventHook(eventsOfInterest: eoi)
 private let purchaseManager = RealPurchaseManager()
-private let launchAtLoginManager = FakeLaunchAtLoginManager()
+private let launchAtLoginManager = LaunchAtLoginManager()
+private let updater = SparkleUpdater()
 #endif
 
 private let store = TheApp.Store(
@@ -36,7 +38,7 @@ private let store = TheApp.Store(
     environment: .live(environment: .init(
         persisted: persisted,
         purchaseManager: purchaseManager,
-        updater: SparkleUpdater(),
+        updater: updater,
         activatorConflictChecker: .init(persisted: Readonly(persisted)),
         launchAtLoginManager: launchAtLoginManager,
         overrideControllers: [

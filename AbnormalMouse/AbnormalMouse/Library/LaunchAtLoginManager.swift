@@ -5,3 +5,12 @@ protocol LaunchAtLoginManagerType: AnyObject {
 final class FakeLaunchAtLoginManager: LaunchAtLoginManagerType {
     var launchAtLogin: Bool = false
 }
+
+import LaunchAtLogin
+
+final class LaunchAtLoginManager: LaunchAtLoginManagerType {
+    var launchAtLogin: Bool {
+        get { LaunchAtLogin.isEnabled }
+        set { LaunchAtLogin.isEnabled = newValue }
+    }
+}
