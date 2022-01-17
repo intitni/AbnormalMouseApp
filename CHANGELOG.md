@@ -1,5 +1,10 @@
 # Change Log
 
+### 2022.1
+
+- Fix that the auto check for update prompt can't be display and blocks the app.
+- Fix that launch at login not working.
+
 ### 2021.3
 
 - Fix that network requests are not sending sometimes (remove waitAtLeast).
