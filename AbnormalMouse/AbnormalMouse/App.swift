@@ -68,6 +68,7 @@ struct TheApp: Domain {
         var purchaseManager: PurchaseManagerType
         var updater: Updater
         var activatorConflictChecker: ActivatorConflictChecker
+        var launchAtLoginManager: LaunchAtLoginManagerType
 
         let overrideControllers: [OverrideController]
     }
@@ -143,7 +144,8 @@ struct TheApp: Domain {
                         persisted: $0.persisted,
                         activatorConflictChecker: $0.activatorConflictChecker,
                         purchaseManager: $0.purchaseManager,
-                        updater: $0.updater
+                        updater: $0.updater,
+                        launchAtLoginManager: $0.launchAtLoginManager
                     )
                 }
             }
@@ -164,6 +166,7 @@ extension Store where Action == TheApp.Action, State == TheApp.State {
                 purchaseManager: FakePurchaseManager(),
                 updater: FakeUpdater(),
                 activatorConflictChecker: .init(persisted: Readonly(persisted)),
+                launchAtLoginManager: FakeLaunchAtLoginManager(),
                 overrideControllers: []
             ))
         )
