@@ -7,6 +7,6 @@
 "Button.Activate" = "Activate";
 
 "FailureReason.NetworkError" = "Please check your network and try again.";
-"FailureReason.Invalid" = "Can't verify license, please check the key and email entered is correct.";
+"FailureReason.Invalid" = "Can't verify the license. Please check the key and email entered are correct.";
 "FailureReason.Refunded" = "The license key has been refunded.";
-"FailureReason.ReachedLimit" = "The license key has reached activation limit. Please deactivate first.";
+"FailureReason.ReachedLimit" = "The license key has reached the activation limit. Please deactivate first.";
