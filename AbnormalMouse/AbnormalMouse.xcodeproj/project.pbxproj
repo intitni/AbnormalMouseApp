@@ -80,7 +80,7 @@
 		84E49429248E28450074540F /* MainView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E4942B248E28450074540F /* MainView.strings */; };
 		84E49432248E2A770074540F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49430248E2A770074540F /* Strings.swift */; };
 		84E49433248E2A770074540F /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49431248E2A770074540F /* Assets.swift */; };
-		84E49439248E2BF80074540F /* NeedAccessability.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E4943B248E2BF80074540F /* NeedAccessability.strings */; };
+		84E49439248E2BF80074540F /* NeedAccessibility.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E4943B248E2BF80074540F /* NeedAccessibility.strings */; };
 		84E6B6DD26461E3200887DE7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6B6DC26461E3200887DE7 /* Queue.swift */; };
 		84FAB1EB24C13253001265FD /* SCA+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1EA24C13253001265FD /* SCA+Extentions.swift */; };
 		84FAB1F224C53547001265FD /* Readonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1F124C53547001265FD /* Readonly.swift */; };
@@ -196,8 +196,8 @@
 		84E49431248E2A770074540F /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		84E49434248E2BC50074540F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84E49436248E2BCE0074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		84E4943A248E2BF80074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NeedAccessability.strings; sourceTree = "<group>"; };
-		84E4943C248E2BFA0074540F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NeedAccessability.strings"; sourceTree = "<group>"; };
+		84E4943A248E2BF80074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NeedAccessibility.strings; sourceTree = "<group>"; };
+		84E4943C248E2BFA0074540F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NeedAccessibility.strings"; sourceTree = "<group>"; };
 		84E6B6DC26461E3200887DE7 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		84FAB1EA24C13253001265FD /* SCA+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCA+Extentions.swift"; sourceTree = "<group>"; };
 		84FAB1F124C53547001265FD /* Readonly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readonly.swift; sourceTree = "<group>"; };
@@ -511,7 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				84E4942B248E28450074540F /* MainView.strings */,
-				84E4943B248E2BF80074540F /* NeedAccessability.strings */,
+				84E4943B248E2BF80074540F /* NeedAccessibility.strings */,
 				84AA165D2492046E00D2C34E /* Shared.strings */,
 				84AA16632492079100D2C34E /* ScrollSettings.strings */,
 				84AA166F2492293B00D2C34E /* ZoomAndRotateSettings.strings */,
@@ -619,7 +619,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84E49439248E2BF80074540F /* NeedAccessability.strings in Resources */,
+				84E49439248E2BF80074540F /* NeedAccessibility.strings in Resources */,
 				84E49429248E28450074540F /* MainView.strings in Resources */,
 				1383616A2487E70700E76F41 /* Preview Assets.xcassets in Resources */,
 				138361672487E70700E76F41 /* Assets.xcassets in Resources */,
@@ -937,13 +937,13 @@
 			name = MainView.strings;
 			sourceTree = "<group>";
 		};
-		84E4943B248E2BF80074540F /* NeedAccessability.strings */ = {
+		84E4943B248E2BF80074540F /* NeedAccessibility.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84E4943A248E2BF80074540F /* en */,
 				84E4943C248E2BFA0074540F /* zh-Hans */,
 			);
-			name = NeedAccessability.strings;
+			name = NeedAccessibility.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -3,7 +3,7 @@ import Combine
 import ComposableArchitecture
 import Foundation
 
-enum NeedAccessabilityDomain: Domain {
+enum NeedAccessibilityDomain: Domain {
     struct State: Equatable {}
 
     enum Action {
@@ -25,13 +25,13 @@ enum NeedAccessabilityDomain: Domain {
     }
 }
 
-extension Store where Action == NeedAccessabilityDomain.Action,
-    State == NeedAccessabilityDomain.State
+extension Store where Action == NeedAccessibilityDomain.Action,
+    State == NeedAccessibilityDomain.State
 {
     static var testStore: Self {
         Self(
             initialState: .init(),
-            reducer: NeedAccessabilityDomain.reducer,
+            reducer: NeedAccessibilityDomain.reducer,
             environment: .live(environment: .init())
         )
     }

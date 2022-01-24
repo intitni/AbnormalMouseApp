@@ -148,16 +148,16 @@ internal enum L10n {
       internal static let zoomAndRotate = L10n.tr("MainView", "TabTitle.ZoomAndRotate")
     }
   }
-  internal enum NeedAccessability {
+  internal enum NeedAccessibility {
     internal enum View {
       /// Turn On Accessibility
-      internal static let enableButtonTitle = L10n.tr("NeedAccessability", "View.EnableButtonTitle")
+      internal static let enableButtonTitle = L10n.tr("NeedAccessibility", "View.EnableButtonTitle")
       /// The app needs accessibility enabled to read and manipulate keyboard and mouse events.
-      internal static let introduction = L10n.tr("NeedAccessability", "View.Introduction")
+      internal static let introduction = L10n.tr("NeedAccessibility", "View.Introduction")
       /// Go to System Preferences > Security & Privacy > Privacy > Accessibility
-      internal static let manual = L10n.tr("NeedAccessability", "View.Manual")
+      internal static let manual = L10n.tr("NeedAccessibility", "View.Manual")
       /// Abnormal Mouse Needs to Be Free!
-      internal static let title = L10n.tr("NeedAccessability", "View.Title")
+      internal static let title = L10n.tr("NeedAccessibility", "View.Title")
     }
   }
   internal enum ScrollSettings {
