@@ -237,7 +237,7 @@ extension AppDelegate: NSWindowDelegate {
 extension AppDelegate {
     private func checkAuthorization() {
         let isTrusted = AXIsProcessTrusted()
-        ViewStore(store).send(.setAccessabilityAuthorized(isTrusted))
+        ViewStore(store).send(.setAccessibilityAuthorized(isTrusted))
         statusBarItem?.menu?.item(at: 0)?.title = eventHook.isEnabled
             ? L10n.StatusBarMenu.isEnabled
             : L10n.StatusBarMenu.isDisabled

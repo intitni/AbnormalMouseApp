@@ -16,13 +16,13 @@ struct MainDomain: Domain {
     }
 
     struct State: Equatable {
-        var isAccessabilityAuthorized: Bool = false
-        var isNeedAccessabilityViewPresented: Bool = false
+        var isAccessibilityAuthorized: Bool = false
+        var isNeedAccessibilityViewPresented: Bool = false
 
         var moveToScrollSettings = MoveToScrollDomain.State()
         var zoomAndRotateSettings = ZoomAndRotateDomain.State()
         var dockSwipeSettings = DockSwipeDomain.State()
-        var needAccessability = NeedAccessabilityDomain.State()
+        var needAccessibility = NeedAccessibilityDomain.State()
         var advanced = AdvancedDomain.State()
         var general = GeneralDomain.State()
 
@@ -33,12 +33,12 @@ struct MainDomain: Domain {
     }
 
     enum Action {
-        case setAccessabilityViewPresented(Bool)
+        case setAccessibilityViewPresented(Bool)
 
         case moveToScrollSettings(action: MoveToScrollDomain.Action)
         case zoomAndRotateSettings(action: ZoomAndRotateDomain.Action)
         case dockSwipeSettings(action: DockSwipeDomain.Action)
-        case needAccessability(action: NeedAccessabilityDomain.Action)
+        case needAccessibility(action: NeedAccessibilityDomain.Action)
         case advanced(action: AdvancedDomain.Action)
         case general(action: GeneralDomain.Action)
 
@@ -55,8 +55,8 @@ struct MainDomain: Domain {
     static let reducer = Reducer.combine(
         Reducer { state, action, environment in
             switch action {
-            case let .setAccessabilityViewPresented(isPresented):
-                state.isNeedAccessabilityViewPresented = isPresented
+            case let .setAccessibilityViewPresented(isPresented):
+                state.isNeedAccessibilityViewPresented = isPresented
                 return .none
             case .activate:
                 return .init(value: .setActivationView(isPresenting: true))
@@ -75,7 +75,7 @@ struct MainDomain: Domain {
                 return .none
             case .dockSwipeSettings:
                 return .none
-            case .needAccessability:
+            case .needAccessibility:
                 return .none
             case .advanced:
                 return .none
@@ -130,9 +130,9 @@ struct MainDomain: Domain {
                 }
             }
         ),
-        NeedAccessabilityDomain.reducer.pullback(
-            state: \.needAccessability,
-            action: /Action.needAccessability,
+        NeedAccessibilityDomain.reducer.pullback(
+            state: \.needAccessibility,
+            action: /Action.needAccessibility,
             environment: {
                 $0.map { _ in
                     .init()
@@ -181,11 +181,11 @@ extension Store where Action == MainDomain.Action, State == MainDomain.State {
         )
         return .init(
             initialState: .init(
-                isAccessabilityAuthorized: false,
-                isNeedAccessabilityViewPresented: false,
+                isAccessibilityAuthorized: false,
+                isNeedAccessibilityViewPresented: false,
                 moveToScrollSettings: .init(),
                 zoomAndRotateSettings: .init(),
-                needAccessability: .init(),
+                needAccessibility: .init(),
                 general: .init()
             ),
             reducer: MainDomain.reducer,

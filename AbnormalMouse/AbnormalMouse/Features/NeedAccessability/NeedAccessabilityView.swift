@@ -1,21 +1,21 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct NeedAccessabilityScreen: View {
-    let store: NeedAccessabilityDomain.Store
+struct NeedAccessibilityScreen: View {
+    let store: NeedAccessibilityDomain.Store
 
     var body: some View {
-        NeedAccessabilityView(store: store)
+        NeedAccessibilityView(store: store)
     }
 }
 
-private struct NeedAccessabilityView: View {
-    let store: NeedAccessabilityDomain.Store
+private struct NeedAccessibilityView: View {
+    let store: NeedAccessibilityDomain.Store
 
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                Image(Asset.iconAccessabilityOff.name)
+                Image(Asset.iconAccessibilityOff.name)
                 Text(_L10n.View.title)
                     .font(.pageTitle)
                 Spacer().frame(height: 8)
@@ -34,12 +34,12 @@ private struct NeedAccessabilityView: View {
     }
 }
 
-struct NeedAccessabilityView_Previews: PreviewProvider {
+struct NeedAccessibilityView_Previews: PreviewProvider {
     static var previews: some View {
-        NeedAccessabilityView(store: .testStore)
+        NeedAccessibilityView(store: .testStore)
     }
 }
 
 private enum _L10n {
-    typealias View = L10n.NeedAccessability.View
+    typealias View = L10n.NeedAccessibility.View
 }

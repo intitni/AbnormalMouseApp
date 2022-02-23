@@ -81,7 +81,7 @@ struct TheApp: Domain {
         case observePurchaseState
         case verifyLicense
         case purchaseStateDidChange(PurchaseState)
-        case setAccessabilityAuthorized(Bool)
+        case setAccessibilityAuthorized(Bool)
 
         case main(MainDomain.Action)
     }
@@ -127,9 +127,9 @@ struct TheApp: Domain {
                     state.mainScreen.activationStateDescription = _L10n.PurchaseStatus.invalid
                 }
                 return .none
-            case let .setAccessabilityAuthorized(isAuthorized):
-                state.mainScreen.isAccessabilityAuthorized = isAuthorized
-                if isAuthorized { state.mainScreen.isNeedAccessabilityViewPresented = false }
+            case let .setAccessibilityAuthorized(isAuthorized):
+                state.mainScreen.isAccessibilityAuthorized = isAuthorized
+                if isAuthorized { state.mainScreen.isNeedAccessibilityViewPresented = false }
                 return .none
             case .main:
                 return .none

@@ -3,19 +3,19 @@
 "View.ActivationKeyCombinationTitle" = "Active when holding";
 "View.ScrollSpeedSliderTitle" = "Scroll speed";
 "View.SwipeSpeedSliderTitle" = "Swipe speed";
-"View.ScrollSpeedSliderIntroduction" = "Scroll speed controls how mouse movements will be scaled into scrolls, a bigger number is preferred since you will not want to move the mouse a lot to scroll.";
-"View.SwipeSpeedSliderIntroduction" = "Swipe speed controls how it's scaled into swipe gesture translations, a lower speed will make it feel more natural.";
+"View.ScrollSpeedSliderIntroduction" = "Scroll speed controls how mouse movements will be scaled-up into scrolls. A large number is preferred since you will not want to move the mouse a lot to scroll.";
+"View.SwipeSpeedSliderIntroduction" = "Swipe speed controls how it's scaled into swipe gesture translations. A slower speed will make it feel more natural.";
 "View.Tips.Usage" = "Hold activator then move your mouse to scroll.";
 "View.Tips.ActivatorChoice" = "Set a mouse button as activator to have a drag-to-scroll like experience.";
 "View.Tips.PageDown" = "Double tap to scroll down half a page.";
 "View.Tips.ScrollBar" = "Turn off show scroll bar in system preferences if you don't have a trackpad connected.";
 "View.InertiaEffectCheckboxTitle" = "Emulate inertia effect";
-"View.InertiaEffectIntroduction" = "We recommend you to keep it on, disabling it will disable inertia effect in some apps.";
+"View.InertiaEffectIntroduction" = "We recommend you to keep it on. Disabling it will disable inertia effect in some apps.";
 
 "HalfPageScrollView.Tips.UsageA" = "Double tap activator for \"move to scroll\" to trigger half page scroll.";
 "HalfPageScrollView.Tips.UsageB" = "Tap activator to trigger half page scroll.";
 
 "HalfPageScrollView.Title" = "Half Page Scroll";
-"HalfPageScrollView.introduction" = "Page-down is cool but a full page scroll can be quite annoying. This feature allows you to scroll down half a page.";
+"HalfPageScrollView.introduction" = "Page-down is cool, but a full-page scroll can be annoying. This feature allows you to scroll down half a page.";
 "HalfPageScrollView.ActivationKeyCombinationTitle" = "Trigger when";
 "HalfPageScrollView.DoubleTapToActivate" = "Reuse activator for \"scroll and swipe\"";

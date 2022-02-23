@@ -1,0 +1,7 @@
+"View.Title" = "Abnormal Mouse Needs to Be Free!";
+
+"View.Introduction" = "The app needs accessibility enabled to read and manipulate keyboard and mouse events.";
+
+"View.EnableButtonTitle" = "Turn On Accessibility";
+
+"View.Manual" = "Go to System Preferences > Security & Privacy > Privacy > Accessibility";
