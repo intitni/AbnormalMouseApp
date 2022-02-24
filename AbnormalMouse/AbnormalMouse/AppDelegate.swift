@@ -20,10 +20,17 @@ private let eoi: Set<CGEventType> = {
     if persisted.advanced.listenToKeyboardEvent {
         return [
             .keyDown, .keyUp, .mouseMoved,
+            .leftMouseDown, .leftMouseUp, .leftMouseDragged,
+            .rightMouseUp, .rightMouseDown, .rightMouseDragged,
             .otherMouseUp, .otherMouseDown, .otherMouseDragged,
         ]
     }
-    return [.mouseMoved, .otherMouseUp, .otherMouseDown, .otherMouseDragged]
+    return [
+        .mouseMoved,
+        .leftMouseDown, .leftMouseUp, .leftMouseDragged,
+        .rightMouseUp, .rightMouseDown, .rightMouseDragged,
+        .otherMouseUp, .otherMouseDown, .otherMouseDragged
+    ]
 }()
 
 private let eventHook = CGEventHook(eventsOfInterest: eoi)
