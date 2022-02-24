@@ -178,9 +178,7 @@ struct HoverableWarning: View {
     let text: String
     init(hasConflict: Bool, invalidReason: KeyCombinationInvalidReason?) {
         text = {
-            if hasConflict {
-                return L10n.Shared.View.activatorConflict
-            } else if let reason = invalidReason {
+            if let reason = invalidReason {
                 switch reason {
                 case .leftRightMouseButtonNeedModifier:
                     return L10n.Shared.View
@@ -188,6 +186,8 @@ struct HoverableWarning: View {
                 case .needsKeyboardEventListener:
                     return L10n.Shared.View.keyCombinationNeedsKeyboardEventListener
                 }
+            } else if hasConflict {
+                return L10n.Shared.View.activatorConflict
             }
             return ""
         }()
