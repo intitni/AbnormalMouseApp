@@ -74,7 +74,8 @@ struct DockSwipeSettingsView_Previews: PreviewProvider {
             reducer: DockSwipeDomain.reducer,
             environment: .live(environment: .init(
                 persisted: .init(),
-                featureHasConflict: { _ in true }
+                featureHasConflict: { _ in true },
+                activatorIsValid: { _ in true }
             ))
         ))
     }

@@ -9,6 +9,7 @@ enum DockSwipeDomain: Domain {
             var keyCombination: KeyCombination?
             var hasConflict = false
             var numberOfTapsRequired = 1
+            var isValid = true
         }
 
         var dockSwipeActivator = DockSwipeActivator()
@@ -27,6 +28,7 @@ enum DockSwipeDomain: Domain {
         case _internal(Internal)
         enum Internal: Equatable {
             case checkConflict
+            case checkValidity
         }
     }
 
@@ -34,6 +36,7 @@ enum DockSwipeDomain: Domain {
     struct _Environment {
         var persisted: Persisted.DockSwipe
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
+        var activatorIsValid: (Activator) -> Bool
     }
 
     static let reducer = Reducer.combine(
@@ -75,6 +78,23 @@ enum DockSwipeDomain: Domain {
                     state.dockSwipeActivator.hasConflict = environment
                         .featureHasConflict(.dockSwipe)
                     return .none
+                case .checkValidity:
+                    let check = {
+                        (keyCombination: KeyCombination?, numberOfTapRequired: Int) -> Bool in
+                        guard let keyCombination = keyCombination,
+                              let activator = Activator(
+                                  keyCombination: keyCombination,
+                                  numberOfTapRequired: numberOfTapRequired
+                              )
+                        else { return true }
+
+                        return environment.activatorIsValid(activator)
+                    }
+                    state.dockSwipeActivator.isValid = check(
+                        state.dockSwipeActivator.keyCombination,
+                        state.dockSwipeActivator.numberOfTapsRequired
+                    )
+                    return .none
                 }
             }
         }
@@ -99,7 +119,8 @@ extension Store where Action == DockSwipeDomain.Action, State == DockSwipeDomain
             reducer: DockSwipeDomain.reducer,
             environment: .live(environment: .init(
                 persisted: .init(),
-                featureHasConflict: { _ in true }
+                featureHasConflict: { _ in true },
+                activatorIsValid: { _ in true }
             ))
         )
     }

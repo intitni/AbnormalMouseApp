@@ -9,6 +9,7 @@ enum ZoomAndRotateDomain: Domain {
             var keyCombination: KeyCombination?
             var hasConflict = false
             var numberOfTapsRequired = 1
+            var isValid = true
         }
 
         var zoomAndRotateActivator = ZoomAndRotateActivator()
@@ -20,6 +21,7 @@ enum ZoomAndRotateDomain: Domain {
             var keyCombination: KeyCombination?
             var numberOfTapsRequired = 1
             var hasConflict = false
+            var isValid = true
         }
 
         var smartZoomActivator = SmartZoomActivator()
@@ -49,6 +51,7 @@ enum ZoomAndRotateDomain: Domain {
         case _internal(Internal)
         enum Internal {
             case checkConflict
+            case checkValidity
         }
     }
 
@@ -56,6 +59,7 @@ enum ZoomAndRotateDomain: Domain {
     struct _Environment {
         var persisted: Persisted.ZoomAndRotate
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
+        var activatorIsValid: (Activator) -> Bool
     }
 
     static let reducer = Reducer.combine(
@@ -148,6 +152,27 @@ enum ZoomAndRotateDomain: Domain {
                     state.zoomAndRotateActivator.hasConflict = hasConflict(.zoomAndRotate)
                     state.smartZoomActivator.hasConflict = hasConflict(.smartZoom)
                     return .none
+                case .checkValidity:
+                    let check = {
+                        (keyCombination: KeyCombination?, numberOfTapRequired: Int) -> Bool in
+                        guard let keyCombination = keyCombination,
+                              let activator = Activator(
+                                  keyCombination: keyCombination,
+                                  numberOfTapRequired: numberOfTapRequired
+                              )
+                        else { return true }
+
+                        return environment.activatorIsValid(activator)
+                    }
+                    state.zoomAndRotateActivator.isValid = check(
+                        state.zoomAndRotateActivator.keyCombination,
+                        state.zoomAndRotateActivator.numberOfTapsRequired
+                    )
+                    state.smartZoomActivator.isValid = check(
+                        state.smartZoomActivator.keyCombination,
+                        state.smartZoomActivator.numberOfTapsRequired
+                    )
+                    return .none
                 }
             }
         }
@@ -180,7 +205,8 @@ extension Store where Action == ZoomAndRotateDomain.Action, State == ZoomAndRota
             reducer: ZoomAndRotateDomain.reducer,
             environment: .live(environment: .init(
                 persisted: .init(),
-                featureHasConflict: { _ in true }
+                featureHasConflict: { _ in true },
+                activatorIsValid: { _ in true }
             ))
         )
     }

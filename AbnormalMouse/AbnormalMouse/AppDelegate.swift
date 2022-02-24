@@ -29,7 +29,7 @@ private let eoi: Set<CGEventType> = {
         .mouseMoved,
         .leftMouseDown, .leftMouseUp, .leftMouseDragged,
         .rightMouseUp, .rightMouseDown, .rightMouseDragged,
-        .otherMouseUp, .otherMouseDown, .otherMouseDragged
+        .otherMouseUp, .otherMouseDown, .otherMouseDragged,
     ]
 }()
 
@@ -47,6 +47,7 @@ private let store = TheApp.Store(
         purchaseManager: purchaseManager,
         updater: updater,
         activatorConflictChecker: .init(persisted: Readonly(persisted)),
+        activatorValidityChecker: .init(),
         launchAtLoginManager: launchAtLoginManager,
         overrideControllers: [
             MoveToScrollController(
