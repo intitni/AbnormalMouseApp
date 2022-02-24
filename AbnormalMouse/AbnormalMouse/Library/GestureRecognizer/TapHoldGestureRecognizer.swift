@@ -22,7 +22,7 @@ extension GestureRecognizers {
 
         private let hook: CGEventHookType
         /// Track to prevent keyDown events to repeat
-        private var isKeyboardKeyDown = false
+        private var isDown = false
         @Published private var isHolding: Bool = false
 
         private(set) var state = State()
@@ -39,7 +39,9 @@ extension GestureRecognizers {
 
             hook.add(
                 .init(
-                    eventsOfInterest: [.keyUp, .keyDown, .otherMouseUp, .otherMouseDown],
+                    eventsOfInterest: [.keyUp, .keyDown, .otherMouseUp, .otherMouseDown,
+                                       .leftMouseUp, .leftMouseDown, .rightMouseUp,
+                                       .rightMouseDown],
                     convert: { [weak self] _, type, event -> CGEventManipulation.Result in
                         guard let self = self else { return .unchange }
                         return DispatchQueue.default.sync {
@@ -48,7 +50,11 @@ extension GestureRecognizers {
                                  .keyDown:
                                 return self.handleKeys(type: type, event: event)
                             case .otherMouseUp,
-                                 .otherMouseDown:
+                                 .otherMouseDown,
+                                 .leftMouseUp,
+                                 .leftMouseDown,
+                                 .rightMouseUp,
+                                 .rightMouseDown:
                                 return self.handleMouseButton(type: type, event: event)
                             default:
                                 return .unchange
@@ -91,14 +97,14 @@ extension GestureRecognizers.TapHold {
         switch type {
         case .keyDown:
             guard combination.matchesFlags(event.flags) else { return .unchange }
-            guard !isKeyboardKeyDown else { return shouldDiscardEvent ? .discarded : .unchange }
+            guard !isDown else { return shouldDiscardEvent ? .discarded : .unchange }
             down(code: code)
-            isKeyboardKeyDown = true
+            isDown = true
             return shouldDiscardEvent ? .discarded : .unchange
         case .keyUp:
-            guard isKeyboardKeyDown else { return .unchange }
+            guard isDown else { return .unchange }
             up(code: code)
-            isKeyboardKeyDown = false
+            isDown = false
             return shouldDiscardEvent ? .discarded : .unchange
         default: return .unchange
         }
@@ -116,12 +122,16 @@ extension GestureRecognizers.TapHold {
         resetStateIfNeeded()
 
         switch type {
-        case .otherMouseDown:
+        case .otherMouseDown, .leftMouseDown, .rightMouseDown:
             guard combination.matchesFlags(event.flags) else { return .unchange }
+            guard !isDown else { return shouldDiscardEvent ? .discarded : .unchange }
             down(code: code)
+            isDown = true
             return shouldDiscardEvent ? .discarded : .unchange
-        case .otherMouseUp:
+        case .otherMouseUp, .leftMouseUp, .rightMouseUp:
+            guard isDown else { return .unchange }
             up(code: code)
+            isDown = false
             return shouldDiscardEvent ? .discarded : .unchange
         default:
             return .unchange

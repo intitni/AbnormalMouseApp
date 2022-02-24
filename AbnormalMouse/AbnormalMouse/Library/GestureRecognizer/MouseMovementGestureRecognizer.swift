@@ -49,7 +49,8 @@ extension GestureRecognizers {
 
             hook.add(
                 .init(
-                    eventsOfInterest: [.mouseMoved, .otherMouseDragged],
+                    eventsOfInterest: [.mouseMoved, .otherMouseDragged, .leftMouseDragged,
+                                       .rightMouseDragged],
                     convert: { [weak self] _, _, event -> CGEventManipulation.Result in
                         DispatchQueue.default.sync {
                             guard let self = self else { return .unchange }
