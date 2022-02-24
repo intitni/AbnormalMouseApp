@@ -21,7 +21,7 @@ struct Persisted: PersistedType {
     let advanced = Advanced()
     struct Advanced: PersistedType {
         static func key(_ name: String) -> String { "Advanced\(name)" }
-        @UserDefault(key("ListenToKeyboardEvent"), defaultValue: true)
+        @UserDefault(key("ListenToKeyboardEvent"), defaultValue: false)
         var listenToKeyboardEvent: Bool
         @UserDefault(key("TapGestureDelay"), defaultValue: 0)
         var tapGestureDelayInMilliseconds: Int

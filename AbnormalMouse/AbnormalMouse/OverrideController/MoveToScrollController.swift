@@ -107,15 +107,15 @@ final class MoveToScrollController: OverrideController {
         state.scrollSpeedMultiplier = CGFloat(persisted.scrollSpeedMultiplier)
         state.isInertiaEffectEnabled = persisted.isInertiaEffectEnabled
         state.swipeSpeedMultiplier = CGFloat(persisted.swipeSpeedMultiplier)
-        tapHold.keyCombination = persisted.keyCombination
+        tapHold.keyCombination = persisted.keyCombination?.validated
         tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
 
         if persisted.halfPageScroll.useMoveToScrollDoubleTap {
             tap.numberOfTapsRequired = persisted.numberOfTapsRequired + 1
-            tap.keyCombination = persisted.keyCombination
+            tap.keyCombination = persisted.keyCombination?.validated
         } else {
             tap.numberOfTapsRequired = persisted.halfPageScroll.numberOfTapsRequired
-            tap.keyCombination = persisted.halfPageScroll.keyCombination
+            tap.keyCombination = persisted.halfPageScroll.keyCombination?.validated
         }
     }
 }

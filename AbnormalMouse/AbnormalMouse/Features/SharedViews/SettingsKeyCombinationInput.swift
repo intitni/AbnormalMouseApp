@@ -4,6 +4,7 @@ import SwiftUI
 struct SettingsKeyCombinationInput<Title: View>: View {
     let title: Title
     let hasConflict: Bool
+    let invalidReason: KeyCombinationInvalidReason?
     @State var isEditing: Bool = false
     @State var isHovering: Bool = false
     @Binding var keyCombination: KeyCombination?
@@ -13,11 +14,13 @@ struct SettingsKeyCombinationInput<Title: View>: View {
         keyCombination: Binding<KeyCombination?>,
         numberOfTapsRequired: Binding<Int> = Binding.constant(1),
         hasConflict: Bool = false,
+        invalidReason: KeyCombinationInvalidReason? = .none,
         @ViewBuilder title: () -> Title
     ) {
         _keyCombination = keyCombination
         _numberOfTapsRequired = numberOfTapsRequired
         self.hasConflict = hasConflict
+        self.invalidReason = invalidReason
         self.title = title()
     }
 
@@ -64,11 +67,7 @@ struct SettingsKeyCombinationInput<Title: View>: View {
                         .frame(width: proxy.size.width, height: proxy.size.height)
                 }
             )
-
-            if hasConflict {
-                Text(L10n.Shared.View.activatorConflict)
-                    .foregroundColor(Color.red)
-            }
+            HoverableWarning(hasConflict: hasConflict, invalidReason: invalidReason)
         }
     }
 }
@@ -171,6 +170,39 @@ extension SettingsKeyCombinationInput {
         )
         .buttonStyle(ModifierButtonStyle())
         .frame(maxWidth: 30, maxHeight: .infinity, alignment: .center)
+    }
+}
+
+struct HoverableWarning: View {
+    @State var isHovering: Bool = false
+    let text: String
+    init(hasConflict: Bool, invalidReason: KeyCombinationInvalidReason?) {
+        text = {
+            if let reason = invalidReason {
+                switch reason {
+                case .leftRightMouseButtonNeedModifier:
+                    return L10n.Shared.View
+                        .keyCombinationLeftRightMouseButtonNeedModifier
+                case .needsKeyboardEventListener:
+                    return L10n.Shared.View.keyCombinationNeedsKeyboardEventListener
+                }
+            } else if hasConflict {
+                return L10n.Shared.View.activatorConflict
+            }
+            return ""
+        }()
+    }
+
+    var body: some View {
+        if !text.isEmpty {
+            Text("⚠️")
+                .onHover { isHovering = $0 }
+                .popover(isPresented: $isHovering) {
+                    Text(text)
+                        .font(.headline)
+                        .padding()
+                }
+        }
     }
 }
 

@@ -9,6 +9,7 @@ enum DockSwipeDomain: Domain {
             var keyCombination: KeyCombination?
             var hasConflict = false
             var numberOfTapsRequired = 1
+            var invalidReason: KeyCombinationInvalidReason?
         }
 
         var dockSwipeActivator = DockSwipeActivator()
@@ -27,6 +28,7 @@ enum DockSwipeDomain: Domain {
         case _internal(Internal)
         enum Internal: Equatable {
             case checkConflict
+            case checkValidity
         }
     }
 
@@ -34,6 +36,7 @@ enum DockSwipeDomain: Domain {
     struct _Environment {
         var persisted: Persisted.DockSwipe
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
+        var checkKeyCombinationValidity: (KeyCombination?) -> KeyCombinationInvalidReason?
     }
 
     static let reducer = Reducer.combine(
@@ -66,14 +69,26 @@ enum DockSwipeDomain: Domain {
             switch action {
             case .appear:
                 state = State(from: environment.persisted)
-                return .init(value: ._internal(.checkConflict))
+                return .merge([
+                    .init(value: ._internal(.checkConflict)),
+                    .init(value: ._internal(.checkValidity)),
+                ])
             case .dockSwipe:
-                return .init(value: ._internal(.checkConflict))
+                return .merge([
+                    .init(value: ._internal(.checkConflict)),
+                    .init(value: ._internal(.checkValidity)),
+                ])
             case let ._internal(internalAction):
                 switch internalAction {
                 case .checkConflict:
                     state.dockSwipeActivator.hasConflict = environment
                         .featureHasConflict(.dockSwipe)
+                    return .none
+                case .checkValidity:
+                    let check = environment.checkKeyCombinationValidity
+                    state.dockSwipeActivator.invalidReason = check(
+                        state.dockSwipeActivator.keyCombination
+                    )
                     return .none
                 }
             }
@@ -99,7 +114,8 @@ extension Store where Action == DockSwipeDomain.Action, State == DockSwipeDomain
             reducer: DockSwipeDomain.reducer,
             environment: .live(environment: .init(
                 persisted: .init(),
-                featureHasConflict: { _ in true }
+                featureHasConflict: { _ in true },
+                checkKeyCombinationValidity: { _ in nil }
             ))
         )
     }

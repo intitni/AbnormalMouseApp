@@ -71,6 +71,7 @@ private struct ZoomAndRotateView: View {
                     send: { .setNumberOfTapsRequired($0) }
                 ),
                 hasConflict: viewStore.hasConflict,
+                invalidReason: viewStore.invalidReason,
                 title: { Text(_L10n.View.activationKeyCombinationTitle) }
             )
         }
@@ -188,6 +189,7 @@ private struct SmartZoomView: View {
                         send: { .setNumberOfTapsRequired($0) }
                     ),
                     hasConflict: viewStore.hasConflict,
+                    invalidReason: viewStore.invalidReason,
                     title: { Text(_L10n.View.activationKeyCombinationTitle) }
                 )
 

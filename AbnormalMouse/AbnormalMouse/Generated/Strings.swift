@@ -42,7 +42,7 @@ internal enum L10n {
     internal enum View {
       /// Listen to keyboard event (restart app to take effect)
       internal static let listenToKeyboardEvent = L10n.tr("Advanced", "View.ListenToKeyboardEvent")
-      /// By default, this app listens to your keystrokes so you can use hotkeys as activators. But letting an app read your keystrokes can be risky (though we are not doing anything). You can turn it off if you are only using mouse buttons as activators. You can use tools like ReiKey to check if the app is still listening to your keystrokes
+      /// By default, this app does not listen to your keystrokes so you can't use keyboard keys (except modifiers) as activators. Letting an app read your keystrokes can be risky (though we are not doing anything with Abnormal Mouse). Turn it on if you want to use keyboard keys as activators. It will also slightly increase CPU usage when idel. \n\nYou can use tools like ReiKey to check if the app is still listening to your keystrokes
       internal static let listenToKeyboardEventIntroduction = L10n.tr("Advanced", "View.ListenToKeyboardEventIntroduction")
       /// Advanced
       internal static let title = L10n.tr("Advanced", "View.Title")
@@ -238,6 +238,10 @@ internal enum L10n {
       internal static let activatorConflict = L10n.tr("Shared", "View.ActivatorConflict")
       /// Enter..
       internal static let enterKeyCombination = L10n.tr("Shared", "View.EnterKeyCombination")
+      /// Set modifiers for left/right mouse button
+      internal static let keyCombinationLeftRightMouseButtonNeedModifier = L10n.tr("Shared", "View.KeyCombinationLeftRightMouseButtonNeedModifier")
+      /// Turn on listen to keyboard events in advanced settings
+      internal static let keyCombinationNeedsKeyboardEventListener = L10n.tr("Shared", "View.KeyCombinationNeedsKeyboardEventListener")
       /// Setup
       internal static let keyCombinationNotSetup = L10n.tr("Shared", "View.KeyCombinationNotSetup")
     }

@@ -49,6 +49,7 @@ private struct DockSwipeView: View {
                             send: { .setNumberOfTapsRequired($0) }
                         ),
                         hasConflict: viewStore.hasConflict,
+                        invalidReason: viewStore.invalidReason,
                         title: { Text(_L10n.View.activationKeyCombinationTitle) }
                     )
                 }
@@ -74,7 +75,8 @@ struct DockSwipeSettingsView_Previews: PreviewProvider {
             reducer: DockSwipeDomain.reducer,
             environment: .live(environment: .init(
                 persisted: .init(),
-                featureHasConflict: { _ in true }
+                featureHasConflict: { _ in true },
+                checkKeyCombinationValidity: { _ in nil }
             ))
         ))
     }

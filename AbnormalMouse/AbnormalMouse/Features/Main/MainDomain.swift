@@ -10,6 +10,7 @@ struct MainDomain: Domain {
     struct _Environment {
         var persisted: Persisted
         var activatorConflictChecker: ActivatorConflictChecker
+        var keyCombinationValidityChecker: KeyCombinationValidityChecker
         var purchaseManager: PurchaseManagerType
         var updater: Updater
         var launchAtLoginManager: LaunchAtLoginManagerType
@@ -101,7 +102,9 @@ struct MainDomain: Domain {
                 $0.map {
                     .init(
                         persisted: $0.persisted.moveToScroll,
-                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict,
+                        checkKeyCombinationValidity: $0.keyCombinationValidityChecker
+                            .checkValidity(_:)
                     )
                 }
             }
@@ -113,7 +116,9 @@ struct MainDomain: Domain {
                 $0.map {
                     .init(
                         persisted: $0.persisted.zoomAndRotate,
-                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict,
+                        checkKeyCombinationValidity: $0.keyCombinationValidityChecker
+                            .checkValidity(_:)
                     )
                 }
             }
@@ -125,7 +130,9 @@ struct MainDomain: Domain {
                 $0.map {
                     .init(
                         persisted: $0.persisted.dockSwipe,
-                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict,
+                        checkKeyCombinationValidity: $0.keyCombinationValidityChecker
+                            .checkValidity(_:)
                     )
                 }
             }
@@ -192,6 +199,7 @@ extension Store where Action == MainDomain.Action, State == MainDomain.State {
             environment: .live(environment: .init(
                 persisted: persisted,
                 activatorConflictChecker: .init(persisted: Readonly(persisted)),
+                keyCombinationValidityChecker: .init(persisted: Readonly(persisted)),
                 purchaseManager: FakePurchaseManager(),
                 updater: FakeUpdater(),
                 launchAtLoginManager: FakeLaunchAtLoginManager()
