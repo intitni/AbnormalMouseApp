@@ -1,6 +1,8 @@
 "View.EnterKeyCombination" = "Enter..";
 "View.KeyCombinationNotSetup" = "Setup";
 "View.ActivatorConflict" = "Activator already in use";
+"View.KeyCombinationLeftRightMouseButtonNeedModifier" = "Set modifiers for left/right mouse button";
+"View.KeyCombinationNeedsKeyboardEventListener" = "Turn on listen to keyboard events in advanced settings";
 
 "MouseCodeName.Left" = "Mouse(L)";
 "MouseCodeName.Right" = "Mouse(R)";

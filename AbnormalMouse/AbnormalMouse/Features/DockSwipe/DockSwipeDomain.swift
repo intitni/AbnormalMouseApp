@@ -9,7 +9,7 @@ enum DockSwipeDomain: Domain {
             var keyCombination: KeyCombination?
             var hasConflict = false
             var numberOfTapsRequired = 1
-            var isValid = true
+            var invalidReason: KeyCombinationInvalidReason?
         }
 
         var dockSwipeActivator = DockSwipeActivator()
@@ -36,7 +36,7 @@ enum DockSwipeDomain: Domain {
     struct _Environment {
         var persisted: Persisted.DockSwipe
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
-        var activatorIsValid: (Activator) -> Bool
+        var checkKeyCombinationValidity: (KeyCombination?) -> KeyCombinationInvalidReason?
     }
 
     static let reducer = Reducer.combine(
@@ -69,9 +69,15 @@ enum DockSwipeDomain: Domain {
             switch action {
             case .appear:
                 state = State(from: environment.persisted)
-                return .init(value: ._internal(.checkConflict))
+                return .merge([
+                    .init(value: ._internal(.checkConflict)),
+                    .init(value: ._internal(.checkValidity)),
+                ])
             case .dockSwipe:
-                return .init(value: ._internal(.checkConflict))
+                return .merge([
+                    .init(value: ._internal(.checkConflict)),
+                    .init(value: ._internal(.checkValidity)),
+                ])
             case let ._internal(internalAction):
                 switch internalAction {
                 case .checkConflict:
@@ -79,20 +85,9 @@ enum DockSwipeDomain: Domain {
                         .featureHasConflict(.dockSwipe)
                     return .none
                 case .checkValidity:
-                    let check = {
-                        (keyCombination: KeyCombination?, numberOfTapRequired: Int) -> Bool in
-                        guard let keyCombination = keyCombination,
-                              let activator = Activator(
-                                  keyCombination: keyCombination,
-                                  numberOfTapRequired: numberOfTapRequired
-                              )
-                        else { return true }
-
-                        return environment.activatorIsValid(activator)
-                    }
-                    state.dockSwipeActivator.isValid = check(
-                        state.dockSwipeActivator.keyCombination,
-                        state.dockSwipeActivator.numberOfTapsRequired
+                    let check = environment.checkKeyCombinationValidity
+                    state.dockSwipeActivator.invalidReason = check(
+                        state.dockSwipeActivator.keyCombination
                     )
                     return .none
                 }
@@ -120,7 +115,7 @@ extension Store where Action == DockSwipeDomain.Action, State == DockSwipeDomain
             environment: .live(environment: .init(
                 persisted: .init(),
                 featureHasConflict: { _ in true },
-                activatorIsValid: { _ in true }
+                checkKeyCombinationValidity: { _ in nil }
             ))
         )
     }

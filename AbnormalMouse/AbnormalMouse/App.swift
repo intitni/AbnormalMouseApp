@@ -68,7 +68,7 @@ struct TheApp: Domain {
         var purchaseManager: PurchaseManagerType
         var updater: Updater
         var activatorConflictChecker: ActivatorConflictChecker
-        var activatorValidityChecker: ActivatorValidityChecker
+        var keyCombinationValidityChecker: KeyCombinationValidityChecker
         var launchAtLoginManager: LaunchAtLoginManagerType
 
         let overrideControllers: [OverrideController]
@@ -144,7 +144,7 @@ struct TheApp: Domain {
                     MainDomain._Environment(
                         persisted: $0.persisted,
                         activatorConflictChecker: $0.activatorConflictChecker,
-                        activatorValidityChecker: $0.activatorValidityChecker,
+                        keyCombinationValidityChecker: $0.keyCombinationValidityChecker,
                         purchaseManager: $0.purchaseManager,
                         updater: $0.updater,
                         launchAtLoginManager: $0.launchAtLoginManager
@@ -168,7 +168,7 @@ extension Store where Action == TheApp.Action, State == TheApp.State {
                 purchaseManager: FakePurchaseManager(),
                 updater: FakeUpdater(),
                 activatorConflictChecker: .init(persisted: Readonly(persisted)),
-                activatorValidityChecker: .init(),
+                keyCombinationValidityChecker: .init(persisted: Readonly(persisted)),
                 launchAtLoginManager: FakeLaunchAtLoginManager(),
                 overrideControllers: []
             ))

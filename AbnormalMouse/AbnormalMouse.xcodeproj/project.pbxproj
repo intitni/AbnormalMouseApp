@@ -85,7 +85,7 @@
 		84FAB1EB24C13253001265FD /* SCA+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1EA24C13253001265FD /* SCA+Extentions.swift */; };
 		84FAB1F224C53547001265FD /* Readonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1F124C53547001265FD /* Readonly.swift */; };
 		C81F2B6F2794103000210DA3 /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */; };
-		C8AF259B27C780EE00460BB0 /* ActivatorValidityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AF259A27C780EE00460BB0 /* ActivatorValidityChecker.swift */; };
+		C8AF259B27C780EE00460BB0 /* KeyCombinationValidityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AF259A27C780EE00460BB0 /* KeyCombinationValidityChecker.swift */; };
 		C8C1583827946DCE00FD3EF3 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C8C1583727946DCE00FD3EF3 /* LaunchAtLogin */; };
 /* End PBXBuildFile section */
 
@@ -204,7 +204,7 @@
 		84FAB1F124C53547001265FD /* Readonly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readonly.swift; sourceTree = "<group>"; };
 		968124F027596FA20DBC84F9 /* Pods_AbnormalMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbnormalMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginManager.swift; sourceTree = "<group>"; };
-		C8AF259A27C780EE00460BB0 /* ActivatorValidityChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatorValidityChecker.swift; sourceTree = "<group>"; };
+		C8AF259A27C780EE00460BB0 /* KeyCombinationValidityChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombinationValidityChecker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,7 +459,7 @@
 				8463B80B24C975C7008D7988 /* EventThrottler.swift */,
 				136E6D802502A7DA00F540B3 /* License.swift */,
 				840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */,
-				C8AF259A27C780EE00460BB0 /* ActivatorValidityChecker.swift */,
+				C8AF259A27C780EE00460BB0 /* KeyCombinationValidityChecker.swift */,
 				C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */,
 			);
 			path = Library;
@@ -757,7 +757,7 @@
 				84399B142488988900970CFF /* UserDefault.swift in Sources */,
 				84D83A9724B6B61A0015E30C /* ActivationDomain.swift in Sources */,
 				84C8EAF0248A2C7800C53CFD /* App.swift in Sources */,
-				C8AF259B27C780EE00460BB0 /* ActivatorValidityChecker.swift in Sources */,
+				C8AF259B27C780EE00460BB0 /* KeyCombinationValidityChecker.swift in Sources */,
 				845A29EF24D11F9D0086477D /* TapGestureRecognizer.swift in Sources */,
 				848F0BBC24D509EC00F9F5CD /* MainDomain.swift in Sources */,
 				848B1249251C463200A53F75 /* SettingsKeyCombinationInput.swift in Sources */,

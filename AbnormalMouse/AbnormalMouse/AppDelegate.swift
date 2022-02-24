@@ -46,7 +46,7 @@ private let store = TheApp.Store(
         purchaseManager: purchaseManager,
         updater: updater,
         activatorConflictChecker: .init(persisted: Readonly(persisted)),
-        activatorValidityChecker: .init(),
+        keyCombinationValidityChecker: .init(persisted: Readonly(persisted)),
         launchAtLoginManager: launchAtLoginManager,
         overrideControllers: [
             MoveToScrollController(

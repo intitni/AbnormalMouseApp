@@ -9,7 +9,7 @@ enum MoveToScrollDomain: Domain {
             var keyCombination: KeyCombination?
             var numberOfTapsRequired = 1
             var hasConflict = false
-            var isValid = true
+            var invalidReason: KeyCombinationInvalidReason?
         }
 
         var moveToScrollActivator = MoveToScrollActivator()
@@ -19,7 +19,7 @@ enum MoveToScrollDomain: Domain {
             var keyCombination: KeyCombination?
             var numberOfTapsRequired = 1
             var hasConflict = false
-            var isValid = true
+            var invalidReason: KeyCombinationInvalidReason?
         }
 
         var halfPageScrollActivator = HalfPageScrollActivator()
@@ -62,7 +62,7 @@ enum MoveToScrollDomain: Domain {
     struct _Environment {
         var persisted: Persisted.MoveToScroll
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
-        var activatorIsValid: (Activator) -> Bool
+        var checkKeyCombinationValidity: (KeyCombination?) -> KeyCombinationInvalidReason?
     }
 
     static let reducer = Reducer.combine(
@@ -143,24 +143,12 @@ enum MoveToScrollDomain: Domain {
                     state.halfPageScrollActivator.hasConflict = check(.halfPageScroll)
                     return .none
                 case .checkValidity:
-                    let check = {
-                        (keyCombination: KeyCombination?, numberOfTapRequired: Int) -> Bool in
-                        guard let keyCombination = keyCombination,
-                              let activator = Activator(
-                                  keyCombination: keyCombination,
-                                  numberOfTapRequired: numberOfTapRequired
-                              )
-                        else { return true }
-
-                        return environment.activatorIsValid(activator)
-                    }
-                    state.moveToScrollActivator.isValid = check(
-                        state.moveToScrollActivator.keyCombination,
-                        state.moveToScrollActivator.numberOfTapsRequired
+                    let check = environment.checkKeyCombinationValidity
+                    state.moveToScrollActivator.invalidReason = check(
+                        state.moveToScrollActivator.keyCombination
                     )
-                    state.halfPageScrollActivator.isValid = check(
-                        state.halfPageScrollActivator.keyCombination,
-                        state.halfPageScrollActivator.numberOfTapsRequired
+                    state.halfPageScrollActivator.invalidReason = check(
+                        state.halfPageScrollActivator.keyCombination
                     )
                     return .none
                 }
@@ -197,7 +185,7 @@ extension Store where Action == MoveToScrollDomain.Action, State == MoveToScroll
             environment: .live(environment: .init(
                 persisted: .init(),
                 featureHasConflict: { _ in true },
-                activatorIsValid: { _ in true }
+                checkKeyCombinationValidity: { _ in nil }
             ))
         )
     }
