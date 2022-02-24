@@ -26,7 +26,6 @@ private let eoi: Set<CGEventType> = {
         ]
     }
     return [
-        .mouseMoved,
         .leftMouseDown, .leftMouseUp, .leftMouseDragged,
         .rightMouseUp, .rightMouseDown, .rightMouseDragged,
         .otherMouseUp, .otherMouseDown, .otherMouseDragged,
