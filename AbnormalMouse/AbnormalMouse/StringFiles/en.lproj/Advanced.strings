@@ -1,4 +1,4 @@
 "View.Title" = "Advanced";
 
 "View.ListenToKeyboardEvent" = "Listen to keyboard event (restart app to take effect)";
-"View.ListenToKeyboardEventIntroduction" = "By default, this app listens to your keystrokes so you can use hotkeys as activators. But letting an app read your keystrokes can be risky (though we are not doing anything). You can turn it off if you are only using mouse buttons as activators. You can use tools like ReiKey to check if the app is still listening to your keystrokes";
+"View.ListenToKeyboardEventIntroduction" = "By default, this app does not listen to your keystrokes so you can't use keyboard keys (except modifiers) as activators. Letting an app read your keystrokes can be risky (though we are not doing anything with Abnormal Mouse). Turn it on if you want to use keyboard keys as activators. It will also slightly increase CPU usage when idel. \n\nYou can use tools like ReiKey to check if the app is still listening to your keystrokes";
