@@ -104,6 +104,7 @@ final class MoveToScrollController: OverrideController {
     }
 
     private func updateSettings() {
+        isActive = false
         state.scrollSpeedMultiplier = CGFloat(persisted.scrollSpeedMultiplier)
         state.isInertiaEffectEnabled = persisted.isInertiaEffectEnabled
         state.swipeSpeedMultiplier = CGFloat(persisted.swipeSpeedMultiplier)

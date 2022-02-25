@@ -104,6 +104,7 @@ final class ZoomAndRotateController: OverrideController {
     }
 
     private func updateSettings() {
+        isActive = false
         state.zoomGestureDirection = persisted.zoomGestureDirection
         state.rotateGestureDirection = persisted.rotateGestureDirection
         tapHold.keyCombination = persisted.keyCombination?.validated
