@@ -105,6 +105,10 @@ private struct GeneralView: View {
                                 Text("@intitni")
                             }
                             .buttonStyle(LinkButtonStyle())
+                            Button(action: { viewStore.send(.openProductTwitter) }) {
+                                Text("@abnormalmouseap")
+                            }
+                            .buttonStyle(LinkButtonStyle())
                         }
                         VStack(alignment: .leading, spacing: 0) {
                             Text(_L10n.contactMe)
