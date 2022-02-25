@@ -158,6 +158,7 @@ extension ZoomAndRotateController {
         case .mayBegin:
             state.zoomThreshold += abs(zoom)
             state.rotateThreshold += abs(rotate)
+            CGWarpMouseCursorPosition(state.mouseLocation)
         case let .begin(type):
             tapHold.consume()
             switch type {
@@ -167,6 +168,7 @@ extension ZoomAndRotateController {
                 p.postRotation(direction: rotateDirection, t: rotate, phase: .began)
             }
             p.postTranslation(phase: .began)
+            CGWarpMouseCursorPosition(state.mouseLocation)
         case let .hasBegun(type):
             switch type {
             case .zoom:
@@ -175,6 +177,7 @@ extension ZoomAndRotateController {
                 p.postRotation(direction: rotateDirection, t: rotate, phase: .changed)
             }
             p.postTranslation(phase: .changed)
+            CGWarpMouseCursorPosition(state.mouseLocation)
         case let .shouldEnd(type):
             switch type {
             case .zoom:
@@ -187,8 +190,6 @@ extension ZoomAndRotateController {
             state.zoomThreshold = 0
             state.rotateThreshold = 0
         }
-
-        CGWarpMouseCursorPosition(state.mouseLocation)
     }
 }
 
