@@ -181,8 +181,7 @@ struct HoverableWarning: View {
             if let reason = invalidReason {
                 switch reason {
                 case .leftRightMouseButtonNeedModifier:
-                    return L10n.Shared.View
-                        .keyCombinationLeftRightMouseButtonNeedModifier
+                    return L10n.Shared.View.keyCombinationLeftRightMouseButtonNeedModifier
                 case .needsKeyboardEventListener:
                     return L10n.Shared.View.keyCombinationNeedsKeyboardEventListener
                 }
