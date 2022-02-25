@@ -4,6 +4,7 @@ import Foundation
 final class EventThrottler<T> {
     private var cancellables = [AnyCancellable]()
     private var accumulation: T
+    private var previous: T?
     private var initial: T
     private var perform: (T) -> Void = { _ in }
     private var time: TimeInterval = 0
@@ -26,6 +27,7 @@ final class EventThrottler<T> {
         if current - time > windowSize {
             time = current
             perform(accumulation)
+            previous = accumulation
             accumulation = initial
         }
     }
@@ -35,5 +37,13 @@ final class EventThrottler<T> {
         time = 0
         perform(accumulation)
         accumulation = initial
+        previous = nil
+    }
+
+    func endWithLastValue() {
+        if let p = previous {
+            perform(p)
+            previous = nil
+        }
     }
 }

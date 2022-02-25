@@ -12,7 +12,7 @@ extension GestureRecognizers {
                 if isActive {
                     cancelOtherGestures { $0 is MouseMovement }
                 } else {
-                    shouldPostLastEvent = true
+                    throttler.endWithLastValue()
                 }
             }
         }
@@ -23,7 +23,6 @@ extension GestureRecognizers {
         private let translation: PassthroughSubject<(CGSize, CGEvent), Never>
         private let key: AnyHashable
         private let throttler: EventThrottler<(CGSize, CGEvent?)>
-        private var shouldPostLastEvent = false
         var rate: Int {
             get { throttler.rate }
             set { throttler.rate = newValue }
@@ -72,19 +71,7 @@ extension GestureRecognizers.MouseMovement: Cancellable {
 
 extension GestureRecognizers.MouseMovement {
     private func handleMouse(event: CGEvent) -> CGEventManipulation.Result {
-        guard isActive else {
-            if shouldPostLastEvent {
-                let v = event[double: .mouseEventDeltaY]
-                let h = event[double: .mouseEventDeltaX]
-                throttler.end(accumulate: { t in
-                    t.0.width += CGFloat(h)
-                    t.0.height += CGFloat(v)
-                    t.1 = event
-                })
-                shouldPostLastEvent = false
-            }
-            return .unchange
-        }
+        guard isActive else { return .unchange }
 
         let v = event[double: .mouseEventDeltaY]
         let h = event[double: .mouseEventDeltaX]
