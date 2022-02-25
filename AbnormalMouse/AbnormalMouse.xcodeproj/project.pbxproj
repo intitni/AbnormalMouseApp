@@ -80,11 +80,12 @@
 		84E49429248E28450074540F /* MainView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E4942B248E28450074540F /* MainView.strings */; };
 		84E49432248E2A770074540F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49430248E2A770074540F /* Strings.swift */; };
 		84E49433248E2A770074540F /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E49431248E2A770074540F /* Assets.swift */; };
-		84E49439248E2BF80074540F /* NeedAccessability.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E4943B248E2BF80074540F /* NeedAccessability.strings */; };
+		84E49439248E2BF80074540F /* NeedAccessibility.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E4943B248E2BF80074540F /* NeedAccessibility.strings */; };
 		84E6B6DD26461E3200887DE7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6B6DC26461E3200887DE7 /* Queue.swift */; };
 		84FAB1EB24C13253001265FD /* SCA+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1EA24C13253001265FD /* SCA+Extentions.swift */; };
 		84FAB1F224C53547001265FD /* Readonly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAB1F124C53547001265FD /* Readonly.swift */; };
 		C81F2B6F2794103000210DA3 /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */; };
+		C8AF259B27C780EE00460BB0 /* KeyCombinationValidityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AF259A27C780EE00460BB0 /* KeyCombinationValidityChecker.swift */; };
 		C8C1583827946DCE00FD3EF3 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C8C1583727946DCE00FD3EF3 /* LaunchAtLogin */; };
 /* End PBXBuildFile section */
 
@@ -196,13 +197,14 @@
 		84E49431248E2A770074540F /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		84E49434248E2BC50074540F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84E49436248E2BCE0074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		84E4943A248E2BF80074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NeedAccessability.strings; sourceTree = "<group>"; };
-		84E4943C248E2BFA0074540F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NeedAccessability.strings"; sourceTree = "<group>"; };
+		84E4943A248E2BF80074540F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NeedAccessibility.strings; sourceTree = "<group>"; };
+		84E4943C248E2BFA0074540F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NeedAccessibility.strings"; sourceTree = "<group>"; };
 		84E6B6DC26461E3200887DE7 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		84FAB1EA24C13253001265FD /* SCA+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCA+Extentions.swift"; sourceTree = "<group>"; };
 		84FAB1F124C53547001265FD /* Readonly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readonly.swift; sourceTree = "<group>"; };
 		968124F027596FA20DBC84F9 /* Pods_AbnormalMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbnormalMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginManager.swift; sourceTree = "<group>"; };
+		C8AF259A27C780EE00460BB0 /* KeyCombinationValidityChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombinationValidityChecker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,6 +459,7 @@
 				8463B80B24C975C7008D7988 /* EventThrottler.swift */,
 				136E6D802502A7DA00F540B3 /* License.swift */,
 				840E3296251D8FD400FDD1B3 /* ActivatorConflictChecker.swift */,
+				C8AF259A27C780EE00460BB0 /* KeyCombinationValidityChecker.swift */,
 				C81F2B6E2794103000210DA3 /* LaunchAtLoginManager.swift */,
 			);
 			path = Library;
@@ -511,7 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				84E4942B248E28450074540F /* MainView.strings */,
-				84E4943B248E2BF80074540F /* NeedAccessability.strings */,
+				84E4943B248E2BF80074540F /* NeedAccessibility.strings */,
 				84AA165D2492046E00D2C34E /* Shared.strings */,
 				84AA16632492079100D2C34E /* ScrollSettings.strings */,
 				84AA166F2492293B00D2C34E /* ZoomAndRotateSettings.strings */,
@@ -619,7 +622,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84E49439248E2BF80074540F /* NeedAccessability.strings in Resources */,
+				84E49439248E2BF80074540F /* NeedAccessibility.strings in Resources */,
 				84E49429248E28450074540F /* MainView.strings in Resources */,
 				1383616A2487E70700E76F41 /* Preview Assets.xcassets in Resources */,
 				138361672487E70700E76F41 /* Assets.xcassets in Resources */,
@@ -754,6 +757,7 @@
 				84399B142488988900970CFF /* UserDefault.swift in Sources */,
 				84D83A9724B6B61A0015E30C /* ActivationDomain.swift in Sources */,
 				84C8EAF0248A2C7800C53CFD /* App.swift in Sources */,
+				C8AF259B27C780EE00460BB0 /* KeyCombinationValidityChecker.swift in Sources */,
 				845A29EF24D11F9D0086477D /* TapGestureRecognizer.swift in Sources */,
 				848F0BBC24D509EC00F9F5CD /* MainDomain.swift in Sources */,
 				848B1249251C463200A53F75 /* SettingsKeyCombinationInput.swift in Sources */,
@@ -937,13 +941,13 @@
 			name = MainView.strings;
 			sourceTree = "<group>";
 		};
-		84E4943B248E2BF80074540F /* NeedAccessability.strings */ = {
+		84E4943B248E2BF80074540F /* NeedAccessibility.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84E4943A248E2BF80074540F /* en */,
 				84E4943C248E2BFA0074540F /* zh-Hans */,
 			);
-			name = NeedAccessability.strings;
+			name = NeedAccessibility.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1076,7 +1080,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 60;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1091,7 +1095,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2022.1;
+				MARKETING_VERSION = 2022.2;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp --deep --options runtime";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1112,7 +1116,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 60;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1127,7 +1131,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2022.1;
+				MARKETING_VERSION = 2022.2;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp --deep --options runtime";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1257,7 +1261,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 60;
 				DEVELOPMENT_ASSET_PATHS = "\"AbnormalMouse/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1272,7 +1276,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2022.1;
+				MARKETING_VERSION = 2022.2;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp --deep --options runtime";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intii.AbnormalMouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";

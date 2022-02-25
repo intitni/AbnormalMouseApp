@@ -9,6 +9,7 @@ enum MoveToScrollDomain: Domain {
             var keyCombination: KeyCombination?
             var numberOfTapsRequired = 1
             var hasConflict = false
+            var invalidReason: KeyCombinationInvalidReason?
         }
 
         var moveToScrollActivator = MoveToScrollActivator()
@@ -18,6 +19,7 @@ enum MoveToScrollDomain: Domain {
             var keyCombination: KeyCombination?
             var numberOfTapsRequired = 1
             var hasConflict = false
+            var invalidReason: KeyCombinationInvalidReason?
         }
 
         var halfPageScrollActivator = HalfPageScrollActivator()
@@ -51,6 +53,7 @@ enum MoveToScrollDomain: Domain {
 
         case _internal(Internal)
         enum Internal {
+            case checkValidity
             case checkConflict
         }
     }
@@ -59,6 +62,7 @@ enum MoveToScrollDomain: Domain {
     struct _Environment {
         var persisted: Persisted.MoveToScroll
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
+        var checkKeyCombinationValidity: (KeyCombination?) -> KeyCombinationInvalidReason?
     }
 
     static let reducer = Reducer.combine(
@@ -116,7 +120,10 @@ enum MoveToScrollDomain: Domain {
                 let result = state.isInertiaEffectEnabled
                 return .fireAndForget { environment.persisted.isInertiaEffectEnabled = result }
             case let .moveToScroll(action):
-                return .init(value: ._internal(.checkConflict))
+                return .merge([
+                    .init(value: ._internal(.checkConflict)),
+                    .init(value: ._internal(.checkValidity)),
+                ])
             case let .changeScrollSpeedMultiplierTo(multilier):
                 state.scrollSpeedMultiplier = multilier
                 return .fireAndForget { environment.persisted.scrollSpeedMultiplier = multilier }
@@ -124,13 +131,25 @@ enum MoveToScrollDomain: Domain {
                 state.swipeSpeedMultiplier = multilier
                 return .fireAndForget { environment.persisted.swipeSpeedMultiplier = multilier }
             case .halfPageScroll:
-                return .init(value: ._internal(.checkConflict))
+                return .merge([
+                    .init(value: ._internal(.checkConflict)),
+                    .init(value: ._internal(.checkValidity)),
+                ])
             case let ._internal(internalAction):
                 switch internalAction {
                 case .checkConflict:
                     let check = environment.featureHasConflict
                     state.moveToScrollActivator.hasConflict = check(.moveToScroll)
                     state.halfPageScrollActivator.hasConflict = check(.halfPageScroll)
+                    return .none
+                case .checkValidity:
+                    let check = environment.checkKeyCombinationValidity
+                    state.moveToScrollActivator.invalidReason = check(
+                        state.moveToScrollActivator.keyCombination
+                    )
+                    state.halfPageScrollActivator.invalidReason = check(
+                        state.halfPageScrollActivator.keyCombination
+                    )
                     return .none
                 }
             }
@@ -165,7 +184,8 @@ extension Store where Action == MoveToScrollDomain.Action, State == MoveToScroll
             reducer: MoveToScrollDomain.reducer,
             environment: .live(environment: .init(
                 persisted: .init(),
-                featureHasConflict: { _ in true }
+                featureHasConflict: { _ in true },
+                checkKeyCombinationValidity: { _ in nil }
             ))
         )
     }

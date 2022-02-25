@@ -48,7 +48,9 @@ extension GestureRecognizers {
 
             hook.add(
                 .init(
-                    eventsOfInterest: [.keyUp, .keyDown, .otherMouseUp, .otherMouseDown],
+                    eventsOfInterest: [.keyUp, .keyDown, .otherMouseUp, .otherMouseDown,
+                                       .leftMouseDown, .leftMouseUp, .rightMouseUp,
+                                       .rightMouseDown],
                     convert: { [weak self] _, type, event -> CGEventManipulation.Result in
                         guard let self = self else { return .unchange }
                         return DispatchQueue.default.sync {
@@ -57,7 +59,11 @@ extension GestureRecognizers {
                                  .keyDown:
                                 return self.handleKeys(type: type, event: event)
                             case .otherMouseUp,
-                                 .otherMouseDown:
+                                 .otherMouseDown,
+                                 .leftMouseUp,
+                                 .leftMouseDown,
+                                 .rightMouseUp,
+                                 .rightMouseDown:
                                 return self.handleMouseButton(type: type, event: event)
                             default:
                                 return .unchange
@@ -94,11 +100,13 @@ extension GestureRecognizers.Tap {
 
         switch type {
         case .keyDown:
+            guard combination.matchesFlags(event.flags) else { return .unchange }
             guard !state.isDown else { return shouldDiscardEvent ? .discarded : .unchange }
             down(code: code)
             state.isDown = true
             return shouldDiscardEvent ? .discarded : .unchange
         case .keyUp:
+            guard state.isDown else { return .unchange }
             up(code: code)
             state.isDown = false
             return shouldDiscardEvent ? .discarded : .unchange
@@ -118,12 +126,16 @@ extension GestureRecognizers.Tap {
         resetStateIfNeeded()
 
         switch type {
-        case .otherMouseDown:
+        case .otherMouseDown, .leftMouseDown, .rightMouseDown:
             guard combination.matchesFlags(event.flags) else { return .unchange }
             down(code: code)
+            guard !state.isDown else { return shouldDiscardEvent ? .discarded : .unchange }
+            state.isDown = true
             return shouldDiscardEvent ? .discarded : .unchange
-        case .otherMouseUp:
+        case .otherMouseUp, .leftMouseUp, .rightMouseUp:
+            guard state.isDown else { return .unchange }
             up(code: code)
+            state.isDown = false
             return shouldDiscardEvent ? .discarded : .unchange
         default: return .unchange
         }

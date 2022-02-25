@@ -31,17 +31,18 @@ final class EventSequenceController {
         guard displayLink != nil else { return nil }
         CVDisplayLinkSetOutputHandler(displayLink) { [weak self] _, _, _, _, _ in
             guard let self = self else { return kCVReturnSuccess }
-
-            var runNow = [Task]()
-            var temp = self.queuedTasks
-            for (key, _list) in self.queuedTasks {
-                var list = _list
-                guard !list.isEmpty else { continue }
-                runNow.append(list.removeFirst())
-                temp[key] = list
+            let tasks: [Task] = DispatchQueue.default.sync {
+                var runNow = [Task]()
+                var temp = self.queuedTasks
+                for (key, _list) in self.queuedTasks {
+                    var list = _list
+                    guard !list.isEmpty else { continue }
+                    runNow.append(list.removeFirst())
+                    temp[key] = list
+                }
+                self.queuedTasks = temp
+                return runNow
             }
-            self.queuedTasks = temp
-            let tasks = runNow
 
             // for better performance, we disable displayLink when there is no more event to send.
             if tasks.isEmpty {

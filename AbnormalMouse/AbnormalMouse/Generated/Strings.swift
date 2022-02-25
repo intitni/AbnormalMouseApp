@@ -28,11 +28,11 @@ internal enum L10n {
       internal static let cancel = L10n.tr("Activation", "Button.Cancel")
     }
     internal enum FailureReason {
-      /// Can't verify license, please check the key and email entered is correct.
+      /// Can't verify the license. Please check the key and email entered are correct.
       internal static let invalid = L10n.tr("Activation", "FailureReason.Invalid")
       /// Please check your network and try again.
       internal static let networkError = L10n.tr("Activation", "FailureReason.NetworkError")
-      /// The license key has reached activation limit. Please deactivate first.
+      /// The license key has reached the activation limit. Please deactivate first.
       internal static let reachedLimit = L10n.tr("Activation", "FailureReason.ReachedLimit")
       /// The license key has been refunded.
       internal static let refunded = L10n.tr("Activation", "FailureReason.Refunded")
@@ -42,7 +42,7 @@ internal enum L10n {
     internal enum View {
       /// Listen to keyboard event (restart app to take effect)
       internal static let listenToKeyboardEvent = L10n.tr("Advanced", "View.ListenToKeyboardEvent")
-      /// Defaultly this app listens to your keystrokes so you can use hotkeys as activators. But letting an app read your keystrokes can be risky (though we are not doing anything). You can turn it off if you are only using mouse buttons as activators. You can use tools like ReiKey to check if the app is still listening to you keystrokes
+      /// By default, this app does not listen to your keystrokes so you can't use keyboard keys (except modifiers) as activators. Letting an app read your keystrokes can be risky (though we are not doing anything with Abnormal Mouse). Turn it on if you want to use keyboard keys as activators. It will also slightly increase CPU usage when idel. \n\nYou can use tools like ReiKey to check if the app is still listening to your keystrokes
       internal static let listenToKeyboardEventIntroduction = L10n.tr("Advanced", "View.ListenToKeyboardEventIntroduction")
       /// Advanced
       internal static let title = L10n.tr("Advanced", "View.Title")
@@ -52,7 +52,7 @@ internal enum L10n {
     internal enum View {
       /// Active when holding
       internal static let activationKeyCombinationTitle = L10n.tr("DockSwipeSettings", "View.ActivationKeyCombinationTitle")
-      /// This feature converts mouse movement into four-finger swipe, so you can switch spaces with a normal mouse.
+      /// This feature converts mouse movement into a four-finger swipe, enabling you to switch spaces with a normal mouse.
       internal static let introduction = L10n.tr("DockSwipeSettings", "View.Introduction")
       /// 4-Finger Swipe
       internal static let title = L10n.tr("DockSwipeSettings", "View.Title")
@@ -148,16 +148,16 @@ internal enum L10n {
       internal static let zoomAndRotate = L10n.tr("MainView", "TabTitle.ZoomAndRotate")
     }
   }
-  internal enum NeedAccessability {
+  internal enum NeedAccessibility {
     internal enum View {
-      /// Turn On Accessability
-      internal static let enableButtonTitle = L10n.tr("NeedAccessability", "View.EnableButtonTitle")
-      /// The app needs accessability enabled to read and manipulate keyboard and mouse events.
-      internal static let introduction = L10n.tr("NeedAccessability", "View.Introduction")
-      /// Go to System Preferences > Security & Privacy > Privacy > Accessability
-      internal static let manual = L10n.tr("NeedAccessability", "View.Manual")
+      /// Turn On Accessibility
+      internal static let enableButtonTitle = L10n.tr("NeedAccessibility", "View.EnableButtonTitle")
+      /// The app needs accessibility enabled to read and manipulate keyboard and mouse events.
+      internal static let introduction = L10n.tr("NeedAccessibility", "View.Introduction")
+      /// Go to System Preferences > Security & Privacy > Privacy > Accessibility
+      internal static let manual = L10n.tr("NeedAccessibility", "View.Manual")
       /// Abnormal Mouse Needs to Be Free!
-      internal static let title = L10n.tr("NeedAccessability", "View.Title")
+      internal static let title = L10n.tr("NeedAccessibility", "View.Title")
     }
   }
   internal enum ScrollSettings {
@@ -166,7 +166,7 @@ internal enum L10n {
       internal static let activationKeyCombinationTitle = L10n.tr("ScrollSettings", "HalfPageScrollView.ActivationKeyCombinationTitle")
       /// Reuse activator for "scroll and swipe"
       internal static let doubleTapToActivate = L10n.tr("ScrollSettings", "HalfPageScrollView.DoubleTapToActivate")
-      /// Page-down is cool but a full page scroll can be quite annoying. This feature allows you to scroll down half a page.
+      /// Page-down is cool, but a full-page scroll can be annoying. This feature allows you to scroll down half a page.
       internal static let introduction = L10n.tr("ScrollSettings", "HalfPageScrollView.introduction")
       /// Half Page Scroll
       internal static let title = L10n.tr("ScrollSettings", "HalfPageScrollView.Title")
@@ -182,15 +182,15 @@ internal enum L10n {
       internal static let activationKeyCombinationTitle = L10n.tr("ScrollSettings", "View.ActivationKeyCombinationTitle")
       /// Emulate inertia effect
       internal static let inertiaEffectCheckboxTitle = L10n.tr("ScrollSettings", "View.InertiaEffectCheckboxTitle")
-      /// We recommend you to keep it on, disabling it will disable inertia effect in some apps.
+      /// We recommend you to keep it on. Disabling it will disable inertia effect in some apps.
       internal static let inertiaEffectIntroduction = L10n.tr("ScrollSettings", "View.InertiaEffectIntroduction")
       /// This feature converts mouse movement into scrolling. Better than that, it also allows you to play drag gestures by moving the mouse, like navigating back in Safari or marking emails as read in the Mail app.
       internal static let introduction = L10n.tr("ScrollSettings", "View.Introduction")
-      /// Scroll speed controls how mouse movements will be scaled into scrolls, a bigger number is preferred since you will not want to move the mouse a lot to scroll.
+      /// Scroll speed controls how mouse movements will be scaled-up into scrolls. A large number is preferred since you will not want to move the mouse a lot to scroll.
       internal static let scrollSpeedSliderIntroduction = L10n.tr("ScrollSettings", "View.ScrollSpeedSliderIntroduction")
       /// Scroll speed
       internal static let scrollSpeedSliderTitle = L10n.tr("ScrollSettings", "View.ScrollSpeedSliderTitle")
-      /// Swipe speed controls how it's scaled into swipe gesture translations, a lower speed will make it feel more natural.
+      /// Swipe speed controls how it's scaled into swipe gesture translations. A slower speed will make it feel more natural.
       internal static let swipeSpeedSliderIntroduction = L10n.tr("ScrollSettings", "View.SwipeSpeedSliderIntroduction")
       /// Swipe speed
       internal static let swipeSpeedSliderTitle = L10n.tr("ScrollSettings", "View.SwipeSpeedSliderTitle")
@@ -238,6 +238,10 @@ internal enum L10n {
       internal static let activatorConflict = L10n.tr("Shared", "View.ActivatorConflict")
       /// Enter..
       internal static let enterKeyCombination = L10n.tr("Shared", "View.EnterKeyCombination")
+      /// Set modifiers for left/right mouse button
+      internal static let keyCombinationLeftRightMouseButtonNeedModifier = L10n.tr("Shared", "View.KeyCombinationLeftRightMouseButtonNeedModifier")
+      /// Turn on listen to keyboard events in advanced settings
+      internal static let keyCombinationNeedsKeyboardEventListener = L10n.tr("Shared", "View.KeyCombinationNeedsKeyboardEventListener")
       /// Setup
       internal static let keyCombinationNotSetup = L10n.tr("Shared", "View.KeyCombinationNotSetup")
     }
@@ -276,7 +280,7 @@ internal enum L10n {
       internal static let activationKeyCombinationTitle = L10n.tr("ZoomAndRotateSettings", "SmartZoomView.ActivationKeyCombinationTitle")
       /// Reuse activator for "zoom and rotate"
       internal static let doubleTapToActivate = L10n.tr("ZoomAndRotateSettings", "SmartZoomView.DoubleTapToActivate")
-      /// With trackpad, you can zoom in with double-tap. Now you can do the same with a key combination.
+      /// With trackpads, you can zoom in with a double-tap. Now you can do the same with a key combination.
       internal static let introduction = L10n.tr("ZoomAndRotateSettings", "SmartZoomView.introduction")
       /// Smart Zoom
       internal static let title = L10n.tr("ZoomAndRotateSettings", "SmartZoomView.Title")

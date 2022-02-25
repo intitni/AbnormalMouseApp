@@ -104,18 +104,19 @@ final class MoveToScrollController: OverrideController {
     }
 
     private func updateSettings() {
+        isActive = false
         state.scrollSpeedMultiplier = CGFloat(persisted.scrollSpeedMultiplier)
         state.isInertiaEffectEnabled = persisted.isInertiaEffectEnabled
         state.swipeSpeedMultiplier = CGFloat(persisted.swipeSpeedMultiplier)
-        tapHold.keyCombination = persisted.keyCombination
+        tapHold.keyCombination = persisted.keyCombination?.validated
         tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
 
         if persisted.halfPageScroll.useMoveToScrollDoubleTap {
             tap.numberOfTapsRequired = persisted.numberOfTapsRequired + 1
-            tap.keyCombination = persisted.keyCombination
+            tap.keyCombination = persisted.keyCombination?.validated
         } else {
             tap.numberOfTapsRequired = persisted.halfPageScroll.numberOfTapsRequired
-            tap.keyCombination = persisted.halfPageScroll.keyCombination
+            tap.keyCombination = persisted.halfPageScroll.keyCombination?.validated
         }
     }
 }
@@ -138,18 +139,22 @@ extension MoveToScrollController {
                     p.postNullGesture()
                     state.didPostMayBegin = true
                 }
+                CGWarpMouseCursorPosition(state.mouseLocation)
             case .scrollHasBegun:
                 p.postEventPerFrame([])
                 p.postScrollGesture(phase: .began)
                 p.postScroll(v: v, h: h, phase: .began)
                 p.postNullGesture()
+                CGWarpMouseCursorPosition(state.mouseLocation)
             case .scrollCanChange:
                 p.postScroll(v: v, h: h, phase: .changed)
                 p.postNullGesture()
+                CGWarpMouseCursorPosition(state.mouseLocation)
             case .gestureHasBegun:
                 p.postScroll(v: v, h: h, phase: .changed)
                 p.postScrollGesture(v: v, h: h, sh: sh, phase: .changed)
                 p.postNullGesture()
+                CGWarpMouseCursorPosition(state.mouseLocation)
 
             /// To change the implementaion of this state, one should test that
             ///
@@ -186,8 +191,6 @@ extension MoveToScrollController {
         Tool.advanceState(&state, isActive: isActive, h: h, v: v)
         defer { Tool.resetStateIfNeeded(&state) }
         postEvents()
-
-        CGWarpMouseCursorPosition(state.mouseLocation)
     }
 }
 

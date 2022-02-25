@@ -84,7 +84,8 @@ final class DockSwipeController: OverrideController {
     }
 
     private func updateSettings() {
-        tapHold.keyCombination = persisted.keyCombination
+        isActive = false
+        tapHold.keyCombination = persisted.keyCombination?.validated
         tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
     }
 }

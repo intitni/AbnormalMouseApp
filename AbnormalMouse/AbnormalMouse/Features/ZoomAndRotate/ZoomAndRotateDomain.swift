@@ -9,6 +9,7 @@ enum ZoomAndRotateDomain: Domain {
             var keyCombination: KeyCombination?
             var hasConflict = false
             var numberOfTapsRequired = 1
+            var invalidReason: KeyCombinationInvalidReason?
         }
 
         var zoomAndRotateActivator = ZoomAndRotateActivator()
@@ -20,6 +21,7 @@ enum ZoomAndRotateDomain: Domain {
             var keyCombination: KeyCombination?
             var numberOfTapsRequired = 1
             var hasConflict = false
+            var invalidReason: KeyCombinationInvalidReason?
         }
 
         var smartZoomActivator = SmartZoomActivator()
@@ -49,6 +51,7 @@ enum ZoomAndRotateDomain: Domain {
         case _internal(Internal)
         enum Internal {
             case checkConflict
+            case checkValidity
         }
     }
 
@@ -56,6 +59,7 @@ enum ZoomAndRotateDomain: Domain {
     struct _Environment {
         var persisted: Persisted.ZoomAndRotate
         var featureHasConflict: (ActivatorConflictChecker.Feature) -> Bool
+        var checkKeyCombinationValidity: (KeyCombination?) -> KeyCombinationInvalidReason?
     }
 
     static let reducer = Reducer.combine(
@@ -114,9 +118,15 @@ enum ZoomAndRotateDomain: Domain {
             switch action {
             case .appear:
                 state = State(from: environment.persisted)
-                return .init(value: ._internal(.checkConflict))
+                return .merge([
+                    .init(value: ._internal(.checkConflict)),
+                    .init(value: ._internal(.checkValidity)),
+                ])
             case .zoomAndRotate:
-                return .init(value: ._internal(.checkConflict))
+                return .merge([
+                    .init(value: ._internal(.checkConflict)),
+                    .init(value: ._internal(.checkValidity)),
+                ])
             case let .changeZoomGestureDirectionToOption(option):
                 let direction = MoveMouseDirection(rawValue: option) ?? .none
                 state.zoomGestureDirection = direction
@@ -140,13 +150,25 @@ enum ZoomAndRotateDomain: Domain {
                     environment.persisted.rotateGestureDirection = direction
                 }
             case let .smartZoom(action):
-                return .init(value: ._internal(.checkConflict))
+                return .merge([
+                    .init(value: ._internal(.checkConflict)),
+                    .init(value: ._internal(.checkValidity)),
+                ])
             case let ._internal(internalAction):
                 switch internalAction {
                 case .checkConflict:
                     let hasConflict = environment.featureHasConflict
                     state.zoomAndRotateActivator.hasConflict = hasConflict(.zoomAndRotate)
                     state.smartZoomActivator.hasConflict = hasConflict(.smartZoom)
+                    return .none
+                case .checkValidity:
+                    let check = environment.checkKeyCombinationValidity
+                    state.zoomAndRotateActivator.invalidReason = check(
+                        state.zoomAndRotateActivator.keyCombination
+                    )
+                    state.smartZoomActivator.invalidReason = check(
+                        state.smartZoomActivator.keyCombination
+                    )
                     return .none
                 }
             }
@@ -180,7 +202,8 @@ extension Store where Action == ZoomAndRotateDomain.Action, State == ZoomAndRota
             reducer: ZoomAndRotateDomain.reducer,
             environment: .live(environment: .init(
                 persisted: .init(),
-                featureHasConflict: { _ in true }
+                featureHasConflict: { _ in true },
+                checkKeyCombinationValidity: { _ in nil }
             ))
         )
     }

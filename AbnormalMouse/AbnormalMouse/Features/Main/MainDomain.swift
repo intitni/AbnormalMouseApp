@@ -10,19 +10,20 @@ struct MainDomain: Domain {
     struct _Environment {
         var persisted: Persisted
         var activatorConflictChecker: ActivatorConflictChecker
+        var keyCombinationValidityChecker: KeyCombinationValidityChecker
         var purchaseManager: PurchaseManagerType
         var updater: Updater
         var launchAtLoginManager: LaunchAtLoginManagerType
     }
 
     struct State: Equatable {
-        var isAccessabilityAuthorized: Bool = false
-        var isNeedAccessabilityViewPresented: Bool = false
+        var isAccessibilityAuthorized: Bool = false
+        var isNeedAccessibilityViewPresented: Bool = false
 
         var moveToScrollSettings = MoveToScrollDomain.State()
         var zoomAndRotateSettings = ZoomAndRotateDomain.State()
         var dockSwipeSettings = DockSwipeDomain.State()
-        var needAccessability = NeedAccessabilityDomain.State()
+        var needAccessibility = NeedAccessibilityDomain.State()
         var advanced = AdvancedDomain.State()
         var general = GeneralDomain.State()
 
@@ -33,12 +34,12 @@ struct MainDomain: Domain {
     }
 
     enum Action {
-        case setAccessabilityViewPresented(Bool)
+        case setAccessibilityViewPresented(Bool)
 
         case moveToScrollSettings(action: MoveToScrollDomain.Action)
         case zoomAndRotateSettings(action: ZoomAndRotateDomain.Action)
         case dockSwipeSettings(action: DockSwipeDomain.Action)
-        case needAccessability(action: NeedAccessabilityDomain.Action)
+        case needAccessibility(action: NeedAccessibilityDomain.Action)
         case advanced(action: AdvancedDomain.Action)
         case general(action: GeneralDomain.Action)
 
@@ -55,8 +56,8 @@ struct MainDomain: Domain {
     static let reducer = Reducer.combine(
         Reducer { state, action, environment in
             switch action {
-            case let .setAccessabilityViewPresented(isPresented):
-                state.isNeedAccessabilityViewPresented = isPresented
+            case let .setAccessibilityViewPresented(isPresented):
+                state.isNeedAccessibilityViewPresented = isPresented
                 return .none
             case .activate:
                 return .init(value: .setActivationView(isPresenting: true))
@@ -75,7 +76,7 @@ struct MainDomain: Domain {
                 return .none
             case .dockSwipeSettings:
                 return .none
-            case .needAccessability:
+            case .needAccessibility:
                 return .none
             case .advanced:
                 return .none
@@ -101,7 +102,9 @@ struct MainDomain: Domain {
                 $0.map {
                     .init(
                         persisted: $0.persisted.moveToScroll,
-                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict,
+                        checkKeyCombinationValidity: $0.keyCombinationValidityChecker
+                            .checkValidity(_:)
                     )
                 }
             }
@@ -113,7 +116,9 @@ struct MainDomain: Domain {
                 $0.map {
                     .init(
                         persisted: $0.persisted.zoomAndRotate,
-                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict,
+                        checkKeyCombinationValidity: $0.keyCombinationValidityChecker
+                            .checkValidity(_:)
                     )
                 }
             }
@@ -125,14 +130,16 @@ struct MainDomain: Domain {
                 $0.map {
                     .init(
                         persisted: $0.persisted.dockSwipe,
-                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict
+                        featureHasConflict: $0.activatorConflictChecker.featureHasConflict,
+                        checkKeyCombinationValidity: $0.keyCombinationValidityChecker
+                            .checkValidity(_:)
                     )
                 }
             }
         ),
-        NeedAccessabilityDomain.reducer.pullback(
-            state: \.needAccessability,
-            action: /Action.needAccessability,
+        NeedAccessibilityDomain.reducer.pullback(
+            state: \.needAccessibility,
+            action: /Action.needAccessibility,
             environment: {
                 $0.map { _ in
                     .init()
@@ -181,17 +188,18 @@ extension Store where Action == MainDomain.Action, State == MainDomain.State {
         )
         return .init(
             initialState: .init(
-                isAccessabilityAuthorized: false,
-                isNeedAccessabilityViewPresented: false,
+                isAccessibilityAuthorized: false,
+                isNeedAccessibilityViewPresented: false,
                 moveToScrollSettings: .init(),
                 zoomAndRotateSettings: .init(),
-                needAccessability: .init(),
+                needAccessibility: .init(),
                 general: .init()
             ),
             reducer: MainDomain.reducer,
             environment: .live(environment: .init(
                 persisted: persisted,
                 activatorConflictChecker: .init(persisted: Readonly(persisted)),
+                keyCombinationValidityChecker: .init(persisted: Readonly(persisted)),
                 purchaseManager: FakePurchaseManager(),
                 updater: FakeUpdater(),
                 launchAtLoginManager: FakeLaunchAtLoginManager()

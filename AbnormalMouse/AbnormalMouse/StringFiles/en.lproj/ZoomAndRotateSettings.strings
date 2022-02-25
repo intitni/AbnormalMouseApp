@@ -4,7 +4,7 @@
 "ZoomAndRotateView.zoomSpeedSliderTitle" = "Zoom speed";
 "ZoomAndRotateView.rotateSpeedSliderTitle" = "Rotate speed";
 "SmartZoomView.Title" = "Smart Zoom";
-"SmartZoomView.introduction" = "With trackpad, you can zoom in with double-tap. Now you can do the same with a key combination.";
+"SmartZoomView.introduction" = "With trackpads, you can zoom in with a double-tap. Now you can do the same with a key combination.";
 "SmartZoomView.ActivationKeyCombinationTitle" = "Trigger when";
 "SmartZoomView.DoubleTapToActivate" = "Reuse activator for \"zoom and rotate\"";
 

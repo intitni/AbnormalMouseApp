@@ -47,6 +47,7 @@ enum GeneralDomain: Domain {
         case checkForUpdate
         case quit
         case openTwitter
+        case openProductTwitter
         case emailMe
         case setActivationView(isPresenting: Bool)
 
@@ -171,6 +172,10 @@ enum GeneralDomain: Domain {
             case .openTwitter:
                 return .fireAndForget {
                     environment.openURL(URL(string: "https://twitter.com/intitni")!)
+                }
+            case .openProductTwitter:
+                return .fireAndForget {
+                    environment.openURL(URL(string: "https://twitter.com/abnormalmouseap")!)
                 }
             case .emailMe:
                 return .fireAndForget {

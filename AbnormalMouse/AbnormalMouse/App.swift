@@ -68,6 +68,7 @@ struct TheApp: Domain {
         var purchaseManager: PurchaseManagerType
         var updater: Updater
         var activatorConflictChecker: ActivatorConflictChecker
+        var keyCombinationValidityChecker: KeyCombinationValidityChecker
         var launchAtLoginManager: LaunchAtLoginManagerType
 
         let overrideControllers: [OverrideController]
@@ -81,7 +82,7 @@ struct TheApp: Domain {
         case observePurchaseState
         case verifyLicense
         case purchaseStateDidChange(PurchaseState)
-        case setAccessabilityAuthorized(Bool)
+        case setAccessibilityAuthorized(Bool)
 
         case main(MainDomain.Action)
     }
@@ -127,9 +128,9 @@ struct TheApp: Domain {
                     state.mainScreen.activationStateDescription = _L10n.PurchaseStatus.invalid
                 }
                 return .none
-            case let .setAccessabilityAuthorized(isAuthorized):
-                state.mainScreen.isAccessabilityAuthorized = isAuthorized
-                if isAuthorized { state.mainScreen.isNeedAccessabilityViewPresented = false }
+            case let .setAccessibilityAuthorized(isAuthorized):
+                state.mainScreen.isAccessibilityAuthorized = isAuthorized
+                if isAuthorized { state.mainScreen.isNeedAccessibilityViewPresented = false }
                 return .none
             case .main:
                 return .none
@@ -143,6 +144,7 @@ struct TheApp: Domain {
                     MainDomain._Environment(
                         persisted: $0.persisted,
                         activatorConflictChecker: $0.activatorConflictChecker,
+                        keyCombinationValidityChecker: $0.keyCombinationValidityChecker,
                         purchaseManager: $0.purchaseManager,
                         updater: $0.updater,
                         launchAtLoginManager: $0.launchAtLoginManager
@@ -166,6 +168,7 @@ extension Store where Action == TheApp.Action, State == TheApp.State {
                 purchaseManager: FakePurchaseManager(),
                 updater: FakeUpdater(),
                 activatorConflictChecker: .init(persisted: Readonly(persisted)),
+                keyCombinationValidityChecker: .init(persisted: Readonly(persisted)),
                 launchAtLoginManager: FakeLaunchAtLoginManager(),
                 overrideControllers: []
             ))

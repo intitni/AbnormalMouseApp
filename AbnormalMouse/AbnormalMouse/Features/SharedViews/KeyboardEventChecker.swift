@@ -26,7 +26,13 @@ struct KeyEventHandling: NSViewRepresentable {
             super.mouseDown(with: event)
             if !isEditing.wrappedValue {
                 isEditing.wrappedValue = true
+            } else {
+                handleEvent(event)
             }
+        }
+
+        override func rightMouseDown(with event: NSEvent) {
+            handleEvent(event)
         }
 
         override func otherMouseDown(with event: NSEvent) {
@@ -58,6 +64,11 @@ struct KeyEventHandling: NSViewRepresentable {
                 let combination = Set([KeyDown.key(keyCode.rawValue)] + modifierKeyDowns)
                 onKeyReceive(combination)
             } else if event.type == .otherMouseDown,
+                      let mouseCode = MouseCode(rawValue: Int(event.buttonNumber))
+            {
+                let combination = Set([KeyDown.mouse(mouseCode.rawValue)] + modifierKeyDowns)
+                onKeyReceive(combination)
+            } else if event.type == .leftMouseDown || event.type == .rightMouseDown,
                       let mouseCode = MouseCode(rawValue: Int(event.buttonNumber))
             {
                 let combination = Set([KeyDown.mouse(mouseCode.rawValue)] + modifierKeyDowns)

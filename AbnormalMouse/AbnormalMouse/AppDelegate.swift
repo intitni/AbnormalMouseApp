@@ -20,10 +20,16 @@ private let eoi: Set<CGEventType> = {
     if persisted.advanced.listenToKeyboardEvent {
         return [
             .keyDown, .keyUp, .mouseMoved,
+            .leftMouseDown, .leftMouseUp, .leftMouseDragged,
+            .rightMouseUp, .rightMouseDown, .rightMouseDragged,
             .otherMouseUp, .otherMouseDown, .otherMouseDragged,
         ]
     }
-    return [.mouseMoved, .otherMouseUp, .otherMouseDown, .otherMouseDragged]
+    return [
+        .leftMouseDown, .leftMouseUp, .leftMouseDragged,
+        .rightMouseUp, .rightMouseDown, .rightMouseDragged,
+        .otherMouseUp, .otherMouseDown, .otherMouseDragged,
+    ]
 }()
 
 private let eventHook = CGEventHook(eventsOfInterest: eoi)
@@ -40,6 +46,7 @@ private let store = TheApp.Store(
         purchaseManager: purchaseManager,
         updater: updater,
         activatorConflictChecker: .init(persisted: Readonly(persisted)),
+        keyCombinationValidityChecker: .init(persisted: Readonly(persisted)),
         launchAtLoginManager: launchAtLoginManager,
         overrideControllers: [
             MoveToScrollController(
@@ -237,7 +244,7 @@ extension AppDelegate: NSWindowDelegate {
 extension AppDelegate {
     private func checkAuthorization() {
         let isTrusted = AXIsProcessTrusted()
-        ViewStore(store).send(.setAccessabilityAuthorized(isTrusted))
+        ViewStore(store).send(.setAccessibilityAuthorized(isTrusted))
         statusBarItem?.menu?.item(at: 0)?.title = eventHook.isEnabled
             ? L10n.StatusBarMenu.isEnabled
             : L10n.StatusBarMenu.isDisabled

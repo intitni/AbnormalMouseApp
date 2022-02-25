@@ -1,6 +1,8 @@
 "View.EnterKeyCombination" = "输入..";
 "View.KeyCombinationNotSetup" = "设置";
 "View.ActivatorConflict" = "触发键已被其它功能使用";
+"View.KeyCombinationLeftRightMouseButtonNeedModifier" = "鼠标左右键需要配合修饰键使用";
+"View.KeyCombinationNeedsKeyboardEventListener" = "请先在高级设置中开启监听键盘事件";
 
 "MouseCodeName.Left" = "鼠标(左)";
 "MouseCodeName.Right" = "鼠标(右)";

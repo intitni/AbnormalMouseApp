@@ -1,5 +1,14 @@
 # Change Log
 
+### 2022.2
+
+- Allow using left/right mouse button as activator.
+- Adjust UI.
+- Fix potential crash by data race.
+- Fix that mouse button is not handled correctly in gesture recognizers.
+- Set listen to keyboard events to defaultly false.
+- Stop listening to mouse move events when keyboard events are off for better CPU usage when idle.
+
 ### 2022.1
 
 - Fix that the auto check for update prompt can't be display and blocks the app.

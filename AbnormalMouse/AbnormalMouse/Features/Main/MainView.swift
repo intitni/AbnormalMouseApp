@@ -32,16 +32,16 @@ private struct MainView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .backgroundEmptyViewWithViewStore(store) { view, viewStore in
             view
-                .sheet( // Accessability alert.
+                .sheet( // Accessibility alert.
                     isPresented: viewStore.binding(
-                        get: { $0.isNeedAccessabilityViewPresented },
-                        send: { .setAccessabilityViewPresented($0) }
+                        get: { $0.isNeedAccessibilityViewPresented },
+                        send: { .setAccessibilityViewPresented($0) }
                     )
                 ) {
-                    NeedAccessabilityScreen(
+                    NeedAccessibilityScreen(
                         store: self.store.scope(
-                            state: { $0.needAccessability },
-                            action: { .needAccessability(action: $0) }
+                            state: { $0.needAccessibility },
+                            action: { .needAccessibility(action: $0) }
                         )
                     )
                     .transition(.slide)
@@ -178,7 +178,7 @@ private struct MainView: View {
     }
 
     private func withEnableStatus<V: View>(_ view: V) -> some View {
-        WithViewStore(store.scope(state: \.isAccessabilityAuthorized)) { viewStore in
+        WithViewStore(store.scope(state: \.isAccessibilityAuthorized)) { viewStore in
             ZStack(alignment: .bottom) {
                 view
                 if !viewStore.state {
@@ -187,7 +187,7 @@ private struct MainView: View {
                         Text(_L10n.View.Status.notEnabled)
                             .bold()
                         Spacer()
-                        Button(action: { viewStore.send(.setAccessabilityViewPresented(true)) }) {
+                        Button(action: { viewStore.send(.setAccessibilityViewPresented(true)) }) {
                             Text(_L10n.View.Status.enableButtonTitle)
                         }
                     }
