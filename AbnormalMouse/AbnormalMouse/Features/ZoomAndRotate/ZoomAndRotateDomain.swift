@@ -15,6 +15,8 @@ enum ZoomAndRotateDomain: Domain {
         var zoomAndRotateActivator = ZoomAndRotateActivator()
         var zoomGestureDirection = MoveMouseDirection.none
         var rotateGestureDirection = MoveMouseDirection.none
+        var zoomSpeedMultiplier: Double = 0
+        var rotateSpeedMultiplier: Double = 0
 
         struct SmartZoomActivator: Equatable {
             var shouldUseZoomAndRotateKeyCombinationDoubleTap = true
@@ -39,6 +41,8 @@ enum ZoomAndRotateDomain: Domain {
 
         case changeZoomGestureDirectionToOption(Int)
         case changeRotateGestureDirectionToOption(Int)
+        case setZoomSpeedMultiplier(Double)
+        case setRotateSpeedMultiplier(Double)
 
         case smartZoom(SmartZoom)
         enum SmartZoom: Equatable {
@@ -149,6 +153,16 @@ enum ZoomAndRotateDomain: Domain {
                     environment.persisted.zoomGestureDirection = anotherDirection
                     environment.persisted.rotateGestureDirection = direction
                 }
+            case let .setZoomSpeedMultiplier(multiplier):
+                state.zoomSpeedMultiplier = multiplier
+                return .fireAndForget {
+                    environment.persisted.zoomSpeedMultiplier = multiplier
+                }
+            case let .setRotateSpeedMultiplier(multiplier):
+                state.rotateSpeedMultiplier = multiplier
+                return .fireAndForget {
+                    environment.persisted.rotateSpeedMultiplier = multiplier
+                }
             case let .smartZoom(action):
                 return .merge([
                     .init(value: ._internal(.checkConflict)),
@@ -185,6 +199,8 @@ extension ZoomAndRotateDomain.State {
             ),
             zoomGestureDirection: persisted.zoomGestureDirection,
             rotateGestureDirection: persisted.rotateGestureDirection,
+            zoomSpeedMultiplier: persisted.zoomSpeedMultiplier,
+            rotateSpeedMultiplier: persisted.rotateSpeedMultiplier,
             smartZoomActivator: .init(
                 shouldUseZoomAndRotateKeyCombinationDoubleTap: persisted.smartZoom
                     .useZoomAndRotateDoubleTap,

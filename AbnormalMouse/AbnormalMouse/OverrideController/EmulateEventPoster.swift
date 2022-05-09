@@ -251,7 +251,7 @@ struct EmulateEventPoster {
         e.type = CGEventType.gesture
         e[.gestureType] = GestureType.zoom.rawValue
 
-        let scale: Double = min(max(0.1, Double(abs(t)) / 40), 1)
+        let scale: Double = min(max(0.0001, Double(abs(t)) / 50), 1)
 
         let value: Int64 = {
             let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
@@ -280,7 +280,7 @@ struct EmulateEventPoster {
         e.type = CGEventType.gesture
         e[.gestureType] = GestureType.rotation.rawValue
 
-        let scale: Double = min(max(0.1, Double(abs(t)) / 40), 1)
+        let scale: Double = min(max(0.0001, Double(abs(t)) / 40), 1)
         let value: Int64 = {
             switch direction {
             case .clockwise:
