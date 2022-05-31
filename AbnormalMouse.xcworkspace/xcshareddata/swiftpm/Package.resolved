@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "License",
-        "repositoryURL": "https://github.com/intitni/AbnormalMouseLicense",
-        "state": {
-          "branch": "master",
-          "revision": "fe24110147e1317536d049c1071ee4e3306ef856",
-          "version": null
-        }
-      },
-      {
         "package": "CGEventOverride",
         "repositoryURL": "https://github.com/intitni/CGEventOverride.git",
         "state": {

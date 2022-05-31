@@ -90,9 +90,8 @@ final class MoveToScrollController: OverrideController {
         tap.publisher
             .sink { [weak self] _ in
                 guard let self = self else { return }
-                guard let app = NSWorkspace.shared.frontmostApplication else { return }
                 self.tapHold.cancel()
-                let heightOfWindow = getWindowBounds(ofPid: app.processIdentifier).size.height
+                let heightOfWindow = getWindowSizeBelowCursor().height
                 self.eventPoster.postSmoothScroll(v: Double(heightOfWindow / 2))
             }
             .store(in: &cancellables)
@@ -232,25 +231,47 @@ extension MoveToScrollController {
     }
 }
 
-func getWindowBounds(ofPid pid: pid_t) -> CGRect {
-    let options = CGWindowListOption(
-        arrayLiteral: CGWindowListOption.excludeDesktopElements,
-        CGWindowListOption.optionOnScreenOnly
-    )
-    let windowListInfo = CGWindowListCopyWindowInfo(options, kCGNullWindowID)
-    guard let infoList = windowListInfo as NSArray? as? [[String: AnyObject]] else { return .zero }
-    if let window = infoList.first(where: { ($0["kCGWindowOwnerPID"] as? pid_t) == pid }),
-       let bounds = window["kCGWindowBounds"]
-    {
-        func extract(_ v: Any??) -> CGFloat {
-            guard let number = v as? NSNumber else { return 0 }
-            return CGFloat(number.doubleValue)
+func getWindowSizeBelowCursor() -> CGSize {
+    func conver(point: NSPoint) -> CGPoint? {
+        for screen in NSScreen.screens {
+            guard NSPointInRect(point, screen.frame) else { continue }
+            let x = point.x
+            let maxY = NSMaxY(screen.frame)
+            let y = maxY - point.y - 1
+            return .init(x: x, y: y)
         }
-        let x = extract(bounds["X"])
-        let y = extract(bounds["Y"])
-        let height = extract(bounds["Height"])
-        let width = extract(bounds["Width"])
-        return .init(x: x, y: y, width: width, height: height)
+
+        return nil
+    }
+
+    let mouseLocation = NSEvent.mouseLocation
+    guard let p = conver(point: mouseLocation) else { return .zero }
+    let systemWide = AXUIElementCreateSystemWide()
+    var element: AXUIElement?
+    _ = AXUIElementCopyElementAtPosition(systemWide, Float(p.x), Float(p.y), &element)
+    guard let element = element else { return .zero }
+    let window = try? element.copyValue(key: kAXWindowAttribute, ofType: AXUIElement.self)
+    guard let window = window else { return .zero }
+    if let value = try? window.copyValue(
+        key: kAXSizeAttribute,
+        ofType: AXValue.self
+    ) {
+        var size = CGSize.zero
+        AXValueGetValue(value, .cgSize, &size)
+        return size
     }
     return .zero
+}
+
+extension AXError: Error {}
+
+extension AXUIElement {
+    func copyValue<T>(key: String, ofType: T.Type = T.self) throws -> T {
+        var value: AnyObject?
+        let error = AXUIElementCopyAttributeValue(self, key as CFString, &value)
+        if error == .success {
+            return value as! T
+        }
+        throw error
+    }
 }
