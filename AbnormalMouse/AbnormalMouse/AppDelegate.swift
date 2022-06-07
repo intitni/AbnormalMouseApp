@@ -106,6 +106,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         purchaseManager.updatePurchaseState()
         #endif
     }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
+        guard !hasVisibleWindows else { return false }
+        showSettingsWindow()
+        return true
+    }
 }
 
 extension AppDelegate {
