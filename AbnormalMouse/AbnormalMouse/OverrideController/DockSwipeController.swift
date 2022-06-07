@@ -2,7 +2,7 @@ import AppKit
 import CGEventOverride
 import Combine
 
-final class DockSwipeController: OverrideController {
+final class DockSwipeController: BaseOverrideController, OverrideController {
     struct State {
         enum EventPosterState {
             case inactive
@@ -37,7 +37,6 @@ final class DockSwipeController: OverrideController {
     private let eventPoster = EmulateEventPoster(type: Keys.eventSequence)
     private let tapHold: GestureRecognizers.TapHold
     private let mouseMovement: GestureRecognizers.MouseMovement
-    private var cancellables = Set<AnyCancellable>()
     private var isActive: Bool {
         get { mouseMovement.isActive }
         set { mouseMovement.isActive = newValue }
@@ -50,6 +49,7 @@ final class DockSwipeController: OverrideController {
 
     init(
         persisted: Readonly<Persisted.DockSwipe>,
+        sharedPersisted: Readonly<Persisted.Advanced>,
         hook: CGEventHookType
     ) {
         self.persisted = persisted
@@ -58,21 +58,25 @@ final class DockSwipeController: OverrideController {
         tapHold = GestureRecognizers.TapHold(hook: hook, key: Keys.key)
         mouseMovement = GestureRecognizers.MouseMovement(hook: hook, key: Keys.mouse)
 
+        super.init(sharedPersisted: sharedPersisted)
+
         updateSettings()
 
         mouseMovement.publisher
             .sink(receiveValue: { [weak self] p in
-                self?.handleMouseMovement(translation: p.0)
+                guard let self = self, !self.isDisabled else { return }
+                self.handleMouseMovement(translation: p.0)
             })
             .store(in: &cancellables)
 
         tapHold.publisher
             .removeDuplicates()
             .sink(receiveValue: { [weak self] isActive in
-                self?.isActive = isActive
+                guard let self = self, !self.isDisabled else { return }
+                self.isActive = isActive
                 if isActive {
                     let event = CGEvent(source: nil)
-                    self?.state.mouseLocation = event?.location ?? .zero
+                    self.state.mouseLocation = event?.location ?? .zero
                 }
             })
             .store(in: &cancellables)
