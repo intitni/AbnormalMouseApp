@@ -236,7 +236,7 @@ internal enum L10n {
     internal enum View {
       /// Activator already in use
       internal static let activatorConflict = L10n.tr("Shared", "View.ActivatorConflict")
-      /// Enter..
+      /// Recording...
       internal static let enterKeyCombination = L10n.tr("Shared", "View.EnterKeyCombination")
       /// Set modifiers for left/right mouse button
       internal static let keyCombinationLeftRightMouseButtonNeedModifier = L10n.tr("Shared", "View.KeyCombinationLeftRightMouseButtonNeedModifier")
