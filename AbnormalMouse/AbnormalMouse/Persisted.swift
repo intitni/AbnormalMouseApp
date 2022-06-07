@@ -25,6 +25,29 @@ struct Persisted: PersistedType {
         var listenToKeyboardEvent: Bool
         @UserDefault(key("TapGestureDelay"), defaultValue: 0)
         var tapGestureDelayInMilliseconds: Int
+        @UserDefault(key("GlobalExcludedApplications"), defaultValue: [])
+        var gloablExcludedApplications: [ExcludedApplication]
+        struct ExcludedApplication: PropertyListStorable, Equatable, Identifiable, Hashable {
+            var appName: String
+            var bundleIdentifier: String
+            var id: String { bundleIdentifier }
+
+            static func makeFromPropertyListValue(
+                value: [String: String]
+            ) throws -> ExcludedApplication {
+                .init(
+                    appName: value["appName"] ?? "N/A",
+                    bundleIdentifier: value["bundleIdentifier"] ?? "N/A"
+                )
+            }
+
+            var propertyListValue: [String: String] {
+                [
+                    "appName": appName,
+                    "bundleIdentifier": bundleIdentifier,
+                ]
+            }
+        }
     }
 
     // MARK: Magic Scroll
