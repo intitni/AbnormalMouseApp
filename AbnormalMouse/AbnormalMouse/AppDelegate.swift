@@ -51,14 +51,17 @@ private let store = TheApp.Store(
         overrideControllers: [
             MoveToScrollController(
                 persisted: Readonly(persisted.moveToScroll),
+                sharedPersisted: Readonly(persisted.advanced),
                 hook: eventHook
             ),
             ZoomAndRotateController(
                 persisted: Readonly(persisted.zoomAndRotate),
+                sharedPersisted: Readonly(persisted.advanced),
                 hook: eventHook
             ),
             DockSwipeController(
                 persisted: Readonly(persisted.dockSwipe),
+                sharedPersisted: Readonly(persisted.advanced),
                 hook: eventHook
             ),
         ]

@@ -6,7 +6,7 @@ import Foundation
 /// Provides conversion from mouse movement to 2-finger trackpad scroll.
 /// This converter provides not only 4-way scrolling, but also supports over-scroll and 2-finger
 /// swipe gesture.
-final class MoveToScrollController: OverrideController {
+final class MoveToScrollController: BaseOverrideController, OverrideController {
     struct State {
         enum EventPosterState {
             /// The scroll and gesture are not yet running.
@@ -38,7 +38,6 @@ final class MoveToScrollController: OverrideController {
     private let tap: GestureRecognizers.Tap
     private let tapHold: GestureRecognizers.TapHold
     private let mouseMovement: GestureRecognizers.MouseMovement
-    private var cancellables = Set<AnyCancellable>()
     private var isActive: Bool {
         get { mouseMovement.isActive }
         set { mouseMovement.isActive = newValue }
@@ -56,6 +55,7 @@ final class MoveToScrollController: OverrideController {
 
     init(
         persisted: Readonly<Persisted.MoveToScroll>,
+        sharedPersisted: Readonly<Persisted.Advanced>,
         hook: CGEventHookType
     ) {
         self.persisted = persisted
@@ -67,29 +67,32 @@ final class MoveToScrollController: OverrideController {
         )
         tapHold = GestureRecognizers.TapHold(hook: hook, key: HookKeyKey())
         mouseMovement = GestureRecognizers.MouseMovement(hook: hook, key: HookMouseKey())
+        super.init(sharedPersisted: sharedPersisted)
 
         updateSettings()
 
         mouseMovement.publisher
             .sink { [weak self] p in
-                self?.interceptMouse(translation: p.0)
+                guard let self = self, !self.isDisabled else { return }
+                self.interceptMouse(translation: p.0)
             }
             .store(in: &cancellables)
 
         tapHold.publisher
             .removeDuplicates()
             .sink { [weak self] isActive in
-                self?.isActive = isActive
+                guard let self = self, !self.isDisabled else { return }
+                self.isActive = isActive
                 if isActive {
                     let event = CGEvent(source: nil)
-                    self?.state.mouseLocation = event?.location ?? .zero
+                    self.state.mouseLocation = event?.location ?? .zero
                 }
             }
             .store(in: &cancellables)
 
         tap.publisher
             .sink { [weak self] _ in
-                guard let self = self else { return }
+                guard let self = self, !self.isDisabled else { return }
                 self.tapHold.cancel()
                 let heightOfWindow = getWindowSizeBelowCursor().height
                 self.eventPoster.postSmoothScroll(v: Double(heightOfWindow / 2))

@@ -2,7 +2,7 @@ import CGEventOverride
 import Combine
 import Foundation
 
-final class ZoomAndRotateController: OverrideController {
+final class ZoomAndRotateController: BaseOverrideController, OverrideController {
     struct State {
         enum EventPosterState: Equatable {
             enum EventType: Equatable {
@@ -39,7 +39,6 @@ final class ZoomAndRotateController: OverrideController {
     private let tap: GestureRecognizers.Tap
     private let tapHold: GestureRecognizers.TapHold
     private let mouseMovement: GestureRecognizers.MouseMovement
-    private var cancellables = Set<AnyCancellable>()
     private var isActive: Bool {
         get { mouseMovement.isActive }
         set { mouseMovement.isActive = newValue }
@@ -57,6 +56,7 @@ final class ZoomAndRotateController: OverrideController {
 
     init(
         persisted: Readonly<Persisted.ZoomAndRotate>,
+        sharedPersisted: Readonly<Persisted.Advanced>,
         hook: CGEventHookType
     ) {
         self.persisted = persisted
@@ -70,28 +70,32 @@ final class ZoomAndRotateController: OverrideController {
         mouseMovement = GestureRecognizers.MouseMovement(hook: hook, key: HookMouseKey())
         mouseMovement.rate = 60
 
+        super.init(sharedPersisted: sharedPersisted)
+
         updateSettings()
 
         mouseMovement.publisher
             .sink { [weak self] p in
-                self?.interceptMouse(translation: p.0)
+                guard let self = self, !self.isDisabled else { return }
+                self.interceptMouse(translation: p.0)
             }
             .store(in: &cancellables)
 
         tapHold.publisher
             .removeDuplicates()
             .sink { [weak self] isActive in
-                self?.isActive = isActive
+                guard let self = self, !self.isDisabled else { return }
+                self.isActive = isActive
                 if isActive {
                     let event = CGEvent(source: nil)
-                    self?.state.mouseLocation = event?.location ?? .zero
+                    self.state.mouseLocation = event?.location ?? .zero
                 }
             }
             .store(in: &cancellables)
 
         tap.publisher
             .sink { [weak self] _ in
-                guard let self = self else { return }
+                guard let self = self, !self.isDisabled else { return }
                 self.eventPoster.postSmartZoom()
                 self.tapHold.cancel()
             }
