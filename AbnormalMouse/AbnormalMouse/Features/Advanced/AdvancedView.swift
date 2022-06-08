@@ -50,7 +50,7 @@ private struct AdvancedView: View {
     private var excludedApps: some View {
         SettingsSectionView(showSeparator: false, content: {
             WithViewStore(store) { viewStore in
-                Text("Disable Abnormal Mouse for apps listing below").asWidgetTitle()
+                Text(_L10n.View.excludeListTitle).asWidgetTitle()
                 VStack(alignment: .leading, spacing: 0) {
                     ScrollView {
                         VStack(spacing: 4) {
