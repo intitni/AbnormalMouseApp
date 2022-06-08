@@ -70,7 +70,8 @@ extension AdvancedDomain.State {
         excludedApps = persisted.gloablExcludedApplications
         availableApplications = NSWorkspace.shared.runningApplications.compactMap {
             guard let name = $0.localizedName,
-                  let identifier = $0.bundleIdentifier else { return nil }
+                  let identifier = $0.bundleIdentifier,
+                  $0.activationPolicy == .regular else { return nil }
             return .init(appName: name, bundleIdentifier: identifier)
         }
     }
