@@ -59,7 +59,7 @@ private struct AdvancedView: View {
                                     viewStore.send(.selectExcludedApp(app))
                                 }) {
                                     HStack {
-                                        Text(app.appName)
+                                        Text("\(app.appName) (\(app.bundleIdentifier))")
                                         Spacer()
                                     }
                                     .contentShape(Rectangle())
@@ -82,14 +82,16 @@ private struct AdvancedView: View {
                     }
                     .padding(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0))
                     .background(Color.clear)
-                    .frame(maxWidth: 320, minHeight: 100)
+                    .frame(maxWidth: 320, minHeight: 120, maxHeight: 120)
 
                     HStack {
                         Menu("+") {
                             ForEach(viewStore.availableApplications) { app in
-                                Button(app.appName, action: {
+                                Button(action: {
                                     viewStore.send(.addExcludedApp(app))
-                                })
+                                }) {
+                                    Text("\(app.appName) (\(app.bundleIdentifier))")
+                                }
                             }
                         }
                         .frame(width: 40)
@@ -100,7 +102,7 @@ private struct AdvancedView: View {
                             Image(nsImage: NSImage(named: NSImage.touchBarDeleteTemplateName)!)
                         }.buttonStyle(.plain)
                     }
-                    .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
+                    .padding(EdgeInsets(top: 0, leading: 6, bottom: 6, trailing: 6))
                 }
                 .roundedCornerBackground(
                     cornerRadius: 2,
