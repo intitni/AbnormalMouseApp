@@ -26,8 +26,8 @@ struct EmulateEventPoster {
 
         let count = refreshRate / 2
         var scheduledTask = [() -> Void]()
-        var previousV: Int = 0
-        var previousH: Int = 0
+        var previousV = 0
+        var previousH = 0
         for i in stride(from: 0, to: count, by: 1) {
             let x = i / count
             let scale = easingFunction(x)
@@ -243,28 +243,16 @@ struct EmulateEventPoster {
 
     /// Post a zoom gesture event.
     /// - Parameters:
-    ///   - direction: in which direction the zoom happens
     ///   - t: how much is the zoom
     ///   - phase: gesture phase
-    func postZoom(direction: ZoomDirection, t: Int, phase: CGGesturePhase) {
+    /// - important: The actual value is stored as bit pattern of a float value.
+    ///     Probably between 0...1.
+    func postZoom(t: Double, phase: CGGesturePhase) {
         let e = CGEvent(source: nil)!
+        let base: Double = 1000 // magic
+        let value = Int64(min(max(-1, Float(t / base)), 1).bitPattern)
         e.type = CGEventType.gesture
         e[.gestureType] = GestureType.zoom.rawValue
-
-        let scale: Double = min(max(0.0001, Double(abs(t)) / 50), 1)
-
-        let value: Int64 = {
-            let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
-            func buildValuePart() -> Int64 {
-                Int64(50_000_000 * scale) + 980_000_000
-            }
-
-            switch direction {
-            case .none: return sign
-            case .expand: return buildValuePart()
-            case .contract: return sign + buildValuePart()
-            }
-        }()
         e[.gestureSwipeDirection] = value
         e[.gestureZoomDirection] = value
         e[.gesturePhase] = Int64(phase.rawValue)
@@ -273,26 +261,18 @@ struct EmulateEventPoster {
 
     /// Post a rotation gesture event.
     /// - Parameters:
-    ///   - direction: which direction to rotate
+    ///   - t: how much is the rotation
     ///   - phase: gesture phase
-    func postRotation(direction: RotateDirection, t: Int, phase: CGGesturePhase) {
+    ///
+    /// important: The actual value is stored as bit pattern of a float value.
+    func postRotation(t: Double, phase: CGGesturePhase) {
         let e = CGEvent(source: nil)!
+        let base: Double = 40 // magic
+        let value = Int64(Float(t / base).bitPattern)
         e.type = CGEventType.gesture
         e[.gestureType] = GestureType.rotation.rawValue
-
-        let scale: Double = min(max(0.0001, Double(abs(t)) / 40), 1)
-        let value: Int64 = {
-            switch direction {
-            case .clockwise:
-                return Int64(scale * 14)
-            case .counterClockwise:
-                return -Int64(scale * 14)
-            case .none:
-                return 0
-            }
-        }()
-
-        e[.gestureSwipeValueX] = value
+        e[.gestureSwipeDirection] = value
+        e[.gestureZoomDirection] = value
         e[.gesturePhase] = Int64(phase.rawValue)
         e.post(tap: .cghidEventTap)
     }
@@ -328,6 +308,7 @@ struct EmulateEventPoster {
         e[136] = 1 // Magic
         e[138] = 3 // Magic
 
+        #warning("TODO: It's probably a bit pattern of float!")
         func buildValue(_ accumulation: Double) -> Int64 {
             let sign: Int64 = 0b1000_0000_0000_0000_0000_0000_0000_0000
             if accumulation == 0 { return sign }
