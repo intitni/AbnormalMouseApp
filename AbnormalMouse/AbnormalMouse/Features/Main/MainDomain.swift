@@ -193,7 +193,8 @@ extension Store where Action == MainDomain.Action, State == MainDomain.State {
                 moveToScrollSettings: .init(),
                 zoomAndRotateSettings: .init(),
                 needAccessibility: .init(),
-                general: .init()
+                general: .init(),
+                activationStateDescription: "Hello"
             ),
             reducer: MainDomain.reducer,
             environment: .live(environment: .init(

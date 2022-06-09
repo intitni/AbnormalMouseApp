@@ -234,15 +234,24 @@ private struct MainView: View {
     private func activationState(
         viewStore: ViewStore<MainDomain.State, MainDomain.Action>
     ) -> some View {
-        Text(viewStore.state.activationStateDescription ?? "")
-            .padding([.top, .bottom], 8)
-            .padding([.leading, .trailing], 16)
-            .roundedCornerBackground(
-                cornerRadius: 4,
-                fillColor: Color(NSColor.controlBackgroundColor),
-                shadow: .init()
-            )
-            .padding([.all], 8)
+        HStack {
+            Text(viewStore.state.activationStateDescription ?? "")
+            Button(action: { viewStore.send(.purchase) }) {
+                Text(L10n.Activation.Button.buyNow)
+                    .foregroundColor(Color(NSColor.controlAccentColor))
+                    .frame(minWidth: 70)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding([.top, .bottom], 8)
+        .padding(.leading, 16)
+        .padding(.trailing, 4)
+        .roundedCornerBackground(
+            cornerRadius: 4,
+            fillColor: Color(NSColor.controlBackgroundColor),
+            shadow: .init()
+        )
+        .padding([.all], 8)
     }
 }
 
