@@ -91,6 +91,10 @@ struct Persisted: PersistedType {
         var zoomGestureDirection: MoveMouseDirection
         @UserDefault(key("RotateSpeedDirection"), defaultValue: .right)
         var rotateGestureDirection: MoveMouseDirection
+        @UserDefault(key("ZoomSpeedMultiplier"), defaultValue: 1)
+        var zoomSpeedMultiplier: Double
+        @UserDefault(key("RotateSpeedMultiplier"), defaultValue: 1)
+        var rotateSpeedMultiplier: Double
 
         let smartZoom = SmartZoom()
         struct SmartZoom: PersistedType {

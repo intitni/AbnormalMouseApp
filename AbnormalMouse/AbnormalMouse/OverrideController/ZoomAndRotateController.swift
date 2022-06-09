@@ -27,9 +27,11 @@ final class ZoomAndRotateController: BaseOverrideController, OverrideController 
 
         var zoomGestureDirection: MoveMouseDirection = .none
         var rotateGestureDirection: MoveMouseDirection = .none
+        var zoomSpeedMultiplier: Double = 1
+        var rotateSpeedMultiplier: Double = 1
 
-        var zoomThreshold = 0
-        var rotateThreshold = 0
+        var zoomThreshold: Double = 0
+        var rotateThreshold: Double = 0
     }
 
     private let persisted: Readonly<Persisted.ZoomAndRotate>
@@ -111,6 +113,8 @@ final class ZoomAndRotateController: BaseOverrideController, OverrideController 
         isActive = false
         state.zoomGestureDirection = persisted.zoomGestureDirection
         state.rotateGestureDirection = persisted.rotateGestureDirection
+        state.zoomSpeedMultiplier = persisted.zoomSpeedMultiplier
+        state.rotateSpeedMultiplier = persisted.rotateSpeedMultiplier
         tapHold.keyCombination = persisted.keyCombination?.validated
         tapHold.numberOfTapsRequired = persisted.numberOfTapsRequired
         if persisted.smartZoom.useZoomAndRotateDoubleTap {
@@ -128,9 +132,9 @@ final class ZoomAndRotateController: BaseOverrideController, OverrideController 
 extension ZoomAndRotateController {
     private func interceptMouse(translation: CGSize) {
         let p = eventPoster
-        let v = Int(translation.height)
-        let h = Int(translation.width)
-        func extractValue(direction: MoveMouseDirection) -> Int {
+        let v = translation.height
+        let h = translation.width
+        func extractValue(direction: MoveMouseDirection) -> Double {
             switch direction {
             case .none: return 0
             case .left: return -h
@@ -139,7 +143,7 @@ extension ZoomAndRotateController {
             case .down: return v
             }
         }
-        let zoom = extractValue(direction: state.zoomGestureDirection) * 3
+        let zoom = extractValue(direction: state.zoomGestureDirection)
         let rotate = extractValue(direction: state.rotateGestureDirection)
 
         Tool.advanceState(
@@ -150,45 +154,38 @@ extension ZoomAndRotateController {
         )
         defer { Tool.resetStateIfNeeded(&state.gestureState) }
 
-        let zoomDirection: ZoomDirection = zoom == 0
-            ? .none
-            : (zoom > 0 ? .expand : .contract)
-        let rotateDirection: RotateDirection = rotate == 0
-            ? .none
-            : (rotate < 0 ? .clockwise : .counterClockwise)
-
         switch state.gestureState {
         case .inactive:
             break
         case .mayBegin:
-            state.zoomThreshold += abs(zoom)
-            state.rotateThreshold += abs(rotate)
+            state.zoomThreshold += abs(zoom) > abs(rotate) ? abs(zoom) : 0
+            state.rotateThreshold += abs(rotate) > abs(zoom) ? abs(rotate) : 0
             CGWarpMouseCursorPosition(state.mouseLocation)
         case let .begin(type):
             tapHold.consume()
             switch type {
             case .zoom:
-                p.postZoom(direction: zoomDirection, t: zoom, phase: .began)
+                p.postZoom(t: zoom * state.zoomSpeedMultiplier, phase: .began)
             case .rotate:
-                p.postRotation(direction: rotateDirection, t: rotate, phase: .began)
+                p.postRotation(t: rotate * state.rotateSpeedMultiplier, phase: .began)
             }
             p.postTranslation(phase: .began)
             CGWarpMouseCursorPosition(state.mouseLocation)
         case let .hasBegun(type):
             switch type {
             case .zoom:
-                p.postZoom(direction: zoomDirection, t: zoom, phase: .changed)
+                p.postZoom(t: zoom * state.zoomSpeedMultiplier, phase: .changed)
             case .rotate:
-                p.postRotation(direction: rotateDirection, t: rotate, phase: .changed)
+                p.postRotation(t: rotate * state.rotateSpeedMultiplier, phase: .changed)
             }
             p.postTranslation(phase: .changed)
             CGWarpMouseCursorPosition(state.mouseLocation)
         case let .shouldEnd(type):
             switch type {
             case .zoom:
-                p.postZoom(direction: .none, t: zoom, phase: .ended)
+                p.postZoom(t: zoom * state.zoomSpeedMultiplier, phase: .ended)
             case .rotate:
-                p.postRotation(direction: .none, t: rotate, phase: .ended)
+                p.postRotation(t: rotate * state.rotateSpeedMultiplier, phase: .ended)
             case .none: break
             }
             p.postTranslation(phase: .ended)
@@ -205,8 +202,8 @@ extension ZoomAndRotateController {
         static func advanceState(
             _ state: inout State.EventPosterState,
             isActive: Bool,
-            zoomThreshold: Int,
-            rotateThreshold: Int
+            zoomThreshold: Double,
+            rotateThreshold: Double
         ) {
             func endIfNeeded(_ type: State.EventPosterState.EventType?) {
                 if !isActive { state = .shouldEnd(type) }
@@ -218,7 +215,7 @@ extension ZoomAndRotateController {
             case .mayBegin:
                 let absZoom = abs(zoomThreshold)
                 let absRotate = abs(rotateThreshold)
-                if absZoom > 10 || absRotate > 10 {
+                if absZoom > 40 || absRotate > 40 {
                     if absZoom >= absRotate {
                         state = .begin(.zoom)
                     } else {
