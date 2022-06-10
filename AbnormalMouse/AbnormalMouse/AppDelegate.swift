@@ -51,14 +51,17 @@ private let store = TheApp.Store(
         overrideControllers: [
             MoveToScrollController(
                 persisted: Readonly(persisted.moveToScroll),
+                sharedPersisted: Readonly(persisted.advanced),
                 hook: eventHook
             ),
             ZoomAndRotateController(
                 persisted: Readonly(persisted.zoomAndRotate),
+                sharedPersisted: Readonly(persisted.advanced),
                 hook: eventHook
             ),
             DockSwipeController(
                 persisted: Readonly(persisted.dockSwipe),
+                sharedPersisted: Readonly(persisted.advanced),
                 hook: eventHook
             ),
         ]
@@ -105,6 +108,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         activateEventHookIfPossible()
         purchaseManager.updatePurchaseState()
         #endif
+    }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
+        guard !hasVisibleWindows else { return false }
+        showSettingsWindow()
+        return true
     }
 }
 

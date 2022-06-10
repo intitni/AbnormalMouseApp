@@ -1,4 +1,4 @@
-"View.EnterKeyCombination" = "输入..";
+"View.EnterKeyCombination" = "录制中..";
 "View.KeyCombinationNotSetup" = "设置";
 "View.ActivatorConflict" = "触发键已被其它功能使用";
 "View.KeyCombinationLeftRightMouseButtonNeedModifier" = "鼠标左右键需要配合修饰键使用";

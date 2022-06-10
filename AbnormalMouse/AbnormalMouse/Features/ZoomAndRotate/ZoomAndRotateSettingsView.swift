@@ -24,6 +24,14 @@ private struct ZoomAndRotateSettingsView: View {
     }
 }
 
+private let decimalNumberFormatter: NumberFormatter = {
+    let formatter = NumberFormatter()
+    formatter.minimumIntegerDigits = 1
+    formatter.maximumFractionDigits = 1
+    formatter.minimumFractionDigits = 1
+    return formatter
+}()
+
 // MARK: - Zoom and Rotate
 
 private struct ZoomAndRotateView: View {
@@ -43,7 +51,9 @@ private struct ZoomAndRotateView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     activationCombinationSetter
                     zoomDirectionPicker
+                    zoomSpeedSlider
                     rotateDirectionPicker
+                    rotateSpeedSlider
                 }
 
                 SettingsTips {
@@ -121,6 +131,38 @@ private struct ZoomAndRotateView: View {
                         }
                     }() as String)
                 }
+            }
+        }
+    }
+
+    private var zoomSpeedSlider: some View {
+        WithViewStore(store.scope(state: \.zoomSpeedMultiplier)) { viewStore in
+            SettingsSlider(
+                value: viewStore.binding(
+                    get: { $0 },
+                    send: { .setZoomSpeedMultiplier($0) }
+                ),
+                in: 0.2...2,
+                step: 0.2,
+                valueDisplay: { Text(decimalNumberFormatter.string(for: viewStore.state) ?? "") }
+            ) {
+                Text(_L10n.View.zoomSpeedSliderTitle)
+            }
+        }
+    }
+
+    private var rotateSpeedSlider: some View {
+        WithViewStore(store.scope(state: \.rotateSpeedMultiplier)) { viewStore in
+            SettingsSlider(
+                value: viewStore.binding(
+                    get: { $0 },
+                    send: { .setRotateSpeedMultiplier($0) }
+                ),
+                in: 0.2...2,
+                step: 0.2,
+                valueDisplay: { Text(decimalNumberFormatter.string(for: viewStore.state) ?? "") }
+            ) {
+                Text(_L10n.View.rotateSpeedSliderTitle)
             }
         }
     }

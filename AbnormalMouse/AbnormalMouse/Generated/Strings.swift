@@ -40,6 +40,8 @@ internal enum L10n {
   }
   internal enum Advanced {
     internal enum View {
+      /// Disable Abnormal Mouse for apps listing below
+      internal static let excludeListTitle = L10n.tr("Advanced", "View.ExcludeListTitle")
       /// Listen to keyboard event (restart app to take effect)
       internal static let listenToKeyboardEvent = L10n.tr("Advanced", "View.ListenToKeyboardEvent")
       /// By default, this app does not listen to your keystrokes so you can't use keyboard keys (except modifiers) as activators. Letting an app read your keystrokes can be risky (though we are not doing anything with Abnormal Mouse). Turn it on if you want to use keyboard keys as activators. It will also slightly increase CPU usage when idel. \n\nYou can use tools like ReiKey to check if the app is still listening to your keystrokes
@@ -236,7 +238,7 @@ internal enum L10n {
     internal enum View {
       /// Activator already in use
       internal static let activatorConflict = L10n.tr("Shared", "View.ActivatorConflict")
-      /// Enter..
+      /// Recording...
       internal static let enterKeyCombination = L10n.tr("Shared", "View.EnterKeyCombination")
       /// Set modifiers for left/right mouse button
       internal static let keyCombinationLeftRightMouseButtonNeedModifier = L10n.tr("Shared", "View.KeyCombinationLeftRightMouseButtonNeedModifier")
