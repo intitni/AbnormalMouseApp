@@ -1,5 +1,13 @@
 # Change Log
 
+### 2022.3
+
+- Reimplement zoom and rotate.
+- Support setting zoom and rotate speed.
+- Reopening app shows preference panel.
+- Fix half page scroll in full screen app, now it uses window under cursor as reference.
+- Allow disabling Abnormal Mouse in selected apps.
+
 ### 2022.2
 
 - Allow using left/right mouse button as activator.

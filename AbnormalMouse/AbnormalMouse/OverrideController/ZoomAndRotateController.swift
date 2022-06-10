@@ -137,8 +137,8 @@ extension ZoomAndRotateController {
         func extractValue(direction: MoveMouseDirection) -> Double {
             switch direction {
             case .none: return 0
-            case .left: return -h
-            case .right: return h
+            case .left: return h
+            case .right: return -h
             case .up: return -v
             case .down: return v
             }
