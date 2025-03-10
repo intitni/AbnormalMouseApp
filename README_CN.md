@@ -2,7 +2,7 @@
 
 ## 使用方法
 
-你可以前往[这里下载最新版](https://abnormalmouse.intii.com/zh-cn)并免费使用它。这个项目已经无法编译所以不必浪费时间去 fork 或者 build 它。
+你可以前往[这里下载最新版](https://abnormalmouse.intii.com/zh-cn)并免费使用它。
 
 ## 关于这个 app
 
