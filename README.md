@@ -1,9 +1,5 @@
 # Abnormal Mouse <img alt="Logo" src="https://abnormalmouse.intii.com/image/icon.png" align="right" height="50">
 
-## Public Archived
-
-You can [download the latest version here](https://abnormalmouse.intii.com). It's completely free to use. The project is not compilable any more so please don't waste any time forking or building it.
-
 ## About the App
 
 At the end of 2019, I bought a strange mouse with an angular shape, an arrow key, a pair of AB keys, and an almost unusable touch scroll wheel. It would be a nice decoration if I didn't think of it as a mouse. Because of the epidemic of Covid-19, I decided not to bring my MacBook Pro to work. I had to use a Mac Mini at work, and I couldn't find a reason to buy another Magic Mouse to use in the office, I decided to use the strange mouse.
